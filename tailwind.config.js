@@ -18,18 +18,13 @@ module.exports = {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-        "home-banner-one": "url('/images/home-banner-one.png')"
+        "home-banner-one": "url('/images/home-banner-one.png')",
+        "home-banner-two": "url('/images/home-banner-two.png')",
+        
       },
       colors: {
-        'primary-green': '#BDFF00',
-        'word-black': '#141414',
-        'module-black': '#242424',
-        'title-gray': '#A9A9A9',
-        'black-bg-2': 'rgba(0,0,0,.2)',
-        'title-black': '#020202',
-        'border-green': '#437820',
-        'word-gray': '#5E5E5E',
-        'module-bg': '#ADFF00'
+        'button-purple': '#4C2ABE',
+        "white50": "rgba(255,255,255,0.5)"
       },
       fontSize: ({ theme }) => ({
         ...theme("spacing"),

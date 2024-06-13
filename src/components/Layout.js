@@ -9,7 +9,7 @@ const Layout = ({ children }) => {
                 </div>
                 <div className='icon iconfont icon-menu text-white' style={{fontSize: '1.3rem'}}></div>
             </div>
-            <div className='text min-h-screen w-screen border border-red-500'>
+            <div className='text min-h-screen w-screen '>
                 {children}
             </div>
             <div className=''>this is footer</div>
