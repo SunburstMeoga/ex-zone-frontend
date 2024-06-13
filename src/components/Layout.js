@@ -3,7 +3,7 @@ import Image from 'next/image'
 const Layout = ({ children }) => {
     return (
         <div>
-            <div className='w-full p-1-5 flex justify-between items-center sticky top-0-1 bg-black'>
+            <div className='w-full p-1-5 flex justify-between items-center fixed top-0-1 bg-black z-10'>
                 <div className='w-6-9'>
                     <img src='/images/logo.png' alt='logo' />
                 </div>
