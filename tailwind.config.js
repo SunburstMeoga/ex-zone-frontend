@@ -20,10 +20,11 @@ module.exports = {
         "gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
         "home-banner-one": "url('/images/home-banner-one.png')",
         "home-banner-two": "url('/images/home-banner-two.png')",
-        
+        "home-banner-three": "url('/images/home-banner-three.png')"
       },
       colors: {
-        'button-purple': '#4C2ABE',
+        'primary-purple': '#4C2ABE',
+        "ecosystem-button": "#282258",
         "white50": "rgba(255,255,255,0.5)"
       },
       fontSize: ({ theme }) => ({

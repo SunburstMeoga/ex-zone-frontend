@@ -1,18 +1,55 @@
 export const homeTotalItems = [
     {
-        tltle: 'Total Users:',
-        count: '23234',
+        title: 'Total Users:',
+        count: '1,557,571',
         time: 'in the last 30 days',
     },
     {
-        tltle: 'Total Trades:',
-        count: '23234',
+        title: 'Total Trades:',
+        count: '1,557,571',
         time: 'in the last 30 days',
     },
     {
-        tltle: 'Total Value Locked:',
-        count: '23234',
-        time: 'in the last 30 days',
+        title: 'Total Value Locked:',
+        count: '1,557,571',
         unit: '$'
     }
+]
+export const ecosystemItems = [
+    {
+        title: 'Trade',
+    },
+    {
+        title: 'Earn',
+    },
+    {
+        title: 'Game & NFT',
+    }
+]
+export const tradeItems = [
+    {
+        title: 'Swap',
+        content: 'Trade crypto instantly across multiple chains',
+        operating: 'Trade Now'
+    },
+    {
+        title: 'Liquidity',
+        content: 'Fund liquidity pools, earn trading fees',
+        operating: 'Add Now'
+    },
+    {
+        title: 'Bridge',
+        content: 'Seamlessly transfer assets across chains',
+        operating: 'Bridge Now'
+    },
+    {
+        title: 'Perpetual',
+        content: 'Trade endlessly without expiration dates',
+        operating: 'Trade Now'
+    },
+    {
+        title: 'Buy Crypto',
+        content: 'Buy crypto with your preferred currency and payment method',
+        operating: 'Buy Now'
+    },
 ]
