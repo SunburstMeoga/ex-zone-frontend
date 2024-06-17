@@ -20,12 +20,20 @@ module.exports = {
         "gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
         "home-banner-one": "url('/images/home-banner-one.png')",
         "home-banner-two": "url('/images/home-banner-two.png')",
-        "home-banner-three": "url('/images/home-banner-three.png')"
+        "home-banner-three": "url('/images/home-banner-three.png')",
+        "home-banner-four": "url('/images/home-banner-four.png')",
+        "home-banner-five": "url('/images/home-banner-five.png')"
       },
       colors: {
-        'primary-purple': '#4C2ABE',
+        "primary-purple": "#4C2ABE",
+        "primary-red": "#E92160",
         "ecosystem-button": "#282258",
-        "white50": "rgba(255,255,255,0.5)"
+        "white50": "rgba(255,255,255,0.5)",
+        "black20": "rgba(0,0,0,0.2)",
+        "black25": "rgba(0,0,0,0.25)",
+        "icon-gray": "#787878",
+        "link-blue": "#0082FA"
+
       },
       fontSize: ({ theme }) => ({
         ...theme("spacing"),

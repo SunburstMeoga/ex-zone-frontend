@@ -53,3 +53,26 @@ export const tradeItems = [
         operating: 'Buy Now'
     },
 ]
+export const figuresItems = [
+    {
+        title: 'Circulating Supply',
+        content: '264,128,909',
+    },
+    {
+        title: 'Market cap',
+        content: '264,128,909',
+        unit: '$',
+    },
+    {
+        title: 'Token Burn',
+        content: '1,305,297,566',
+    },
+    {
+        title: 'Total supply',
+        content: '384,128,970',
+    },
+    {
+        title: 'Current emissions',
+        content: '1.36/block',
+    },
+]

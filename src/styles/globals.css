@@ -62,6 +62,16 @@ img {
 .line-height-point-107 {
   line-height: 107%;
 }
+
+.line-height-point-111 {
+  line-height: 111%;
+}
+.line-height-point-173 {
+  line-height: 173%;
+}
+.line-height-point-99 {
+  line-height: 99%;
+}
 /* .line-height-num-33 {
   line-height: 33;
 }
@@ -80,4 +90,29 @@ img {
   background: linear-gradient(90deg, rgba(233, 33, 96, 1) 0%, rgba(129, 39, 158, 1) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+.button-gradient {
+  background: rgb(76, 42, 190);
+  background: linear-gradient(90deg, rgba(76, 42, 190, 1) 0%, rgba(233, 33, 96, 1) 100%);
+}
+.join-gradient {
+  background: rgb(5,6,11);
+  background: linear-gradient(180deg, rgba(5,6,11,1) 0%, rgba(76,42,190,1) 100%);
+}
+
+.gradient-border {
+  background: linear-gradient(90deg, rgba(76, 42, 190, 1) 0%, rgba(233, 33, 96, 1) 100%);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0) border-box;
+  mask-composite: exclude;
+}
+
+.gradient-border-round {
+  background: linear-gradient(180deg, rgba(76, 42, 190, 1) 0%, rgba(233, 33, 96, 1) 100%);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0) border-box;
+  mask-composite: exclude;
+}
+.gradient-border-round-reserve {
+  background: linear-gradient(360deg, rgba(76, 42, 190, 1) 0%, rgba(233, 33, 96, 1) 100%);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0) border-box;
+  mask-composite: exclude;
 }
