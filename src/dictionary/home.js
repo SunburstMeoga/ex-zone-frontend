@@ -76,3 +76,26 @@ export const figuresItems = [
         content: '1.36/block',
     },
 ]
+export const menmbersItems = [{}]
+export const newsItems = [
+    {
+        from: 'Block',
+        time: 'May 12,2024',
+        content: 'PGSwap Launches CLAMM Options Trading in Collaboration with Stryke '
+    },
+    {
+        from: 'Block',
+        time: 'May 12,2024',
+        content: 'PGSwap Launches CLAMM Options Trading in Collaboration with Stryke '
+    },
+    {
+        from: 'Block',
+        time: 'May 12,2024',
+        content: 'PGSwap Launches CLAMM Options Trading in Collaboration with Stryke '
+    },
+    {
+        from: 'Block',
+        time: 'May 12,2024',
+        content: 'PGSwap Launches CLAMM Options Trading in Collaboration with Stryke '
+    },
+]

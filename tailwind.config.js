@@ -18,11 +18,14 @@ module.exports = {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-        "home-banner-one": "url('/images/home-banner-one.png')",
-        "home-banner-two": "url('/images/home-banner-two.png')",
-        "home-banner-three": "url('/images/home-banner-three.png')",
-        "home-banner-four": "url('/images/home-banner-four.png')",
-        "home-banner-five": "url('/images/home-banner-five.png')"
+        "home-banner-one": "url('/images/phone/home-banner-one.png')",
+        "home-banner-two": "url('/images/phone/home-banner-two.png')",
+        "home-banner-three": "url('/images/phone/home-banner-three.png')",
+        "home-banner-four": "url('/images/phone/home-banner-four.png')",
+        "home-banner-five": "url('/images/phone/home-banner-five.png')",
+        "home-banner-six": "url('/images/phone/home-banner-six.png')",
+        "home-banner-seven": "url('/images/phone/home-banner-seven.png')"
+
       },
       colors: {
         "primary-purple": "#4C2ABE",
@@ -31,9 +34,10 @@ module.exports = {
         "white50": "rgba(255,255,255,0.5)",
         "black20": "rgba(0,0,0,0.2)",
         "black25": "rgba(0,0,0,0.25)",
+        "purple62": "rgba(144,156,255,0.62)",
         "icon-gray": "#787878",
-        "link-blue": "#0082FA"
-
+        "link-blue": "#0082FA",
+        "news-card": "#282258",
       },
       fontSize: ({ theme }) => ({
         ...theme("spacing"),

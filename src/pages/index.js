@@ -2,7 +2,7 @@ import { Inter } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
 
-import { homeTotalItems, ecosystemItems, tradeItems, figuresItems } from '@/dictionary/home'
+import { homeTotalItems, ecosystemItems, tradeItems, figuresItems,newsItems } from '@/dictionary/home'
 import { useEffect, useState } from "react";
 
 export default function Home() {
@@ -228,7 +228,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="w-22-0 flex justify-between items-center">
+          <div className="w-22-0 flex justify-between items-center mt-2-0">
             <div className="bg-black25 w-3-1 h-3-1 flex justify-center items-center rounded-full">
               <div className="icon iconfont icon-tuitex text-primary-purple" style={{fontSize: '1.62rem'}}></div>
             </div>
@@ -246,6 +246,37 @@ export default function Home() {
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="w-full h-97-0 bg-home-banner-six bg-center bg-cover bg-no-repeat -mt-0-1 pt-3-4">
+        <div className="flex flex-col justify-start items-center text-3-0 line-height-point-91 mb-1-8">
+          <div className="text-primary-purple font-medium">Featured</div>
+          <div className="text-primary-red font-medium">News</div>
+        </div>
+        <div className="flex flex-col justify-start items-center mb-1-6">
+          {newsItems.map((item, index) => {
+            return <div key={index} className="py-1-5 w-24-5 px-1-2 rounded-2xl bg-news-card mb-0-8">
+              <div className="rounded-xl">
+                <img src="/images/phone/news.png" alt=""></img>
+              </div>
+              <div className="flex justify-between items-center text-white mt-1-0 mb-1-2">
+                <div className="text-0-9 font-light line-height-point-111">From {`[${item.from}]`}</div>
+                <div className="text-0-9 font-light line-height-point-111">{ item.time }</div>
+              </div>
+              <div className="text-white line-height-point-111 text-1-5">{ item.content}</div>
+            </div>
+          })}
+        </div>
+        <div className="flex justify-center items-center">
+          <div className="bg-primary-purple w-24-5 h-4-7 text-white text-2-0 rounded-xl flex justify-center items-center">More...</div>
+        </div> 
+      </div>
+
+      <div className="w-full bg-home-banner-seven bg-center bg-cover bg-no-repeat h-37-0 flex flex-col justify-start items-center">
+        <div className="text-white font-bold text-3-0 line-height-point-111 pt-4-2 mb-8-2 w-24-5">
+          Join <br></br>Everyone's <br></br>Favorite <br></br>EX.zone Now!
+        </div>
+        <div className="w-24-5 rounded-full h-6-6 bg-black text-white text-bold text-2-0 flex justify-center items-center">Connect Wallet</div>
       </div>
     </div>
   );

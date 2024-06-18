@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
+import Footer from './Footer'
 const Layout = ({ children }) => {
     return (
         <div>
@@ -14,7 +15,9 @@ const Layout = ({ children }) => {
             <div className='text min-h-screen w-screen '>
                 {children}
             </div>
-            <div className=''>this is footer</div>
+            <div className=''>
+                <Footer></Footer>
+            </div>
         </div>
     )
 }

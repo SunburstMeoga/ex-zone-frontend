@@ -1,9 +1,9 @@
 @font-face {
   font-family: "iconfont"; /* Project id 4582731 */
-  src: url('//at.alicdn.com/t/c/font_4582731_2b3yz0px88m.woff2?t=1718618369932') format('woff2'),
-       url('//at.alicdn.com/t/c/font_4582731_2b3yz0px88m.woff?t=1718618369932') format('woff'),
-       url('//at.alicdn.com/t/c/font_4582731_2b3yz0px88m.ttf?t=1718618369932') format('truetype'),
-       url('//at.alicdn.com/t/c/font_4582731_2b3yz0px88m.svg?t=1718618369932#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/c/font_4582731_z2qdjzh9ai.woff2?t=1718688202526') format('woff2'),
+       url('//at.alicdn.com/t/c/font_4582731_z2qdjzh9ai.woff?t=1718688202526') format('woff'),
+       url('//at.alicdn.com/t/c/font_4582731_z2qdjzh9ai.ttf?t=1718688202526') format('truetype'),
+       url('//at.alicdn.com/t/c/font_4582731_z2qdjzh9ai.svg?t=1718688202526#iconfont') format('svg');
 }
 
 .iconfont {
@@ -12,6 +12,14 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-right:before {
+  content: "\e7f9";
+}
+
+.icon-reddit:before {
+  content: "\ea3c";
 }
 
 .icon-telegram:before {

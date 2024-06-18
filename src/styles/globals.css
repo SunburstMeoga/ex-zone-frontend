@@ -72,6 +72,9 @@ img {
 .line-height-point-99 {
   line-height: 99%;
 }
+.line-height-point-91 {
+  line-height: 91%;
+}
 /* .line-height-num-33 {
   line-height: 33;
 }
@@ -115,4 +118,8 @@ img {
   background: linear-gradient(360deg, rgba(76, 42, 190, 1) 0%, rgba(233, 33, 96, 1) 100%);
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0) border-box;
   mask-composite: exclude;
+}
+.gradient-footer {
+  background: rgb(40,34,88);
+background: linear-gradient(180deg, rgba(40,34,88,1) 0%, rgba(76,42,190,0) 100%);
 }
