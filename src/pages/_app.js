@@ -1,5 +1,8 @@
 import "@/styles/globals.css";
 import "@/styles/iconfont.css";
+import "@/styles/animation.css";
+
+import 'animate.css/animate.min.css';
 import React, { useEffect } from 'react';
 import Layout from "@/components/Layout";
 const App = ({ Component, pageProps }) => {

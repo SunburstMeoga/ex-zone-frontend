@@ -38,6 +38,7 @@ module.exports = {
         "icon-gray": "#787878",
         "link-blue": "#0082FA",
         "news-card": "#282258",
+        "menu-green": "#29E5AD"
       },
       fontSize: ({ theme }) => ({
         ...theme("spacing"),

@@ -121,5 +121,9 @@ img {
 }
 .gradient-footer {
   background: rgb(40,34,88);
-background: linear-gradient(180deg, rgba(40,34,88,1) 0%, rgba(76,42,190,0) 100%);
+  background: linear-gradient(180deg, rgba(40,34,88,1) 0%, rgba(76,42,190,0) 100%);
+}
+.gradient-menu-item {
+  background: rgb(76,42,190);
+background: linear-gradient(180deg, rgba(76,42,190,1) 0%, rgba(35,19,88,1) 100%);
 }

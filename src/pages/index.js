@@ -102,7 +102,7 @@ export default function Home() {
           <div className="bg-black20 font-medium text-white w-22-6 h-7-2 rounded-xl flex justify-center items-center text-2-5 line-height-point-111 mb-0-6">Gauges Voting</div>
           <div className="bg-black20 font-medium text-white w-22-6 h-7-2 rounded-xl flex justify-center items-center text-2-5 line-height-point-111">IFO</div>
           <div className="w-full -mt-2-0">
-            <img className="" src="/images/currency.png" alt=""></img>
+            <img className="" src="/images/phone/currency.png" alt=""></img>
           </div>
           <div className="text-3-0 line-height-point-111 mb-2-7 w-22-0 -mt-8-8">Partners</div>
           <div className="bg-black20 font-medium text-white w-22-6 h-7-2 rounded-xl flex justify-center items-center text-2-5 line-height-point-111 mb-0-6">Hash Ahead</div>
