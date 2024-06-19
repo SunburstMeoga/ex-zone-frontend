@@ -54,7 +54,7 @@ const Voting = () => {
                     </div>
                     <div className=''>
                         {nftListItems.map((item, index) => {
-                            return <div key={index} className={`w-full py-2-0 ${index !== nftList.length - 1 ? 'border-b border-voting-border border-dashed' : ''}`}>
+                            return <div key={index} className={`w-full py-2-0 ${item.showMore ? 'bg-voting-details' : ''} ${index !== nftList.length - 1 ? 'border-b border-voting-border border-dashed' : ''}`}>
                                 <div className='mx-1-6'>
                                     <div className='flex justify-between items-start'>
                                         <div className='w-16-2 text-white'>

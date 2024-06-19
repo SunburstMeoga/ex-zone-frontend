@@ -132,7 +132,7 @@ background: linear-gradient(180deg, rgba(76,42,190,1) 0%, rgba(35,19,88,1) 100%)
 background: linear-gradient(180deg, rgba(31,28,71,1) 0%, rgba(23,19,75,1) 100%);
 }
 .voting-text-shadow {
-  text-shadow: 4px 4px 10px black;
+  text-shadow: 4px 4px 4px black;
 }
 .voting-clicked-button {
   background: rgb(233,33,96);

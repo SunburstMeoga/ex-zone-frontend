@@ -39,7 +39,7 @@ module.exports = {
         "link-blue": "#0082FA",
         "news-card": "#282258",
         "menu-green": "#29E5AD",
-        "menu-black": "#151121",
+        "menu-black": "#110E19",
         "voting-type": "#1F1C47",
         "voting-list": "#171337",
         "radio-gray": "#D9D9D9",
