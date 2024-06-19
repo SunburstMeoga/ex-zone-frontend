@@ -24,12 +24,12 @@ module.exports = {
         "home-banner-four": "url('/images/phone/home-banner-four.png')",
         "home-banner-five": "url('/images/phone/home-banner-five.png')",
         "home-banner-six": "url('/images/phone/home-banner-six.png')",
-        "home-banner-seven": "url('/images/phone/home-banner-seven.png')"
-
+        "home-banner-seven": "url('/images/phone/home-banner-seven.png')",
+        "how-to-work-rocket": "url('/images/phone/how-to-work-rocket.png')"
       },
       colors: {
         "primary-purple": "#4C2ABE",
-        "primary-red": "#E92160",
+        "primary-red": "#000000",
         "ecosystem-button": "#282258",
         "white50": "rgba(255,255,255,0.5)",
         "black20": "rgba(0,0,0,0.2)",
@@ -38,7 +38,14 @@ module.exports = {
         "icon-gray": "#787878",
         "link-blue": "#0082FA",
         "news-card": "#282258",
-        "menu-green": "#29E5AD"
+        "menu-green": "#29E5AD",
+        "menu-black": "#151121",
+        "voting-type": "#1F1C47",
+        "voting-list": "#171337",
+        "radio-gray": "#D9D9D9",
+        "voting-border": "#65628C",
+        "voting-details": "#0E0C23",
+        "voting-close": "#575668",
       },
       fontSize: ({ theme }) => ({
         ...theme("spacing"),

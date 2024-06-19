@@ -6,8 +6,8 @@ const Menu = () => {
         changeShowMenu(showMenu = !showMenu)
     }
     return (
-        <div className='w-full  flex flex-col justify-center items-center fixed -top-0-1 bg-black z-30'>
-            <div className='w-22-0 flex justify-between items-center py-1-5 relative z-20 bg-black'>
+        <div className='w-full  flex flex-col justify-center items-center fixed -top-0-1 bg-menu-black z-30'>
+            <div className='w-22-0 flex justify-between items-center py-1-5 relative z-20 bg-menu-black'>
                 <div className='w-6-9'>
                     <img src='/images/logo.png' alt='logo' />
                 </div>
@@ -16,7 +16,7 @@ const Menu = () => {
             {showMenu && <div className={`w-full min-h-screen flex flex-col justify-start items-center mt-1-0 relative z-10 `} >
                 <div className={`w-22-0 ${showMenu ? 'animate__animated animate__slideInDown' : 'animate__slideOutUp'}`}>
                     {pageMenuItems.map((item, index) => {
-                        return <div key={index} className='w-full  rounded-xl bg-primary-purple text-white text-1-3  mb-0-8'>
+                        return <div key={index} className='w-full  rounded-xl bg-primary-purple text-white text-1-3  mb-0-8 overflow-hidden'>
                             <div className='flex justify-between items-center h-3-3'>
                                 <div className='flex justify-start items-center'>
                                     <div className='ml-1-5 w-0-3 h-0-3 bg-white'></div>

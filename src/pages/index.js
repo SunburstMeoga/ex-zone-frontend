@@ -79,12 +79,12 @@ export default function Home() {
       <div className="bg-home-banner-four bg-center bg-cover bg-no-repeat w-full h-50-5 pt-5-8 -mt-0-1">
         <div className="flex justify-start items-center flex-col mb-4-1">
           <div className="w-22-0 text-3-0 font-semibold line-height-point-111 text-white mb-2-0">
-            <span className="text-primary-red">Un</span>lock the Full Potential of DeFi with <span className="text-primary-purple">PGC</span>
+            <span className="text-primary-red">Un</span>lock the Full Potential of DeFi with <span className="text-primary-purple">HAH</span>
           </div>
           <div className="w-22-0 text-white text-1-0 line-height-point-133 mb-10-5">
             Experience the power of community ownership, global governance, and explore infinite use cases within the PancakeSwap ecosystem
           </div>
-          <div className="w-18-9  text-white text-2-0 font-medium rounded-2xl h-4-7 flex justify-center items-center button-gradient mb-1-2">Buy PGC</div>
+          <div className="w-18-9  text-white text-2-0 font-medium rounded-2xl h-4-7 flex justify-center items-center button-gradient mb-1-2">Buy HAH</div>
           <div className="text relative">
             <div className="w-18-9 h-4-7 rounded-2xl p-0-2 gradient-border text-white"></div>
             <div className="absolute text-white w-18-9 h-4-7 flex justify-center items-center text-2-0 top-0-1">Learn</div>
@@ -97,7 +97,7 @@ export default function Home() {
           <div className="text-1-5 line-height-point-173 mt-">Earn up to 26.34% APR</div>
         </div>
         <div className="flex flex-col justify-start items-center text-white">
-          <div className="bg-black font-light text-white w-22-6 h-5-0 rounded-xl flex justify-center items-center text-2-5 line-height-point-111 mb-2-9">Lock PGC Now</div>
+          <div className="bg-black font-light text-white w-22-6 h-5-0 rounded-xl flex justify-center items-center text-2-5 line-height-point-111 mb-2-9">Lock HAH Now</div>
           <div className="text-3-0 line-height-point-111 mb-2-7 w-22-0">Ecosystem</div>
           <div className="bg-black20 font-medium text-white w-22-6 h-7-2 rounded-xl flex justify-center items-center text-2-5 line-height-point-111 mb-0-6">Gauges Voting</div>
           <div className="bg-black20 font-medium text-white w-22-6 h-7-2 rounded-xl flex justify-center items-center text-2-5 line-height-point-111">IFO</div>
@@ -106,10 +106,10 @@ export default function Home() {
           </div>
           <div className="text-3-0 line-height-point-111 mb-2-7 w-22-0 -mt-8-8">Partners</div>
           <div className="bg-black20 font-medium text-white w-22-6 h-7-2 rounded-xl flex justify-center items-center text-2-5 line-height-point-111 mb-0-6">Hash Ahead</div>
-          <div className="bg-black20 font-medium text-white w-22-6 h-7-2 rounded-xl flex justify-center items-center text-2-5 line-height-point-111">PGChain</div>
+          <div className="bg-black20 font-medium text-white w-22-6 h-7-2 rounded-xl flex justify-center items-center text-2-5 line-height-point-111">HAHhain</div>
         </div>
         <div className="text-left flex flex-col justify-start items-center text-white mb-1-9 mt-4-6">
-          <div className="text-4-5  w-22-6 line-height-point-99 font-semibold">PGC</div>
+          <div className="text-4-5  w-22-6 line-height-point-99 font-semibold">HAH</div>
           <div className="text-4-5  w-22-6 line-height-point-99 font-semibold">Figures</div>
         </div>
         <div className="flex flex-col justify-start items-center">
