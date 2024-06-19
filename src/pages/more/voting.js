@@ -3,11 +3,17 @@ import { votingTypeItems, votingStateItems, nftList, votingOperate } from '@/dic
 const Voting = () => {
     let [currentVoting, changeVoting] = useState(1)
     let [currentState, changeVotingState] = useState(1)
+    let [nftListItems, changeNftListItems] = useState(nftList)
     let handleVotingType = (id) => {
         changeVoting(currentVoting = id)
     }
     let handleVotingState = (id) => {
         changeVotingState(currentState = id)
+    }
+    let handleShowMore = ({id}) => {
+        changeNftListItems(nftListItems => 
+            nftListItems.map(item => 
+                item.id === id ? { ...item, showMore: !item.showMore } : item))
     }
     return (
         <div className='bg-menu-black'>
@@ -47,7 +53,7 @@ const Voting = () => {
                         </div>
                     </div>
                     <div className=''>
-                        {nftList.map((item, index) => {
+                        {nftListItems.map((item, index) => {
                             return <div key={index} className={`w-full py-2-0 ${index !== nftList.length - 1 ? 'border-b border-voting-border border-dashed' : ''}`}>
                                 <div className='mx-1-6'>
                                     <div className='flex justify-between items-start'>
@@ -55,24 +61,24 @@ const Voting = () => {
                                             <div className='font-bold text-1-5'>{item.title}</div>
                                             <div className='text-1-2'>{item.time}</div>
                                         </div>
-                                        <div className='flex justify-center items-center'>
-                                            <div className='icon iconfont icon-down1 text-menu-green' style={{ fontSize: '1.5rem' }}></div>
+                                        <div className='flex justify-center items-center' onClick={() => handleShowMore(item)}>
+                                            <div className='icon iconfont icon-down1 text-menu-green' style={{ fontSize: '1.5rem',fontWeight: 900 }}></div>
                                         </div>
                                     </div>
-                                    <div className='mt-1-3'>
+                                    {item.showMore && <div className='mt-1-3'>
                                         {votingOperate.map((_item, _index) => {
                                             return <div key={_index} className={`w-12-5 h-3-2 pl-2-9 flex items-center text-white text-1-2 rounded-xl ${_index === votingOperate.length - 1 ? '' : 'mb-1-1'} ${_item.background}`}>
                                                 {_item.title}
                                             </div>
                                         })}
-                                    </div>
+                                    </div>}
                                 </div>
                             </div>
                         })}
                     </div>
                 </div>
-                <div className='gradient-voting-banner rounded-3xl w-22-0 py-2-1 px-1-3 mt-1-8 mb-3-3 text-white flex flex-col justify-start items-center'>
-                    <div className='text-2-0 font-bold mb-1-0'>Got a suggestion?</div>
+                <div className='gradient-voting-banner rounded-3xl w-22-0 py-2-1 px-1-0 mt-1-8 mb-3-3 text-white flex flex-col justify-start items-center'>
+                    <div className='text-1-8 font-bold mb-1-0'>Got a suggestion?</div>
                     <div className='text-1-0 text-center'>Community proposals are a
                         great way to see how the community feels about your ideas.
                         They won't necessarily be implemented if the community votes successful,

@@ -31,20 +31,28 @@ export const votingStateItems = [
 ]
 export const nftList = [
     {
+        id:1,
         title: 'Proposal for a $HAH Crypto Token ETF',
-        time: 'Ends Jul 26th,2024 12:45'
+        time: 'Ends Jul 26th,2024 12:45',
+        showMore: false
     },
     {
+        id:2,
         title: 'Proposal for a $HAH Crypto Token ETF',
-        time: 'Ends Jul 26th,2024 12:45'
+        time: 'Ends Jul 26th,2024 12:45',
+        showMore: false
     },
     {
+        id:3,
         title: 'Proposal for a $HAH Crypto Token ETF',
-        time: 'Ends Jul 26th,2024 12:45'
+        time: 'Ends Jul 26th,2024 12:45',
+        showMore: false
     },
     {
+        id:4,
         title: 'Proposal for a $HAH Crypto Token ETF',
-        time: 'Ends Jul 26th,2024 12:45'
+        time: 'Ends Jul 26th,2024 12:45',
+        showMore: false
     },
 ]
 export const votingOperate = [
