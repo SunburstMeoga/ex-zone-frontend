@@ -26,7 +26,8 @@ module.exports = {
         "home-banner-six": "url('/images/phone/home-banner-six.png')",
         "home-banner-seven": "url('/images/phone/home-banner-seven.png')",
         "how-to-work-rocket": "url('/images/phone/how-to-work-rocket.png')",
-        "ifo-banner-one":"url('/images/phone/ifo-banner-one.png')"
+        "ifo-banner-one": "url('/images/phone/ifo-banner-one.png')",
+        "ifo-details-banner":"url('/images/phone/ifo-details-banner.png')"
       },
       colors: {
         "primary-purple": "#4C2ABE",
@@ -52,7 +53,8 @@ module.exports = {
         "private-button": "rgba(14,57,75,.8)",
         "card-border": "#54B1B8",
         "ifo-border": "#A186AC",
-        "ifo-round": "#4A3C71"
+        "ifo-round": "#4A3C71",
+        "ifo-details": "#311D73"
       },
       fontSize: ({ theme }) => ({
         ...theme("spacing"),

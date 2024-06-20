@@ -52,3 +52,24 @@ export const publicSaleItems = [
         // height: 'h-30-0'
     }
 ]
+export const ifoDetailsItems = [
+    {
+        title: 'How can I get more iHAH?'
+    },
+    {
+        title: `Which sale should I commit to? Can I do both?`
+    },
+    {
+        title: 'How much is the participation fee?'
+    },
+    {
+        title: 'Where does the participation fee go?'
+    },
+    {
+        title: 'How can I get an achievement for participating in the IFO?'
+    },
+    {
+        title: 'What is the difference between an IFO and a cIFO?'
+    },
+    
+]

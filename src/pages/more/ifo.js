@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { ifoState, ifoSaleAttributes, publicSaleItems } from '@/dictionary/more'
+import { ifoState, ifoSaleAttributes, publicSaleItems,ifoDetailsItems } from '@/dictionary/more'
 const Ifo = () => {
     let [currentIFOState, changeIFOState] = useState(1)
     let handleIFOState = (id) => {
@@ -159,7 +159,7 @@ const Ifo = () => {
                     </div>
                 </div>
 
-                <div className='bg-cover bg-center bg-no-repeat bg-ifo-banner-one w-22-0 h-83-6 rounded-3xl flex flex-col justify-start items-center mb-3-0 py-2-7'>
+                <div className='bg-cover bg-center bg-no-repeat bg-ifo-banner-one w-22-0 h-83-6 rounded-3xl flex flex-col justify-start items-center py-2-7 mb-1-7'>
                     <div className='font-bold text-2-0 line-height-point-133 text-white w-19-0 mb-3-7'>
                         How to Take Part <br></br> in the Public Sale
                     </div>
@@ -168,18 +168,42 @@ const Ifo = () => {
                             return <div key={index} className='mb-1-8'>
                                 <div className='flex justify-start items-center w-19-0 text-white mb-0-5'>
                                     <div className='w-5-1 h-5-1 rounded-full bg-ifo-border flex justify-center items-center shadow-2xl'>
-                                        <div className='bg-ifo-round flex justify-center items-center text-white text-2-2 w-4-1 h-4-1 rounded-full font-medium'>{ item.id}</div>
+                                        <div className='bg-ifo-round flex justify-center items-center text-white text-2-2 w-4-1 h-4-1 rounded-full font-medium'>{item.id}</div>
                                     </div>
-                                    <div className='text-1-5 w-11-8 ml-2-1 font-bold'>{ item.title}</div>
+                                    <div className='text-1-5 w-11-8 ml-2-1 font-bold'>{item.title}</div>
                                 </div>
                                 <div className='flex justify-between items-center w-19-0 text-white '>
-                                    <div className={`w-1-4 ml-1-9 bg-ifo-round mt-0-4 ${item.height}` }></div>
-                                    <div className='line-height-point-133 text-0-9 w-11-8'>{ item.content}</div>
+                                    <div className={`w-1-4 ml-1-9 bg-ifo-round mt-0-4 ${item.height}`}></div>
+                                    <div className='line-height-point-133 text-0-9 w-11-8'>{item.content}</div>
                                 </div>
                             </div>
                         })}
                     </div>
                 </div>
+                <div className='w-full relative flex flex-col justify-start items-center' style={{ height: '118.3rem' }}>
+                    <div className='bg-cover bg-center bg-no-repeat bg-ifo-details-banner w-full absolute -top-0-1' style={{ height: '118.3rem' }}></div>
+                    <div className='z-10 relative flex flex-col justify-start items-center'>
+                        <div className='text-2-0 font-bold text-white mb-2-2'>Details</div>
+                    </div>
+                    <div className='rounded-3xl w-22-0 text-white z-10 relative'>
+                        <div className='w-full rounded-t-3xl bg-primary-purple px-3-1 py-1-7 text-1-2 line-height-point-181 font-medium'>
+                            What are the sale types? What are the differences between them?
+                        </div>
+                        <div className='w-full rounded-b-3xl bg-ifo-details px-3-1 py-1-7 line-height-point-217 font-medium mb-2-5'>
+                            Your iHAH number for each IFOs is calculated based on your veHAH balance at the snapshot time of each IFOs. Usually the snapshot time is the end time of each IFOs. Therefore, iHAH can varies between different IFOs.
+                            To get more iHAH, simply get more veHAH by locking more HAH in your veHAH position, or extending your veHAH position.
+                        </div>
+                        <div className='flex flex-col justify-start items-center'>
+                        {ifoDetailsItems.map((item, index) => {
+                            return <div key={index} className='bg-primary-purple text-white text-1-2 w-22-0 h-8-6 rounded-3xl mb-2-5 line-height-point-180  px-1-7 flex items-center'>
+                                { item.title}
+                            </div>
+                        })}
+                    </div>
+                    </div>
+                    
+                </div>
+
             </div>
 
 
