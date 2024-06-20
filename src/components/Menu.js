@@ -6,8 +6,8 @@ const Menu = () => {
         changeShowMenu(showMenu = !showMenu)
     }
     return (
-        <div className='w-full  flex flex-col justify-center items-center fixed -top-0-1 bg-menu-black z-30'>
-            <div className='w-22-0 flex justify-between items-center py-1-5 relative z-20 bg-menu-black'>
+        <div className='w-full  flex flex-col justify-center items-center fixed -top-0-1 bg-page-black z-30'>
+            <div className='w-22-0 flex justify-between items-center py-1-5 relative z-20 bg-page-black'>
                 <div className='w-6-9'>
                     <img src='/images/logo.png' alt='logo' />
                 </div>

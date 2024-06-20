@@ -16,7 +16,7 @@ const Voting = () => {
                 item.id === id ? { ...item, showMore: !item.showMore } : item))
     }
     return (
-        <div className='bg-menu-black'>
+        <div className='bg-page-black'>
             <div className='flex flex-col justify-start items-center pt-6-3'>
                 <div className='w-22-0 text-white text-1-2 mb-1-7'>
                     Home &gt;&gt; Voting
@@ -28,7 +28,7 @@ const Voting = () => {
                         </div>
                         <div className='text-white flex flex-col justify-start items-start w-11-3'>
                             <div className='line-height-point-133 text-1-5 font-bold voting-text-shadow'>Voting</div>
-                            <div className='font-bold text-1-0 voting-text-shadow'>Have your say in the future of the PGSwap Ecosystem</div>
+                            <div className='font-bold text-1-0 voting-text-shadow'>Have your say in the future of the EX.zone Ecosystem</div>
                         </div>
                     </div>
                     <div className='text-white bg-primary-purple w-17-3 h-3-4 rounded-xl flex justify-center items-center text-1-5 font-bold'>Make a Proposal</div>
@@ -59,7 +59,7 @@ const Voting = () => {
                                     <div className='flex justify-between items-start'>
                                         <div className='w-16-2 text-white'>
                                             <div className='font-bold text-1-5'>{item.title}</div>
-                                            <div className='text-1-2'>{item.time}</div>
+                                            <div className='text-1-2 font-light'>{item.time}</div>
                                         </div>
                                         <div className='flex justify-center items-center' onClick={() => handleShowMore(item)}>
                                             <div className='icon iconfont icon-down1 text-menu-green' style={{ fontSize: '1.5rem',fontWeight: 900 }}></div>

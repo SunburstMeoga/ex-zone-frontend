@@ -81,21 +81,21 @@ export const newsItems = [
     {
         from: 'Block',
         time: 'May 12,2024',
-        content: 'PGSwap Launches CLAMM Options Trading in Collaboration with Stryke '
+        content: 'EX.zone Launches CLAMM Options Trading in Collaboration with Stryke '
     },
     {
         from: 'Block',
         time: 'May 12,2024',
-        content: 'PGSwap Launches CLAMM Options Trading in Collaboration with Stryke '
+        content: 'EX.zone Launches CLAMM Options Trading in Collaboration with Stryke '
     },
     {
         from: 'Block',
         time: 'May 12,2024',
-        content: 'PGSwap Launches CLAMM Options Trading in Collaboration with Stryke '
+        content: 'EX.zone Launches CLAMM Options Trading in Collaboration with Stryke '
     },
     {
         from: 'Block',
         time: 'May 12,2024',
-        content: 'PGSwap Launches CLAMM Options Trading in Collaboration with Stryke '
+        content: 'EX.zone Launches CLAMM Options Trading in Collaboration with Stryke '
     },
 ]

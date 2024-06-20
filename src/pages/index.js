@@ -17,7 +17,7 @@ export default function Home() {
       <div className="bg-home-banner-one bg-center bg-cover bg-no-repeat w-full h-58-0 ">
         <div className="flex justify-start items-center flex-col">
           <div className="flex flex-col justify-start items-center font-bold text-2-5 text-center text-white w-full pt-8-3">
-            Everyone's <br></br> Favorite EX.Zone
+            Everyone's <br></br> Favorite EX.zone
           </div>
           <div className="text-center text-white text-1-5 mt-5-5 w-18-3">
             Trade, earn, and own <br></br> crypto on the all-in-one multichain DEX
@@ -36,7 +36,7 @@ export default function Home() {
             Shaping the Future of  <br></br> Decentralized Trading :
           </div>
           <div className="text-left text-black text-3-0 font-light w-22-0 mb-3-9 line-height-point-119">
-            Ex.zone's  <br></br>Unstoppable<br></br>Expansion
+            EX.zone's  <br></br>Unstoppable<br></br>Expansion
           </div>
           {homeTotal.map((item, index) => {
             return (

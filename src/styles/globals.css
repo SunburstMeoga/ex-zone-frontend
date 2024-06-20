@@ -69,11 +69,20 @@ img {
 .line-height-point-173 {
   line-height: 173%;
 }
+.line-height-point-193 {
+  line-height: 193%;
+}
 .line-height-point-99 {
   line-height: 99%;
 }
 .line-height-point-91 {
   line-height: 91%;
+}
+.line-height-point-160 {
+  line-height: 160%;
+}
+.line-height-point-156 {
+  line-height: 156%;
 }
 /* .line-height-num-33 {
   line-height: 33;
@@ -92,6 +101,12 @@ img {
   background: rgb(233, 33, 96);
   background: linear-gradient(90deg, rgba(233, 33, 96, 1) 0%, rgba(129, 39, 158, 1) 100%);
   -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.private-card-text {
+  background: rgb(41,229,173);
+background: linear-gradient(90deg, rgba(41,229,173,1) 0%, rgba(255,218,105,1) 100%);
+-webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 .button-gradient {
@@ -137,4 +152,12 @@ background: linear-gradient(180deg, rgba(31,28,71,1) 0%, rgba(23,19,75,1) 100%);
 .voting-clicked-button {
   background: rgb(233,33,96);
   background: linear-gradient(153deg, rgba(233,33,96,1) 0%, rgba(76,42,190,1) 100%);
+}
+.ifo-card-gradient {
+  background: rgb(12,9,51);
+background: linear-gradient(0deg, rgba(12,9,51,1) 0%, rgba(36,27,153,1) 100%);
+}
+.ifo-private-card-gradient {
+  background: rgb(22,79,83);
+background: linear-gradient(180deg, rgba(22,79,83,1) 0%, rgba(65,121,124,1) 100%);
 }

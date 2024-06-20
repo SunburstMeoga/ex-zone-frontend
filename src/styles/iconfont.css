@@ -1,9 +1,9 @@
 @font-face {
   font-family: "iconfont"; /* Project id 4582731 */
-  src: url('//at.alicdn.com/t/c/font_4582731_821hspwb796.woff2?t=1718786360437') format('woff2'),
-       url('//at.alicdn.com/t/c/font_4582731_821hspwb796.woff?t=1718786360437') format('woff'),
-       url('//at.alicdn.com/t/c/font_4582731_821hspwb796.ttf?t=1718786360437') format('truetype'),
-       url('//at.alicdn.com/t/c/font_4582731_821hspwb796.svg?t=1718786360437#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/c/font_4582731_8sxg68v2kye.woff2?t=1718872443652') format('woff2'),
+       url('//at.alicdn.com/t/c/font_4582731_8sxg68v2kye.woff?t=1718872443652') format('woff'),
+       url('//at.alicdn.com/t/c/font_4582731_8sxg68v2kye.ttf?t=1718872443652') format('truetype'),
+       url('//at.alicdn.com/t/c/font_4582731_8sxg68v2kye.svg?t=1718872443652#iconfont') format('svg');
 }
 
 .iconfont {
@@ -12,6 +12,10 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-wenhaoxiao:before {
+  content: "\e8c8";
 }
 
 .icon-down1:before {
