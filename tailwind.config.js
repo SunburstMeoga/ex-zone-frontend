@@ -33,7 +33,7 @@ module.exports = {
         "trading-banner-three": "url('/images/phone/trading-banner-three.png')",
         "trading-banner-four": "url('/images/phone/trading-banner-four.png')",
         "trading-banner-five": "url('/images/phone/trading-banner-five.png')",
-
+        "trading-stakers-banner": "url('/images/phone/trading-stakers-banner.png')",
 
 
         "trading-gift": "url('/images/phone/trading-gift.png')",

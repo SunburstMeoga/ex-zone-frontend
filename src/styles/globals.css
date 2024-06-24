@@ -202,5 +202,15 @@ img {
 
 .trading-module-gradient {
   background: rgb(0, 0, 0);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
+}
+
+.trading-top-gradient {
+  background: rgb(0, 0, 0);
   background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(21, 17, 33, 1) 100%);
+}
+
+.trading-breakdown-module {
+  background: rgb(22, 19, 24);
+  background: linear-gradient(180deg, rgba(22, 19, 24, 1) 0%, rgba(33, 34, 54, 1) 100%);
 }

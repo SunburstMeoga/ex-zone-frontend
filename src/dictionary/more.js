@@ -251,3 +251,22 @@ export const tradingQuestingItems = [
         content: 'My address was previously eligible. Why is it showing not eligible now?'
     },
 ]
+export const rewardsBreakdown = [
+    {
+        id: 1,
+        title: 'TRADING PAIR'
+    },
+
+    {
+        id: 2,
+        title: 'YOUR VOLUME'
+    },
+    // {
+    //     id: 3,
+    //     title: 'YOUR TRADING FEE'
+    // },
+    // {
+    //     id: 4,
+    //     title: 'REWARD EARNED'
+    // },
+]
