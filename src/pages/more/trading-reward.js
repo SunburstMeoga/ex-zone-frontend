@@ -118,11 +118,11 @@ const TradingReward = () => {
                         </div>
                     })}
                 </div>
-                <div className='w-22-9 rounded-2xl overflow-hidden'>
-                    <div className='w-full pl-1-0 bg-trading-board-bottom text-rank-title h-3-9 flex justify-start items-center font-bold'>
+                <div className='w-22-9 overflow-hidden'>
+                    <div className='w-full pl-1-0 bg-trading-board-bottom rounded-t-2xl text-rank-title h-3-9 flex justify-start items-center font-bold'>
                         RANK (TOP 50 USERS)
                     </div>
-                    <div className='bg-rank-list px-1-0 w-full flex flex-col justify-start items-center'>
+                    <div className='bg-rank-list px-1-0 w-full flex flex-col justify-start items-center h-32-5 overflow-x-scroll rounded-b-2xl'>
                         {rankListData.map((item, index) => {
                             return <div key={index} className='py-1-1 border-b border-dashed border-voting-border text-white w-full' onClick={() => handleShowMore(item)}>
                                 <div className='w-full flex justify-between items-center'>
