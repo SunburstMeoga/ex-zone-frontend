@@ -27,16 +27,28 @@ module.exports = {
         "home-banner-seven": "url('/images/phone/home-banner-seven.png')",
         "how-to-work-rocket": "url('/images/phone/how-to-work-rocket.png')",
         "ifo-banner-one": "url('/images/phone/ifo-banner-one.png')",
-        "ifo-details-banner":"url('/images/phone/ifo-details-banner.png')"
+        "ifo-details-banner": "url('/images/phone/ifo-details-banner.png')",
+        "trading-banner-one": "url('/images/phone/trading-banner-one.png')",
+        "trading-banner-two": "url('/images/phone/trading-banner-two.png')",
+        "trading-banner-three": "url('/images/phone/trading-banner-three.png')",
+        "trading-banner-four": "url('/images/phone/trading-banner-four.png')",
+        "trading-banner-five": "url('/images/phone/trading-banner-five.png')",
+
+
+
+        "trading-gift": "url('/images/phone/trading-gift.png')",
+        "trading-gold": "url('/images/phone/trading-gold.png')",
       },
       colors: {
         "primary-purple": "#4C2ABE",
         "primary-red": "#E92160",
         "primary-yellow": "#FFDA69",
+        "primary-gold": "#A18A53",
         "ecosystem-button": "#282258",
         "white50": "rgba(255,255,255,0.5)",
         "black20": "rgba(0,0,0,0.2)",
         "black25": "rgba(0,0,0,0.25)",
+        "black50": "rgba(0,0,0,.5)",
         "purple62": "rgba(144,156,255,0.62)",
         "icon-gray": "#787878",
         "link-blue": "#0082FA",
@@ -54,7 +66,14 @@ module.exports = {
         "card-border": "#54B1B8",
         "ifo-border": "#A186AC",
         "ifo-round": "#4A3C71",
-        "ifo-details": "#311D73"
+        "ifo-details": "#311D73",
+        "trading-yellow": "#FFB800",
+        "trading-module": "#03050E",
+        "trading-board-top": "rgba(41,45,80,.58)",
+        "trading-board-bottom": "#191D3E",
+        "rank-title": "#627EEA",
+        "rank-list": "#1E213F",
+        "earn-items": "rgba(101,98,140,.5)"
       },
       fontSize: ({ theme }) => ({
         ...theme("spacing"),
