@@ -50,8 +50,8 @@ const TradingReward = () => {
                     Connect wallet to view your <br></br> trading volume and reward
                 </div>
                 <div className='text-white bg-primary-purple w-19-0 h-4-7 rounded-xl flex justify-center items-center text-1-5 font-medium mb-0-9 relative z-10'>Start Trading?</div>
-                <div className='bg-trading-gift bg-cover bg-no-repeat bg-center w-full h-11-3 -mt-3-4 mb-1-8'>
-                    <div className='w-full h-11-3 trading-module-gradient'></div>
+                <div className='bg-trading-gift bg-cover bg-no-repeat bg-center w-full  -mt-6-0 mb-2-0 '>
+                    <div className='w-full h-16-3 trading-module-gradient '></div>
                 </div>
                 <div className='bg-trading-gold bg-center bg-no-repeat bg-cover w-full h-19-5 flex justify-center items-center'>
                     <div className='text-white font-bold line-height-point-133 text-3-0 text-center'>

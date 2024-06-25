@@ -1,7 +1,7 @@
 import "@/styles/globals.css";
 import "@/styles/iconfont.css";
 import "@/styles/animation.css";
-
+import 'antd-mobile/es/global';
 import 'animate.css/animate.min.css';
 import React, { useEffect } from 'react';
 import Layout from "@/components/Layout";
