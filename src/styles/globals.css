@@ -214,3 +214,35 @@ img {
   background: rgb(22, 19, 24);
   background: linear-gradient(180deg, rgba(22, 19, 24, 1) 0%, rgba(33, 34, 54, 1) 100%);
 }
+
+.gradient-swap-module {
+  background: rgb(13, 11, 37);
+  background: linear-gradient(180deg, rgba(13, 11, 37, 0.5) 0%, rgba(22, 18, 75, 1) 100%);
+}
+
+
+/* antd自定义样式 */
+.adm-tabs-tab-active {
+  color: #fff !important;
+  /* 自定义下划线颜色 */
+}
+
+.adm-tabs-header {
+  border-bottom: none !important;
+}
+
+.adm-tabs-header-mask-right,
+.adm-tabs-header-mask-left {
+  background: none !important;
+}
+
+.adm-tabs {
+  --title-font-size: var(--adm-font-size-9);
+  --content-padding: 12px;
+  --active-line-height: 2px;
+  --active-line-border-radius: var(--active-line-height);
+  --active-line-color: #fff !important;
+  --active-title-color: var(--adm-color-primary);
+  position: relative;
+  min-width: 0;
+}

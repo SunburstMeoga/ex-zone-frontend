@@ -34,10 +34,9 @@ module.exports = {
         "trading-banner-four": "url('/images/phone/trading-banner-four.png')",
         "trading-banner-five": "url('/images/phone/trading-banner-five.png')",
         "trading-stakers-banner": "url('/images/phone/trading-stakers-banner.png')",
-
-
         "trading-gift": "url('/images/phone/trading-gift.png')",
         "trading-gold": "url('/images/phone/trading-gold.png')",
+        "swap-banner": "url('/images/phone/swap-banner.png')"
       },
       colors: {
         "primary-purple": "#4C2ABE",
