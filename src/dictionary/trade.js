@@ -132,3 +132,17 @@ export const tokenList = [
         type: 'Trade'
     },
 ]
+export const liquidityTypeItems = [
+    {
+        id: 1,
+        title: 'ALL',
+    },
+    {
+        id: 2,
+        title: 'V3',
+    },
+    {
+        id: 3,
+        title: 'Stableswap',
+    },
+]

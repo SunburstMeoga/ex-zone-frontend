@@ -20,7 +20,7 @@ const FirePopup = ({ showFirePopup, onClose }) => {
             >
                 <div className='swap-popup-gradient rounded-t-3xl flex flex-col justify-start items-center text-white' style={{ minHeight: '70vh' }}>
                     <div className='w-22-2 flex justify-end items-center text-swap-second-title pt-1-0'>
-                        <div className='icon iconfont icon-close' style={{ fontSize: '1.3rem' }}></div>
+                        <div className='icon iconfont icon-close' onClick={() => onClose()} style={{ fontSize: '1.3rem' }}></div>
                     </div>
                     <div className='w-22-2 flex justify-between items-center pt-1-3 mb-1-0'>
                         {fireTypeItems.map((item, index) => {
