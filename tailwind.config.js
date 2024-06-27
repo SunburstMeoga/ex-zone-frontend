@@ -36,7 +36,7 @@ module.exports = {
         "trading-stakers-banner": "url('/images/phone/trading-stakers-banner.png')",
         "trading-gift": "url('/images/phone/trading-gift.png')",
         "trading-gold": "url('/images/phone/trading-gold.png')",
-        "swap-banner": "url('/images/phone/swap-banner.png')"
+        "swap-banner": "url('/images/phone/swap-banner.png')",
       },
       colors: {
         "primary-purple": "#4C2ABE",
@@ -72,7 +72,12 @@ module.exports = {
         "trading-board-bottom": "#191D3E",
         "rank-title": "#627EEA",
         "rank-list": "#1E213F",
-        "earn-items": "rgba(101,98,140,.5)"
+        "earn-items": "rgba(101,98,140,.5)",
+        "swap-tabs": "#0B081D",
+        "swap-second-title": "#575480",
+        "swap-card-module": "#161248",
+        "swap-border": "#373278",
+        "swap-copy-icon": "#4A458E"
       },
       fontSize: ({ theme }) => ({
         ...theme("spacing"),

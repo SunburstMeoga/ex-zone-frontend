@@ -1,5 +1,5 @@
 import React from 'react'
-import { tradeMenuItems } from '@/dictionary/trade'
+import { tradeMenuItems, } from '@/dictionary/trade'
 import Tabs from 'antd-mobile/es/components/tabs'
 function TradeMenu() {
   return (

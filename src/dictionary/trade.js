@@ -24,3 +24,43 @@ export const tradeMenuItems = [
         title: 'Limit(Deprecated)'
     },
 ]
+export const swapStateItems = [
+    {
+        id: 1,
+        title: 'MARKET'
+    },
+    {
+        id: 2,
+        title: 'TWAP'
+    },
+    {
+        id: 3,
+        title: 'LIMIT'
+    }
+]
+export const swapOperateItems = [
+    {
+        id: 1,
+        icon: 'icon-money'
+    },
+    {
+        id: 2,
+        icon: 'icon-tongji'
+    },
+    {
+        id: 3,
+        icon: 'icon-fire'
+    },
+    {
+        id: 4,
+        icon: 'icon-setting'
+    },
+    {
+        id: 5,
+        icon: 'icon-zuijinde'
+    },
+    {
+        id: 6,
+        icon: 'icon-shuaxin'
+    },
+]
