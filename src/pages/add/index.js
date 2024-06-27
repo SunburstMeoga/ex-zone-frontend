@@ -79,7 +79,7 @@ const Add = () => {
                         <div className='w-20-0 text-white text-1-5 mb-0-9'>
                             DEPOSIT AMOUNT
                         </div>
-                        <div className='w-21-7 flex flex-col justify-start items-center'>
+                        <div className='w-21-7 flex flex-col justify-start items-center mb-2-0'>
                             <div className='w-full mb-1-0'>
                                 <div className='bg-swap-card-module mb-1-0 flex flex-col justify-between items-center border-2 border-swap-border rounded-2xl px-2-2 py-0-7 w-full h-6-9'>
                                     <div className='flex justify-between items-center w-full'>
@@ -115,10 +115,10 @@ const Add = () => {
                                 <div className='text-white text-1-0 flex justify-end'>~1,260.08 USD</div>
                             </div>
                         </div>
-                        <div className='w-20-0 text-white text-1-5 mb-0-2'>
+                        <div className='w-19-0 text-white text-1-5 mb-0-2'>
                             SET PRICE RANGE
                         </div>
-                        <div className='text-white text-1-0 w-20-0 mb-0-6'>
+                        <div className='text-white text-1-0 w-19-0 mb-0-6'>
                             View prices in
                         </div>
                         <div className='view-prices-in w-19-7 py-0-7 rounded-xl border-2 border-swap-border flex justify-center items-center text-white mb-1-4'>
@@ -126,10 +126,10 @@ const Add = () => {
                             <div className='text-menu-green icon iconfont icon-exchange mx-0-8 font-bold'></div>
                             <div className='text-1-0'>HAH</div>
                         </div>
-                        <div className='w-21-7 text-rank-title text-1-5'>
+                        <div className='w-19-0 text-rank-title text-1-5'>
                             Current Price:
                         </div>
-                        <div className='w-21-7 text-rank-title text-3-0 flex justify-start items-baseline'>
+                        <div className='w-19-0 text-rank-title text-3-0 flex justify-start items-baseline'>
                             <div className=''>235.172</div>
                             <div className='text-1-2 ml-0-2'>HAH per USDT</div>
                         </div>
