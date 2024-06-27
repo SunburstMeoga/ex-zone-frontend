@@ -146,3 +146,125 @@ export const liquidityTypeItems = [
         title: 'Stableswap',
     },
 ]
+
+export const liquidityOperateItems = [
+    {
+        id: 1,
+        icon: 'icon-jisuanqi'
+    },
+    {
+        id: 2,
+        icon: 'icon-zuijinde'
+    },
+    {
+        id: 3,
+        icon: 'icon-setting'
+    }
+]
+
+export const tokenPair = [
+    {
+        id: 1,
+        title: 'HAH',
+        pick: '96%',
+        feeTier: '0.25%',
+        showMore: false,
+        pointItems: [
+            {
+                point: '0.01',
+                pick: '86'
+            },
+            {
+                point: '0.05',
+                pick: '32'
+            },
+            {
+                point: '0.25',
+                pick: '6'
+            },
+            {
+                point: '1',
+                pick: '65'
+            },
+        ]
+
+    },
+    {
+        id: 2,
+        title: 'HAH',
+        pick: '96%',
+        feeTier: '0.25%',
+        showMore: false,
+        pointItems: [
+            {
+                point: '0.01',
+                pick: '86'
+            },
+            {
+                point: '0.05',
+                pick: '32'
+            },
+            {
+                point: '0.25',
+                pick: '6'
+            },
+            {
+                point: '1',
+                pick: '65'
+            },
+        ]
+
+    },
+    {
+        id: 3,
+        title: 'HAH',
+        pick: '96%',
+        feeTier: '0.25%',
+        showMore: false,
+        pointItems: [
+            {
+                point: '0.01',
+                pick: '86'
+            },
+            {
+                point: '0.05',
+                pick: '32'
+            },
+            {
+                point: '0.25',
+                pick: '6'
+            },
+            {
+                point: '1',
+                pick: '65'
+            },
+        ]
+
+    },
+    {
+        id: 4,
+        title: 'HAH',
+        pick: '96%',
+        feeTier: '0.25%',
+        showMore: false,
+        pointItems: [
+            {
+                point: '0.01',
+                pick: '86'
+            },
+            {
+                point: '0.05',
+                pick: '32'
+            },
+            {
+                point: '0.25',
+                pick: '6'
+            },
+            {
+                point: '1',
+                pick: '65'
+            },
+        ]
+
+    },
+]

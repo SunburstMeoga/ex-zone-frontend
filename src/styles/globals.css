@@ -251,3 +251,13 @@ img {
   position: relative;
   min-width: 0;
 }
+
+.token-pair-card {
+  background: rgb(39, 33, 114);
+  background: linear-gradient(180deg, rgba(39, 33, 114, 1) 0%, rgba(50, 47, 94, 0) 100%);
+}
+
+.view-prices-in {
+  background: rgb(50, 47, 94);
+  background: linear-gradient(180deg, rgba(50, 47, 94, 0.5) 0%, rgba(50, 47, 94, 0) 100%);
+}
