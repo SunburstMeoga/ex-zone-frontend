@@ -3,6 +3,7 @@ import TradeMenu from '@/components/TradeMenu'
 import { liquidityOperateItems, tokenPair } from '@/dictionary/trade'
 const Add = () => {
     let [tokenPairList, setTokenPairList] = useState(tokenPair)
+    let pointList = ['10%', '20%', '50%', 'Full Range']
     let handleShowMore = ({ id }) => {
         console.log(id)
         setTokenPairList(tokenPairList =>
@@ -130,9 +131,48 @@ const Add = () => {
                         </div>
                         <div className='w-21-7 text-rank-title text-3-0 flex justify-start items-baseline'>
                             <div className=''>235.172</div>
-                            <div className='text-1-2'>HAH per USDT</div>
+                            <div className='text-1-2 ml-0-2'>HAH per USDT</div>
                         </div>
-                        <div className='bg-primary-purple rounded-lg w-21-7 h-20-0'></div>
+                        <div className='bg-primary-purple rounded-lg w-21-7 h-20-0 mb-1-0'></div>
+                        <div className='flex justify-between items-center w-21-7 mb-1-4'>
+                            {pointList.map((item, index) => {
+                                return <div key={index} className='rounded-lg bg-menu-green text-white h-1-8 flex justify-center items-center px-0-9'>{item}</div>
+                            })}
+                        </div>
+                        <div className='w-21-7 flex flex-col justify-start items-center'>
+                            <div className='w-full py-1-2 px-1-0 bg-swap-card-module  border-2 border-swap-border rounded-2xl text-white mb-1-0'>
+                                <div className='font-bold text-1-5'>Min Price</div>
+                                <div className='text-white flex justify-between w-full items-baseline my-1-6'>
+                                    <div className='flex justify-center items-center w-3-0 h-3-0 rounded-full bg-menu-green'>
+                                        <div className='icon iconfont icon-jian'></div>
+                                    </div>
+                                    <div className='flex justify-center items-center text-1-2'>
+                                        0.00000023
+                                    </div>
+                                    <div className='flex justify-center items-center w-3-0 h-3-0 rounded-full bg-menu-green'>
+                                        <div className='icon iconfont icon-Add'></div>
+                                    </div>
+                                </div>
+                                <div className='text-rank-title text-1-0 w-full text-right'>HAH per $BABYDOGEINU</div>
+                            </div>
+                            <div className='w-full py-1-2 px-1-0 bg-swap-card-module  border-2 border-swap-border rounded-2xl text-white mb-2-0'>
+                                <div className='font-bold text-1-5'>Min Price</div>
+                                <div className='text-white flex justify-between w-full items-baseline my-1-6'>
+                                    <div className='flex justify-center items-center w-3-0 h-3-0 rounded-full bg-menu-green'>
+                                        <div className='icon iconfont icon-jian'></div>
+                                    </div>
+                                    <div className='flex justify-center items-center text-1-2'>
+                                        0.00000023
+                                    </div>
+                                    <div className='flex justify-center items-center w-3-0 h-3-0 rounded-full bg-menu-green'>
+                                        <div className='icon iconfont icon-Add'></div>
+                                    </div>
+                                </div>
+                                <div className='text-rank-title text-1-0 w-full text-right'>HAH per $BABYDOGEINU</div>
+                            </div>
+                        </div>
+                        <div className='w-21-7 h-4-7 rounded-lg bg-swap-card-module  border-2 border-primary-purple flex justify-center items-center font-medium text-1-5 mb-1-8'>Full Range </div>
+                        <div className='w-21-7 h-4-7 rounded-lg bg-primary-purple border-2 border-primary-purple flex justify-center items-center font-medium text-1-5 mb-2-0'>Connect Wallet </div>
                     </div>
                 </div>
 
