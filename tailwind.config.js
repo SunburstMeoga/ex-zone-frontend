@@ -77,7 +77,8 @@ module.exports = {
         "swap-second-title": "#575480",
         "swap-card-module": "#161248",
         "swap-border": "#373278",
-        "swap-copy-icon": "#4A458E"
+        "swap-copy-icon": "#4A458E",
+        "swap-fire-type": "#16124A"
       },
       fontSize: ({ theme }) => ({
         ...theme("spacing"),
