@@ -90,7 +90,8 @@ module.exports = {
         "limit-currency-from": "rgba(29,25,69,0.5)",
         "limit-choose": "#311F6C",
         "limit-border": "#472AAD",
-        "buy-crypto-card": "rgba(76,71,136,.2)"
+        "buy-crypto-card": "rgba(76,71,136,.2)",
+        "setting-button": "#E0E2EF"
       },
       fontSize: ({ theme }) => ({
         ...theme("spacing"),

@@ -2,12 +2,14 @@ import React, { useState } from 'react'
 import TradeMenu from '@/components/TradeMenu'
 import StatisticsPopup from '@/components/swap/statisticsPopup'
 import FirePopup from '@/components/swap/firePopup'
+import SettingPopup from '@/components/swap/settingPopup'
 import { swapStateItems, swapOperateItems } from '@/dictionary/trade'
 const Trade = () => {
     let [currentState, setCurrentState] = useState(1)
     let [operateItems, setOperateItems] = useState(1)
     let [showStatisticsPopup, setStatisticsPopup] = useState(false)
     let [showFirePopup, setFirePopup] = useState(false)
+    let [showSettingPopup, setSettingPopup] = useState(false)
     let handleSwapState = ({ id }) => {
         setCurrentState(currentState = id)
     }
@@ -17,6 +19,8 @@ const Trade = () => {
             case 2: toggleStatisticsPopup()
                 break;
             case 3: toggleFirePopup()
+                break;
+            case 4: toggleSettingPopup()
         }
     }
     let toggleStatisticsPopup = () => {
@@ -25,6 +29,9 @@ const Trade = () => {
     }
     let toggleFirePopup = () => {
         setFirePopup(showFirePopup = !showFirePopup)
+    }
+    let toggleSettingPopup = () => {
+        setSettingPopup(showSettingPopup = !showSettingPopup)
     }
     return (
         <>
@@ -97,6 +104,7 @@ const Trade = () => {
             </div>
             <StatisticsPopup showStatisticsPopup={showStatisticsPopup} onClose={toggleStatisticsPopup}></StatisticsPopup>
             <FirePopup showFirePopup={showFirePopup} onClose={toggleFirePopup}></FirePopup>
+            <SettingPopup showSettingPopup={showSettingPopup} onClose={toggleSettingPopup}></SettingPopup>
         </>
     )
 }

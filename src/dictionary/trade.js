@@ -339,3 +339,58 @@ export const FAQItems = [
         showMore: false
     },
 ]
+export const settingTranSpeedItmes = [
+    {
+        id: 1,
+        title: 'Default',
+    },
+    {
+        id: 2,
+        title: 'Standard(1)',
+    },
+    {
+        id: 3,
+        title: 'Fast(4)',
+    },
+    {
+        id: 4,
+        title: 'Instant(5)',
+    }
+]
+export const slippageTolerance = [
+    {
+        id: 1,
+        title: '0.1%'
+    },
+    {
+        id: 2,
+        title: '0.5%'
+    },
+    {
+        id: 3,
+        title: '1.0%'
+    },
+
+]
+export const settingOptions = [
+    {
+        id: 1,
+        title: 'Tx deadline(mins)',
+        type: 'edit'
+    },
+    {
+        id: 2,
+        title: 'Expert Mode',
+        type: 'switch'
+    },
+    {
+        id: 3,
+        title: 'Flippy sounds',
+        type: 'switch'
+    },
+    {
+        id: 4,
+        title: 'Fast routing(BETA)',
+        type: 'switch'
+    },
+]
