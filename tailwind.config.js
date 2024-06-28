@@ -79,7 +79,18 @@ module.exports = {
         "swap-border": "#373278",
         "swap-copy-icon": "#4A458E",
         "swap-fire-type": "#16124A",
-        "liquidity-module": "#262255"
+        "liquidity-module": "#262255",
+        "warning-border": "#FFC700",
+        "warning-module": "#FFF4D7",
+        "warning-word": "#FF9900",
+        "bridge-token-middle": "#0D0A27",
+        "bridge-disable-button": "#312E59",
+        "bridge-disable-word": "#5A5878",
+        "limit-orders-module": "#373378",
+        "limit-currency-from": "rgba(29,25,69,0.5)",
+        "limit-choose": "#311F6C",
+        "limit-border": "#472AAD",
+        "buy-crypto-card": "rgba(76,71,136,.2)"
       },
       fontSize: ({ theme }) => ({
         ...theme("spacing"),

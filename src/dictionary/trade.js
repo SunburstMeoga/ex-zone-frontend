@@ -268,3 +268,74 @@ export const tokenPair = [
 
     },
 ]
+
+export const liquidityTokenInfoItems = [
+    {
+        id: 1,
+        title: 'Gas on destiantion',
+        content: 'Add'
+    },
+    {
+        id: 2,
+        title: 'You will receive',
+        content: '35 HAH'
+    },
+    {
+        id: 3,
+        title: 'Fee',
+        content: '0.34 USD'
+    },
+    {
+        id: 4,
+        title: 'Slippage tolerance',
+        content: '0.50%'
+    }
+]
+
+export const providerItems = [
+    {
+        id: 1,
+        title: 'Mercuryo',
+        price: '0.244',
+        amp: '-1.280'
+    },
+    {
+        id: 2,
+        title: 'Transak',
+        price: '0.244',
+        amp: '-1.280'
+    },
+    {
+        id: 3,
+        title: 'MoonPay',
+        price: '0.244',
+        amp: '-1.280'
+    },
+
+]
+export const FAQItems = [
+    {
+        id: 1,
+        title: "Why can't I see my bitcoin purchase",
+        content: "Transfers through the Bitcoin network may take longer due to network congestion. Please check your BTC address again after a few hours.",
+        showMore: false
+    },
+    {
+        id: 2,
+        title: "Why can’t I see quotes from providers?",
+        content: "Transfers through the Bitcoin network may take longer due to network congestion. Please check your BTC address again after a few hours.",
+        showMore: false
+    },
+    {
+        id: 3,
+        title: "Why can't I see my bitcoin purchase",
+        content: "Transfers through the Bitcoin network may take longer due to network congestion. Please check your BTC address again after a few hours.",
+        showMore: false
+    },
+    {
+        id: 4,
+        title: "Why can't I see my bitcoin purchase",
+        content: "Transfers through the Bitcoin network may take longer due to network congestion. Please check your BTC address again after a few hours.",
+        showMore: false
+    },
+]

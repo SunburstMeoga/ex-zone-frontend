@@ -261,3 +261,18 @@ img {
   background: rgb(50, 47, 94);
   background: linear-gradient(180deg, rgba(50, 47, 94, 0.5) 0%, rgba(50, 47, 94, 0) 100%);
 }
+
+.bridge-exchange-top {
+  background: rgb(76, 42, 190);
+  background: linear-gradient(180deg, rgba(76, 42, 190, 1) 0%, rgba(76, 42, 190, 0) 100%);
+}
+
+.bridge-exchange-bottom {
+  background: rgb(76, 42, 190);
+  background: linear-gradient(0deg, rgba(76, 42, 190, 1) 0%, rgba(76, 42, 190, 0) 100%);
+}
+
+.buy-crypto-gradient {
+  background: rgb(22, 18, 75);
+  background: linear-gradient(180deg, rgba(22, 18, 75, 0.5) 0%, rgba(22, 18, 75, 1) 100%);
+}
