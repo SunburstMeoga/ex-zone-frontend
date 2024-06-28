@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import Popup from 'antd-mobile/es/components/popup'
+import Switch from 'antd-mobile/es/components/switch'
+
 import { settingTranSpeedItmes, slippageTolerance, settingOptions } from '@/dictionary/trade'
 const SettingPopup = ({ showSettingPopup, onClose }) => {
     let [currentSpeed, setCurrentSpeed] = useState(1)
@@ -58,14 +60,25 @@ const SettingPopup = ({ showSettingPopup, onClose }) => {
                                         <div className='font-semibold text-1-5 ml-0-2 '>%</div>
                                     </div>
                                 </div>
-                                <div className='flex flex-col justify-start items-center'>
-                                    {settingOptions.mao((item, index) => {
-                                        return <div key={index} className='flex justify-between items-center text-swap-border'>
+                                <div className='flex flex-col justify-start items-center w-full'>
+                                    {settingOptions.map((item, index) => {
+                                        return <div key={index} className='flex justify-between items-center text-swap-border w-full h-3-6'>
                                             <div className='text-1-5 font-bold'>{item.title}</div>
-                                            {item.tyle}
+                                            {item.type === 'edit' && <div className='w-4-8 h-3-0 bg-setting-button'>
+                                                <input className='w-full h-full bg-transparent'></input>
+                                            </div>}
+                                            {item.type === 'switch' && <div>
+                                                <Switch
+                                                    defaultChecked
+                                                    style={{
+                                                        '--checked-color': '#29E5AD',
+                                                    }}
+                                                />
+                                            </div>}
                                         </div>
                                     })}
                                 </div>
+                                <div className='w-full text-center my-2-0 text-menu-green font-semibold text-1-5'>Customize Routing</div>
                             </div>
                         </div>
                     </div>
