@@ -18,6 +18,7 @@ module.exports = {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "gradient-trade": "linear-gradient(180deg, rgba(5,6,11,1) 0%, rgba(76,42,190,1) 100%);",
         "home-banner-one": "url('/images/phone/home-banner-one.png')",
         "home-banner-two": "url('/images/phone/home-banner-two.png')",
         "home-banner-three": "url('/images/phone/home-banner-three.png')",
@@ -37,6 +38,13 @@ module.exports = {
         "trading-gift": "url('/images/phone/trading-gift.png')",
         "trading-gold": "url('/images/phone/trading-gold.png')",
         "swap-banner": "url('/images/phone/swap-banner.png')",
+
+        "pad-home-banner-one": "url('/images/pad/pad-home-banner-one.png')",
+        "pad-home-banner-two": "url('/images/pad/pad-home-banner-two.png')",
+        "pad-home-banner-three": "url('/images/pad/pad-home-banner-three.png')",
+        "pad-home-banner-four": "url('/images/pad/pad-home-banner-four.png')",
+
+
       },
       colors: {
         "primary-purple": "#4C2ABE",
@@ -91,7 +99,7 @@ module.exports = {
         "limit-choose": "#311F6C",
         "limit-border": "#472AAD",
         "buy-crypto-card": "rgba(76,71,136,.2)",
-        "setting-button": "#E0E2EF"
+        "setting-button": "#E0E2EF",
       },
       fontSize: ({ theme }) => ({
         ...theme("spacing"),

@@ -3,11 +3,11 @@ import Footer from './Footer'
 import Menu from './Menu'
 const Layout = ({ children }) => {
     return (
-        <div>
+        <div className='w-full'>
             <div className=''>
                 <Menu></Menu>
             </div>
-            <div className='text min-h-screen w-screen '>
+            <div className='text min-h-screen'>
                 {children}
             </div>
             <div className=''>

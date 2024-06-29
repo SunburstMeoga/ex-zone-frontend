@@ -6,12 +6,12 @@ const Menu = () => {
         changeShowMenu(showMenu = !showMenu)
     }
     return (
-        <div className='w-full  flex flex-col justify-center items-center fixed -top-0-1 bg-page-black z-30'>
-            <div className='w-22-0 flex justify-between items-center py-1-5 relative z-20 bg-page-black'>
-                <div className='w-6-9'>
+        <div className='w-full  flex flex-col justify-center items-center fixed -top-0-1 z-30'>
+            <div className='w-22-0 flex justify-between items-center py-1-5 relative z-20 lg:w-58-2 lg:py-2-6'>
+                <div className='w-6-9 lg:w-12-4'>
                     <img src='/images/logo.png' alt='logo' />
                 </div>
-                <div className='icon iconfont icon-menu text-white' onClick={() => { handleMenu() }} style={{ fontSize: '1.3rem' }}></div>
+                <div className='icon iconfont icon-menu text-white text-1-6' onClick={() => { handleMenu() }}></div>
             </div>
             {showMenu && <div className={`w-full min-h-screen flex flex-col justify-start items-center mt-1-0 relative z-10 `} >
                 <div className={`w-22-0 ${showMenu ? 'animate__animated animate__slideInDown' : 'animate__slideOutUp'}`}>
@@ -29,11 +29,11 @@ const Menu = () => {
                             {item.hasChild && item.showChild && <div className='w-22-0 gradient-menu-item flex flex-col justify-start items-center '>
                                 {item.children.map((_item, _index) => {
                                     return <div key={_index} className='flex justify-center items-center bg-menu-green w-full h-3-5'>
-                                        <div className='w-12-6 text-white font-light text-1-0'>{_item.title }</div>
-                                </div>
-                            })}
+                                        <div className='w-12-6 text-white font-light text-1-0'>{_item.title}</div>
+                                    </div>
+                                })}
                             </div>}
-                        </div> 
+                        </div>
                     })}
                 </div>
             </div>}
