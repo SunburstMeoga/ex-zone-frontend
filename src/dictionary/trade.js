@@ -394,3 +394,33 @@ export const settingOptions = [
         type: 'switch'
     },
 ]
+
+export const liquiditypSourceItems = [
+    {
+        id: 1,
+        title: 'EX.zone V3',
+    },
+    {
+        id: 2,
+        title: 'EX.zone V2',
+    },
+    {
+        id: 3,
+        title: 'EX.zone StableSwap',
+    },
+    {
+        id: 4,
+        title: 'EX.zone MM Linked Pool',
+    },
+]
+
+export const routingPreferenceItems = [
+    {
+        id: 1,
+        title: 'Allow Multihops'
+    },
+    {
+        id: 2,
+        title: 'Allow Multihops'
+    }
+]

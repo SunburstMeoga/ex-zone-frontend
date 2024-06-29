@@ -3,7 +3,7 @@ import Popup from 'antd-mobile/es/components/popup'
 import Switch from 'antd-mobile/es/components/switch'
 
 import { settingTranSpeedItmes, slippageTolerance, settingOptions } from '@/dictionary/trade'
-const SettingPopup = ({ showSettingPopup, onClose }) => {
+const SettingPopup = ({ showSettingPopup, onClose, handleCusRouting }) => {
     let [currentSpeed, setCurrentSpeed] = useState(1)
     let [currentTolernce, setCurrentTolernce] = useState(1)
     let handleSpeed = ({ id }) => {
@@ -27,7 +27,7 @@ const SettingPopup = ({ showSettingPopup, onClose }) => {
                                 <div className='font-bold text-2-0'>
                                     Setting
                                 </div>
-                                <div className='flex justify-center items-center'>
+                                <div className='flex justify-center items-center' onClick={() => onClose()}>
                                     <div className='icon iconfont icon-close text-primary-purple' style={{ fontSize: '2rem' }}></div>
                                 </div>
                             </div>
@@ -78,7 +78,7 @@ const SettingPopup = ({ showSettingPopup, onClose }) => {
                                         </div>
                                     })}
                                 </div>
-                                <div className='w-full text-center my-2-0 text-menu-green font-semibold text-1-5'>Customize Routing</div>
+                                <div className='w-full text-center my-2-0 text-menu-green font-semibold text-1-5' onClick={handleCusRouting}>Customize Routing</div>
                             </div>
                         </div>
                     </div>

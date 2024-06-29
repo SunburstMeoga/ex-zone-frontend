@@ -3,13 +3,18 @@ import TradeMenu from '@/components/TradeMenu'
 import StatisticsPopup from '@/components/swap/statisticsPopup'
 import FirePopup from '@/components/swap/firePopup'
 import SettingPopup from '@/components/swap/settingPopup'
+import CustomsizeRoutingPopup from '@/components/swap/customsizeRoutingPopup'
+import RecentTransPopup from '@/components/swap/recentTransPopup'
 import { swapStateItems, swapOperateItems } from '@/dictionary/trade'
+
 const Trade = () => {
     let [currentState, setCurrentState] = useState(1)
     let [operateItems, setOperateItems] = useState(1)
     let [showStatisticsPopup, setStatisticsPopup] = useState(false)
     let [showFirePopup, setFirePopup] = useState(false)
     let [showSettingPopup, setSettingPopup] = useState(false)
+    let [showCustomsizePopup, setCustomsizePopup] = useState(false)
+    let [showRecentTransPopup, setRecentTransPopup] = useState(false)
     let handleSwapState = ({ id }) => {
         setCurrentState(currentState = id)
     }
@@ -21,6 +26,9 @@ const Trade = () => {
             case 3: toggleFirePopup()
                 break;
             case 4: toggleSettingPopup()
+                break;
+            case 5: toggleRecentTransPopup()
+                break;
         }
     }
     let toggleStatisticsPopup = () => {
@@ -32,6 +40,12 @@ const Trade = () => {
     }
     let toggleSettingPopup = () => {
         setSettingPopup(showSettingPopup = !showSettingPopup)
+    }
+    let toggleCustomsizePopup = () => {
+        setCustomsizePopup(showCustomsizePopup = !showCustomsizePopup)
+    }
+    let toggleRecentTransPopup = () => {
+        setRecentTransPopup(showRecentTransPopup = !showRecentTransPopup)
     }
     return (
         <>
@@ -104,7 +118,9 @@ const Trade = () => {
             </div>
             <StatisticsPopup showStatisticsPopup={showStatisticsPopup} onClose={toggleStatisticsPopup}></StatisticsPopup>
             <FirePopup showFirePopup={showFirePopup} onClose={toggleFirePopup}></FirePopup>
-            <SettingPopup showSettingPopup={showSettingPopup} onClose={toggleSettingPopup}></SettingPopup>
+            <SettingPopup showSettingPopup={showSettingPopup} onClose={toggleSettingPopup} handleCusRouting={toggleCustomsizePopup}></SettingPopup>
+            <CustomsizeRoutingPopup showCustomsizePopup={showCustomsizePopup} onClose={toggleCustomsizePopup}></CustomsizeRoutingPopup>
+            <RecentTransPopup showRecentTransPopup={showRecentTransPopup} onClose={toggleRecentTransPopup}></RecentTransPopup>
         </>
     )
 }
