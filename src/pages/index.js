@@ -51,7 +51,7 @@ export default function Home() {
           })}
         </div>
       </div>
-      <div className="bg-home-banner-three bg-center bg-cover bg-no-repeat w-full h-68-3 pt-1-8 lg:bg-pad-home-banner-three lg:h-auto lg:pb-21-8">
+      <div className="bg-home-banner-three bg-center bg-cover bg-no-repeat w-full -mt-0-1 h-68-3 pt-1-8 lg:bg-pad-home-banner-three lg:h-auto lg:border lg:border-black20 ">
         <div className="flex justify-start items-center flex-col mb-4-1 lg:mb-7-8">
           <div className=" w-21-6 text-3-0 font-semibold text-white line-height-point-107 lg:text-8-0 lg:w-52-8 lg:mt-6-9 lg:font-light"><span className="text-primary-purple">D</span>iscover the <br></br>Ecosystem</div>
         </div>
@@ -64,7 +64,7 @@ export default function Home() {
             })}
           </div>
         </div>
-        <div className="flex justify-start items-center flex-col lg:flex-row lg:flex-wrap lg:w-52-8 lg:ml-auto lg:mr-auto lg:justify-between">
+        <div className="flex justify-start items-center flex-col lg:flex-row lg:flex-wrap lg:w-52-8 lg:ml-auto lg:mr-auto lg:justify-between mb-4-0">
           {tradeItems.map((item, index) => {
             return <div key={index} className={["flex justify-between items-center py-1-8  lg:rounded-2xl lg:bg-gradient-trade lg:px-3-4 lg:flex-col lg:justify-start lg:items-start lg:mb-1-8 lg:h-23-2", index !== tradeItems.length - 1 ? 'border-b border-white50 border-dashed lg:border-none w-22-0 lg:w-26-0' : ' w-22-0  lg:w-52-8 '].join(' ')}>
               <div className={` text-white lg:mb-7-0  ${index === tradeItems.length - 1 ? 'lg:w-35-6' : 'w-12-0 lg:w-22-0'}`}>
@@ -78,7 +78,7 @@ export default function Home() {
           })}
         </div>
       </div>
-      <div className="bg-home-banner-four bg-center bg-cover bg-no-repeat w-full h-50-5 pt-5-8 -mt-0-1 lg:bg-pad-home-banner-four lg:h-auto border border-black20 lg:pt-7-5">
+      <div className="bg-home-banner-four bg-center bg-cover bg-no-repeat w-full h-50-5 pt-5-8 -mt-0-2 lg:bg-pad-home-banner-four lg:h-auto border border-black20 lg:pt-7-5">
         <div className="flex justify-start items-center flex-col mb-4-1">
           <div className="w-22-0 text-3-0 font-semibold line-height-point-111 text-white mb-2-0 lg:text-6-0 lg:w-47-6 lg:font-light lg:text-center lg:mb-4-3">
             <span className="text-primary-red">Un</span>lock the Full Potential of DeFi with <span className="text-primary-purple">HAH</span>
