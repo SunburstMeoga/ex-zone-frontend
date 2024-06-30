@@ -43,7 +43,7 @@ module.exports = {
         "pad-home-banner-two": "url('/images/pad/pad-home-banner-two.png')",
         "pad-home-banner-three": "url('/images/pad/pad-home-banner-three.png')",
         "pad-home-banner-four": "url('/images/pad/pad-home-banner-four.png')",
-
+        "pad-home-banner-five": "url('/images/pad/pad-home-banner-five.png')"
 
       },
       colors: {

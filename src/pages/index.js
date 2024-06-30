@@ -95,31 +95,45 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="bg-home-banner-five bg-center bg-cover bg-no-repeat w-full -mt-0-1 pt-5-2" style={{ height: '2805px' }}>
-        <div className="text-center text-white  mb-1-9">
-          <div className=" text-4-5 line-height-point-111 font-semibold">Staking</div>
-          <div className="text-1-5 line-height-point-173 mt-">Earn up to 26.34% APR</div>
+      <div className="bg-home-banner-five bg-center bg-cover bg-no-repeat w-full -mt-0-2 pt-5-2 h-auto flex flex-col justify-start items-center lg:bg-pad-home-banner-five">
+        <div className="text-center text-white mb-1-9 lg:w-51-6 lg:text-left">
+          <div className=" text-4-5 line-height-point-111 font-semibold lg:text-8-0 lg:font-light">Staking</div>
+          <div className="text-1-5 line-height-point-173 lg:text-3-0">Earn up to 26.34% APR</div>
         </div>
-        <div className="flex flex-col justify-start items-center text-white">
-          <div className="bg-black font-light text-white w-22-6 h-5-0 rounded-xl flex justify-center items-center text-2-5 line-height-point-111 mb-2-9">Lock HAH Now</div>
-          <div className="text-3-0 line-height-point-111 mb-2-7 w-22-0">Ecosystem</div>
-          <div className="bg-black20 font-medium text-white w-22-6 h-7-2 rounded-xl flex justify-center items-center text-2-5 line-height-point-111 mb-0-6">Gauges Voting</div>
-          <div className="bg-black20 font-medium text-white w-22-6 h-7-2 rounded-xl flex justify-center items-center text-2-5 line-height-point-111">IFO</div>
-          <div className="w-full -mt-2-0">
-            <img className="" src="/images/phone/currency.png" alt=""></img>
+        <div className="flex flex-col justify-start items-center text-white w-full">
+          <div className="lg:flex lg:items-start lg:w-51-6">
+            <div className="bg-black font-light text-white w-22-6 h-5-0 rounded-xl flex justify-center items-center text-2-5 line-height-point-111 mb-2-9 lg:w-36-3 lg:text-4-0 lg:h-6-5">Lock HAH Now!</div>
           </div>
-          <div className="text-3-0 line-height-point-111 mb-2-7 w-22-0 -mt-8-8">Partners</div>
-          <div className="bg-black20 font-medium text-white w-22-6 h-7-2 rounded-xl flex justify-center items-center text-2-5 line-height-point-111 mb-0-6">Hash Ahead</div>
-          <div className="bg-black20 font-medium text-white w-22-6 h-7-2 rounded-xl flex justify-center items-center text-2-5 line-height-point-111">HAHhain</div>
+          <div className="flex flex-col items-center lg:flex-row lg:flex-wrap lg:justify-between lg:w-56-0">
+            <div className="lg:order-2">
+              <div className="text-3-0 line-height-point-111 mb-2-7 w-22-0 lg:text-4-0 lg:font-light lg:mb-1-5">Ecosystem</div>
+              <div>
+                <div className="bg-black20 font-medium text-white w-22-6 h-7-2 rounded-xl flex justify-center items-center text-2-5 line-height-point-111 mb-0-6 lg:w-26-2 lg:h-5-4 lg:text-2-2 lg:mb-1-2 lg:rounded-2xl">Gauges Voting</div>
+                <div className="bg-black20 font-medium text-white w-22-6 h-7-2 rounded-xl flex justify-center items-center text-2-5 line-height-point-111 lg:w-26-2 lg:h-5-4 lg:text-2-2 lg:rounded-2xl">IFO</div>
+              </div>
+            </div>
+            <div className="w-full -mt-2-0 lg:order-1 lg:flex lg:justify-center lg:items-center">
+              <img className="lg:hidden" src="/images/phone/currency.png" alt=""></img>
+              <img className="hidden lg:w-39-0 lg:block xl:hidden  " src="/images/pad/currency.png" alt=""></img>
+
+            </div>
+            <div className="lg:order-3">
+              <div className="text-3-0 line-height-point-111 mb-2-7 w-22-0 -mt-8-8 lg:-mt-0-1 lg:text-4-0 lg:font-light lg:mb-1-5">Partners</div>
+              <div>
+                <div className="bg-black20 font-medium text-white w-22-6 h-7-2 rounded-xl flex justify-center items-center text-2-5 line-height-point-111 mb-0-6 lg:w-26-2 lg:h-5-4 lg:text-2-2 lg:mb-1-2 lg:rounded-2xl">Hash Ahead</div>
+                <div className="bg-black20 font-medium text-white w-22-6 h-7-2 rounded-xl flex justify-center items-center text-2-5 line-height-point-111 lg:w-26-2 lg:h-5-4 lg:text-2-2 lg:rounded-2xl">HAH Chain</div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="text-left flex flex-col justify-start items-center text-white mb-1-9 mt-4-6">
-          <div className="text-4-5  w-22-6 line-height-point-99 font-semibold">HAH</div>
-          <div className="text-4-5  w-22-6 line-height-point-99 font-semibold">Figures</div>
+        <div className="text-left w-22-0 lg:w-56-0 flex flex-col justify-start items-start text-white mb-1-9 mt-4-6 lg:mt-7-9 lg:mb-3-0 lg:flex-row">
+          <div className="text-4-5  line-height-point-99 font-semibold ">HAH</div>
+          <div className="text-4-5 line-height-point-99 font-semibold lg:ml-2-0">Figures</div>
         </div>
-        <div className="flex flex-col justify-start items-center">
+        <div className="flex flex-col justify-start items-center w-full lg:flex-row lg:flex-wrap lg:w-56-0 lg:justify-between lg:mb-4-6">
           {figuresItems.map((item, index) => {
-            return <div key={index} className="w-full h-9-5 bg-black20  flex justify-center items-center mb-1-6 rounded-r-2xl text-white">
-              <div className="w-22-6">
+            return <div key={index} className="w-full h-9-5 bg-black20  flex justify-center items-center mb-1-6 rounded-r-2xl text-white lg:w-26-2 lg:rounded-2xl lg:mb-2-7">
+              <div className="w-22-6 lg:w-21-6">
                 <div className="text-1-5 font-light">{item.title}</div>
                 <div className="text-3-0 font-light">{item.content}</div>
               </div>
