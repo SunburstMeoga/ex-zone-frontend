@@ -81,21 +81,25 @@ export const newsItems = [
     {
         from: 'Block',
         time: 'May 12,2024',
-        content: 'EX.zone Launches CLAMM Options Trading in Collaboration with Stryke '
+        content: 'EX.zone Launches CLAMM Options Trading in Collaboration with Stryke ',
+        details: 'EX.zone Launches CLAMM Options Trading in Collaboration with Stryke  (formerly Dopex), Providing Diverse Opportunities for Traders and Liquidity Providers '
     },
     {
         from: 'Block',
         time: 'May 12,2024',
-        content: 'EX.zone Launches CLAMM Options Trading in Collaboration with Stryke '
+        content: 'EX.zone Launches CLAMM Options Trading in Collaboration with Stryke ',
+        details: 'EX.zone Launches CLAMM Options Trading in Collaboration with Stryke  (formerly Dopex), Providing Diverse Opportunities for Traders and Liquidity Providers '
     },
     {
         from: 'Block',
         time: 'May 12,2024',
-        content: 'EX.zone Launches CLAMM Options Trading in Collaboration with Stryke '
+        content: 'EX.zone Launches CLAMM Options Trading in Collaboration with Stryke ',
+        details: 'EX.zone Launches CLAMM Options Trading in Collaboration with Stryke  (formerly Dopex), Providing Diverse Opportunities for Traders and Liquidity Providers '
     },
     {
         from: 'Block',
         time: 'May 12,2024',
-        content: 'EX.zone Launches CLAMM Options Trading in Collaboration with Stryke '
+        content: 'EX.zone Launches CLAMM Options Trading in Collaboration with Stryke ',
+        details: 'EX.zone Launches CLAMM Options Trading in Collaboration with Stryke  (formerly Dopex), Providing Diverse Opportunities for Traders and Liquidity Providers '
     },
 ]
