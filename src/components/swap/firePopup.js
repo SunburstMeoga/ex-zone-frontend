@@ -19,20 +19,20 @@ const FirePopup = ({ showFirePopup, onClose }) => {
                 bodyStyle={{ minHeight: '70vh', background: 'none' }}
             >
                 <div className='swap-popup-gradient rounded-t-3xl flex flex-col justify-start items-center text-white' style={{ minHeight: '70vh' }}>
-                    <div className='w-22-2 flex justify-end items-center text-swap-second-title pt-1-0'>
+                    <div className='w-22-2 flex justify-end items-center text-swap-second-title pt-1-0 lg:w-32-6'>
                         <div className='icon iconfont icon-close' onClick={() => onClose()} style={{ fontSize: '1.3rem' }}></div>
                     </div>
-                    <div className='w-22-2 flex justify-between items-center pt-1-3 mb-1-0'>
+                    <div className='w-22-2 flex justify-between items-center pt-1-3 mb-1-0 lg:w-32-6'>
                         {fireTypeItems.map((item, index) => {
                             return <div key={index} onClick={() => handleType(item)} className={`w-10-9 h-3-4 rounded-lg text-white font-semibold text-1-0  flex justify-center items-center  ${currentType === item.id ? 'voting-clicked-button' : 'bg-swap-fire-type'}`}>
                                 {item.title}
                             </div>
                         })}
                     </div>
-                    <div className='w-22-2 text-1-5 font-semibold mb-1-0'>
+                    <div className='w-22-2 text-1-5 font-semibold mb-1-0 lg:w-32-6'>
                         TOKEN NAME
                     </div>
-                    <div className='w-22-2 flex justify-start items-center'>
+                    <div className='w-22-2 flex justify-start items-center lg:w-32-6'>
                         {fireFilterItems.map((item, index) => {
                             return <div key={index} onClick={() => handleFilter(item)} className={`flex justify-center items-center font-semibold text-1-0 w-8-2 h-2-2 rounded-lg ${currentFilter === item.id ? 'bg-primary-purple' : 'bg-swap-fire-type'} ${item.id === 2 ? 'ml-0-8' : ''}`}>
                                 <div className='font-bold'>{item.title}</div>
@@ -40,7 +40,7 @@ const FirePopup = ({ showFirePopup, onClose }) => {
                             </div>
                         })}
                     </div>
-                    <div className='w-22-2 flex flex-col justify-start items-center'>
+                    <div className='w-22-2 flex flex-col justify-start items-center lg:w-32-6'>
                         {tokenList.map((item, index) => {
                             return <div className={`border-b border-dashed border-voting-border py-0-6 flex justify-start items-start w-full`} key={index}>
                                 <div className='w-1-0 h-1-0 rounded-full bg-gray-500 '></div>

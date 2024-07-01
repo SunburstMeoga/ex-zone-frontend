@@ -15,7 +15,7 @@ const StatisticsPopup = ({ showStatisticsPopup, onClose }) => {
                 bodyStyle={{ minHeight: '70vh', background: 'none' }}
             >
                 <div className='swap-popup-gradient rounded-t-3xl flex flex-col justify-start items-center text-white' style={{ minHeight: '70vh' }}>
-                    <div className='flex flex-col justify-start items-center w-21-3'>
+                    <div className='flex flex-col justify-start items-center w-21-3 lg:w-full lg:px-1-6'>
                         <div className='flex justify-between items-center w-full pt-1-7 mb-2-0'>
                             <div className='flex justify-start items-center'>
                                 <div className='bg-gray-500 w-2-2 h-2-2 rounded-full'></div>
@@ -42,14 +42,14 @@ const StatisticsPopup = ({ showStatisticsPopup, onClose }) => {
                         </div>
                         <div className='w-full text-swap-second-title text-1-0 mb-1-0'>May  30 ,  2024 ,  03:11  PM</div>
                     </div>
-                    <div className='w-22-6 flex justify-between items-center mb-2-0'>
+                    <div className='w-22-6 flex justify-between items-center mb-2-0 lg:w-full lg:justify-end lg:pr-1-6'>
                         {statisticsTimeItems.map((item, index) => {
-                            return <div key={index} onClick={() => handleTime(item)} className={`w-5-0 h-1-9 rounded-lg text-white text-0-9 flex justify-center items-center ${currentTime === item.id ? 'voting-clicked-button' : 'bg-voting-type'}`}>
+                            return <div key={index} onClick={() => handleTime(item)} className={`w-5-0  h-1-9 rounded-lg text-white text-0-9 flex justify-center items-center lg:ml-1-0 ${currentTime === item.id ? 'voting-clicked-button' : 'bg-voting-type'}`}>
                                 {item.title}
                             </div>
                         })}
                     </div>
-                    <div className='w-21-3 h-18-2 bg-swap-second-title rounded-lg flex justify-center items-center '>
+                    <div className='w-21-3 h-18-2 bg-swap-second-title rounded-lg flex justify-center items-center lg:w-51-6'>
                         this is statistics line
                     </div>
                 </div>
