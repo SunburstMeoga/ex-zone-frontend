@@ -57,7 +57,11 @@ module.exports = {
         "pad-home-banner-four": "url('/images/pad/pad-home-banner-four.png')",
         "pad-home-banner-five": "url('/images/pad/pad-home-banner-five.png')",
         "pad-home-banner-six": "url('/images/pad/pad-home-banner-six.png')",
-        "pad-home-banner-seven": "url('/images/pad/pad-home-banner-seven.png')"
+        "pad-home-banner-seven": "url('/images/pad/pad-home-banner-seven.png')",
+
+        "pc-home-banner-one": "url('/images/pc/pc-home-banner-one.png')",
+        "pc-home-banner-two": "url('/images/pc/pc-home-banner-two.png')",
+
 
       },
       colors: {
