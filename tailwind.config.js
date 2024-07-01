@@ -42,7 +42,8 @@ module.exports = {
         "pad-trading-banner-two": "url('/images/pad/pad-trading-banner-two.png')",
         "pad-trading-banner-three": "url('/images/pad/pad-trading-banner-three.png')",
         "pad-trading-banner-four": "url('/images/pad/pad-trading-banner-four.png')",
-
+        "pad-how-to-work-rocket": "url('/images/pad/pad-how-to-work-rocket.png')",
+        "pad-ifo-details-banner": "url('/images/pad/pad-ifo-details-banner')",
 
 
         "pad-trading-gift": "url('/images/pad/pad-trading-gift.png')",
