@@ -69,6 +69,9 @@ module.exports = {
         "black20": "rgba(0,0,0,0.2)",
         "black25": "rgba(0,0,0,0.25)",
         "black50": "rgba(0,0,0,.5)",
+        "black80": "rgba(0,0,0,.8)",
+        "primary-60": "rgba(144,156,255,0.62)",
+
         "purple62": "rgba(144,156,255,0.62)",
         "icon-gray": "#787878",
         "link-blue": "#0082FA",
