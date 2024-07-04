@@ -225,11 +225,9 @@ img {
   background: linear-gradient(180deg, rgba(13, 11, 37, 1) 0%, rgba(22, 18, 75, 1) 100%);
 }
 
-
-/* antd自定义样式 */
+/* 
 .adm-tabs-tab-active {
   color: #fff !important;
-  /* 自定义下划线颜色 */
 }
 
 .adm-tabs-header {
@@ -250,7 +248,7 @@ img {
   --active-title-color: var(--adm-color-primary);
   position: relative;
   min-width: 0;
-}
+} */
 
 .token-pair-card {
   background: rgb(39, 33, 114);

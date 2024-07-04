@@ -44,13 +44,9 @@ module.exports = {
         "pad-trading-banner-four": "url('/images/pad/pad-trading-banner-four.png')",
         "pad-how-to-work-rocket": "url('/images/pad/pad-how-to-work-rocket.png')",
         "pad-ifo-details-banner": "url('/images/pad/pad-ifo-details-banner')",
-
-
         "pad-trading-gift": "url('/images/pad/pad-trading-gift.png')",
         "pad-trading-gold": "url('/images/pad/pad-trading-gold.png')",
-
         "swap-banner": "url('/images/phone/swap-banner.png')",
-
         "pad-home-banner-one": "url('/images/pad/pad-home-banner-one.png')",
         "pad-home-banner-two": "url('/images/pad/pad-home-banner-two.png')",
         "pad-home-banner-three": "url('/images/pad/pad-home-banner-three.png')",
@@ -58,10 +54,9 @@ module.exports = {
         "pad-home-banner-five": "url('/images/pad/pad-home-banner-five.png')",
         "pad-home-banner-six": "url('/images/pad/pad-home-banner-six.png')",
         "pad-home-banner-seven": "url('/images/pad/pad-home-banner-seven.png')",
-
         "pc-home-banner-one": "url('/images/pc/pc-home-banner-one.png')",
         "pc-home-banner-two": "url('/images/pc/pc-home-banner-two.png')",
-
+        "phone-pools-banner-one": "url('/images/phone/phone-pools-banner-one.png')"
 
       },
       colors: {
