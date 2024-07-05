@@ -24,3 +24,14 @@ export const poolsTabsItems = [
         title: 'Simple Staking'
     },
 ]
+
+export const stakingStateItems = [
+    {
+        id: 1,
+        title: 'Live'
+    },
+    {
+        id: 2,
+        title: 'Finished'
+    }
+]
