@@ -20,6 +20,8 @@ module.exports = {
         "gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
         "gradient-trade": "linear-gradient(180deg, rgba(5,6,11,1) 0%, rgba(76,42,190,1) 100%);",
         "button-active": "linear-gradient(153deg, rgba(233, 33, 96, 1) 0%, rgba(76, 42, 190, 1) 100%);",
+        "syrup-module": "linear-gradient(180deg, rgba(13,11,37,1) 0%, rgba(22,18,75,1) 100%);",
+        "syrup-card": "linear-gradient(180deg, rgba(39,33,114,1) 0%, rgba(50,47,94,0) 100%);",
         "home-banner-one": "url('/images/phone/home-banner-one.png')",
         "home-banner-two": "url('/images/phone/home-banner-two.png')",
         "home-banner-three": "url('/images/phone/home-banner-three.png')",
@@ -118,7 +120,7 @@ module.exports = {
         "buy-crypto-card": "rgba(76,71,136,.2)",
         "setting-button": "#E0E2EF",
         "pools-module": "#1A1833",
-
+        "pools-border": "#312E5C"
       },
       fontSize: ({ theme }) => ({
         ...theme("spacing"),
