@@ -54,7 +54,7 @@ export const syrupItems = [
                 unit: '%'
             },
             {
-                id: 1,
+                id: 2,
                 title: 'Ends:',
                 point: 1.48,
                 unitType: 'icon',
@@ -62,7 +62,7 @@ export const syrupItems = [
                 unit: 'days'
             },
             {
-                id: 1,
+                id: 3,
                 title: 'PEPE Earned',
                 point: 1.48,
                 unitType: 'word',
@@ -97,7 +97,7 @@ export const syrupItems = [
         stakedCount: '4,306,412 CAKE',
         showMore: false,
         detailsItems: [
-            {
+           {
                 id: 1,
                 title: 'APR:',
                 point: 1.48,
@@ -106,7 +106,7 @@ export const syrupItems = [
                 unit: '%'
             },
             {
-                id: 1,
+                id: 2,
                 title: 'Ends:',
                 point: 1.48,
                 unitType: 'icon',
@@ -114,7 +114,7 @@ export const syrupItems = [
                 unit: 'days'
             },
             {
-                id: 1,
+                id: 3,
                 title: 'PEPE Earned',
                 point: 1.48,
                 unitType: 'word',
@@ -149,7 +149,7 @@ export const syrupItems = [
         stakedCount: '4,306,412 CAKE',
         showMore: false,
         detailsItems: [
-            {
+           {
                 id: 1,
                 title: 'APR:',
                 point: 1.48,
@@ -158,7 +158,7 @@ export const syrupItems = [
                 unit: '%'
             },
             {
-                id: 1,
+                id: 2,
                 title: 'Ends:',
                 point: 1.48,
                 unitType: 'icon',
@@ -166,7 +166,7 @@ export const syrupItems = [
                 unit: 'days'
             },
             {
-                id: 1,
+                id: 3,
                 title: 'PEPE Earned',
                 point: 1.48,
                 unitType: 'word',
@@ -201,7 +201,7 @@ export const syrupItems = [
         stakedCount: '4,306,412 CAKE',
         showMore: false,
         detailsItems: [
-            {
+           {
                 id: 1,
                 title: 'APR:',
                 point: 1.48,
@@ -210,7 +210,7 @@ export const syrupItems = [
                 unit: '%'
             },
             {
-                id: 1,
+                id: 2,
                 title: 'Ends:',
                 point: 1.48,
                 unitType: 'icon',
@@ -218,7 +218,7 @@ export const syrupItems = [
                 unit: 'days'
             },
             {
-                id: 1,
+                id: 3,
                 title: 'PEPE Earned',
                 point: 1.48,
                 unitType: 'word',

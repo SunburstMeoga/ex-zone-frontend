@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Tabs from 'antd-mobile/es/components/tabs';
 import Switch from 'antd-mobile/es/components/switch'
-
+import CalculatorPopup from '@/components/pools/calculatorPopup'
 import { poolsTabsItems, stakingStateItems, syrupItems } from '@/dictionary/pools';
 import styled from 'styled-components';
 
@@ -40,6 +40,8 @@ background-color: transparent !important;
 const Pools = () => {
     let [activeState, setActiveState] = useState(1)
     let [syrupListItems, changeSyrupListItems] = useState(syrupItems)
+    let [showCalculatorPopup, setCalculatorPopup] = useState(false)
+    let [showFirePopup, setFirePopup] = useState(false)
     let handleState = ({ id }) => {
         console.log(id)
         setActiveState(activeState = id)
@@ -50,9 +52,15 @@ const Pools = () => {
             syrupListItems.map(item =>
                 item.id === id ? { ...item, showMore: !item.showMore } : item))
     }
+    let toggleCalculatorPopup = ({ id }) => {
+        switch (id) {
+            case 1: setCalculatorPopup(showCalculatorPopup = !showCalculatorPopup)
+                break;
+        }
+    }
     return (
         <>
-            <div className='pt-5-0 bg-black'>
+            <div className='pt-5-0 bg-black' >
                 <StyledTabsA>
                     {poolsTabsItems.map((item, index) => (
                         <Tabs.Tab title={item.title} key={index}>
@@ -63,9 +71,9 @@ const Pools = () => {
                 <div className='w-full bg-phone-pools-banner-one bg-bottom bg-no-repeat bg-contain h-auto pt-4-8'>
                     <div className='flex flex-col justify-start items-center'>
                         <div className='text-white text-3-0 font-bold text-left mb-1-1 w-21-4'>Syrup Pools</div>
-                        <div className='text-trading-yellow text-left line-height-point-122 text-2-0 font-semibold w-21-4 mb-6-4'>Just stake some tokens to earn.High APR, low risk.</div>
+                        <div className='text-trading-yellow text-left line-height-point-122 text-2-0 font-semibold w-21-4 mb-6-4'>Just stake some tokens to earn. <br></br> High APR, low risk.</div>
                         <div className='bg-black80 w-21-4 p-2-1 flex flex-col justify-start items-center rounded-xl mb-2-2 backdrop-blur-lg'>
-                            <div className='text-primary-purple text-center text-1-5 font-semibold mb-1-4 '>HAH Staking <br></br>Up to <span className='text-trading-yellow'>26.09%</span>APR</div>
+                            <div className='text-primary-purple text-center text-1-5 font-semibold mb-1-4 '>HAH Staking <br></br>Up to <span className='text-trading-yellow'>26.09% </span>APR</div>
                             <div className='text-primary-60 text-0-9 text-center'>
                                 Satke HAH to get veHAH, earn up to 26.09% APR from veCAKE pool and revenue sharing.<br></br><br></br>
                                 Unlock other benefits like voting incentives, yield boosting, IFO, and so much more...
@@ -134,7 +142,7 @@ const Pools = () => {
                                     {item.showMore && <div>
                                         <div className='mt-1-0 flex justify-between items-center mb-0-7'>
                                             {item.detailsItems.map((_item, _index) => {
-                                                return <div key={_index} className='bg-syrup-card border border-pools-border rounded-xl py-0-8 px-0-4 text-white w-7-0'>
+                                                return <div key={_index} className='bg-syrup-card border border-pools-border rounded-xl py-0-6 px-0-4 text-white w-7-0' onClick={() => toggleCalculatorPopup(item)}>
                                                     <div className='text-0-7 mb-0-2'>{_item.title}</div>
                                                     <div className='flex justify-between items-baseline font-medium'>
                                                         <div className='flex justify-start items-baseline'>
@@ -185,8 +193,9 @@ const Pools = () => {
                         </div>
                     </div>
                 </div>
-
+                <CalculatorPopup showCalculatorPopup={showCalculatorPopup} onClose={toggleCalculatorPopup}></CalculatorPopup>
             </div>
+
         </>
     );
 };
