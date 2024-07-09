@@ -73,7 +73,7 @@ const CalculatorPopup = ({ showCalculatorPopup, onClose }) => {
                                 </div>
                                 <div className='w-full flex justify-end items-center'>
                                     {compoundingEveryItems.map((item, index) => {
-                                        return <div key={index} className={`w-4-0 h-2-4 flex justify-center items-center   font-bold text-0-9  rounded-2xl border ${item.id !== 1 ? 'ml-0-4' : ''}  ${item.id === currentStakedData ? 'bg-menu-green text-white border-menu-green' : 'border-setting-button bg-white text-menu-green'}`} onClick={() => handleCompoundingEvery(item)}>
+                                        return <div key={index} className={`w-4-0 h-2-4 flex justify-center items-center   font-bold text-0-9  rounded-2xl border ${item.id !== 1 ? 'ml-0-4' : ''}  ${item.id === currentCompounding ? 'bg-menu-green text-white border-menu-green' : 'border-setting-button bg-white text-menu-green'}`} onClick={() => handleCompoundingEvery(item)}>
                                             {item.title}
                                         </div>
                                     })}

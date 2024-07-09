@@ -60,7 +60,8 @@ module.exports = {
         "pad-home-banner-seven": "url('/images/pad/pad-home-banner-seven.png')",
         "pc-home-banner-one": "url('/images/pc/pc-home-banner-one.png')",
         "pc-home-banner-two": "url('/images/pc/pc-home-banner-two.png')",
-        "phone-pools-banner-one": "url('/images/phone/phone-pools-banner-one.png')"
+        "phone-pools-banner-one": "url('/images/phone/phone-pools-banner-one.png')",
+        "phone-position-managers-one": "url('/images/phone/phone-position-managers-one.png')"
 
       },
       colors: {
@@ -74,9 +75,11 @@ module.exports = {
         "black25": "rgba(0,0,0,0.25)",
         "black50": "rgba(0,0,0,.5)",
         "black80": "rgba(0,0,0,.8)",
+        "black30": "rgba(0,0,0,.3)",
         "primary-60": "rgba(144,156,255,0.62)",
 
         "purple62": "rgba(144,156,255,0.62)",
+        "purple31": "rgba(116,110,223,0.31)",
         "icon-gray": "#787878",
         "link-blue": "#0082FA",
         "news-card": "#282258",

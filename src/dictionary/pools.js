@@ -303,3 +303,186 @@ export const compoundingEveryItems = [
         title: '30D'
     }
 ]
+
+export const positionManagersItems = [
+    {
+        id: 1,
+        title: 'STD-WBNB(DEFIEDGE#4)',
+        point: '0.25%',
+        tag: 'Booster',
+        upto: 'Up to 320.95%',
+        preUpto: '108.10%',
+        showMore: false,
+        detailsItems: [
+            {
+                title: 'Earn:',
+                content: 'HAH + Fees'
+            },
+            {
+                title: 'Reward Per by:',
+                content: '23432.12 HAH'
+            },
+            {
+                title: 'Total Staked:',
+                content: '$142,039.34'
+            },
+            {
+                title: 'FarmingRewards:',
+                content: '~0.001968 HAH / second'
+            },
+            {
+                title: 'Manager Fee:',
+                content: '0%'
+            },
+        ],
+        viewItems: [
+            {
+                title: 'Manager Info',
+            },
+            {
+                title: 'Strategy Info',
+            },
+            {
+                title: 'View Manager Address',
+            },
+            {
+                title: 'View Vault Contract',
+            },
+        ]
+    },
+    {
+        id: 2,
+        title: 'STD-WBNB(DEFIEDGE#4)',
+        point: '0.25%',
+        tag: 'Booster',
+        upto: 'Up to 320.95%',
+        preUpto: '108.10%',
+        showMore: false,
+        detailsItems: [
+            {
+                title: 'Earn:',
+                content: 'HAH + Fees'
+            },
+            {
+                title: 'Reward Per by:',
+                content: '23432.12 HAH'
+            },
+            {
+                title: 'Total Staked:',
+                content: '$142,039.34'
+            },
+            {
+                title: 'FarmingRewards:',
+                content: '~0.001968 HAH / second'
+            },
+            {
+                title: 'Manager Fee:',
+                content: '0%'
+            },
+        ],
+        viewItems: [
+            {
+                title: 'Manager Info',
+            },
+            {
+                title: 'Strategy Info',
+            },
+            {
+                title: 'View Manager Address',
+            },
+            {
+                title: 'View Vault Contract',
+            },
+        ]
+    },
+    {
+        id: 3,
+        title: 'STD-WBNB(DEFIEDGE#4)',
+        point: '0.25%',
+        tag: 'Booster',
+        upto: 'Up to 320.95%',
+        preUpto: '108.10%',
+        showMore: false,
+        detailsItems: [
+            {
+                title: 'Earn:',
+                content: 'HAH + Fees'
+            },
+            {
+                title: 'Reward Per by:',
+                content: '23432.12 HAH'
+            },
+            {
+                title: 'Total Staked:',
+                content: '$142,039.34'
+            },
+            {
+                title: 'FarmingRewards:',
+                content: '~0.001968 HAH / second'
+            },
+            {
+                title: 'Manager Fee:',
+                content: '0%'
+            },
+        ],
+        viewItems: [
+            {
+                title: 'Manager Info',
+            },
+            {
+                title: 'Strategy Info',
+            },
+            {
+                title: 'View Manager Address',
+            },
+            {
+                title: 'View Vault Contract',
+            },
+        ]
+    },
+    {
+        id: 4,
+        title: 'STD-WBNB(DEFIEDGE#4)',
+        point: '0.25%',
+        tag: 'Booster',
+        upto: 'Up to 320.95%',
+        preUpto: '108.10%',
+        showMore: false,
+        detailsItems: [
+            {
+                title: 'Earn:',
+                content: 'HAH + Fees'
+            },
+            {
+                title: 'Reward Per by:',
+                content: '23432.12 HAH'
+            },
+            {
+                title: 'Total Staked:',
+                content: '$142,039.34'
+            },
+            {
+                title: 'FarmingRewards:',
+                content: '~0.001968 HAH / second'
+            },
+            {
+                title: 'Manager Fee:',
+                content: '0%'
+            },
+        ],
+        viewItems: [
+            {
+                title: 'Manager Info',
+            },
+            {
+                title: 'Strategy Info',
+            },
+            {
+                title: 'View Manager Address',
+            },
+            {
+                title: 'View Vault Contract',
+            },
+        ]
+    },
+]
