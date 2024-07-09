@@ -57,7 +57,7 @@ const SimpleStaking = () => {
                                         <div className='font-semibold text-0-9 mb-0-2'>
                                             Total Staked:
                                         </div>
-                                        <div className='flex justify-between items-baseline mb-0-2'>
+                                        <div className='flex justify-between items-baseline mb-1-5'>
                                             <div className='text-1-5 font-semibold'>{item.totalStaked} HAH</div>
                                             <div className='text-0-9'>{item.totalUSD} USD</div>
                                         </div>
@@ -76,14 +76,19 @@ const SimpleStaking = () => {
                                                 </div>
                                             })}
                                         </div>
-                                    </div>}
+                                        <div className='font-semibold text-0-9 mt-1-5 mb-1-0'>
+                                            START HAH
+                                        </div>
+                                        <div className='text-0-9 font-bold w-full h-3-0 flex justify-center items-center bg-primary-purple rounded-xl'>Connect Wallet</div>
+                                    </div>
+                                    }
                                 </div>
                             })}
                         </div>
                     </div>
 
                 </div>
-            </div>
+            </div >
         </>
     )
 }
