@@ -41,7 +41,6 @@ const Pools = () => {
     let [activeState, setActiveState] = useState(1)
     let [syrupListItems, changeSyrupListItems] = useState(syrupItems)
     let [showCalculatorPopup, setCalculatorPopup] = useState(false)
-    let [showFirePopup, setFirePopup] = useState(false)
     let handleState = ({ id }) => {
         console.log(id)
         setActiveState(activeState = id)
@@ -52,11 +51,9 @@ const Pools = () => {
             syrupListItems.map(item =>
                 item.id === id ? { ...item, showMore: !item.showMore } : item))
     }
-    let toggleCalculatorPopup = ({ id }) => {
-        switch (id) {
-            case 1: setCalculatorPopup(showCalculatorPopup = !showCalculatorPopup)
-                break;
-        }
+    let toggleCalculatorPopup = () => {
+        console.log('object')
+        setCalculatorPopup(showCalculatorPopup = !showCalculatorPopup)
     }
     return (
         <>
@@ -142,7 +139,7 @@ const Pools = () => {
                                     {item.showMore && <div>
                                         <div className='mt-1-0 flex justify-between items-center mb-0-7'>
                                             {item.detailsItems.map((_item, _index) => {
-                                                return <div key={_index} className='bg-syrup-card border border-pools-border rounded-xl py-0-6 px-0-4 text-white w-7-0' onClick={() => toggleCalculatorPopup(item)}>
+                                                return <div key={_index} className='bg-syrup-card border border-pools-border rounded-xl py-0-6 px-0-4 text-white w-7-0' onClick={() => toggleCalculatorPopup()}>
                                                     <div className='text-0-7 mb-0-2'>{_item.title}</div>
                                                     <div className='flex justify-between items-baseline font-medium'>
                                                         <div className='flex justify-start items-baseline'>

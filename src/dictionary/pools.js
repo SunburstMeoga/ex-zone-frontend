@@ -97,7 +97,7 @@ export const syrupItems = [
         stakedCount: '4,306,412 CAKE',
         showMore: false,
         detailsItems: [
-           {
+            {
                 id: 1,
                 title: 'APR:',
                 point: 1.48,
@@ -149,7 +149,7 @@ export const syrupItems = [
         stakedCount: '4,306,412 CAKE',
         showMore: false,
         detailsItems: [
-           {
+            {
                 id: 1,
                 title: 'APR:',
                 point: 1.48,
@@ -201,7 +201,7 @@ export const syrupItems = [
         stakedCount: '4,306,412 CAKE',
         showMore: false,
         detailsItems: [
-           {
+            {
                 id: 1,
                 title: 'APR:',
                 point: 1.48,
@@ -245,5 +245,61 @@ export const syrupItems = [
                 title: 'START STAKING',
             }
         ]
+    }
+]
+export const stakedAmountItems = [
+    {
+        id: 1,
+        title: '100$'
+    },
+    {
+        id: 2,
+        title: '1000$'
+    },
+    {
+        id: 3,
+        title: 'MY BALANCE'
+    }
+]
+
+export const stakedForItems = [
+    {
+        id: 1,
+        title: '1D'
+    },
+    {
+        id: 2,
+        title: '7D'
+    },
+    {
+        id: 3,
+        title: '30D'
+    },
+    {
+        id: 4,
+        title: '1Y'
+    },
+    {
+        id: 5,
+        title: '5Y'
+    }
+]
+
+export const compoundingEveryItems = [
+    {
+        id: 1,
+        title: '1D'
+    },
+    {
+        id: 2,
+        title: '7D'
+    },
+    {
+        id: 3,
+        title: '14D'
+    },
+    {
+        id: 4,
+        title: '30D'
     }
 ]
