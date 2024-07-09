@@ -596,3 +596,42 @@ export const simpleStakingItems = [
         ]
     }
 ]
+export const liquidFAQItems = [
+    {
+        id: 1,
+        title: 'How does wBETH generate staking rewards?',
+        content: 'Liquid Staking Derivatives generate staking rewards through the Ethereum network. When you stake ETH via Binance, you will get BETH as the reward for staking your ETH. wBETH is the 1:1 wrapped version of BETH that can be used on-chain.',
+        showMore: false
+    },
+    {
+        id: 2,
+        title: 'What staking APR can I get from liquid staking?',
+        content: 'Liquid Staking Derivatives generate staking rewards through the Ethereum network. When you stake ETH via Binance, you will get BETH as the reward for staking your ETH. wBETH is the 1:1 wrapped version of BETH that can be used on-chain.',
+        showMore: false
+    },
+    {
+        id: 3,
+        title: 'What is the difference between wBETH and BETH?',
+        content: 'Liquid Staking Derivatives generate staking rewards through the Ethereum network. When you stake ETH via Binance, you will get BETH as the reward for staking your ETH. wBETH is the 1:1 wrapped version of BETH that can be used on-chain.',
+        showMore: false
+    },
+    {
+        id: 4,
+        title: 'How can I use wBETH?',
+        content: 'Liquid Staking Derivatives generate staking rewards through the Ethereum network. When you stake ETH via Binance, you will get BETH as the reward for staking your ETH. wBETH is the 1:1 wrapped version of BETH that can be used on-chain.',
+        showMore: false
+    },
+
+    {
+        id: 5,
+        title: "Do I need to claim staking rewards if I'm using wBETH?",
+        content: 'Liquid Staking Derivatives generate staking rewards through the Ethereum network. When you stake ETH via Binance, you will get BETH as the reward for staking your ETH. wBETH is the 1:1 wrapped version of BETH that can be used on-chain.',
+        showMore: false
+    },
+    {
+        id: 6,
+        title: 'How do I convert wBETH back to ETH?',
+        content: 'Liquid Staking Derivatives generate staking rewards through the Ethereum network. When you stake ETH via Binance, you will get BETH as the reward for staking your ETH. wBETH is the 1:1 wrapped version of BETH that can be used on-chain.',
+        showMore: false
+    },
+]

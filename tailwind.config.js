@@ -77,7 +77,7 @@ module.exports = {
         "black80": "rgba(0,0,0,.8)",
         "black30": "rgba(0,0,0,.3)",
         "primary-60": "rgba(144,156,255,0.62)",
-
+        "primary-50": "rgba(29,25,69,0.5)",
         "purple62": "rgba(144,156,255,0.62)",
         "purple31": "rgba(116,110,223,0.31)",
         "icon-gray": "#787878",
@@ -126,7 +126,9 @@ module.exports = {
         "pools-module": "#1A1833",
         "pools-border": "#312E5C",
         "calculator-title": "#9E9BBD",
-        "calculator-details": "#E2E4F4"
+        "calculator-details": "#E2E4F4",
+        "liquid-staking-module": "#0D0B25",
+        "liquid-staking-border": "#544E9B",
       },
       fontSize: ({ theme }) => ({
         ...theme("spacing"),

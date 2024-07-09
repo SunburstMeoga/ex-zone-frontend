@@ -63,7 +63,7 @@ const SimpleStaking = () => {
                                         </div>
                                         <div className='w-full flex justify-between items-center text-white'>
                                             {item.detailsItems.map((_item, _index) => {
-                                                return <div key={_index} className='border border-swap-copy-icon rounded-xl p-0-4 w-6-7'>
+                                                return <div key={_index} className='border border-swap-copy-icon rounded-xl p-0-8 w-6-7'>
                                                     <div className='text-0-7'>{_item.title}</div>
                                                     <div className='text-0-9 text-menu-green'>Up to</div>
                                                     <div className='text-1-3 font-bold'>{_item.upto}</div>
