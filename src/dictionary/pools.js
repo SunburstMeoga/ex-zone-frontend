@@ -486,3 +486,113 @@ export const positionManagersItems = [
         ]
     },
 ]
+export const simpleStakingItems = [
+    {
+        id: 1,
+        title: 'STAKE & EARN',
+        aprPoint: '0.0075%~0.019%',
+        totalStaked: '241234.2',
+        totalUSD: '~33,547.62',
+        detailsItems: [
+            {
+                id: 1,
+                title: '30D ARP:',
+                upto: '0.0085%',
+                preUpto: '0.016%',
+            },
+            {
+                id: 2,
+                title: '60D ARP:',
+                upto: '0.0085%',
+                preUpto: '0.016%',
+            }, {
+                id: 3,
+                title: '90D ARP:',
+                upto: '0.0085%',
+                preUpto: '0.016%',
+            }
+
+        ]
+    },
+    {
+        id: 2,
+        title: 'STAKE & EARN',
+        aprPoint: '0.0075%~0.019%',
+        totalStaked: '241234.2',
+        totalUSD: '~33,547.62',
+        detailsItems: [
+            {
+                id: 1,
+                title: '30D ARP:',
+                upto: '0.0085%',
+                preUpto: '0.016%',
+            },
+            {
+                id: 2,
+                title: '60D ARP:',
+                upto: '0.0085%',
+                preUpto: '0.016%',
+            }, {
+                id: 3,
+                title: '90D ARP:',
+                upto: '0.0085%',
+                preUpto: '0.016%',
+            }
+
+        ]
+    },
+    {
+        id: 3,
+        title: 'STAKE & EARN',
+        aprPoint: '0.0075%~0.019%',
+        totalStaked: '241234.2',
+        totalUSD: '~33,547.62',
+        detailsItems: [
+            {
+                id: 1,
+                title: '30D ARP:',
+                upto: '0.0085%',
+                preUpto: '0.016%',
+            },
+            {
+                id: 2,
+                title: '60D ARP:',
+                upto: '0.0085%',
+                preUpto: '0.016%',
+            }, {
+                id: 3,
+                title: '90D ARP:',
+                upto: '0.0085%',
+                preUpto: '0.016%',
+            }
+
+        ]
+    },
+    {
+        id: 4,
+        title: 'STAKE & EARN',
+        aprPoint: '0.0075%~0.019%',
+        totalStaked: '241234.2',
+        totalUSD: '~33,547.62',
+        detailsItems: [
+            {
+                id: 1,
+                title: '30D ARP:',
+                upto: '0.0085%',
+                preUpto: '0.016%',
+            },
+            {
+                id: 2,
+                title: '60D ARP:',
+                upto: '0.0085%',
+                preUpto: '0.016%',
+            }, {
+                id: 3,
+                title: '90D ARP:',
+                upto: '0.0085%',
+                preUpto: '0.016%',
+            }
+
+        ]
+    }
+]
