@@ -686,3 +686,36 @@ export const futuresOrderTypeItems = [
         title: 'History',
     },
 ]
+
+export const strykeInfoItems = [
+    {
+        title: 'Market Price',
+        content: '$2333.23'
+    },
+    {
+        title: 'Open Interest',
+        content: '$2333.23'
+    },
+    {
+        title: 'Liquidity',
+        content: '$2333.23'
+    },
+    {
+        title: 'Volume(7D)',
+        content: '$2333.23'
+    },
+    {
+        title: 'Premium(7D)',
+        content: '$2333.23'
+    },
+]
+export const transTypeItems = [
+    {
+        id: 1,
+        title: 'Calls'
+    },
+    {
+        id: 2,
+        title: 'Puts'
+    }
+]
