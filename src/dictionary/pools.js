@@ -635,3 +635,54 @@ export const liquidFAQItems = [
         showMore: false
     },
 ]
+export const perpDetailsItems = [
+    {
+        title: 'Size in USD',
+        content: '6,220,256.7 USD'
+    },
+    {
+        title: 'Entry Price (0.01% Spread)',
+        content: '62,872.3 USD'
+    },
+    {
+        title: 'Liq. Price (-90% Margin)',
+        content: '61,740.6 USD'
+    },
+    {
+        title: 'Fee',
+        content: '61,740.6 USD'
+    },
+]
+
+export const pricePointItems = [
+    {
+        id: 1,
+        title: '+100%'
+    },
+    {
+        id: 2,
+        title: '+200%'
+    },
+    {
+        id: 3,
+        title: '+300%'
+    },
+    {
+        id: 4,
+        title: '+400%'
+    },
+]
+export const futuresOrderTypeItems = [
+    {
+        id: 1,
+        title: 'Positions',
+    },
+    {
+        id: 2,
+        title: 'Orders(0)',
+    },
+    {
+        id: 3,
+        title: 'History',
+    },
+]

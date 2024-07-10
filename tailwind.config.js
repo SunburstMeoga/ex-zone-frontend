@@ -129,6 +129,9 @@ module.exports = {
         "calculator-details": "#E2E4F4",
         "liquid-staking-module": "#0D0B25",
         "liquid-staking-border": "#544E9B",
+        "futures-tabs": "#CEC8E1",
+        "futures-input-module": "#0C0A33",
+        "futures-price": "#F5F6FF"
       },
       fontSize: ({ theme }) => ({
         ...theme("spacing"),

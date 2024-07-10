@@ -19,9 +19,9 @@ const SimpleStaking = () => {
         <>
             <div className='pt-5-0 bg-black' >
                 <PageTabs></PageTabs>
-                <div className='w-full bg-phone-simple-staking-one bg-center bg-no-repeat bg-contain h-auto pt-4-8'>
+                <div className='w-full bg-phone-simple-staking-one bg-center bg-no-repeat bg-cover h-auto pt-4-8'>
                     <div className='flex flex-col justify-start items-center'>
-                        <div className='text-white text-3-0 font-bold text-left mb-0-7 w-21-4'>Simple Staking</div>
+                        <div className='text-white text-3-0 font-bold text-left mb-0-7 w-21-4 voting-text-shadow'>Simple Staking</div>
                         <div className='text-trading-yellow text-left line-height-point-122 text-2-0 font-semibold mb-6-4 voting-text-shadow'> Single-Sided Simple  <br></br> Earn Staking</div>
 
                     </div>
