@@ -43,7 +43,7 @@ const FirePopup = ({ showFirePopup, onClose }) => {
                     <div className='w-22-2 flex flex-col justify-start items-center lg:w-32-6'>
                         {tokenList.map((item, index) => {
                             return <div className={`border-b border-dashed border-voting-border py-0-6 flex justify-start items-start w-full`} key={index}>
-                                <div className='w-1-0 h-1-0 rounded-full bg-gray-500 '></div>
+                                <div className='w-1-0 h-1-0 rounded-full bg-futures-word '></div>
                                 <div className='flex-1 ml-0-4 '>
                                     <div className='text-0-9 font-semibold mb-0-2'>{item.title}</div>
                                     <div className='flex justify-between items-center text-0-9 font-light'>

@@ -35,7 +35,7 @@ const SimpleStaking = () => {
                                     <div className='flex justify-between items-center'>
                                         <div className='flex justify-start items-start'>
                                             <div className='flex justify-start items-start'>
-                                                <div className='w-1-7 h-1-7 rounded-full bg-gray-500'></div>
+                                                <div className='w-1-7 h-1-7 rounded-full bg-futures-word'></div>
                                             </div>
                                             <div className='ml-0-7 text-white h-2-6'>
                                                 <div className='text-0-7 font-semibold'>{item.title}</div>

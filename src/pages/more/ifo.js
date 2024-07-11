@@ -65,16 +65,16 @@ const Ifo = () => {
                                 </div>
                                 <div className='border-b border-voting-border border-dashed pb-2-5 lg:order-3 lg:border-none'>
                                     <div className='flex justify-start items-start'>
-                                        <div className='w-3-9 h-3-9 rounded-2xl mt-0-2 bg-gray-500'></div>
+                                        <div className='w-3-9 h-3-9 rounded-2xl mt-0-2 bg-futures-word'></div>
                                         <div className='ml-1-3 text-white'>
                                             <div className='text-1-2 font-semibold line-height-point-193'>Achievement:</div>
                                             <div className='text-1-2 font-semibold line-height-point-193'>IFO Shopper: LISTA  100</div>
                                             <div className='text-0-8 font-semibold mb-1-2'>Commit ~3.706 HAH in total to earn!</div>
                                             <div className='flex justify-start items-center'>
-                                                <div className='bg-gray-500 w-1-7 h-1-7 rounded-lg mr-0-8'></div>
-                                                <div className='bg-gray-500 w-1-7 h-1-7 rounded-lg mr-0-8'></div>
-                                                <div className='bg-gray-500 w-1-7 h-1-7 rounded-lg mr-0-8'></div>
-                                                <div className='bg-gray-500 w-1-7 h-1-7 rounded-lg'></div>
+                                                <div className='bg-futures-word w-1-7 h-1-7 rounded-lg mr-0-8'></div>
+                                                <div className='bg-futures-word w-1-7 h-1-7 rounded-lg mr-0-8'></div>
+                                                <div className='bg-futures-word w-1-7 h-1-7 rounded-lg mr-0-8'></div>
+                                                <div className='bg-futures-word w-1-7 h-1-7 rounded-lg'></div>
                                             </div>
                                         </div>
 
@@ -162,7 +162,7 @@ const Ifo = () => {
                         </div>
                         <div className='w-19-0 flex justify-between items-center mb-2-0'>
                             <div className='flex justify-start items-center'>
-                                <div className='w-1-8 h-1-9 rounded-lg bg-gray-500 mr-1-0'>
+                                <div className='w-1-8 h-1-9 rounded-lg bg-futures-word mr-1-0'>
 
                                 </div>
                                 <div className='text-bold text-2-0  text-primary-yellow mt-0-1'>HAH</div>

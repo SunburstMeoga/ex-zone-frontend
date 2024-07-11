@@ -33,7 +33,7 @@ const LimitOrders = () => {
                             <div className='w-full border rounded-2xl px-1-5 py-1-2  border-limit-currency-from bg-limit-orders-module flex justify-between  items-center'>
                                 <div className='text-1-2'>150</div>
                                 <div className='flex justify-end items-center'>
-                                    <div className='w-1-5 h-1-5 rounded-full bg-gray-500'></div>
+                                    <div className='w-1-5 h-1-5 rounded-full bg-futures-word'></div>
                                     <div className='ml-0-4 text-1-0 font-medium'>HAH</div>
                                     <div className='flex justify-center items-center ml-0-6'>
                                         <div className='icon iconfont icon-down2'></div>
@@ -47,7 +47,7 @@ const LimitOrders = () => {
                             </div> <div className='w-full border rounded-2xl px-1-5 py-1-2  border-limit-currency-from bg-limit-orders-module flex justify-between  items-center mb-2-4'>
                                 <div className='text-1-2'>0.2342</div>
                                 <div className='flex justify-end items-center'>
-                                    <div className='w-1-5 h-1-5 rounded-full bg-gray-500'></div>
+                                    <div className='w-1-5 h-1-5 rounded-full bg-futures-word'></div>
                                     <div className='ml-0-4 text-1-0 font-medium'>HAH</div>
                                     <div className='flex justify-center items-center ml-0-6'>
                                         <div className='icon iconfont icon-down2'></div>
@@ -56,7 +56,7 @@ const LimitOrders = () => {
                             </div>
                             <div className='w-full border rounded-2xl px-1-5 py-1-2 border-limit-currency-from bg-limit-orders-module flex justify-between  items-center'>
                                 <div className='flex justify-start items-center'>
-                                    <div className='w-2-5 h-2-5 rounded-full bg-gray-500'></div>
+                                    <div className='w-2-5 h-2-5 rounded-full bg-futures-word'></div>
                                     <div className='flex flex-col justify-start items-start ml-0-4'>
                                         <div className='text-1-2 font-extrabold'>Mercuryo</div>
                                         <div className='text-voting-border text-0-8 font-semibold'>1 HAH = $596.89</div>
@@ -71,7 +71,7 @@ const LimitOrders = () => {
                             </div>
                         </div>
                         <div className='w-full justify-center items-center flex'>
-                            <div className='w-1-6 h-1-6 rounded-full bg-gray-500'></div>
+                            <div className='w-1-6 h-1-6 rounded-full bg-futures-word'></div>
                             <div className='text-white text-1-0 font-medium ml-0-4 my-2-2'>HashAhead Smart Chain</div>
                         </div>
                         <div className='w-22-0 border border-dashed rounded-xl border-voting-border p-1-2 flex flex-col justify-start items-center'>

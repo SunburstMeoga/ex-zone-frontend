@@ -134,7 +134,8 @@ module.exports = {
         "liquid-staking-border": "#544E9B",
         "futures-tabs": "#CEC8E1",
         "futures-input-module": "#0C0A33",
-        "futures-price": "#F5F6FF"
+        "futures-price": "#F5F6FF",
+        "futures-word": "#8F8E9B"
       },
       fontSize: ({ theme }) => ({
         ...theme("spacing"),

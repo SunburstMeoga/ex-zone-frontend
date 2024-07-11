@@ -80,8 +80,8 @@ const Pools = () => {
                                     <div className='w-full flex justify-between items-center' onClick={() => handleShowMore(item)}>
                                         <div className='flex justify-start items-start'>
                                             <div className='flex justify-start items-end'>
-                                                <div className='w-1-7 h-1-7 rounded-full bg-gray-700'></div>
-                                                <div className='w-1-1 h-1-1 rounded-full bg-gray-700 border border-black -ml-0-6'></div>
+                                                <div className='w-1-7 h-1-7 rounded-full bg-futures-word'></div>
+                                                <div className='w-1-1 h-1-1 rounded-full bg-futures-word border border-black -ml-0-6'></div>
                                             </div>
                                             <div className='flex ml-0-7 flex-col justify-start items'>
                                                 <div className='text-white text-0-8 font-semibold'>{item.title}</div>

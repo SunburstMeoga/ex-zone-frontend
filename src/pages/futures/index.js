@@ -31,7 +31,7 @@ const Futures = () => {
                 <div className='flex flex-col justify-start items-center w-full'>
                     <div className='w-22-0 flex justify-between items-center '>
                         <div className='flex justify-start items-center'>
-                            <div className='w-1-6 h-1-6 rounded-full bg-gray-700'></div>
+                            <div className='w-1-6 h-1-6 rounded-full bg-futures-word'></div>
                             <div className='text-1-2 font-medium ml-1-0'>USDT</div>
                             <div className='icon iconfont icon-down ml-0-8'></div>
                         </div>
@@ -75,24 +75,24 @@ const Futures = () => {
                             <div className='flex w-full flex-col justify-start items-center px-1-0'>
                                 <div className='w-full flex justify-around items-center mb-1-0'>
                                     {contractTypeItems.map((item, index) => {
-                                        return <div onClick={() => handleContractItems(item)} key={index} className={`text-1-0 ${item.id === contractType ? 'text-menu-green text-bold' : 'text-gray-500'}`}>
+                                        return <div onClick={() => handleContractItems(item)} key={index} className={`text-1-0 ${item.id === contractType ? 'text-menu-green text-bold' : 'text-futures-word'}`}>
                                             {item.title}
                                         </div>
                                     })}
                                 </div>
-                                <div className='w-full flex justify-between items-center rounded-xl overflow-hidden bg-futures-tabs text-gray-500 mb-0-7'>
+                                <div className='w-full flex justify-between items-center rounded-xl overflow-hidden bg-futures-tabs text-futures-word mb-0-7'>
                                     {operatingTypeItems.map((item, index) => {
-                                        return <div onClick={() => handleOperatingItems(item)} key={index} className={`flex-1 flex justify-center h-2-3 items-center border  ${item.id === operatingType ? 'bg-primary-purple text-white border-primary-purple' : 'border-gray-500'}`}>{item.title}</div>
+                                        return <div onClick={() => handleOperatingItems(item)} key={index} className={`flex-1 flex justify-center h-2-3 items-center border  ${item.id === operatingType ? 'bg-primary-purple text-white border-primary-purple' : 'border-futures-word'}`}>{item.title}</div>
                                     })}
                                 </div>
                                 <div className='w-full flex justify-between items-center font-semibold text-1-0 mb-0-7'>
-                                    <div className='text-gray-500'>
+                                    <div className='text-futures-word'>
                                         Market Limit
                                     </div>
                                     <div className=''>50x</div>
                                 </div>
                                 <div className='w-full bg-futures-input-module border border-pools-border rounded-xl h-2-2 flex justify-between items-center px-1-1 mb-1-5'>
-                                    <div className='text-gray-500 text-0-8'>collateral</div>
+                                    <div className='text-futures-word text-0-8'>collateral</div>
                                     <div className='flex justify-end items-center'>
                                         <div className='text-0-8 font-medium'>USDT</div>
                                         <div className='icon iconfont icon-down1 text-1-0 ml-0-4'></div>
@@ -102,21 +102,21 @@ const Futures = () => {
                                     <Slider ticks step={10} style={{ '--fill-color': '#29E5AD' }} />
                                 </div>
                                 <div className='w-full flex justify-between items-center font-semibold text-0-7 mb-0-7'>
-                                    <div className='text-gray-500'>
+                                    <div className='text-futures-word'>
                                         0% ≈ ＄124，405，12
                                     </div>
                                     <div className=''>
-                                        <span className='text-gray-500'>MAX</span> 0.00
+                                        <span className='text-futures-word'>MAX</span> 0.00
                                     </div>
                                 </div>
                                 <div className='w-full bg-futures-input-module border border-pools-border rounded-xl h-2-2 flex justify-between items-center px-1-1 mb-0-7'>
-                                    <div className='text-gray-500 text-0-8'>TP / SL</div>
+                                    <div className='text-futures-word text-0-8'>TP / SL</div>
                                     <div className='flex justify-end items-center'>
                                         <div className='text-0-8 font-medium'>100% -25%</div>
                                     </div>
                                 </div>
                                 <div className='w-full bg-futures-input-module border border-pools-border rounded-xl h-2-2 flex justify-between items-center px-1-1 mb-1-6'>
-                                    <div className='text-gray-500 text-0-8'>Slippage </div>
+                                    <div className='text-futures-word text-0-8'>Slippage </div>
                                     <div className='flex justify-end items-center'>
                                         <div className='text-0-8 font-medium'>1%</div>
                                     </div>
@@ -157,7 +157,7 @@ const Futures = () => {
                     <div className='w-full flex flex-col justify-start items-center bg-syrup-module py-2-0'>
                         <div className='flex flex-col justify-start items-center w-full px-1-0'>
                             <div className='w-22-0 rounded-xl border border-swap-copy-icon py-1-2 px-1-0  flex flex-col justify-start items-center'>
-                                <div className='w-full flex justify-between items-center rounded-xl overflow-hidden bg-futures-tabs text-gray-500 mb-1-7 '>
+                                <div className='w-full flex justify-between items-center rounded-xl overflow-hidden bg-futures-tabs text-futures-word mb-1-7 '>
                                     {futuresOrderTypeItems.map((item, index) => {
                                         return <div onClick={() => handleOrderTypeItems(item)} key={index} className={`flex-1 flex justify-center h-2-3 items-center   ${item.id === orderType ? 'bg-primary-purple text-white' : ''}`}>{item.title}</div>
                                     })}

@@ -18,8 +18,8 @@ const StatisticsPopup = ({ showStatisticsPopup, onClose }) => {
                     <div className='flex flex-col justify-start items-center w-21-3 lg:w-full lg:px-1-6'>
                         <div className='flex justify-between items-center w-full pt-1-7 mb-2-0'>
                             <div className='flex justify-start items-center'>
-                                <div className='bg-gray-500 w-2-2 h-2-2 rounded-full'></div>
-                                <div className='bg-gray-500 w-2-2 h-2-2 rounded-full ml-0-3'></div>
+                                <div className='bg-futures-word w-2-2 h-2-2 rounded-full'></div>
+                                <div className='bg-futures-word w-2-2 h-2-2 rounded-full ml-0-3'></div>
                                 <div className='text-1-5 ml-0-4'>HAH / HAH</div>
                             </div>
                             <div className='flex justify-end items-center'>

@@ -39,7 +39,7 @@ const Add = () => {
                                     return <div key={index} className='w-full  px-2-3 py-1-1 bg-swap-card-module  border-2 border-swap-border rounded-2xl mb-0-7'>
                                         {!item.showMore && <div className='flex justify-between items-center'>
                                             <div className='flex justify-start items-center'>
-                                                <div className='w-2-2 h-2-2 rounded-full bg-gray-500'></div>
+                                                <div className='w-2-2 h-2-2 rounded-full bg-futures-word'></div>
                                                 <div className='ml-1-0 text-1-5 font-bold'>{item.title}</div>
                                             </div>
                                             <div className='icon iconfont icon-down2' onClick={() => handleShowMore(item)}></div>

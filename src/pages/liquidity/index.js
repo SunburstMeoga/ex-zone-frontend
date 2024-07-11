@@ -25,7 +25,7 @@ const Liquidity = () => {
                         </div>
                         <div className='w-20-0 flex flex-col justify-start items-center mt-1-8 text-white mb-1-5'>
                             <div className='w-full text-1-0 flex justify-start items-center mb-0-4'>
-                                <div className='flex justify-center items-center bg-gray-500 rounded-lg w-1-6 h-1-6 p-0-2'>
+                                <div className='flex justify-center items-center bg-futures-word rounded-lg w-1-6 h-1-6 p-0-2'>
                                     <div className='w-full h-full rounded bg-primary-purple'></div>
                                 </div>
                                 <div className='ml-0-4'>Hide closed positions </div>
