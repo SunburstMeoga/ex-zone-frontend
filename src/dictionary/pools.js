@@ -719,3 +719,25 @@ export const transTypeItems = [
         title: 'Puts'
     }
 ]
+export const strykeDateItems = [
+    {
+        id: 1,
+        title: '1h'
+    },
+    {
+        id: 2,
+        title: '2h'
+    },
+    {
+        id: 3,
+        title: '6h'
+    },
+    {
+        id: 4,
+        title: '12h'
+    },
+    {
+        id: 5,
+        title: '1D'
+    },
+]

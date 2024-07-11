@@ -80,6 +80,9 @@ module.exports = {
         "primary-50": "rgba(29,25,69,0.5)",
         "purple62": "rgba(144,156,255,0.62)",
         "purple31": "rgba(116,110,223,0.31)",
+        "green20": "rgba(41,299,173,0.2)",
+        "red20": "rgba(233,33,96,0.2)",
+
         "icon-gray": "#787878",
         "link-blue": "#0082FA",
         "news-card": "#282258",
