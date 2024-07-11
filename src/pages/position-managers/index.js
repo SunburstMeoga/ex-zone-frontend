@@ -57,13 +57,13 @@ const PositionManagers = () => {
                         <div className='w-full mt-1-5'>
                             <div className='w-full mb-1-5'>
                                 <div className='text-white text-1-3 mb-0-8'>SORT BY</div>
-                                <div className='rounded-2xl border border-primary-purple w-full h-4-6'>
+                                <div className='rounded-2xl border border-primary-purple w-full h-3-1'>
 
                                 </div>
                             </div>
                             <div className='w-full mb-1-5'>
                                 <div className='text-white text-1-3 mb-0-8'>SEARCH</div>
-                                <div className='rounded-2xl border border-primary-purple w-full h-4-6'>
+                                <div className='rounded-2xl border border-primary-purple w-full h-3-1'>
 
                                 </div>
                             </div>
