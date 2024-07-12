@@ -12,13 +12,13 @@ const BuyCrypto = () => {
     }
     return (
         <>
-            <div className='pt-4-8 w-full bg-swap-banner bg-center bg-cover bg-no-repeat'>
+            <div className='pt-4-8 w-full bg-swap-banner bg-center bg-cover bg-no-repeat lg:pt-6-9'>
                 <div className='w-full flex flex-col justify-start items-center'>
-                    <div className='w-full h-4-9'>
+                    <div className='w-full py-1-0'>
                         <TradeMenu></TradeMenu>
                     </div>
                     <div className='w-full flex flex-col justify-start items-center buy-crypto-gradient h-auto text-white min-h-screen'>
-                        <div className='w-20-0 text-1-5 font-semibold mt-2-6 flex justify-between items-center'>
+                        <div className='w-20-0 lg:w-34-9  text-1-5 font-semibold mt-2-6 flex justify-between items-center'>
                             <div className=''>
                                 Buy Crypto
                             </div>
@@ -26,10 +26,10 @@ const BuyCrypto = () => {
                                 <div className='icon iconfont icon-shuaxin text-menu-green' style={{ fontSize: '2rem' }}></div>
                             </div>
                         </div>
-                        <div className='w-20-0 text-1-0  mb-1-5 flex justify-start items-center'>
+                        <div className='w-20-0 lg:w-34-9 text-1-0  mb-1-5 flex justify-start items-center'>
                             <div className=''>Buy crypto in just a few clicks</div>
                         </div>
-                        <div className='w-22-0 flex flex-col justify-start items-center'>
+                        <div className='w-20-0 lg:w-34-9  flex flex-col justify-start items-center'>
                             <div className='w-full border rounded-2xl px-1-5 py-1-2  border-limit-currency-from bg-buy-crypto-card flex justify-between  items-center'>
                                 <div className='text-1-2'>150</div>
                                 <div className='flex justify-end items-center'>
@@ -74,7 +74,7 @@ const BuyCrypto = () => {
                             <div className='w-1-6 h-1-6 rounded-full bg-futures-word'></div>
                             <div className='text-white text-1-0 font-medium ml-0-4 my-2-2'>HashAhead Smart Chain</div>
                         </div>
-                        <div className='w-22-0 border border-dashed rounded-xl border-voting-border p-1-2 flex flex-col justify-start items-center'>
+                        <div className='w-20-0 lg:w-34-9  border border-dashed rounded-xl border-voting-border p-1-2 flex flex-col justify-start items-center'>
                             <div className='w-full flex justify-between items-center mb-2-0'>
                                 <div className='text-white text-0-9 flex justify-start items-center'>
                                     <div className='font-medium h-1-0'>
@@ -98,17 +98,17 @@ const BuyCrypto = () => {
                                 <div className=''>US ￥2.89</div>
                             </div>
                         </div>
-                        <div className='w-21-7 h-4-7 rounded-lg bg-primary-purple border-2 border-primary-purple flex justify-center items-center font-medium text-1-5 mt-2-0'>Connect Wallet </div>
+                        <div className='w-21-7 lg:w-34-9 h-4-7 rounded-lg bg-primary-purple border-2 border-primary-purple flex justify-center items-center font-medium text-1-5 mt-2-0'>Connect Wallet </div>
 
-                        <div className='flex justify-between items-center text-0-7 font-bold w-21-7 my-1-8'>
+                        <div className='flex justify-between items-center text-0-7 font-bold w-21-7 my-1-8 lg:w-34-9'>
                             <div className='text-voting-border'>By continuing you agree to our</div>
                             <div className='text-menu-green underline'> terms of service</div>
                         </div>
-                        <div className='w-full bg-limit-choose rounded-b-3xl flex flex-col justify-start items-center'>
-                            <div className='w-20-6 border-b border-limit-border h-5-0 text-1-5 font-medium flex items-center'>
+                        <div className='w-full bg-limit-choose rounded-b-3xl flex flex-col justify-start items-center lg:rounded-t-3xl'>
+                            <div className='w-20-6 border-b border-limit-border h-5-0 text-1-5 font-medium flex items-center lg:w-34-9'>
                                 Choose a provider
                             </div>
-                            <div className='flex flex-col justify-start items-center w-20-6'>
+                            <div className='flex flex-col justify-start items-center w-20-6 lg:w-34-9'>
                                 {providerItems.map((item, index) => {
                                     return <div key={index} className='flex justify-between items-center w-full h-6-9'>
                                         <div className='flex justify-start items-center'>
@@ -132,11 +132,11 @@ const BuyCrypto = () => {
                             </div>
                         </div>
                         <div className='w-full flex flex-col justify-start items-center mt-2-8 mb-1-5'>
-                            <div className='w-18-0 text-2-2 font-semibold'>FAQ</div>
+                            <div className='w-18-0 text-2-2 font-semibold lg:w-34-9'>FAQ</div>
                         </div>
-                        <div className='w-full flex flex-col justify-start items-center'>
+                        <div className='w-full flex flex-col justify-start items-center lg:w-34-9'>
                             {FAQItemsList.map((item, index) => {
-                                return <div onClick={() => handleShowMore(item)} className='w-21-7 py-1-1 px-1-8 bg-swap-copy-icon rounded-2xl flex flex-col justify-start items-center text-white mb-1-0' key={index}>
+                                return <div onClick={() => handleShowMore(item)} className='w-21-7 lg:w-34-9 py-1-1 px-1-8 bg-swap-copy-icon rounded-2xl flex flex-col justify-start items-center text-white mb-1-0' key={index}>
                                     <div className='font-bold text-1-2'>
                                         {item.title}
                                     </div>

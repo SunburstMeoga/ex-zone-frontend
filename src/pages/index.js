@@ -40,7 +40,7 @@ export default function Home() {
           <div className="text-left text-black text-3-0 font-light w-22-0 mb-3-9 line-height-point-119 lg:w-44-2 lg:text-center lg:text-6-0 lg:mb-5-0 xl:w-full">
             EX.zone's  <br className="xl:hidden"></br>Unstoppable<br></br>Expansion
           </div>
-          <div className="xl:flex xl:justify-around xl:items-center xl:w-full xl:px-9-4">
+          <div className="w-full xl:flex xl:justify-around xl:items-center xl:w-full xl:px-9-4">
             {homeTotal.map((item, index) => {
               return (
                 <div key={index} className="bg-white50 w-full py-1-3 mb-1-1 lg:w-36-6 lg:py-1-4 lg:rounded-3xl lg:mb-3-2 lg:h-13-5 xl:w-32-1 xl:mb-18-8">

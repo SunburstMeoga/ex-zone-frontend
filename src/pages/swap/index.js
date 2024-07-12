@@ -50,8 +50,8 @@ const Trade = () => {
     return (
         <>
             <div className='pt-4-8 w-full bg-swap-banner bg-center bg-cover bg-no-repeat lg:pt-6-9'>
-                <div className='w-full flex flex-col justify-start items-center'>
-                    <div className='w-full h-4-9 lg:h-5-1'>
+                <div className='w-full flex flex-col justify-start items-center '>
+                    <div className='w-full py-1-0'>
                         <TradeMenu></TradeMenu>
                     </div>
                     <div className='w-full flex flex-col justify-start items-center gradient-swap-module h-49-7 text-white lg:min-h-screen'>

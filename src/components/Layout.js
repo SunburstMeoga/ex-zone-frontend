@@ -7,7 +7,7 @@ const Layout = ({ children }) => {
             <div className=''>
                 <Menu></Menu>
             </div>
-            <div className='text min-h-screen'>
+            <div className='min-h-full'>
                 {children}
             </div>
             <div className=''>

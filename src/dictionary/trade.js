@@ -23,6 +23,10 @@ export const tradeMenuItems = [
         id: 6,
         title: 'Limit(Deprecated)'
     },
+    {
+        id: 7,
+        title: 'Trading Reward'
+    }
 ]
 export const swapStateItems = [
     {
