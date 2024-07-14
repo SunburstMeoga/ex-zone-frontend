@@ -49,12 +49,13 @@ const Trade = () => {
     }
     return (
         <>
-            <div className='pt-4-8 w-full bg-swap-banner bg-center bg-cover bg-no-repeat lg:pt-6-9'>
-                <div className='w-full flex flex-col justify-start items-center '>
-                    <div className='w-full py-1-0'>
+            <div className='pt-4-8 lg:pt-6-9 bg-black'>
+                <div className='w-full flex flex-col justify-start items-center relative'>
+                    <div className='w-full bg-swap-banner bg-center bg-cover bg-no-repeat absolute top-auto left-auto h-19-3 z-10'></div>
+                    <div className='w-full py-1-0 relative z-10'>
                         <TradeMenu></TradeMenu>
                     </div>
-                    <div className='w-full flex flex-col justify-start items-center gradient-swap-module h-49-7 text-white lg:min-h-screen'>
+                    <div className='w-full flex flex-col justify-start items-center gradient-swap-module h-auto pb-8-0 backdrop-blur-xl text-white lg:min-h-screen relative z-10'>
                         <div className='w-20-0 bg-swap-tabs rounded-lg p-0-5 flex justify-between items-center my-1-5 lg:w-35-0' >
                             {swapStateItems.map((item, index) => {
                                 return <div key={index} onClick={() => handleSwapState(item)} className={`flex justify-center items-center  text-1-0 rounded w-5-6  lg:w-10-4 ${currentState === item.id ? 'voting-clicked-button' : 'bg-voting-type'}`}>

@@ -11,12 +11,13 @@ const Bridge = () => {
     }
     return (
         <>
-            <div className='pt-4-8 w-full bg-swap-banner bg-center bg-cover bg-no-repeat lg:pt-6-9'>
-                <div className='w-full flex flex-col justify-start items-center'>
-                    <div className='w-full py-1-0'>
+            <div className='pt-4-8 lg:pt-6-9 bg-black'>
+                <div className='w-full flex flex-col justify-start items-center relative'>
+                    <div className='w-full bg-swap-banner bg-center bg-cover bg-no-repeat absolute top-auto left-auto h-19-3 z-10'></div>
+                    <div className='w-full py-1-0 relative z-10'>
                         <TradeMenu></TradeMenu>
                     </div>
-                    <div className='w-full flex flex-col justify-start items-center gradient-swap-module h-auto text-white min-h-screen'>
+                    <div className='w-full flex flex-col justify-start items-center gradient-swap-module h-auto pb-8-0 backdrop-blur-xl text-white lg:min-h-screen relative z-10'>
                         <div className='flex w-full justify-center items-center'>
                             <div className='w-22-0 lg:w-34-9 px-1-2 py-1-0 border-warning-border bg-warning-module text-warning-word flex justify-start items-center mt-2-3 mb-2-3'>
                                 <div className='w-2-6'>
@@ -26,8 +27,8 @@ const Bridge = () => {
                             </div>
                         </div>
                         <div className='w-22-0 text-right text-0-7 mb-0-8 lg:w-34-9'>Connect</div>
-                        <div className='flex justify-start items-center flex-col text-white w-full bg-bridge-token-middle lg:w-34-9'>
-                            <div className='w-full bridge-exchange-top px-1-4 py-1-5'>
+                        <div className='flex justify-start items-center flex-col text-white w-full bg-bridge-token-middle lg:w-34-9 '>
+                            <div className='w-full bg-bridge-exchange-top px-1-4 py-1-5'>
                                 <div className='flex justify-between items-center border-b border-swap-border mb-1-5'>
                                     <div className='flex justify-start items-center'>
                                         <div className='w-1-6 h-1-6 rounded-full bg-primary-purple'></div>
@@ -63,7 +64,7 @@ const Bridge = () => {
                                 <div className='icon iconfont icon-exchange  text-menu-green rotate-90' style={{ fontSize: '1.8rem' }}></div>
                             </div>
 
-                            <div className='w-full bridge-exchange-bottom px-1-4 py-1-5'>
+                            <div className='w-full bg-bridge-exchange-bottom px-1-4 py-1-5'>
                                 <div className='flex justify-between items-center border-b border-swap-border mb-1-5'>
                                     <div className='flex justify-start items-center'>
                                         <div className='w-1-6 h-1-6 rounded-full bg-primary-purple'></div>

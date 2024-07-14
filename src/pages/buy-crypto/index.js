@@ -12,12 +12,13 @@ const BuyCrypto = () => {
     }
     return (
         <>
-            <div className='pt-4-8 w-full bg-swap-banner bg-center bg-cover bg-no-repeat lg:pt-6-9'>
-                <div className='w-full flex flex-col justify-start items-center'>
-                    <div className='w-full py-1-0'>
+            <div className='pt-4-8 lg:pt-6-9 bg-buy-module'>
+                <div className='w-full flex flex-col justify-start items-center relative'>
+                    <div className='w-full bg-swap-banner bg-center bg-cover bg-no-repeat absolute top-auto left-auto h-19-3 z-10'></div>
+                    <div className='w-full py-1-0 relative z-10'>
                         <TradeMenu></TradeMenu>
                     </div>
-                    <div className='w-full flex flex-col justify-start items-center buy-crypto-gradient h-auto text-white min-h-screen'>
+                    <div className='w-full flex flex-col justify-start items-center gradient-swap-module h-auto pb-8-0 backdrop-blur-xl text-white lg:min-h-screen relative z-10'>
                         <div className='w-20-0 lg:w-34-9  text-1-5 font-semibold mt-2-6 flex justify-between items-center'>
                             <div className=''>
                                 Buy Crypto
@@ -30,7 +31,7 @@ const BuyCrypto = () => {
                             <div className=''>Buy crypto in just a few clicks</div>
                         </div>
                         <div className='w-20-0 lg:w-34-9  flex flex-col justify-start items-center'>
-                            <div className='w-full border rounded-2xl px-1-5 py-1-2  border-limit-currency-from bg-buy-crypto-card flex justify-between  items-center'>
+                            <div className='w-full border rounded-2xl px-0-9 py-1-2  border-liquid-staking-border bg-primary-50 flex justify-between  items-center'>
                                 <div className='text-1-2'>150</div>
                                 <div className='flex justify-end items-center'>
                                     <div className='w-1-5 h-1-5 rounded-full bg-futures-word'></div>
@@ -44,7 +45,7 @@ const BuyCrypto = () => {
                                 <div className='w-2-2 h-2-2 rounded-full bg-menu-green flex justify-center items-center'>
                                     <div className='icon iconfont icon-exchange text-white rotate-90 font-bold' style={{ fontSize: '1.2rem' }}></div>
                                 </div>
-                            </div> <div className='w-full border rounded-2xl px-1-5 py-1-2  border-limit-currency-from bg-buy-crypto-card flex justify-between  items-center mb-2-4'>
+                            </div> <div className='w-full border rounded-2xl px-0-9 py-1-2  border-liquid-staking-border bg-primary-50 flex justify-between  items-center mb-2-4'>
                                 <div className='text-1-2'>0.2342</div>
                                 <div className='flex justify-end items-center'>
                                     <div className='w-1-5 h-1-5 rounded-full bg-futures-word'></div>
@@ -54,7 +55,7 @@ const BuyCrypto = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className='w-full border rounded-2xl px-1-5 py-1-2 border-limit-currency-from bg-buy-crypto-card flex justify-between  items-center'>
+                            <div className='w-full border rounded-2xl px-0-9 py-1-2 border-liquid-staking-border bg-primary-50 flex justify-between  items-center'>
                                 <div className='flex justify-start items-center'>
                                     <div className='w-2-5 h-2-5 rounded-full bg-futures-word'></div>
                                     <div className='flex flex-col justify-start items-start ml-0-4'>
@@ -63,7 +64,7 @@ const BuyCrypto = () => {
                                     </div>
                                 </div>
                                 <div className='flex justify-end items-center'>
-                                    <div className='p-0-2 voting-clicked-button rounded-lg text-1-0 font-medium'>Best quate</div>
+                                    <div className='py-0-2 px-0-4 voting-clicked-button rounded-lg text-1-0 font-medium'>Best quate</div>
                                     <div className='flex justify-center items-center ml-0-4'>
                                         <div className='icon iconfont icon-down2'></div>
                                     </div>

@@ -23,6 +23,8 @@ module.exports = {
         "syrup-module": "linear-gradient(180deg, rgba(13,11,37,1) 0%, rgba(22,18,75,1) 100%);",
         "syrup-card": "linear-gradient(180deg, rgba(39,33,114,1) 0%, rgba(50,47,94,0) 100%);",
         "syrup-input": "linear-gradient(135deg, rgba(248,142,175,0.2) 0%, rgba(23,172,255,0.2) 100%);",
+        "bridge-exchange-top": "linear-gradient(180deg, rgba(76,42,190,1) 0%, rgba(76,42,190,0) 100%);",
+        "bridge-exchange-bottom": "linear-gradient(0deg, rgba(76,42,190,1) 0%, rgba(76,42,190,0) 100%);",
         "home-banner-one": "url('/images/phone/home-banner-one.png')",
         "home-banner-two": "url('/images/phone/home-banner-two.png')",
         "home-banner-three": "url('/images/phone/home-banner-three.png')",
@@ -135,7 +137,8 @@ module.exports = {
         "futures-tabs": "#CEC8E1",
         "futures-input-module": "#0C0A33",
         "futures-price": "#F5F6FF",
-        "futures-word": "#8F8E9B"
+        "futures-word": "#8F8E9B",
+        "buy-module": "#0E0A2C"
       },
       fontSize: ({ theme }) => ({
         ...theme("spacing"),

@@ -4,7 +4,7 @@ import Menu from './Menu'
 const Layout = ({ children }) => {
     return (
         <div className='w-full'>
-            <div className=''>
+            <div className='bg-black'>
                 <Menu></Menu>
             </div>
             <div className='min-h-full'>
