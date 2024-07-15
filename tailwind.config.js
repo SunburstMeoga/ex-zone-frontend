@@ -6,6 +6,9 @@ module.exports = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    backgroundSize: {
+      '58%': '58%',
+    },
     spacing: Array.from({ length: 1000 }).reduce((map, _, index) => {
       const value = ((index + 1) / 10).toFixed(1);
       const [integerPart, decimalPart] = value.split('.');

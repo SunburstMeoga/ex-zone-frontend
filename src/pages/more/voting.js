@@ -10,9 +10,9 @@ const Voting = () => {
     let handleVotingState = (id) => {
         changeVotingState(currentState = id)
     }
-    let handleShowMore = ({id}) => {
-        changeNftListItems(nftListItems => 
-            nftListItems.map(item => 
+    let handleShowMore = ({ id }) => {
+        changeNftListItems(nftListItems =>
+            nftListItems.map(item =>
                 item.id === id ? { ...item, showMore: !item.showMore } : item))
     }
     return (
@@ -62,7 +62,7 @@ const Voting = () => {
                                             <div className='text-1-2 font-light'>{item.time}</div>
                                         </div>
                                         <div className='flex justify-center items-center' onClick={() => handleShowMore(item)}>
-                                            <div className='icon iconfont icon-down1 text-menu-green' style={{ fontSize: '1.5rem',fontWeight: 900 }}></div>
+                                            <div className='icon iconfont icon-down1 text-menu-green' style={{ fontSize: '1.5rem', fontWeight: 900 }}></div>
                                         </div>
                                     </div>
                                     {item.showMore && <div className='mt-1-3'>

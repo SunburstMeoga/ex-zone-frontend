@@ -14,16 +14,17 @@ const TradingReward = () => {
                 item.id === id ? { ...item, showMore: !item.showMore } : item))
     }
     return (
-        <div className='bg-page-black'>
-            <div className='flex flex-col justify-start items-center pt-6-3'>
-                <div className='w-22-0 text-white text-1-2 mb-2-7 flex justify-around items-center lg:w-28-1 lg:text-2-0 lg:font-medium'>
+        <div className='bg-page-black pt-4-3'>
+            <div className={`flex flex-col justify-start items-center  pt-1-9 bg-no-repeat  ${currentTradingType === 1 ? 'bg-trading-stakers-banner bg-top bg-contain' : 'bg-trading-banner-one bg-left bg-58%'}`}>
+                <div className='w-22-0 text-white text-1-2 mb--7 flex justify-around items-center lg:w-28-1 lg:text-2-0 lg:font-medium'>
                     {tradingRewardItems.map((item, index) => {
                         return <div key={index} className={`text-1-2 ${currentTradingType === item.id ? 'text-menu-green' : 'text-voting-border'}`} onClick={() => handleTradingType(item.id)}>{item.title}</div>
                     })}
                 </div>
-                <div className='w-full h-26-4 flex flex-col justify-start items-end relative mb-1-4 lg:h-56-4 trading-top-gradient'>
-                    <div className='absolute -left-0-1 w-14-0 h-26-4 bg-cover bg-left bg-no-repeat bg-trading-banner-one lg:bg-pad-trading-banner-one lg:w-32-0 lg:h-56-4 '></div>
-                    <div className='trading-top-gradient w-full h-26-4 absolute -left-0-1 -top-0-1 lg:hidden'></div>
+                {/* <div className={` ${currentTradingType === 2 ? 'bg-page-black bg-' : ''}`}></div> */}
+                <div className={`w-full h-26-4 flex flex-col justify-start items-end relative mb-1-4 lg:h-56-4 `}>
+                    {/* <div className='absolute -left-0-1 w-14-0 h-26-4 bg-cover bg-left bg-no-repeat bg-trading-banner-one lg:bg-pad-trading-banner-one lg:w-32-0 lg:h-56-4 '></div> */}
+                    {/* <div className='trading-top-gradient w-full h-26-4 border border-red-500 absolute -left-0-1 -top-0-1 lg:hidden'></div> */}
                     <div className='flex flex-col w-full h-full justify-start items-center relative z-20 pr-2-0 text-right mt-4-0 lg:justify-start lg:mt-8-9 lg:text-center lg:pr-0-1'>
                         <div className='text-white font-bold text-3-0 w-full line-height-point-120 mb-0-8 lg:text-4-0'>
                             Trading <br></br> Reward
