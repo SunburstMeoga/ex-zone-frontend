@@ -67,7 +67,8 @@ module.exports = {
         "pc-home-banner-two": "url('/images/pc/pc-home-banner-two.png')",
         "phone-pools-banner-one": "url('/images/phone/phone-pools-banner-one.png')",
         "phone-position-managers-one": "url('/images/phone/phone-position-managers-one.png')",
-        "phone-simple-staking-one": "url('/images/phone/phone-simple-staking-one.png')"
+        "phone-simple-staking-one": "url('/images/phone/phone-simple-staking-one.png')",
+        "pad-pools-banner-one": "url('/images/pad/pad-pools-banner-one.png')"
       },
       colors: {
         "primary-purple": "#4C2ABE",

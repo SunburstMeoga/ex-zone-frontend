@@ -23,18 +23,23 @@ const Pools = () => {
     }
     return (
         <>
-            <div className='pt-5-0 bg-black' >
+            <div className='pt-5-0 bg-black lg:pt-6-3' >
                 <PageTabs></PageTabs>
-                <div className='w-full bg-phone-pools-banner-one bg-bottom bg-no-repeat bg-contain h-auto pt-4-8'>
+                <div className='w-full bg-phone-pools-banner-one bg-bottom bg-no-repeat bg-contain h-auto pt-4-8 lg:bg-pad-pools-banner-one lg:pt-6-0'>
                     <div className='flex flex-col justify-start items-center'>
-                        <div className='text-white text-3-0 font-bold text-left mb-1-1 w-21-4'>Syrup Pools</div>
-                        <div className='text-trading-yellow text-left line-height-point-122 text-2-0 font-semibold w-21-4 mb-6-4 voting-text-shadow'>Just stake some tokens to earn. <br></br> High APR, low risk.</div>
-                        <div className='bg-black80 w-21-4 p-2-1 flex flex-col justify-start items-center rounded-xl mb-2-2 backdrop-blur-lg'>
+                        <div className='text-white text-3-0 font-bold text-left mb-1-1 w-21-4 lg:w-full lg:text-center lg:text-4-0'>Syrup Pools</div>
+                        <div className='text-trading-yellow text-left line-height-point-122 text-2-0 font-semibold w-21-4 mb-6-4 voting-text-shadow lg:w-full lg:text-center lg:mb-1-8'>Just stake some tokens to earn. <br></br> High APR, low risk.</div>
+                        <div className='bg-black80 w-21-4 p-2-1 flex flex-col justify-start items-center rounded-xl mb-2-2 backdrop-blur-lg lg:bg-transparent lg:backdrop-blur-none lg:w-full'>
+                            <div className='hidden lg:block text-white text-1-5 w-full text-center'>
+                                Earn CAKE while trading your <br></br> favorite tokens on PancakeSwap by <br></br> being the top traders!
+                            </div>
                             <div className='text-primary-purple text-center text-1-5 font-semibold mb-1-4 '>HAH Staking <br></br>Up to <span className='text-trading-yellow'>26.09% </span>APR</div>
+
                             <div className='text-primary-60 text-0-9 text-center'>
                                 Satke HAH to get veHAH, earn up to 26.09% APR from veCAKE pool and revenue sharing.<br></br><br></br>
                                 Unlock other benefits like voting incentives, yield boosting, IFO, and so much more...
                             </div>
+
                         </div>
                     </div>
                 </div>

@@ -7,7 +7,7 @@ const Menu = () => {
     }
     return (
         <div className='w-full  flex flex-col justify-center items-center fixed -top-0-1 z-30'>
-            <div className='w-22-0 flex justify-between items-center h-4-3 relative z-20 lg:w-58-2 lg:py-2-6 xl:w-full xl:py-2-6'>
+            <div className='w-22-0 flex justify-between items-center h-4-3 lg:h-6-3 relative z-20 lg:w-58-2 lg:py-2-6 xl:w-full xl:py-2-6'>
                 <div className='flex justify-start items-center'>
                     <div className='w-6-9 lg:w-12-4 xl:ml-2-9'>
                         <img src='/images/logo.png' alt='logo' />

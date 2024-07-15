@@ -34,17 +34,17 @@ background-color: transparent !important;
   }
 `;
 const PageTabs = () => {
-    return (
-        <div>
-            <StyledTabsA>
-                {poolsTabsItems.map((item, index) => (
-                    <Tabs.Tab title={item.title} key={index}>
-                        {item.content}
-                    </Tabs.Tab>
-                ))}
-            </StyledTabsA>
-        </div>
-    )
+  return (
+    <div>
+      <StyledTabsA>
+        {poolsTabsItems.map((item, index) => (
+          <Tabs.Tab title={item.title} key={index} className='lg:text-2-0'>
+            {item.content}
+          </Tabs.Tab>
+        ))}
+      </StyledTabsA>
+    </div>
+  )
 }
 
 export default PageTabs
