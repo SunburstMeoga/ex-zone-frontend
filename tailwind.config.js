@@ -28,6 +28,7 @@ module.exports = {
         "syrup-input": "linear-gradient(135deg, rgba(248,142,175,0.2) 0%, rgba(23,172,255,0.2) 100%);",
         "bridge-exchange-top": "linear-gradient(180deg, rgba(76,42,190,1) 0%, rgba(76,42,190,0) 100%);",
         "bridge-exchange-bottom": "linear-gradient(0deg, rgba(76,42,190,1) 0%, rgba(76,42,190,0) 100%);",
+        "pad-spyruo-pools": "linear-gradient(0deg, rgba(0,0,0,0.9) 8%, rgba(0,0,0,0) 57%);",
         "home-banner-one": "url('/images/phone/home-banner-one.png')",
         "home-banner-two": "url('/images/phone/home-banner-two.png')",
         "home-banner-three": "url('/images/phone/home-banner-three.png')",
@@ -68,7 +69,9 @@ module.exports = {
         "phone-pools-banner-one": "url('/images/phone/phone-pools-banner-one.png')",
         "phone-position-managers-one": "url('/images/phone/phone-position-managers-one.png')",
         "phone-simple-staking-one": "url('/images/phone/phone-simple-staking-one.png')",
-        "pad-pools-banner-one": "url('/images/pad/pad-pools-banner-one.png')"
+        "pad-pools-banner-one": "url('/images/pad/pad-pools-banner-one.png')",
+        "pc-pools-banner-one": "url('/images/pc/pc-pools-banner-one.png')",
+
       },
       colors: {
         "primary-purple": "#4C2ABE",
@@ -142,7 +145,9 @@ module.exports = {
         "futures-input-module": "#0C0A33",
         "futures-price": "#F5F6FF",
         "futures-word": "#8F8E9B",
-        "buy-module": "#0E0A2C"
+        "buy-module": "#0E0A2C",
+        "pad-pools": "#111020",
+        "pad-pools-border": "#1C1A39"
       },
       fontSize: ({ theme }) => ({
         ...theme("spacing"),
