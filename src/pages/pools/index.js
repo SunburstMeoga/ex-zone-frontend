@@ -25,7 +25,7 @@ const Pools = () => {
         <>
             <div className='pt-5-0 bg-black lg:pt-6-3 xl:pt-8-4' >
                 <PageTabs></PageTabs>
-                <div className='w-full bg-phone-pools-banner-one bg-bottom bg-no-repeat bg-contain h-auto pt-4-8 lg:bg-pad-pools-banner-one lg:pt-6-0 xl:bg-pc-pools-banner-one xl:bg-cover'>
+                <div className='w-full bg-phone-pools-banner-one bg-bottom bg-no-repeat h-auto pt-4-8 lg:bg-pad-pools-banner-one lg:pt-6-0 xl:bg-pc-pools-banner-one xl:bg-cover'>
                     <div className='flex flex-col justify-start items-center lg:bg-pad-spyruo-pools'>
                         <div className='text-white text-3-0 font-bold text-left mb-1-1 w-21-4 lg:w-full lg:text-center lg:text-4-0'>Syrup Pools</div>
                         <div className='text-trading-yellow text-left line-height-point-122 text-2-0 font-semibold w-21-4 mb-6-4 voting-text-shadow lg:w-full lg:text-center lg:mb-1-8'>Just stake some tokens to earn. <br></br> High APR, low risk.</div>
@@ -166,8 +166,8 @@ const Pools = () => {
                                             <div className='icon iconfont icon-down2 text-0-6 '></div>
                                         </div>
                                     </div>
-                                    {item.showMore && <div>
-                                        <div className='mt-1-0 flex justify-between items-center mb-0-7'>
+                                    <div className={`duration-100 transition ease-in-out ${item.showMore ? 'scale-100 h-auto' : 'scale-0 h-0-1'}`}>
+                                        <div className={`mt-1-0 flex justify-between items-center mb-0-7 `}>
                                             {item.detailsItems.map((_item, _index) => {
                                                 return <div key={_index} className='bg-syrup-card border border-pools-border rounded-xl py-0-6 px-0-4 text-white w-7-0 lg:w-10-4' onClick={() => toggleCalculatorPopup()}>
                                                     <div className='text-0-7 mb-0-2'>{_item.title}</div>
@@ -203,7 +203,7 @@ const Pools = () => {
                                                 </div>
                                             })}
                                         </div>
-                                    </div>}
+                                    </div>
                                 </div>
                             })}
                         </div>
