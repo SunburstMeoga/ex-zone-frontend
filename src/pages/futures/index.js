@@ -27,9 +27,9 @@ const Futures = () => {
     }
     return (
         <>
-            <div className='pt-5-0 bg-black text-white'>
+            <div className='pt-5-0 bg-black lg:pt-6-3 lg:bg-pad-futures xl:pt-8-4'>
                 <div className='flex flex-col justify-start items-center w-full'>
-                    <div className='w-22-0 flex justify-between items-center '>
+                    <div className='w-22-0 flex justify-between items-center lg:w-38-7'>
                         <div className='flex justify-start items-center'>
                             <div className='w-1-6 h-1-6 rounded-full bg-futures-word'></div>
                             <div className='text-1-2 font-medium ml-1-0'>USDT</div>
@@ -40,15 +40,15 @@ const Futures = () => {
                             <div className='text-0-7 font-medium ml-0-4'>+4.31%</div>
                         </div>
                     </div>
-                    <div className='w-full mt-0-7 bg-syrup-module pt-1-0 flex flex-col justify-start items-center'>
-                        <div className='w-22-0 flex justify-start items-center'>
+                    <div className='w-full mt-0-7 bg-syrup-module pt-1-0 flex flex-col justify-start items-center lg:bg-none'>
+                        <div className='w-22-0 flex justify-start items-center lg:w-38-7'>
                             {displayTypeItems.map((item, index) => {
                                 return <div key={index} onClick={() => handleDisplayItems(item)} className={`text-white text-1-0 ${item.id !== 1 ? 'ml-2-0' : ''} ${item.id === displayType ? 'font-bold' : ''}`}>
                                     {item.title}
                                 </div>
                             })}
                         </div>
-                        <div className='w-22-0 flex justify-between items-center mt-1-2'>
+                        <div className='w-22-0 flex justify-between items-center mt-1-2 lg:w-38-7'>
                             <div className='flex justify-start items-center'>
                                 <div className='rounded-xl border border-liquid-staking-border bg-primary-50 px-0-8 py-0-2 flex justify-start items-center'>
                                     <div className='text-0-9 mr-1-0'>1s</div>
@@ -66,12 +66,12 @@ const Futures = () => {
                                 <div className='icon iconfont icon-xiangji1 ml-1-4'></div>
                             </div>
                         </div>
-                        <div className='w-22-0 rounded-xl border border-liquid-staking-border h-22-0 flex justify-center items-center mt-1-0 mb-2-0'>
+                        <div className='w-22-0 rounded-xl border border-liquid-staking-border h-22-0 flex justify-center items-center mt-1-0 mb-2-0 lg:w-38-7'>
                             this is chart
                         </div>
                     </div>
-                    <div className='w-full flex flex-col justify-start items-center bg-syrup-module pt-2-0'>
-                        <div className='w-22-0 rounded-xl border border-swap-copy-icon py-1-2 mb-2-0'>
+                    <div className='w-full flex flex-col justify-start items-center bg-syrup-module pt-2-0 lg:bg-none'>
+                        <div className='w-22-0 rounded-xl border border-swap-copy-icon py-1-2 mb-2-0 lg:w-38-7'>
                             <div className='flex w-full flex-col justify-start items-center px-1-0'>
                                 <div className='w-full flex justify-around items-center mb-1-0'>
                                     {contractTypeItems.map((item, index) => {
@@ -156,7 +156,7 @@ const Futures = () => {
                     </div>
                     <div className='w-full flex flex-col justify-start items-center bg-syrup-module py-2-0'>
                         <div className='flex flex-col justify-start items-center w-full px-1-0'>
-                            <div className='w-22-0 rounded-xl border border-swap-copy-icon py-1-2 px-1-0  flex flex-col justify-start items-center'>
+                            <div className='w-22-0 rounded-xl border border-swap-copy-icon py-1-2 px-1-0  flex flex-col justify-start items-center lg:w-38-7'>
                                 <div className='w-full flex justify-between items-center rounded-xl overflow-hidden bg-futures-tabs text-futures-word mb-1-7 '>
                                     {futuresOrderTypeItems.map((item, index) => {
                                         return <div onClick={() => handleOrderTypeItems(item)} key={index} className={`flex-1 flex justify-center h-2-3 items-center   ${item.id === orderType ? 'bg-primary-purple text-white' : ''}`}>{item.title}</div>

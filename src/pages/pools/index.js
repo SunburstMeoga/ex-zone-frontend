@@ -82,7 +82,7 @@ const Pools = () => {
                         <div className='bg-syrup-module rounded-2xl w-full border border-liquid-staking-border bg-pad-pools-border mb-3-9 h-auto px-1-2'>
                             {syrupListItems.map((item, index) => {
                                 return <div key={index} className='py-2-5 border-b border-dashed border-voting-border '>
-                                    <div className='flex justify-between pr-2-0 items-center' onClick={() => handleShowMore(item)}>
+                                    <div className='flex justify-between pr-2-0 items-center' >
                                         <div className='flex justify-start items-center mr-7-5'>
                                             <div className='flex justify-start items-end'>
                                                 <div className='w-2-8 h-2-8 rounded-full bg-futures-word'></div>
@@ -120,7 +120,7 @@ const Pools = () => {
                                             <div className='text-purple62 text-1-0'>
                                                 APR
                                             </div>
-                                            <div className='flex justify-start items-baseline text-1-5'>
+                                            <div className='flex justify-start items-baseline text-1-5' onClick={() => toggleCalculatorPopup()}>
                                                 <div className=''>1.48%</div>
                                                 <div className='ml-1-0 text-menu-green icon iconfont icon-jisuanqi'></div>
 
@@ -137,7 +137,7 @@ const Pools = () => {
 
                                             </div>
                                         </div>
-                                        <div className={`icon iconfont icon-down2 text-1-3 duration-100 transition ease-in-out text-white ${item.showMore ? 'rotate-180' : ''}`}></div>
+                                        <div onClick={() => handleShowMore(item)} className={`icon iconfont icon-down2 text-1-3 duration-100 transition ease-in-out text-white ${item.showMore ? 'rotate-180' : ''}`}></div>
                                     </div>
                                     <div className={`duration-100 transition ease-in-out  flex justify-start items-center ${item.showMore ? 'scale-y-100 h-auto mt-2-0' : 'scale-y-0 h-0-1'}`}>
                                         <div className='flex justify-start items-center '>
