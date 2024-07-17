@@ -147,7 +147,7 @@ module.exports = {
         "futures-word": "#8F8E9B",
         "buy-module": "#0E0A2C",
         "pad-pools": "#111020",
-        "pad-pools-border": "#1C1A39"
+        "pad-pools-border": "#1C1A39",
       },
       fontSize: ({ theme }) => ({
         ...theme("spacing"),
