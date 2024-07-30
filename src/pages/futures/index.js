@@ -143,7 +143,7 @@ const Futures = () => {
                                             <div className='text-0-8 font-medium'>1%</div>
                                         </div>
                                     </div>
-                                    <div className='text-0-9 font-bold w-full h-2-2 flex justify-center items-center bg-primary-purple rounded-xl mb-1-6'>Connect</div>
+                                    <div className='text-0-9 font-bold w-full h-2-2 flex justify-center items-center bg-primary-purple rounded-xl mb-1-6 active:bg-opacity-90'>Connect</div>
                                 </div>
                                 <div className='mb-1-6 w-full bg-futures-price rounded-t-3xl flex flex-col justify-start items-center py-1-4 text-swap-copy-icon px-1-0'>
                                     <div className='w-full flex justify-between items-center px-1-0 h-2-4 rounded-xl text-1-0 font-medium border border-setting-button bg-white mb-0-5'>

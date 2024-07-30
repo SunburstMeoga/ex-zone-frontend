@@ -18,7 +18,7 @@ const SimpleStaking = () => {
     return (
         <>
             <div className='pt-5-0 bg-black' >
-                <PageTabs></PageTabs>
+                <PageTabs defaultIndex={3}></PageTabs>
                 <div className='w-full bg-phone-simple-staking-one bg-center bg-no-repeat bg-cover h-auto pt-4-8'>
                     <div className='flex flex-col justify-start items-center'>
                         <div className='text-white text-3-0 font-bold text-left mb-0-7 w-21-4 voting-text-shadow'>Simple Staking</div>

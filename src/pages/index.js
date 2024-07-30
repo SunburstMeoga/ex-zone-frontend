@@ -76,7 +76,7 @@ export default function Home() {
             {/* <div className="mt-3-8 w-22-0 h-4-7 text-white bg-primary-purple text-2-0 flex justify-center items-center rounded-2xl lg:w-24-0 lg:h-5-9 lg:font-extrabold lg:mt-0-1">
               Connect Wallet
             </div> */}
-            <div onClick={() => handleTradeNow()} className="mt-1-3 w-22-0 h-4-7 bg-white text-primary-purple text-2-0 flex justify-center items-center rounded-2xl lg:w-24-0 lg:h-5-9 lg:font-extrabold lg:mt-0-1">
+            <div onClick={() => handleTradeNow()} className="mt-1-3 w-22-0 h-4-7 bg-white text-primary-purple text-2-0 flex justify-center items-center rounded-2xl lg:w-24-0 lg:h-5-9 lg:font-extrabold lg:mt-0-1 active:bg-opacity-90">
               <div>
                 Trade Now
               </div>

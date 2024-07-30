@@ -24,7 +24,7 @@ const Pools = () => {
     return (
         <>
             <div className='pt-5-0 bg-black lg:pt-6-3 xl:pt-8-4' >
-                <PageTabs></PageTabs>
+                <PageTabs defaultIndex={0}></PageTabs>
                 <div className='w-full bg-phone-pools-banner-one bg-bottom bg-no-repeat h-auto pt-4-8 lg:bg-pad-pools-banner-one lg:pt-6-0 xl:bg-pc-pools-banner-one xl:bg-cover'>
                     <div className='flex flex-col justify-start items-center lg:bg-pad-spyruo-pools'>
                         <div className='text-white text-3-0 font-bold text-left mb-1-1 w-21-4 lg:w-full lg:text-center lg:text-4-0'>Syrup Pools</div>
@@ -254,7 +254,7 @@ const Pools = () => {
                     </div>
                 </div>
                 <CalculatorPopup showCalculatorPopup={showCalculatorPopup} onClose={toggleCalculatorPopup}></CalculatorPopup>
-            </div>
+            </div >
 
         </>
     );

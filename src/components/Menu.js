@@ -35,6 +35,7 @@ const Menu = () => {
         } else {
             console.log('没有下级页面,直接跳转路由')
             router.push(link)
+            changeShowMenu(showMenu = !showMenu)
         }
 
     }

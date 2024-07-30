@@ -1,27 +1,32 @@
 export const poolsTabsItems = [
-    {
-        id: 1,
-        title: 'Farms'
-    },
-    {
-        id: 2,
-        title: 'HAH Staking'
-    },
+    // {
+    //     id: 1,
+    //     title: 'Farms'
+    // },
+    // {
+    //     id: 2,
+    //     title: 'HAH Staking'
+    // },
     {
         id: 3,
-        title: 'Pools'
+        title: 'Pools',
+        link: '/pools',
     },
     {
         id: 4,
-        title: 'Position Manager'
+        title: 'Position Manager',
+        meta: 'position-managers',
+        link: '/position-managers'
     },
     {
         id: 5,
-        title: 'Liquid Staking'
+        title: 'Liquid Staking',
+        link: '/liquid-staking',
     },
     {
         id: 6,
-        title: 'Simple Staking'
+        title: 'Simple Staking',
+        link: '/simple-staking',
     },
 ]
 

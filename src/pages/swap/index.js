@@ -117,7 +117,7 @@ const Trade = () => {
                             </div>
                             <div className='font-bold text-1-5 text-menu-green'>0.5%</div>
                         </div>
-                        <div className='w-20-0 h-4-7 bg-primary-purple flex justify-center items-center text-white font-light text-1-5 rounded-xl lg:w-35-0'>
+                        <div className='w-20-0 h-4-7 bg-primary-purple flex justify-center items-center text-white font-light text-1-5 rounded-xl lg:w-35-0 active:bg-opacity-90'>
                             Connect Wallet
                         </div>
                     </div>

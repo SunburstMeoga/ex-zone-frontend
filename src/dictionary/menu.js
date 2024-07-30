@@ -54,24 +54,53 @@ export const pageMenuItems = [
         id: 9,
         title: 'Buy',
         hasChild: false,
-        meta: 'buy'
+        meta: 'buy',
+        link: '/buy-crypto',
     },
     {
         id: 10,
         title: 'Earn',
         hasChild: false,
-        meta: 'earn'
+        meta: 'earn',
+        hasChild: true,
+        showChild: false,
+        children: [
+            {
+                id: 11,
+                title: 'Pools',
+                link: '/pools',
+                meta: 'pools',
+            },
+            {
+                id: 12,
+                title: 'Simple Staking',
+                link: '/simple-staking',
+                meta: 'simple-staking',
+            },
+            {
+                id: 13,
+                title: 'Position Managers',
+                link: '/position-managers',
+                meta: 'position-managers',
+            },
+            {
+                id: 14,
+                title: 'Liquid Staking',
+                link: '/liquid-staking',
+                meta: 'liquid-staking',
+            },
+        ]
     },
-    {
-        id: 11,
-        title: 'Game',
-        hasChild: false,
-        meta: 'buy'
-    },
-    {
-        id: 12,
-        title: 'NFT',
-        hasChild: false,
-        meta: 'buy'
-    },
+    // {
+    //     id: 15,
+    //     title: 'Game',
+    //     hasChild: false,
+    //     meta: 'buy'
+    // },
+    // {
+    //     id: 16,
+    //     title: 'NFT',
+    //     hasChild: false,
+    //     meta: 'buy'
+    // },
 ] 
