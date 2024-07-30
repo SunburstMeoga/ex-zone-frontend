@@ -15,39 +15,39 @@ export const pageMenuItems = [
             {
                 id: 3,
                 title: 'Liquidity',
-                link: 'liquidity',
+                link: '/liquidity',
                 meta: 'liquidity'
             },
-            {
-                id: 4,
-                title: 'Perpetual',
-                link: 'perpetual',
-                meta: 'perpetual'
-            },
+            // {
+            //     id: 4,
+            //     title: 'Perpetual',
+            //     link: '/perpetual',
+            //     meta: 'perpetual'
+            // },
             {
                 id: 5,
                 title: 'Options',
-                link: 'options',
+                link: '/stryke',
                 meta: 'options'
             },
             {
                 id: 6,
                 title: 'Bridge',
-                link: 'bridge',
+                link: '/buy-crypto',
                 meta: 'bridge'
             },
-            {
-                id: 7,
-                title: 'Limit (Deprecated)',
-                link: 'limit',
-                meta: 'limit'
-            },
-            {
-                id: 8,
-                title: 'Trading Reward',
-                link: 'trading-reward',
-                meta: 'trading-reward'
-            },
+            // {
+            //     id: 7,
+            //     title: 'Limit (Deprecated)',
+            //     link: 'limit',
+            //     meta: 'limit'
+            // },
+            // {
+            //     id: 8,
+            //     title: 'Trading Reward',
+            //     link: 'trading-reward',
+            //     meta: 'trading-reward'
+            // },
         ]
     },
     {

@@ -6,12 +6,14 @@ import { homeTotalItems, ecosystemItems, tradeItems, figuresItems, newsItems } f
 import { useEffect, useState } from "react";
 import { useSelector } from 'react-redux'
 import AnimatedNumber from "@/components/AnimatedNumber";
+import { useRouter } from 'next/router';
+
 export default function Home() {
   let [homeTotal, changeHomeTotal] = useState([])
   const [numberOne, setNumberOne] = useState(21);
   const [numberTwo, setNumberTwo] = useState(23);
   const [numberThree, setNumberThree] = useState(234);
-
+  const router = useRouter();
   let userList = ['', '']
   let walletAddress = useSelector((state) => state.wallet.address);
   useEffect(() => {
@@ -54,6 +56,12 @@ export default function Home() {
   useEffect(() => {
     console.log('Component re-rendered in home', walletAddress);
   }, [walletAddress]);
+  const handleTradeNow = () => {
+    router.push('/swap')
+  }
+  const handleOperating = (item) => {
+    router.push(item.link)
+  }
   return (
     <div className="">
       <div className="bg-home-banner-one bg-center bg-cover bg-no-repeat w-full h-58-0 lg:bg-pad-home-banner-one lg:h-67-5 xl:bg-pc-home-banner-one">
@@ -68,7 +76,7 @@ export default function Home() {
             {/* <div className="mt-3-8 w-22-0 h-4-7 text-white bg-primary-purple text-2-0 flex justify-center items-center rounded-2xl lg:w-24-0 lg:h-5-9 lg:font-extrabold lg:mt-0-1">
               Connect Wallet
             </div> */}
-            <div className="mt-1-3 w-22-0 h-4-7 bg-white text-primary-purple text-2-0 flex justify-center items-center rounded-2xl lg:w-24-0 lg:h-5-9 lg:font-extrabold lg:mt-0-1">
+            <div onClick={() => handleTradeNow()} className="mt-1-3 w-22-0 h-4-7 bg-white text-primary-purple text-2-0 flex justify-center items-center rounded-2xl lg:w-24-0 lg:h-5-9 lg:font-extrabold lg:mt-0-1">
               <div>
                 Trade Now
               </div>
@@ -106,7 +114,7 @@ export default function Home() {
         <div className="flex justify-start items-center flex-col mb-4-1 lg:mb-7-8">
           <div className=" w-21-6 text-3-0 font-semibold text-white line-height-point-107 lg:text-8-0 lg:w-52-8 lg:mt-6-9 lg:font-light xl:w-full xl:pl-5-5"><span className="text-primary-purple">D</span>iscover the <br></br>Ecosystem</div>
         </div>
-        <div className="pl-2-4 text-2-0 overflow-x-scroll overflow-y-hidden w-full mb-1-4 lg:text-4-0 lg:overflow-x-hidden lg:flex lg:justify-center lg:items-center lg:pl-0-1 xl:hidden">
+        {/* <div className="pl-2-4 text-2-0 overflow-x-scroll overflow-y-hidden w-full mb-1-4 lg:text-4-0 lg:overflow-x-hidden lg:flex lg:justify-center lg:items-center lg:pl-0-1 xl:hidden">
           <div className="w-30-3 flex justify-start items-center ecosystem-gradient lg:w-52-8 ">
             {ecosystemItems.map((item, index) => {
               return <div key={index} className={['font-light', index === 0 ? '' : 'ml-3-3'].join(' ')}>
@@ -114,7 +122,7 @@ export default function Home() {
               </div>
             })}
           </div>
-        </div>
+        </div> */}
         <div className="flex justify-start items-center flex-col lg:flex-row lg:flex-wrap lg:w-52-8 lg:ml-auto lg:mr-auto lg:justify-between mb-4-0 xl:w-full xl:pl-0-1 xl:justify-around">
           {tradeItems.map((item, index) => {
             return <div key={index} className={["flex justify-between items-center py-1-8  lg:rounded-2xl lg:bg-gradient-trade lg:px-3-4 lg:flex-col lg:justify-start lg:items-start lg:mb-1-8 lg:h-23-2 xl:relative", index !== tradeItems.length - 1 ? 'border-b border-white50 border-dashed lg:border-none w-22-0 lg:w-26-0 xl:w-20-0' : ' w-22-0  lg:w-52-8 xl:w-20-0'].join(' ')}>
@@ -122,7 +130,7 @@ export default function Home() {
                 <div className="text-2-0 font-light mb-0-3 line-height-num-33 lg:text-2-2 lg:font-extrabold">{item.title}</div>
                 <div className="text-1-0 font-light line-height-num-24 w-12-0 lg:text-1-5 lg:font-medium xl:w-14-8">{item.content}</div>
               </div>
-              <div className="bg-ecosystem-button text-white text-1-0 w-6-9 h-3-2 flex justify-center items-center rounded-lg lg:w-9-0 lg:h-3-3 xl:absolute xl:bottom-2-0">
+              <div onClick={() => handleOperating(item)} className="bg-ecosystem-button text-white text-1-0 w-6-9 h-3-2 flex justify-center items-center rounded-lg lg:w-9-0 lg:h-3-3 xl:absolute xl:bottom-2-0">
                 {item.operating}
               </div>
             </div>

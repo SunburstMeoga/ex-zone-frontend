@@ -30,27 +30,32 @@ export const tradeItems = [
     {
         title: 'Swap',
         content: 'Trade crypto instantly across multiple chains',
-        operating: 'Trade Now'
+        operating: 'Trade Now',
+        link: '/swap'
     },
     {
         title: 'Liquidity',
         content: 'Fund liquidity pools, earn trading fees',
-        operating: 'Add Now'
+        operating: 'Add Now',
+        link: '/add'
     },
     {
-        title: 'Bridge',
+        title: 'Options',
         content: 'Seamlessly transfer assets across chains',
-        operating: 'Bridge Now'
+        operating: 'Bridge Now',
+        link: '/stryke'
     },
     {
         title: 'Perpetual',
         content: 'Trade endlessly without expiration dates',
-        operating: 'Trade Now'
+        operating: 'Trade Now',
+        link: '/swap'
     },
     {
         title: 'Buy Crypto',
         content: 'Buy crypto with your preferred currency and payment method',
-        operating: 'Buy Now'
+        operating: 'Buy Now',
+        link: '/buy-crypto'
     },
 ]
 export const figuresItems = [

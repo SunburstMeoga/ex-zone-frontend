@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
 import TradeMenu from '@/components/TradeMenu'
+import { useRouter } from 'next/router';
+
 import { liquidityTypeItems } from '@/dictionary/trade'
 const Liquidity = () => {
     let [currentType, setCurrentType] = useState(1)
+    const router = useRouter();
     let handleLiquidityType = ({ id }) => {
         setCurrentType(currentType = id)
     }
@@ -38,8 +41,8 @@ const Liquidity = () => {
                             <div className='w-full rounded-2xl bg-liquidity-module h-8-9'></div>
                         </div>
                         <div className='w-20-0 h-3-3 bg-primary-purple rounded  text-white flex justify-center items-center lg:mb-8-6'>
-                            <div className='icon iconfont '>+</div>
-                            <div className='text-1-2 ml-1-0'>Add Liquidity</div>
+                            <div className='icon iconfont text-2-0 -mt-0-6' >+</div>
+                            <div className='text-1-2 ml-1-0' onClick={() => { router.push('/add') }}>Add Liquidity</div>
                         </div>
                     </div>
                 </div>
