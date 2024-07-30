@@ -1,11 +1,16 @@
 // TradingViewWidget.jsx
 import React, { useEffect, useRef, memo } from 'react';
 
-function TradingViewWidget() {
+function TradingViewWidget({ symbol }) {
   const container = useRef();
 
   useEffect(
+
     () => {
+      const containerRef = container.current;
+
+      // 清除以前的脚本
+      containerRef.innerHTML = '';
       const script = document.createElement("script");
       script.src = "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
       script.type = "text/javascript";
@@ -15,7 +20,7 @@ function TradingViewWidget() {
       "autosize": true,
       "width": "100%",
       "height": "100%",
-      "symbol": "BINANCE:BTCUSDT",
+      "symbol": "${symbol}",
       "interval": "D",
       "timezone": "exchange",
       "theme": "dark",
@@ -28,8 +33,13 @@ function TradingViewWidget() {
     }`;
       container.current.appendChild(script);
       console.log(script)
+      return () => {
+        // 清除副作用
+        containerRef.innerHTML = '';
+      };
     },
-    []
+
+    [symbol]
   );
 
   return (

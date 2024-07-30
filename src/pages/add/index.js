@@ -16,7 +16,7 @@ const Add = () => {
                 <div className='w-full flex flex-col justify-start items-center relative'>
                     <div className='w-full bg-swap-banner bg-center bg-cover bg-no-repeat absolute top-auto left-auto h-19-3 z-10'></div>
                     <div className='w-full py-1-0 relative z-10'>
-                        <TradeMenu></TradeMenu>
+                        <TradeMenu defaultIndex={1}></TradeMenu>
                     </div>
                     <div className='w-full flex flex-col justify-start items-center gradient-swap-module h-auto pb-8-0 backdrop-blur-xl text-white lg:min-h-screen relative z-10'>
                         <div className='lg:flex lg:justify-between lg:items-end lg:py-1-0 lg:border-b lg:border-voting-border lg:w-57-1 lg:mb-2-0'>

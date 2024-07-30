@@ -18,12 +18,12 @@ export const pageMenuItems = [
                 link: '/liquidity',
                 meta: 'liquidity'
             },
-            // {
-            //     id: 4,
-            //     title: 'Perpetual',
-            //     link: '/perpetual',
-            //     meta: 'perpetual'
-            // },
+            {
+                id: 4,
+                title: 'Perpetual',
+                link: '/futures',
+                meta: 'perpetual'
+            },
             {
                 id: 5,
                 title: 'Options',

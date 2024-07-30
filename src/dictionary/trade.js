@@ -9,11 +9,11 @@ export const tradeMenuItems = [
         title: 'Liquidity',
         link: '/liquidity'
     },
-    // {
-    //     id: 3,
-    //     title: 'Perpetual',
-    //     link: '/swap'
-    // },
+    {
+        id: 3,
+        title: 'Perpetual',
+        link: '/futures'
+    },
     {
         id: 4,
         title: 'Options',

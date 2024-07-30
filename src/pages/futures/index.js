@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import Slider from 'antd-mobile/es/components/slider';
 import { perpDetailsItems, pricePointItems, futuresOrderTypeItems } from '@/dictionary/pools'
 import TradingViewChart from './components/tradingViewWidget';
+import SelectTOkenPopup from '@/components/swap/selectTokenPopup'
+
 const Futures = () => {
     let [displayType, setDisplayType] = useState(1)
     let [contractType, setContractType] = useState(1)
@@ -11,6 +13,9 @@ const Futures = () => {
     let displayTypeItems = [{ id: 1, title: 'Chart' }, { id: 2, title: 'Info' }]
     let contractTypeItems = [{ id: 1, title: 'Perp' }, { id: 2, title: 'Dumb' }]
     let operatingTypeItems = [{ id: 1, title: 'Long' }, { id: 2, title: 'Short' }]
+    let [symbol, setSymbol] = useState('BINANCE:BTCUSDT')
+    let [symbolImg, setSymbolImg] = useState('https://s3-symbol-logo.tradingview.com/crypto/XTVCBTC--big.svg')
+    let [showSelectTokenPopup, setSelectTokenPopup] = useState(false)
     let handleDisplayItems = ({ id }) => {
         setDisplayType(displayType = id)
     }
@@ -26,6 +31,16 @@ const Futures = () => {
     let handleOrderTypeItems = ({ id }) => {
         setOrderType(orderType = id)
     }
+    let toggleSelectTokenPopup = () => {
+        console.log('object')
+        setSelectTokenPopup(showSelectTokenPopup = !showSelectTokenPopup)
+    }
+    let selectTokenItem = ({ token, img }) => {
+        console.log('object')
+        setSymbol(symbol = token)
+        setSymbolImg(symbolImg = img)
+        setSelectTokenPopup(showSelectTokenPopup = !showSelectTokenPopup)
+    }
     return (
         <>
             <div className='pt-5-0 bg-black lg:pt-6-3 lg:bg-pad-futures xl:pt-8-4'>
@@ -33,11 +48,11 @@ const Futures = () => {
                     <div className='xl:flex justify-between items-start w-full xl:px-3-8 '>
                         <div className='xl:order-2 flex flex-col items-center xl:min-h-full xl:flex-1 xl:flex-grow'>
                             <div className='w-22-0 flex justify-between items-center lg:w-38-7 xl:w-79-9 '>
-                                <div className='flex justify-start items-center'>
-                                    <div className='w-1-6 h-1-6 rounded-full bg-futures-word '>
-                                        <img src='https://apxstatic-1306379396.file.myqcloud.com/image/admin_mgs_image_upload/20201110/87496d50-2408-43e1-ad4c-78b47b448a6a.png'></img>
+                                <div className='flex justify-start items-center' onClick={() => { toggleSelectTokenPopup() }}>
+                                    <div className='w-1-6 h-1-6 rounded-full bg-futures-word overflow-hidden'>
+                                        <img src={symbolImg}></img>
                                     </div>
-                                    <div className='text-1-2 font-medium ml-1-0 text-white'>BTCUSD</div>
+                                    <div className='text-1-2 font-medium ml-1-0 text-white'>{symbol}</div>
                                     <div className='icon iconfont icon-down ml-0-8 lg:text-white'></div>
                                 </div>
                                 <div className='flex justify-end items-baseline text-menu-green'>
@@ -73,7 +88,7 @@ const Futures = () => {
                                 </div>
                                 <div className='w-11/12 rounded-xl overflow-hidden border border-liquid-staking-border h-22-0 flex justify-center items-center mt-1-0 mb-2-0 lg:w-38-8 xl:w-full xl:flex-grow xl:border-none'>
                                     {/* this is chart */}
-                                    <TradingViewChart></TradingViewChart>
+                                    <TradingViewChart symbol={symbol}></TradingViewChart>
                                 </div>
                             </div>
                         </div>
@@ -189,6 +204,7 @@ const Futures = () => {
                     </div>
                 </div>
             </div>
+            <SelectTOkenPopup showSelectTokenPopup={showSelectTokenPopup} onClose={toggleSelectTokenPopup} isToken={true} selectTokenItem={selectTokenItem}></SelectTOkenPopup>
         </>
     )
 }

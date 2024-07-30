@@ -10,9 +10,9 @@ import { useRouter } from 'next/router';
 
 export default function Home() {
   let [homeTotal, changeHomeTotal] = useState([])
-  const [numberOne, setNumberOne] = useState(21);
-  const [numberTwo, setNumberTwo] = useState(23);
-  const [numberThree, setNumberThree] = useState(234);
+  const [numberOne, setNumberOne] = useState(100002);
+  const [numberTwo, setNumberTwo] = useState(100982);
+  const [numberThree, setNumberThree] = useState(2723462);
   const router = useRouter();
   let userList = ['', '']
   let walletAddress = useSelector((state) => state.wallet.address);
@@ -161,7 +161,7 @@ export default function Home() {
         </div>
         <div className="flex flex-col justify-start items-center text-white w-full">
           <div className="lg:flex lg:items-start lg:w-51-6">
-            <div className="bg-black font-light text-white w-22-6 h-5-0 rounded-xl flex justify-center items-center text-2-5 line-height-point-111 mb-2-9 lg:w-36-3 lg:text-4-0 lg:h-6-5">Lock HAH Now!</div>
+            <div className="bg-black font-light text-white w-22-6 h-5-0 rounded-xl flex justify-center items-center text-2-5 line-height-point-111 mb-2-9 lg:w-36-3 lg:text-4-0 lg:h-6-5" onClick={() => { router.push('/staking') }}>Lock HAH Now!</div>
           </div>
           <div className="flex flex-col items-center lg:flex-row lg:flex-wrap lg:justify-between lg:w-56-0">
             <div className="lg:order-2">

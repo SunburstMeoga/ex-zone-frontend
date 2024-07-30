@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import Popup from 'antd-mobile/es/components/popup'
 import { fireTypeItems, fireFilterItems, tokenList } from '@/dictionary/trade'
-const FirePopup = ({ showSelectTokenPopup, onClose }) => {
-    let tokenList = [{ title: 'BNB', content: 'Binance Chain Native Token' }, { title: 'BNB', content: 'Binance Chain Native Token' }, { title: 'BNB', content: 'Binance Chain Native Token' }, { title: 'BNB', content: 'Binance Chain Native Token' }]
+const SelectTOkenPopup = ({ showSelectTokenPopup, onClose, selectTokenItem, isToken = false }) => {
+    let tokenList = [{ title: 'BTC', token: 'BINANCE:BTCUSDT', img: 'https://s3-symbol-logo.tradingview.com/crypto/XTVCBTC--big.svg', content: 'Binance Chain Native Token' },
+    { title: 'ETH', token: 'BINANCE:ETHUSDT', img: 'https://s3-symbol-logo.tradingview.com/crypto/XTVCETH--big.svg', content: 'Binance Chain Native Token' },
+    { title: 'BNB', token: 'BINANCE:BNBUSDT', img: 'https://s3-symbol-logo.tradingview.com/crypto/XTVCBNB--big.svg', content: 'Binance Chain Native Token' }]
     return (
 
         <div>
@@ -22,17 +24,20 @@ const FirePopup = ({ showSelectTokenPopup, onClose }) => {
                     </div> */}
                     <div className='w-22-2 overflow-y-scroll'>
                         {tokenList.map((item, index) => {
-                            return <div key={index} className='flex justify-between items-center w-full mb-1-0'>
+                            return <div key={index} onClick={() => selectTokenItem(item)} className='flex justify-between items-center w-full mb-1-0'>
                                 <div className='flex justify-start items-center'>
-                                    <div className='w-1-7 h-1-7 overflow-hidden rounded-full'>
-                                        <img className='https://assets.coingecko.com/coins/images/36402/thumb/1000080738.png'></img>
+                                    <div className='w-1-7 h-1-7 overflow-hidden rounded-full border border-primary-purple'>
+                                        <img src={item.img}></img>
                                     </div>
-                                    <div className='ml-1-0'>
+                                    {!isToken && <div className='ml-1-0'>
                                         <div className='text-white'>{item.title}</div>
                                         <div className='text-primary-60'>{item.content}</div>
-                                    </div>
+                                    </div>}
+                                    {isToken && <div className='text-white text-1-3 ml-1-3'>{item.token}</div>}
                                 </div>
-                                <div className='icon iconfont icon-right1 text-1-0'></div>
+                                {
+                                    !isToken && <div className='icon iconfont icon-right1 text-1-0'></div>
+                                }
                             </div>
                         })}
                     </div>
@@ -42,4 +47,4 @@ const FirePopup = ({ showSelectTokenPopup, onClose }) => {
     )
 }
 
-export default FirePopup
+export default SelectTOkenPopup
