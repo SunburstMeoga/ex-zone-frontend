@@ -71,7 +71,7 @@ const Futures = () => {
                                         <div className='icon iconfont icon-xiangji1 ml-1-4'></div>
                                     </div>
                                 </div>
-                                <div className='w-11/12 rounded-xl overflow-hidden border border-liquid-staking-border h-22-0 flex justify-center items-center mt-1-0 mb-2-0 lg:w-38-7 xl:w-full xl:flex-grow xl:border-none'>
+                                <div className='w-11/12 rounded-xl overflow-hidden border border-liquid-staking-border h-22-0 flex justify-center items-center mt-1-0 mb-2-0 lg:w-38-8 xl:w-full xl:flex-grow xl:border-none'>
                                     {/* this is chart */}
                                     <TradingViewChart></TradingViewChart>
                                 </div>
