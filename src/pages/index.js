@@ -4,14 +4,18 @@ const inter = Inter({ subsets: ["latin"] });
 import { socialMediaItems } from '@/dictionary/footer'
 import { homeTotalItems, ecosystemItems, tradeItems, figuresItems, newsItems } from '@/dictionary/home'
 import { useEffect, useState } from "react";
-
+import { useSelector } from 'react-redux'
 export default function Home() {
   let [homeTotal, changeHomeTotal] = useState([])
   let userList = ['', '']
+  let walletAddress = useSelector((state) => state.wallet.address);
   useEffect(() => {
     changeHomeTotal(homeTotal = homeTotalItems)
-    console.log(homeTotal)
+    console.log(walletAddress, '')
   }, [])
+  useEffect(() => {
+    console.log('Component re-rendered in home', walletAddress);
+  }, [walletAddress]);
   return (
     <div className="">
       <div className="bg-home-banner-one bg-center bg-cover bg-no-repeat w-full h-58-0 lg:bg-pad-home-banner-one lg:h-67-5 xl:bg-pc-home-banner-one">
@@ -23,9 +27,9 @@ export default function Home() {
             Trade, earn, and own <br className="xl:hidden"></br> crypto on the all-in-one multichain DEX
           </div>
           <div className="flex flex-col justify-start items-center lg:flex-row lg:justify-between lg:w-51-4 lg:mt-13-5">
-            <div className="mt-3-8 w-22-0 h-4-7 text-white bg-primary-purple text-2-0 flex justify-center items-center rounded-2xl lg:w-24-0 lg:h-5-9 lg:font-extrabold lg:mt-0-1">
+            {/* <div className="mt-3-8 w-22-0 h-4-7 text-white bg-primary-purple text-2-0 flex justify-center items-center rounded-2xl lg:w-24-0 lg:h-5-9 lg:font-extrabold lg:mt-0-1">
               Connect Wallet
-            </div>
+            </div> */}
             <div className="mt-1-3 w-22-0 h-4-7 bg-white text-primary-purple text-2-0 flex justify-center items-center rounded-2xl lg:w-24-0 lg:h-5-9 lg:font-extrabold lg:mt-0-1">
               Trade Now
             </div>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Slider from 'antd-mobile/es/components/slider';
 import { perpDetailsItems, pricePointItems, futuresOrderTypeItems } from '@/dictionary/pools'
+import TradingViewChart from './components/tradingViewWidget';
 const Futures = () => {
     let [displayType, setDisplayType] = useState(1)
     let [contractType, setContractType] = useState(1)
@@ -29,12 +30,14 @@ const Futures = () => {
         <>
             <div className='pt-5-0 bg-black lg:pt-6-3 lg:bg-pad-futures xl:pt-8-4'>
                 <div className='flex flex-col justify-start items-center w-full'>
-                    <div className='xl:flex justify-between items-start w-full xl:px-3-8'>
-                        <div className='xl:order-2 flex flex-col items-center'>
+                    <div className='xl:flex justify-between items-start w-full xl:px-3-8 '>
+                        <div className='xl:order-2 flex flex-col items-center xl:min-h-full xl:flex-1 xl:flex-grow'>
                             <div className='w-22-0 flex justify-between items-center lg:w-38-7 xl:w-79-9 '>
                                 <div className='flex justify-start items-center'>
-                                    <div className='w-1-6 h-1-6 rounded-full bg-futures-word '></div>
-                                    <div className='text-1-2 font-medium ml-1-0 lg:text-white'>USDT</div>
+                                    <div className='w-1-6 h-1-6 rounded-full bg-futures-word '>
+                                        <img src='https://apxstatic-1306379396.file.myqcloud.com/image/admin_mgs_image_upload/20201110/87496d50-2408-43e1-ad4c-78b47b448a6a.png'></img>
+                                    </div>
+                                    <div className='text-1-2 font-medium ml-1-0 text-white'>BTCUSD</div>
                                     <div className='icon iconfont icon-down ml-0-8 lg:text-white'></div>
                                 </div>
                                 <div className='flex justify-end items-baseline text-menu-green'>
@@ -42,7 +45,7 @@ const Futures = () => {
                                     <div className='text-0-7 font-medium ml-0-4'>+4.31%</div>
                                 </div>
                             </div>
-                            <div className='w-full mt-0-7 bg-syrup-module pt-1-0 flex flex-col justify-start items-center lg:bg-none xl:border border-liquid-staking-border xl:rounded-xl xl:p-1-3  xl:bg-pad-pools-border'>
+                            <div className='w-full mt-0-7 bg-syrup-module pt-1-0 flex flex-col justify-start items-center lg:bg-none xl:border border-liquid-staking-border xl:rounded-xl xl:p-1-3  xl:bg-pad-pools-border xl:flex-grow'>
                                 <div className='w-22-0 flex justify-start items-center lg:w-38-7 xl:w-79-9'>
                                     {displayTypeItems.map((item, index) => {
                                         return <div key={index} onClick={() => handleDisplayItems(item)} className={`text-white text-1-0 ${item.id !== 1 ? 'ml-2-0' : ''} ${item.id === displayType ? 'font-bold' : ''}`}>
@@ -50,9 +53,9 @@ const Futures = () => {
                                         </div>
                                     })}
                                 </div>
-                                <div className='w-22-0 flex justify-between items-center mt-1-2 lg:w-38-7 lg:text-white xl:w-79-9 '>
+                                <div className='w-22-0 flex justify-between items-center mt-1-2 lg:w-38-7 text-white xl:w-79-9 '>
                                     <div className='flex justify-start items-center'>
-                                        <div className='rounded-xl border border-liquid-staking-border bg-primary-50 px-0-8 py-0-2 flex justify-start items-center'>
+                                        {/* <div className='rounded-xl border border-liquid-staking-border bg-primary-50 px-0-8 py-0-2 flex justify-start items-center'>
                                             <div className='text-0-9 mr-1-0'>1s</div>
                                             <div className='icon iconfont icon-down1 text-1-0'></div>
 
@@ -60,7 +63,7 @@ const Futures = () => {
                                         <div className='rounded-xl border border-liquid-staking-border bg-primary-50 px-0-8 py-0-2 flex justify-start items-center ml-1-0'>
                                             <div className='text-0-9 mr-1-0 text-primary-60 icon iconfont icon-zhuzhuangtu'></div>
                                             <div className='icon iconfont icon-down1 text-1-0'></div>
-                                        </div>
+                                        </div> */}
                                     </div>
                                     <div className='flex justify-end items-center text-1-3'>
                                         <div className='icon iconfont icon-setting '></div>
@@ -68,8 +71,9 @@ const Futures = () => {
                                         <div className='icon iconfont icon-xiangji1 ml-1-4'></div>
                                     </div>
                                 </div>
-                                <div className='w-22-0 rounded-xl border border-liquid-staking-border h-22-0 flex justify-center items-center mt-1-0 mb-2-0 lg:w-38-7 xl:w-full xl:h-41-7 xl:flex-grow xl:border-none'>
-                                    this is chart
+                                <div className='w-11/12 rounded-xl overflow-hidden border border-liquid-staking-border h-22-0 flex justify-center items-center mt-1-0 mb-2-0 lg:w-38-7 xl:w-full xl:flex-grow xl:border-none'>
+                                    {/* this is chart */}
+                                    <TradingViewChart></TradingViewChart>
                                 </div>
                             </div>
                         </div>
@@ -158,8 +162,8 @@ const Futures = () => {
                             </div>
                         </div>
                     </div>
-                    <div className='w-full flex flex-col justify-start items-center bg-syrup-module py-2-0 xl:py-0-1 xl:my-2-0 xl:bg-none xl:px-3-8'>
-                        <div className='flex flex-col justify-start items-center w-full px-1-0 xl:px-0-1'>
+                    <div className='w-full flex flex-col justify-start items-center bg-syrup-module py-2-0 xl:py-0-1 xl:my-2-0 xl:bg-none xl:px-3-7'>
+                        <div className='flex flex-col justify-start items-center w-full px-1-0 xl:p-0-1'>
                             <div className='w-22-0 rounded-xl border border-swap-copy-icon py-1-2 px-1-0  flex flex-col justify-start items-center lg:w-38-7 xl:w-full xl:bg-pad-pools-border'>
                                 <div className='w-full flex justify-between items-center rounded-xl overflow-hidden bg-futures-tabs text-futures-word mb-1-7 '>
                                     {futuresOrderTypeItems.map((item, index) => {

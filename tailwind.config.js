@@ -23,6 +23,7 @@ module.exports = {
         "gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
         "gradient-trade": "linear-gradient(180deg, rgba(5,6,11,1) 0%, rgba(76,42,190,1) 100%);",
         "button-active": "linear-gradient(153deg, rgba(233, 33, 96, 1) 0%, rgba(76, 42, 190, 1) 100%);",
+        "menu-title": "linear-gradient(180deg, #4C2ABE 0%, #231358 100%);",
         "syrup-module": "linear-gradient(180deg, rgba(13,11,37,1) 0%, rgba(22,18,75,1) 100%);",
         "syrup-card": "linear-gradient(180deg, rgba(39,33,114,1) 0%, rgba(50,47,94,0) 100%);",
         "syrup-input": "linear-gradient(135deg, rgba(248,142,175,0.2) 0%, rgba(23,172,255,0.2) 100%);",
@@ -148,7 +149,8 @@ module.exports = {
         "buy-module": "#0E0A2C",
         "pad-pools": "#111020",
         "pad-pools-border": "#1C1A39",
-        "pad-futures": "#0F0D18"
+        "pad-futures": "#0F0D18",
+        "connect-wallet": "#333"
       },
       fontSize: ({ theme }) => ({
         ...theme("spacing"),

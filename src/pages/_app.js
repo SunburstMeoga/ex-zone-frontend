@@ -5,6 +5,8 @@ import 'antd-mobile/es/global';
 import 'animate.css/animate.min.css';
 import React, { useEffect } from 'react';
 import Layout from "@/components/Layout";
+import { Provider } from 'react-redux';
+import store from "@/store";
 const App = ({ Component, pageProps }) => {
   useEffect(() => {
     const handleResize = () => {
@@ -23,9 +25,11 @@ const App = ({ Component, pageProps }) => {
   }, []);
 
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <Provider store={store}>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </Provider>
   )
 }
 
