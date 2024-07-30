@@ -1,17 +1,17 @@
 export const homeTotalItems = [
     {
         title: 'Total Users:',
-        count: '1,557,571',
+        count: 233412,
         time: 'in the last 30 days',
     },
     {
         title: 'Total Trades:',
-        count: '1,557,571',
+        count: 2323232,
         time: 'in the last 30 days',
     },
     {
         title: 'Total Value Locked:',
-        count: '1,557,571',
+        count: 2342,
         unit: '$'
     }
 ]

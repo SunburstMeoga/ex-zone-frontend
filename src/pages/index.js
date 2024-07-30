@@ -5,13 +5,51 @@ import { socialMediaItems } from '@/dictionary/footer'
 import { homeTotalItems, ecosystemItems, tradeItems, figuresItems, newsItems } from '@/dictionary/home'
 import { useEffect, useState } from "react";
 import { useSelector } from 'react-redux'
+import AnimatedNumber from "@/components/AnimatedNumber";
 export default function Home() {
   let [homeTotal, changeHomeTotal] = useState([])
+  const [numberOne, setNumberOne] = useState(21);
+  const [numberTwo, setNumberTwo] = useState(23);
+  const [numberThree, setNumberThree] = useState(234);
+
   let userList = ['', '']
   let walletAddress = useSelector((state) => state.wallet.address);
   useEffect(() => {
     changeHomeTotal(homeTotal = homeTotalItems)
+    changeHomeTotal(homeTotal = [
+      {
+        title: 'Total Users:',
+        count: 0,
+        time: 'in the last 30 days',
+      },
+      {
+        title: 'Total Trades:',
+        count: 0,
+        time: 'in the last 30 days',
+      },
+      {
+        title: 'Total Value Locked:',
+        count: 0,
+        unit: '$'
+      }
+    ])
+    const intervalOne = setInterval(() => {
+      setNumberOne((prevNumber) => prevNumber + Math.floor(Math.random() * 10));
+    }, 5000 * 2);
+    const intervalTwo = setInterval(() => {
+      setNumberTwo((prevNumber) => prevNumber + Math.floor(Math.random() * 10));
+    }, 4000);
+    const intervalThree = setInterval(() => {
+      setNumberThree((prevNumber) => prevNumber + Math.floor(Math.random() * 100));
+    }, 5000);
     console.log(walletAddress, '')
+
+    return () => {
+      clearInterval(intervalOne)
+      clearInterval(intervalTwo)
+      clearInterval(intervalThree)
+
+    }
   }, [])
   useEffect(() => {
     console.log('Component re-rendered in home', walletAddress);
@@ -31,7 +69,9 @@ export default function Home() {
               Connect Wallet
             </div> */}
             <div className="mt-1-3 w-22-0 h-4-7 bg-white text-primary-purple text-2-0 flex justify-center items-center rounded-2xl lg:w-24-0 lg:h-5-9 lg:font-extrabold lg:mt-0-1">
-              Trade Now
+              <div>
+                Trade Now
+              </div>
             </div>
           </div>
         </div>
@@ -49,7 +89,12 @@ export default function Home() {
               return (
                 <div key={index} className="bg-white50 w-full py-1-3 mb-1-1 lg:w-36-6 lg:py-1-4 lg:rounded-3xl lg:mb-3-2 lg:h-13-5 xl:w-32-1 xl:mb-18-8">
                   <div className="text-center text-black font-light text-1-5 lg:font-semibold">{item.title}</div>
-                  <div className="text-center text-black font-light text-3-0 title-gradient lg:text-4-0 lg:font-extrabold"> {item.unit ? item.unit : ''} {item.count}</div>
+                  <div className="text-center text-black font-light text-3-0 title-gradient lg:text-4-0 lg:font-extrabold"> {item.unit ? item.unit : ''}
+                    {index === 0 && <AnimatedNumber number={numberOne} />}
+                    {index === 1 && <AnimatedNumber number={numberTwo} />}
+                    {index === 2 && <AnimatedNumber number={numberThree} />}
+                  </div>
+                  {/* <div><AnimatedNumber number={number} /></div> */}
                   <div className="text-center text-black font-light text-1-5 lg:font-extrabold">{item.time}</div>
                 </div>
               )
@@ -75,7 +120,7 @@ export default function Home() {
             return <div key={index} className={["flex justify-between items-center py-1-8  lg:rounded-2xl lg:bg-gradient-trade lg:px-3-4 lg:flex-col lg:justify-start lg:items-start lg:mb-1-8 lg:h-23-2 xl:relative", index !== tradeItems.length - 1 ? 'border-b border-white50 border-dashed lg:border-none w-22-0 lg:w-26-0 xl:w-20-0' : ' w-22-0  lg:w-52-8 xl:w-20-0'].join(' ')}>
               <div className={` text-white lg:mb-7-0  ${index === tradeItems.length - 1 ? 'lg:w-35-6 xl:w-20-0' : 'w-12-0 lg:w-22-0 xl:w-20-0'}`}>
                 <div className="text-2-0 font-light mb-0-3 line-height-num-33 lg:text-2-2 lg:font-extrabold">{item.title}</div>
-                <div className="text-1-0 font-light line-height-num-24 lg:text-1-5 lg:font-medium xl:w-14-8">{item.content}</div>
+                <div className="text-1-0 font-light line-height-num-24 w-12-0 lg:text-1-5 lg:font-medium xl:w-14-8">{item.content}</div>
               </div>
               <div className="bg-ecosystem-button text-white text-1-0 w-6-9 h-3-2 flex justify-center items-center rounded-lg lg:w-9-0 lg:h-3-3 xl:absolute xl:bottom-2-0">
                 {item.operating}

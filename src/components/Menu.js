@@ -39,6 +39,7 @@ const Menu = () => {
 
     }
     let handleLogo = () => {
+        console.log('handleLogo')
         router.push('/')
     }
     let handleConnectWallet = async () => {
@@ -127,7 +128,7 @@ const Menu = () => {
         <div className='w-full  flex flex-col justify-center items-center fixed -top-0-1 z-30'>
             <div className='w-22-0 flex justify-between items-center h-4-3 lg:h-6-3 relative z-20 lg:w-58-2 lg:py-2-6 xl:w-full xl:py-2-6'>
                 <div className='flex justify-start items-center'>
-                    <div className='w-6-9 lg:w-12-4 xl:ml-2-9' onClick={() => handleLogo}>
+                    <div className='w-6-9 lg:w-12-4 xl:ml-2-9' onClick={() => handleLogo()}>
                         <img src='/images/logo.png' alt='logo' />
                     </div>
                     <div className='xl:ml-3-5 hidden xl:flex justify-start items-center '>
@@ -141,38 +142,40 @@ const Menu = () => {
                     <div></div>
                 </div>
             </div>
-            {showMenu && <div className={`w-full  flex flex-col justify-start items-center -mt-4-0 pt-4-0 relative z-10 bg-black`} >
-                <div className={`w-22-0 duration-100 transition ${showMenu ? 'scale-y-100 min-h-screen' : 'scale-y-0 h-auto'}`}>
-                    <div className='flex justify-between items-center mb-1-0 text-1-0'>
-                        {/* <div className='rounded-xl flex justify-center items-center bg-primary-purple w-8-4 h-3-1 text-white'>中/English</div> */}
-                        <div className='rounded-xl flex justify-center items-center bg-primary-yellow w-full h-3-1 text-connect-wallet' onClick={() => handleConnectWallet()}>
-                            <div className='icon iconfont icon-money-wallet-fill text-1-8' ></div>
-                            <div className='ml-0-3'>{accountAddress ? formateAddress(accountAddress, 8) : 'Connect Wallet'}</div>
+            {
+                showMenu && <div className={`w-full  flex flex-col justify-start items-center -mt-4-0 pt-4-0 relative z-10 bg-black`} >
+                    <div className={`w-22-0 duration-100 transition ${showMenu ? 'scale-y-100 min-h-screen' : 'scale-y-0 h-auto'}`}>
+                        <div className='flex justify-between items-center mb-1-0 text-1-0'>
+                            {/* <div className='rounded-xl flex justify-center items-center bg-primary-purple w-8-4 h-3-1 text-white'>中/English</div> */}
+                            <div className='rounded-xl flex justify-center items-center bg-primary-yellow w-full h-3-1 text-connect-wallet' onClick={() => handleConnectWallet()}>
+                                <div className='icon iconfont icon-money-wallet-fill text-1-8' ></div>
+                                <div className='ml-0-3'>{accountAddress ? formateAddress(accountAddress, 8) : 'Connect Wallet'}</div>
+                            </div>
                         </div>
-                    </div>
-                    {pageMenuItemsList.map((item, index) => {
-                        return <div key={index} className='w-full  rounded-xl bg-menu-title text-white text-1-3  mb-0-8 overflow-hidden' onClick={() => handlePageMenu(item)}>
-                            <div className='flex justify-between items-center h-3-3'>
-                                <div className='flex justify-start items-center'>
-                                    <div className='ml-1-5 w-0-3 h-0-3 bg-white'></div>
-                                    <div className='ml-1-0'>{item.title}</div>
+                        {pageMenuItemsList.map((item, index) => {
+                            return <div key={index} className='w-full  rounded-xl bg-menu-title text-white text-1-3  mb-0-8 overflow-hidden' onClick={() => handlePageMenu(item)}>
+                                <div className='flex justify-between items-center h-3-3'>
+                                    <div className='flex justify-start items-center'>
+                                        <div className='ml-1-5 w-0-3 h-0-3 bg-white'></div>
+                                        <div className='ml-1-0'>{item.title}</div>
+                                    </div>
+                                    {item.hasChild && <div className='flex justify-center items-center mr-1-5'>
+                                        <div className={`icon iconfont icon-down duration-100 transition  ${item.showChild ? 'rotate-180 ' : ''}`}></div>
+                                    </div>}
                                 </div>
-                                {item.hasChild && <div className='flex justify-center items-center mr-1-5'>
-                                    <div className={`icon iconfont icon-down duration-100 transition  ${item.showChild ? 'rotate-180 ' : ''}`}></div>
+                                {item.hasChild && item.showChild && <div className='w-22-0 gradient-menu-item flex flex-col justify-start items-center' >
+                                    {item.children.map((_item, _index) => {
+                                        return <div key={_index} onClick={() => { handleMenuItems(_item) }} className={`flex justify-center items-center w-full h-3-5 ${activeItem === _item.id ? 'bg-menu-green' : 'bg-transparent'}`}>
+                                            <div className='w-12-6 text-white font-light text-1-0'>{_item.title}</div>
+                                        </div>
+                                    })}
                                 </div>}
                             </div>
-                            {item.hasChild && item.showChild && <div className='w-22-0 gradient-menu-item flex flex-col justify-start items-center' >
-                                {item.children.map((_item, _index) => {
-                                    return <div key={_index} onClick={() => { handleMenuItems(_item) }} className={`flex justify-center items-center w-full h-3-5 ${activeItem === _item.id ? 'bg-menu-green' : 'bg-transparent'}`}>
-                                        <div className='w-12-6 text-white font-light text-1-0'>{_item.title}</div>
-                                    </div>
-                                })}
-                            </div>}
-                        </div>
-                    })}
+                        })}
+                    </div>
                 </div>
-            </div>}
-        </div>
+            }
+        </div >
     )
 }
 
