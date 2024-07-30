@@ -2,6 +2,7 @@ import React from 'react';
 import { tradeMenuItems } from '@/dictionary/trade';
 import Tabs from 'antd-mobile/es/components/tabs';
 import styled from 'styled-components';
+import { useRouter } from 'next/router';
 
 const StyledTabsA = styled(Tabs)`
   background-color: transparent !important;
@@ -32,14 +33,21 @@ const StyledTabsA = styled(Tabs)`
   }
 `;
 
-function TradeMenu() {
+function TradeMenu({ defaultIndex = 0 }) {
+  const router = useRouter();
+  const handleTabChange = (index) => {
+    // 获取被点击的标签项
+    console.log(index)
+    const selectedItem = tradeMenuItems[index];
+    if (selectedItem && selectedItem.link) {
+      router.push(selectedItem.link);
+    }
+  };
   return (
     <div>
-      <StyledTabsA>
+      <StyledTabsA onChange={handleTabChange} defaultActiveKey={defaultIndex}>
         {tradeMenuItems.map((item, index) => (
-          <Tabs.Tab title={item.title} key={index}>
-            {item.content}
-          </Tabs.Tab>
+          <Tabs.Tab title={item.title} key={index} ></Tabs.Tab>
         ))}
       </StyledTabsA>
     </div>

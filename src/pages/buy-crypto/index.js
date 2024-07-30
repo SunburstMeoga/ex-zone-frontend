@@ -16,7 +16,7 @@ const BuyCrypto = () => {
                 <div className='w-full flex flex-col justify-start items-center relative'>
                     <div className='w-full bg-swap-banner bg-center bg-cover bg-no-repeat absolute top-auto left-auto h-19-3 z-10'></div>
                     <div className='w-full py-1-0 relative z-10'>
-                        <TradeMenu></TradeMenu>
+                        <TradeMenu defaultIndex={2}></TradeMenu>
                     </div>
                     <div className='w-full flex flex-col justify-start items-center gradient-swap-module h-auto pb-8-0 backdrop-blur-xl text-white lg:min-h-screen relative z-10'>
                         <div className='w-20-0 lg:w-34-9  text-1-5 font-semibold mt-2-6 flex justify-between items-center'>

@@ -5,6 +5,7 @@ import FirePopup from '@/components/swap/firePopup'
 import SettingPopup from '@/components/swap/settingPopup'
 import CustomsizeRoutingPopup from '@/components/swap/customsizeRoutingPopup'
 import RecentTransPopup from '@/components/swap/recentTransPopup'
+import SelectTOkenPopup from '@/components/swap/selectTokenPopup'
 import { swapStateItems, swapOperateItems } from '@/dictionary/trade'
 
 const Trade = () => {
@@ -15,6 +16,7 @@ const Trade = () => {
     let [showSettingPopup, setSettingPopup] = useState(false)
     let [showCustomsizePopup, setCustomsizePopup] = useState(false)
     let [showRecentTransPopup, setRecentTransPopup] = useState(false)
+    let [showSelectTokenPopup, setSelectTokenPopup] = useState(false)
     let handleSwapState = ({ id }) => {
         setCurrentState(currentState = id)
     }
@@ -32,6 +34,7 @@ const Trade = () => {
         }
     }
     let toggleStatisticsPopup = () => {
+        console.log('object')
         setStatisticsPopup(showStatisticsPopup = !showStatisticsPopup)
         console.log(showStatisticsPopup)
     }
@@ -46,6 +49,10 @@ const Trade = () => {
     }
     let toggleRecentTransPopup = () => {
         setRecentTransPopup(showRecentTransPopup = !showRecentTransPopup)
+    }
+    let toggleSelectTokenPopup = () => {
+        console.log('object')
+        setSelectTokenPopup(showSelectTokenPopup = !showSelectTokenPopup)
     }
     return (
         <>
@@ -75,8 +82,8 @@ const Trade = () => {
                         <div className='w-20-0 mb-2-0 lg:w-35-0 lg:mb-8-0'>
                             <div className='bg-swap-card-module flex flex-col justify-between items-center border-2 border-swap-border rounded-2xl p-0-8 w-20-0 h-8-0 lg:w-35-0'>
                                 <div className='flex justify-between items-center w-full'>
-                                    <div className='flex justify-start items-center'>
-                                        <div className='rounded-full w-2-2 h-2-2 bg-swap-copy-icon'></div>
+                                    <div className='flex justify-start items-center' onClick={() => toggleSelectTokenPopup()}>
+                                        <div className='rounded-full w-2-2 h-2-2 bg-swap-copy-icon' ></div>
                                         <div className='text-1-5 font-light ml-1-0'>HAH</div>
                                         <div className='ml-2-0 icon iconfont icon-down2' style={{ fontSize: '1rem' }}></div>
                                     </div>
@@ -92,9 +99,9 @@ const Trade = () => {
                             <div className='bg-swap-card-module flex flex-col justify-between items-center border-2 border-swap-border rounded-2xl p-0-8 w-20-0 h-8-0 lg:w-35-0'>
                                 <div className='flex justify-between items-center w-full'>
                                     <div className='flex justify-start items-center'>
-                                        <div className='rounded-full w-2-2 h-2-2 bg-swap-copy-icon'></div>
+                                        <div className='rounded-full w-2-2 h-2-2 bg-swap-copy-icon' ></div>
                                         <div className='text-1-5 font-light ml-1-0'>HAH</div>
-                                        <div className='ml-2-0 icon iconfont icon-down2' style={{ fontSize: '1rem' }}></div>
+                                        <div className='ml-2-0 icon iconfont icon-down2' onClick={() => toggleSelectTokenPopup} style={{ fontSize: '1rem' }}></div>
                                     </div>
                                     <div className='text-swap-copy-icon icon iconfont icon-copy' style={{ fontSize: '1.4rem' }}></div>
                                 </div>
@@ -122,6 +129,7 @@ const Trade = () => {
             <SettingPopup showSettingPopup={showSettingPopup} onClose={toggleSettingPopup} handleCusRouting={toggleCustomsizePopup}></SettingPopup>
             <CustomsizeRoutingPopup showCustomsizePopup={showCustomsizePopup} onClose={toggleCustomsizePopup}></CustomsizeRoutingPopup>
             <RecentTransPopup showRecentTransPopup={showRecentTransPopup} onClose={toggleRecentTransPopup}></RecentTransPopup>
+            <SelectTOkenPopup showSelectTokenPopup={showSelectTokenPopup} onClose={toggleSelectTokenPopup}></SelectTOkenPopup>
         </>
     )
 }

@@ -15,7 +15,7 @@ const LimitOrders = () => {
             <div className='pt-4-8 w-full bg-swap-banner bg-center bg-cover bg-no-repeat'>
                 <div className='w-full flex flex-col justify-start items-center'>
                     <div className='w-full py-1-0'>
-                        <TradeMenu></TradeMenu>
+                        <TradeMenu defaultIndex={3}></TradeMenu>
                     </div>
                     <div className='w-full flex flex-col justify-start items-center gradient-swap-module h-auto text-white min-h-screen'>
                         <div className='w-20-0 text-1-5 font-semibold mt-2-6 flex justify-between items-center'>

@@ -1,32 +1,39 @@
 export const tradeMenuItems = [
     {
         id: 1,
-        title: 'Swap'
+        title: 'Swap',
+        link: '/swap'
     },
     {
         id: 2,
-        title: 'Liquidity'
+        title: 'Liquidity',
+        link: '/liquidity'
     },
-    {
-        id: 3,
-        title: 'Perpetual'
-    },
+    // {
+    //     id: 3,
+    //     title: 'Perpetual',
+    //     link: '/swap'
+    // },
     {
         id: 4,
-        title: 'Options'
+        title: 'Options',
+        link: '/stryke'
     },
     {
         id: 5,
-        title: 'Bridge'
+        title: 'Bridge',
+        link: '/buy-crypto'
     },
-    {
-        id: 6,
-        title: 'Limit(Deprecated)'
-    },
-    {
-        id: 7,
-        title: 'Trading Reward'
-    }
+    // {
+    //     id: 6,
+    //     title: 'Limit(Deprecated)',
+    //     link: '/limit-orders'
+    // },
+    // {
+    //     id: 7,
+    //     title: 'Trading Reward',
+    //     link: '/swap'
+    // }
 ]
 export const swapStateItems = [
     {

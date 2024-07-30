@@ -4,8 +4,10 @@ import ContractServices from '@/services/contract/contractServices'
 import { formateAddress } from '@/utils/formate';
 import { useDispatch, useSelector } from 'react-redux';
 import { setAddress, clearAddress } from '@/store/walletSlice';
+import { useRouter } from 'next/router';
 import Web3 from 'web3'
 const Menu = () => {
+    const router = useRouter();
     let [showMenu, changeShowMenu] = useState(false)
     let [activeItem, setActiveItem] = useState(0)
     let [pageMenuItemsList, setPageMenuItems] = useState(pageMenuItems)
@@ -20,12 +22,20 @@ const Menu = () => {
     let handleMenuItems = (item) => {
         console.log(item)
         setActiveItem(activeItem = item.id)
+        router.push(item.link); // 替换为目标页面的路径
+        changeShowMenu(showMenu = false)
     }
-    let handlePageMenu = ({ id }) => {
-        console.log(id)
-        setPageMenuItems(pageMenuItemsList =>
-            pageMenuItemsList.map(item =>
-                item.id === id ? { ...item, showChild: !item.showChild } : item))
+    let handlePageMenu = ({ id, hasChild, link }) => {
+        console.log(id, hasChild)
+        if (hasChild) {
+            setPageMenuItems(pageMenuItemsList =>
+                pageMenuItemsList.map(item =>
+                    item.id === id ? { ...item, showChild: !item.showChild } : item))
+        } else {
+            console.log('没有下级页面,直接跳转路由')
+            router.push(link)
+        }
+
     }
     let handleConnectWallet = async () => {
         if (web3) {
@@ -127,7 +137,7 @@ const Menu = () => {
                     <div></div>
                 </div>
             </div>
-            {showMenu && <div className={`w-full  flex flex-col justify-start items-center mt-1-0 relative z-10 bg-black`} >
+            {showMenu && <div className={`w-full  flex flex-col justify-start items-center -mt-4-0 pt-4-0 relative z-10 bg-black`} >
                 <div className={`w-22-0 duration-100 transition ${showMenu ? 'scale-y-100 min-h-screen' : 'scale-y-0 h-auto'}`}>
                     <div className='flex justify-between items-center mb-1-0 text-1-0'>
                         <div className='rounded-xl flex justify-center items-center bg-primary-purple w-8-4 h-3-1 text-white'>中/English</div>

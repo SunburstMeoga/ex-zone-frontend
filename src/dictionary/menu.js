@@ -9,7 +9,7 @@ export const pageMenuItems = [
             {
                 id: 2,
                 title: 'Swap',
-                link: '',
+                link: '/swap',
                 meta: 'swap',
             },
             {
