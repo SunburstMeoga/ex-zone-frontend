@@ -5,6 +5,7 @@ import { formateAddress } from '@/utils/formate';
 import { useDispatch, useSelector } from 'react-redux';
 import { setAddress, clearAddress } from '@/store/walletSlice';
 import { useRouter } from 'next/router';
+
 import Web3 from 'web3'
 const Menu = () => {
     const router = useRouter();
@@ -36,6 +37,9 @@ const Menu = () => {
             router.push(link)
         }
 
+    }
+    let handleLogo = () => {
+        router.push('/')
     }
     let handleConnectWallet = async () => {
         if (web3) {
@@ -123,7 +127,7 @@ const Menu = () => {
         <div className='w-full  flex flex-col justify-center items-center fixed -top-0-1 z-30'>
             <div className='w-22-0 flex justify-between items-center h-4-3 lg:h-6-3 relative z-20 lg:w-58-2 lg:py-2-6 xl:w-full xl:py-2-6'>
                 <div className='flex justify-start items-center'>
-                    <div className='w-6-9 lg:w-12-4 xl:ml-2-9'>
+                    <div className='w-6-9 lg:w-12-4 xl:ml-2-9' onClick={() => handleLogo}>
                         <img src='/images/logo.png' alt='logo' />
                     </div>
                     <div className='xl:ml-3-5 hidden xl:flex justify-start items-center '>
@@ -140,10 +144,10 @@ const Menu = () => {
             {showMenu && <div className={`w-full  flex flex-col justify-start items-center -mt-4-0 pt-4-0 relative z-10 bg-black`} >
                 <div className={`w-22-0 duration-100 transition ${showMenu ? 'scale-y-100 min-h-screen' : 'scale-y-0 h-auto'}`}>
                     <div className='flex justify-between items-center mb-1-0 text-1-0'>
-                        <div className='rounded-xl flex justify-center items-center bg-primary-purple w-8-4 h-3-1 text-white'>中/English</div>
-                        <div className='rounded-xl flex justify-center items-center bg-primary-yellow w-11-8 h-3-1 text-connect-wallet' onClick={() => handleConnectWallet()}>
+                        {/* <div className='rounded-xl flex justify-center items-center bg-primary-purple w-8-4 h-3-1 text-white'>中/English</div> */}
+                        <div className='rounded-xl flex justify-center items-center bg-primary-yellow w-full h-3-1 text-connect-wallet' onClick={() => handleConnectWallet()}>
                             <div className='icon iconfont icon-money-wallet-fill text-1-8' ></div>
-                            <div className='ml-0-3'>{accountAddress ? formateAddress(accountAddress, 4) : 'Connect Wallet'}</div>
+                            <div className='ml-0-3'>{accountAddress ? formateAddress(accountAddress, 8) : 'Connect Wallet'}</div>
                         </div>
                     </div>
                     {pageMenuItemsList.map((item, index) => {
