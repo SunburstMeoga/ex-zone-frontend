@@ -18,24 +18,24 @@ const PositionManagers = () => {
     }
     return (
         <>
-            <div className='pt-5-0 bg-black' >
+            <div className='pt-5-0 bg-black lg:pt-6-3 xl:pt-8-4' >
                 <PageTabs defaultIndex={1}></PageTabs>
-                <div className='w-full bg-phone-position-managers-one bg-center bg-no-repeat bg-contain h-auto pt-4-8'>
+                <div className='w-full bg-phone-position-managers-one bg-center bg-no-repeat bg-contain h-auto pt-4-8 lg:bg-pad-position-managers-one lg:bg-cover'>
                     <div className='flex flex-col justify-start items-center'>
-                        <div className='text-white text-3-0 font-bold text-left mb-0-7 w-21-4'>Position Manager</div>
-                        <div className='text-trading-yellow text-left line-height-point-122 text-2-0 font-semibold w-21-4 mb-6-4 voting-text-shadow'> Automate your  <br></br> EX.zone V3 <br /> liquidity</div>
-                        <div className='bg-black30 w-21-4 p-2-1 flex flex-col justify-start items-center rounded-xl mb-2-2 backdrop-blur-lg'>
-                            <div className='text-primary-purple text-center text-1-5 font-semibold mb-1-4 '>Yield Booster</div>
-                            <div className='text-primary-60 text-0-9 text-center'>
+                        <div className='text-white text-3-0 font-bold text-left mb-0-7 w-21-4 lg:w-full lg:text-center lg:text-4-0'>Position Manager</div>
+                        <div className='text-trading-yellow text-left line-height-point-122 text-2-0 font-semibold w-21-4 mb-6-4 voting-text-shadow lg:w-39-0 lg:text-2-5 lg:text-center lg:text-bold'> Automate your  <br className='lg:hidden'></br> EX.zone V3 <br /> liquidity</div>
+                        <div className='bg-black30 w-21-4 p-2-1 flex flex-col justify-start items-center rounded-xl mb-2-2 backdrop-blur-lg lg:backdrop-blur-none lg:bg-transparent lg:text-white lg:w-full'>
+                            <div className='text-primary-purple text-center text-1-5 font-semibold mb-1-4 lg:text-white'>Yield Booster</div>
+                            <div className='text-primary-60 text-0-9 text-center lg:text-white lg:txt-1-0'>
                                 Yield Booster <br></br>
                                 Connect wallet to view booster<br></br>
-                                An active veCAKE staking position is required for activating farm yield boosters.
+                                An active veCAKE staking position is required <br className='hidden lg:block'></br> for activating farm yield boosters.
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className='w-full flex justify-start flex-col items-center bg-pools-module pt-1-7'>
-                    <div className='w-22-0 flex flex-col justify-start items-center'>
+                    <div className='w-22-0 flex flex-col justify-start items-center lg:w-38-8'>
                         <div className='w-full flex justify-between items-center'>
                             <div className='bg-black p-0-5 rounded-full flex justify-start items-center'>
                                 {stakingStateItems.map((item, index) => {
@@ -72,7 +72,7 @@ const PositionManagers = () => {
                     <div className='bg-syrup-module rounded-t-3xl w-full h-auto'>
                         <div className='w-full flex flex-col justify-start items-center pt-0-6'>
                             {positionManagersItemsList.map((item, index) => {
-                                return <div key={index} className='border-b border-voting-border py-1-0 border-dashed w-21-8' onClick={() => handleShowMore(item)}>
+                                return <div key={index} className='border-b border-voting-border py-1-0 border-dashed w-21-8 lg:w-38-8' onClick={() => handleShowMore(item)}>
                                     <div className='flex justify-between items-center'>
                                         <div className='flex justify-start items-start'>
                                             <div className='flex justify-start items-start'>

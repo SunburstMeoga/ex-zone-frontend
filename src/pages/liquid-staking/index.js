@@ -10,10 +10,10 @@ const LiquidStaking = () => {
     }
     return (
         <>
-            <div className='pt-5-0 bg-black' >
+            <div className='pt-5-0 bg-black lg:pt-6-3 xl:pt-8-4' >
                 <PageTabs defaultIndex={2}></PageTabs>
                 <div className='w-full bg-liquid-staking-module flex flex-col justify-start items-center'>
-                    <div className='w-22-0 flex flex-col justify-start items-center text-white '>
+                    <div className='w-22-0 flex flex-col justify-start items-center text-white lg:w-38-8'>
                         <div className='w-full my-2-3'>
                             <div className='text-2-0 font-semibold'>Liquid Staking</div>
                             <div className='text-1-0'>Unlock liquidity while earning rewards</div>
@@ -52,8 +52,8 @@ const LiquidStaking = () => {
                     </div>
                 </div>
                 <div className='w-full flex flex-col justify-start items-center pb-2-0'>
-                    <div className='w-22-0 flex flex-col justify-start items-center text-white '>
-                        <div className='w-18-5 text-2-2 font-semibold my-1-0 '>FAQ</div>
+                    <div className='w-22-0 flex flex-col justify-start items-center text-white lg:w-38-8'>
+                        <div className='w-18-5 text-2-2 font-semibold my-1-0 lg:w-38-8'>FAQ</div>
                         <div className='w-full flex flex-col justify-start items-center'>
                             {liquidFAQItemsList.map((item, index) => {
                                 return <div key={index} className='text-white w-full p-1-8 text-1-2 bg-swap-copy-icon rounded-xl mb-1-0'>

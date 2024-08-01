@@ -72,6 +72,7 @@ module.exports = {
         "phone-simple-staking-one": "url('/images/phone/phone-simple-staking-one.png')",
         "pad-pools-banner-one": "url('/images/pad/pad-pools-banner-one.png')",
         "pc-pools-banner-one": "url('/images/pc/pc-pools-banner-one.png')",
+        "pad-position-managers-one": "url(/images/pad/pad-position-managers-one.png)"
 
       },
       colors: {

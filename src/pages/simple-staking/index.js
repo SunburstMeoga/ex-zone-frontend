@@ -17,12 +17,12 @@ const SimpleStaking = () => {
     }
     return (
         <>
-            <div className='pt-5-0 bg-black' >
+            <div className='pt-5-0 bg-black lg:pt-6-3 xl:pt-8-4' >
                 <PageTabs defaultIndex={3}></PageTabs>
                 <div className='w-full bg-phone-simple-staking-one bg-center bg-no-repeat bg-cover h-auto pt-4-8'>
                     <div className='flex flex-col justify-start items-center'>
-                        <div className='text-white text-3-0 font-bold text-left mb-0-7 w-21-4 voting-text-shadow'>Simple Staking</div>
-                        <div className='text-trading-yellow text-left line-height-point-122 text-2-0 font-semibold mb-6-4 voting-text-shadow'> Single-Sided Simple  <br></br> Earn Staking</div>
+                        <div className='text-white text-3-0 font-bold text-left mb-0-7 w-21-4 voting-text-shadow lg:w-full lg:pl-2-0'>Simple Staking</div>
+                        <div className='text-trading-yellow text-left line-height-point-122 text-2-0 font-semibold mb-6-4 voting-text-shadow lg:w-full lg:pl-2-0'> Single-Sided Simple  <br ></br> Earn Staking</div>
 
                     </div>
                 </div>
@@ -31,7 +31,7 @@ const SimpleStaking = () => {
                     <div className='bg-syrup-module rounded-t-3xl w-full h-auto'>
                         <div className='w-full flex flex-col justify-start items-center pt-0-6'>
                             {simpleStakingItemsList.map((item, index) => {
-                                return <div key={index} className='border-b border-voting-border py-1-0 border-dashed w-21-8' onClick={() => handleShowMore(item)}>
+                                return <div key={index} className='border-b border-voting-border py-1-0 border-dashed w-21-8 lg:w-38-8' onClick={() => handleShowMore(item)}>
                                     <div className='flex justify-between items-center'>
                                         <div className='flex justify-start items-start'>
                                             <div className='flex justify-start items-start'>
