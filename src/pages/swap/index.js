@@ -25,6 +25,8 @@ const Trade = () => {
     let handleSwapOperate = ({ id }) => {
         setOperateItems(operateItems = id)
         switch (id) {
+            case 1: router.push('/buy-crypto')
+                break;
             case 2: toggleStatisticsPopup()
                 break;
             case 3: toggleFirePopup()

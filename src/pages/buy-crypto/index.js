@@ -107,7 +107,7 @@ const BuyCrypto = () => {
                                 <div className=''>US ￥2.89</div>
                             </div>
                         </div>
-                        <div className='w-21-7 lg:w-34-9 h-4-7 rounded-lg bg-primary-purple border-2 border-primary-purple flex justify-center items-center font-medium text-1-5 mt-2-0'>Connect Wallet </div>
+                        <div className='w-21-7 lg:w-34-9 h-4-7 rounded-lg bg-primary-purple border-2 border-primary-purple flex justify-center items-center font-medium text-1-5 mt-2-0 transition ease-in duration-100  active:translate-y-0-1'>Connect Wallet </div>
 
                         <div className='flex justify-between items-center text-0-7 font-bold w-21-7 my-1-8 lg:w-34-9'>
                             <div className='text-voting-border'>By continuing you agree to our</div>

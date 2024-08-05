@@ -138,7 +138,7 @@ const Menu = () => {
                     </div>
                 </div>
                 <div className='flex justify-end items-center'>
-                    <div className='icon iconfont icon-menu text-white text-1-6 transition ease-linear duration-100 lg:hidden active:translate-y-0-2' onClick={() => { handleMenu() }}></div>
+                    <div className='icon iconfont icon-menu text-white text-1-6 transition ease-linear duration-100 lg:hidden active:scale-x-105' onClick={() => { handleMenu() }}></div>
                     <div></div>
                 </div>
             </div>
