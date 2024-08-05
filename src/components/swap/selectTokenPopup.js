@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import Popup from 'antd-mobile/es/components/popup'
 import { fireTypeItems, fireFilterItems, tokenList } from '@/dictionary/trade'
 const SelectTOkenPopup = ({ showSelectTokenPopup, onClose, selectTokenItem, isToken = false }) => {
-    let tokenList = [{ title: 'BTC', token: 'BINANCE:BTCUSDT', img: 'https://s3-symbol-logo.tradingview.com/crypto/XTVCBTC--big.svg', content: 'Binance Chain Native Token' },
-    { title: 'ETH', token: 'BINANCE:ETHUSDT', img: 'https://s3-symbol-logo.tradingview.com/crypto/XTVCETH--big.svg', content: 'Binance Chain Native Token' },
-    { title: 'BNB', token: 'BINANCE:BNBUSDT', img: 'https://s3-symbol-logo.tradingview.com/crypto/XTVCBNB--big.svg', content: 'Binance Chain Native Token' }]
+    let tokenList = [{ title: 'BTC', token: 'BINANCE:BTCUSDT', img: 'https://s3-symbol-logo.tradingview.com/crypto/XTVCBTC--big.svg', content: 'Binance Chain Native Token', value: 'binancecoin' },
+    { title: 'ETH', token: 'BINANCE:ETHUSDT', img: 'https://s3-symbol-logo.tradingview.com/crypto/XTVCETH--big.svg', content: 'Binance Chain Native Token', value: 'bitcoin' },
+    { title: 'BNB', token: 'BINANCE:BNBUSDT', img: 'https://s3-symbol-logo.tradingview.com/crypto/XTVCBNB--big.svg', content: 'Binance Chain Native Token', value: 'ethereum' }]
     return (
 
         <div>

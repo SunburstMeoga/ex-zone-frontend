@@ -65,7 +65,7 @@ const Menu = () => {
     }
     useEffect(() => {
         const initWeb3 = async () => {
-            console.log(walletAddress)
+            // console.log(walletAddress)
             if (typeof window !== 'undefined' && typeof window.ethereum !== 'undefined') {
                 let web3 = new Web3(window.ethereum)
                 setWeb3(web3 = web3)
@@ -86,7 +86,6 @@ const Menu = () => {
                                 localStorage.removeItem('account')
                                 setAccountAddress(accountAddress = null)
                                 dispatch(clearAddress());
-                                console.log('object')
                             }
                         })
                         .catch(error => {
@@ -129,7 +128,7 @@ const Menu = () => {
         <div className='w-full  flex flex-col justify-center items-center fixed -top-0-1 z-30'>
             <div className='w-22-0 flex justify-between items-center h-4-3 lg:h-6-3 relative z-20 lg:w-58-2 lg:py-2-6 xl:w-full xl:py-2-6'>
                 <div className='flex justify-start items-center'>
-                    <div className='w-6-9 lg:w-12-4 xl:ml-2-9' onClick={() => handleLogo()}>
+                    <div className='w-6-9 lg:w-12-4 xl:ml-2-9 transition ease-linear duration-100 lg:hidden active:-translate-x-0-2' onClick={() => handleLogo()}>
                         <img src='/images/logo.png' alt='logo' />
                     </div>
                     <div className='xl:ml-3-5 hidden xl:flex justify-start items-center '>
@@ -139,7 +138,7 @@ const Menu = () => {
                     </div>
                 </div>
                 <div className='flex justify-end items-center'>
-                    <div className='icon iconfont icon-menu text-white text-1-6 lg:hidden' onClick={() => { handleMenu() }}></div>
+                    <div className='icon iconfont icon-menu text-white text-1-6 transition ease-linear duration-100 lg:hidden active:translate-y-0-2' onClick={() => { handleMenu() }}></div>
                     <div></div>
                 </div>
             </div>

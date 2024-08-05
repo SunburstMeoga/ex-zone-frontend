@@ -52,6 +52,69 @@ img {
   /* object-fit: cover; */
 }
 
+/* Rail - 滑动条的轨道部分 */
+.rail {
+  background-color: #4C2ABE;
+  /* 滑动条的背景色 */
+  height: 6px;
+  /* 滑动条的高度 */
+  border-radius: 100px;
+  /* 滑动条的圆角 */
+}
+
+/* Track - 滑动条的实际轨迹部分 */
+.track {
+  background-color: #4C2ABE;
+  /* 滑动条的颜色 */
+  height: 6px;
+  /* 滑动条的高度 */
+  border-radius: 100px;
+  /* 滑动条的圆角 */
+}
+
+/* Thumb - 滑块本身 */
+.thumb {
+  background-color: #29E5AD;
+  /* 滑块的颜色 */
+  border: 2px solid #ffffff;
+  /* 滑块的边框颜色 */
+  width: 20px;
+  /* 滑块的宽度 */
+  height: 20px;
+  /* 滑块的高度 */
+  border-radius: 50%;
+  /* 滑块的圆角，使其成为圆形 */
+  top: -6px;
+}
+
+/* Mark - 间隔点 */
+.mark {
+  background-color: #627EEA;
+  /* 间隔点的颜色 */
+  border-radius: 50%;
+  /* 间隔点的圆角 */
+  width: 10px;
+  /* 间隔点的宽度 */
+  height: 10px;
+  /* 间隔点的高度 */
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Mark label - 可选的标记点标签 */
+.mark-label {
+  color: #627EEA;
+  /* 标签颜色 */
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+
 .line-height-point-133 {
   line-height: 133%;
 }

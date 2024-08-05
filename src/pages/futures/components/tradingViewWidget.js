@@ -32,7 +32,7 @@ function TradingViewWidget({ symbol }) {
       "support_host": "https://www.tradingview.com"
     }`;
       container.current.appendChild(script);
-      console.log(script)
+      // console.log(script)
       return () => {
         // 清除副作用
         containerRef.innerHTML = '';
