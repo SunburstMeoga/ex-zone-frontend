@@ -73,22 +73,24 @@ export const pageMenuItems = [
             },
             {
                 id: 12,
-                title: 'Simple Staking',
-                link: '/simple-staking',
-                meta: 'simple-staking',
-            },
-            {
-                id: 13,
                 title: 'Position Managers',
                 link: '/position-managers',
                 meta: 'position-managers',
             },
+
             {
-                id: 14,
+                id: 13,
                 title: 'Liquid Staking',
                 link: '/liquid-staking',
                 meta: 'liquid-staking',
             },
+            {
+                id: 14,
+                title: 'Simple Staking',
+                link: '/simple-staking',
+                meta: 'simple-staking',
+            },
+
         ]
     },
     // {

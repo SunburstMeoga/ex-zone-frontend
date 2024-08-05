@@ -56,7 +56,7 @@ const LimitOrders = () => {
                             </div>
                             <div className='w-full border rounded-2xl px-1-5 py-1-2 border-limit-currency-from bg-limit-orders-module flex justify-between  items-center'>
                                 <div className='flex justify-start items-center'>
-                                    <div className='w-2-5 h-2-5 rounded-full bg-futures-word'></div>
+                                    {/* <div className='w-2-5 h-2-5 rounded-full bg-futures-word'></div> */}
                                     <div className='flex flex-col justify-start items-start ml-0-4'>
                                         <div className='text-1-2 font-extrabold'>Mercuryo</div>
                                         <div className='text-voting-border text-0-8 font-semibold'>1 HAH = $596.89</div>

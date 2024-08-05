@@ -7,8 +7,9 @@ import CustomsizeRoutingPopup from '@/components/swap/customsizeRoutingPopup'
 import RecentTransPopup from '@/components/swap/recentTransPopup'
 import SelectTOkenPopup from '@/components/swap/selectTokenPopup'
 import { swapStateItems, swapOperateItems } from '@/dictionary/trade'
-
+import { useRouter } from 'next/router'
 const Trade = () => {
+    const router = useRouter()
     let [currentState, setCurrentState] = useState(1)
     let [operateItems, setOperateItems] = useState(1)
     let [showStatisticsPopup, setStatisticsPopup] = useState(false)
@@ -17,8 +18,9 @@ const Trade = () => {
     let [showCustomsizePopup, setCustomsizePopup] = useState(false)
     let [showRecentTransPopup, setRecentTransPopup] = useState(false)
     let [showSelectTokenPopup, setSelectTokenPopup] = useState(false)
-    let handleSwapState = ({ id }) => {
+    let handleSwapState = ({ id, link }) => {
         setCurrentState(currentState = id)
+        router.push(link)
     }
     let handleSwapOperate = ({ id }) => {
         setOperateItems(operateItems = id)
@@ -117,7 +119,7 @@ const Trade = () => {
                             </div>
                             <div className='font-bold text-1-5 text-menu-green'>0.5%</div>
                         </div>
-                        <div className='w-20-0 h-4-7 bg-primary-purple flex justify-center items-center text-white font-light text-1-5 rounded-xl lg:w-35-0 active:bg-opacity-90'>
+                        <div className='w-20-0 h-4-7 bg-primary-purple flex justify-center items-center text-white font-light text-1-5 rounded-xl lg:w-35-0  transition ease-in duration-100 active:bg-opacity-50 active:translate-y-0-1'>
                             Connect Wallet
                         </div>
                     </div>

@@ -151,7 +151,8 @@ module.exports = {
         "pad-pools": "#111020",
         "pad-pools-border": "#1C1A39",
         "pad-futures": "#0F0D18",
-        "connect-wallet": "#333"
+        "connect-wallet": "#333",
+        "simple-staking-card": "#100A1D"
       },
       fontSize: ({ theme }) => ({
         ...theme("spacing"),

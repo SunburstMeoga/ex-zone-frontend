@@ -2,7 +2,7 @@ import { Inter } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
 import { socialMediaItems } from '@/dictionary/footer'
-import { homeTotalItems, ecosystemItems, tradeItems, figuresItems, newsItems } from '@/dictionary/home'
+import { homeTotalItems, ecosystemItems, tradeItems, figuresItems, newsItems, userList } from '@/dictionary/home'
 import { useEffect, useState } from "react";
 import { useSelector } from 'react-redux'
 import AnimatedNumber from "@/components/AnimatedNumber";
@@ -14,7 +14,7 @@ export default function Home() {
   const [numberTwo, setNumberTwo] = useState(100982);
   const [numberThree, setNumberThree] = useState(2723462);
   const router = useRouter();
-  let userList = ['', '']
+
   let walletAddress = useSelector((state) => state.wallet.address);
   useEffect(() => {
     changeHomeTotal(homeTotal = homeTotalItems)
@@ -231,40 +231,40 @@ export default function Home() {
         <div className="flex flex-col justify-start items-center mt-2-7 ">
           <div className="flex flex-col justify-start items-center lg:w-57-8 lg:flex-row lg:justify-between lg:items-center">
             {userList.map((item, index) => {
-              return <div key={index} className="w-22-0 h-23-6 rounded-2xl bg-black25 mb-1-8 p-1-4 lg:w-28-3 lg:h-21-7">
+              return <div key={index} className="w-22-0 h-auto rounded-2xl bg-black25 mb-1-8 p-1-4 lg:w-28-3 lg:h-21-7">
                 <div className="flex justify-start items-center mb-1-2">
                   <div className="rounded-full w-4-0 h-4-0 overflow-hidden">
-                    <img src="https://pic1.zhimg.com/50/9b2a11a46cb0d1740e90b0f4f35e8a49_l.jpg?source=b6762063" alt=""></img>
+                    <img src={item.avatar} alt=""></img>
                   </div>
                   <div className="text-white font-light line-height-point-111 text-1-2 pl-1-8">
-                    <div className="">Ligne 9 </div>
-                    <div className="">@Ligne9 RATP</div>
+                    <div className="">{item.name} </div>
+                    <div className="">{item.email}</div>
                   </div>
                 </div>
                 <div className="text-1-0 font-light line-height-point-111 text-white mb-2-5">
-                  Trafic en temps réel, travaux & événements... Retrouvez-nous tous les jourssur votre #ligne9 ! La #RATP est operateur de mobilités pour @idfmobilites.
+                  {item.introduce}
                 </div>
                 <div>
                   <div className="flex justify-start items-center mb-0-5">
                     <div className="icon iconfont icon-address text-icon-gray" style={{ fontSize: '1rem' }}></div>
-                    <div className="ml-0-5 text-white">Paris</div>
+                    <div className="ml-0-5 text-white">{item.address}</div>
                   </div>
                   <div className="flex justify-start items-center mb-0-5">
                     <div className="icon iconfont icon-date text-icon-gray" style={{ fontSize: '1rem' }}></div>
-                    <div className="ml-0-5 text-white">Joined January 2009</div>
+                    <div className="ml-0-5 text-white">{item.time}</div>
                   </div>
                   <div className="flex justify-start items-center mb-0-5">
                     <div className="icon iconfont icon-link text-icon-gray" style={{ fontSize: '1rem' }}></div>
-                    <div className="ml-0-5 text-link-blue"> paris.fr/pages/gregoire…</div>
+                    <div className="ml-0-5 text-link-blue"> {item.link}</div>
                   </div>
                 </div>
                 <div className="flex justify-start items-start">
                   <div className="flex justify-start items-center text-1-0 text-white">
-                    <div className="font-bold">4,341</div>
+                    <div className="font-bold">{item.following}</div>
                     <div className="font-light pl-0-3" >Following</div>
                   </div>
                   <div className="flex justify-start items-center text-1-0 text-white ml-1-0">
-                    <div className="font-bold">68.3K</div>
+                    <div className="font-bold">{item.followers}</div>
                     <div className="font-light pl-0-3">Followers</div>
                   </div>
                 </div>
@@ -282,7 +282,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="w-full h-97-0 bg-home-banner-six bg-center bg-cover bg-no-repeat -mt-0-1 pt-3-4 lg:bg-pad-home-banner-six lg:h-auto lg:pt-6-5">
+      <div className="w-full pb-2-0 bg-home-banner-six bg-center bg-cover bg-no-repeat -mt-0-1 pt-3-4 lg:bg-pad-home-banner-six lg:h-auto lg:pt-6-5">
         <div className="flex flex-col justify-start items-center text-3-0 line-height-point-91 mb-1-8 lg:flex-row lg:justify-center lg:text-6-0 lg:mb-4-7">
           <div className="text-primary-purple font-medium">Featured</div>
           <div className="text-primary-red font-medium">News</div>
@@ -290,9 +290,9 @@ export default function Home() {
         <div className="flex flex-col justify-start items-center mb-1-6 lg:flex-row lg:justify-between lg:ml-auto lg:mr-auto lg:flex-wrap lg:w-58-8">
           {newsItems.map((item, index) => {
             return <div key={index} className="py-1-5 w-22-5 px-1-2 rounded-2xl bg-news-card mb-0-8 lg:px-2-0 lg:w-28-7">
-              <div className="rounded-xl lg:w-24-7">
-                <img className="lg:hidden" src="/images/phone/news.png" alt=""></img>
-                <img className="hidden lg:block" src="/images/pad/news.png" alt=""></img>
+              <div className="rounded-xl overflow-hidden lg:w-24-7">
+                <img className="lg:hidden " src={item.imgUrl} alt=""></img>
+                <img className="hidden lg:block" src={item.imgUrl} alt=""></img>
               </div>
               <div className="flex justify-between items-center text-white mt-1-0 mb-1-2 text-0-9 lg:text-1-0 lg:mt-1-4 lg:mb-2-0 lg:justify-start">
                 <div className="font-light line-height-point-111 lg">From {`[${item.from}]`}</div>
@@ -303,16 +303,16 @@ export default function Home() {
             </div>
           })}
         </div>
-        <div className="flex justify-center items-center lg:pb-2-0">
+        {/* <div className="flex justify-center items-center lg:pb-2-0">
           <div className="bg-primary-purple w-22-5 h-4-7 text-white text-2-0 rounded-xl flex justify-center items-center lg:w-30-8">More...</div>
-        </div>
+        </div> */}
       </div>
 
       <div className="w-full bg-home-banner-seven bg-center bg-cover bg-no-repeat h-37-0 flex flex-col justify-start items-center lg:bg-pad-home-banner-seven lg:h-auto ">
-        <div className="text-white font-bold text-3-0 line-height-point-111 pt-4-2 mb-8-2 w-24-5 lg:pt-9-0 lg:text-center lg:text-6-0 lg:font-bold lg:w-50-0 lg:mb-4-7">
+        <div className="text-white font-bold text-3-0 line-height-point-111 pt-4-2 mb-8-2 w-21-1 lg:pt-9-0 lg:text-center lg:text-6-0 lg:font-bold lg:w-50-0 lg:mb-4-7">
           Join <br className="lg:hidden"></br>Everyone's <br></br>Favorite <br></br>EX.zone Now!
         </div>
-        <div className="w-24-5 rounded-full h-6-6 bg-black text-white font-bold text-2-0 flex justify-center items-center lg:w-35-2 lg:h-6-5 lg:text-3-0 lg:mb-17-7">Connect Wallet</div>
+        <div className="w-21-1 rounded-full h-6-6 bg-black text-white font-bold text-2-0 flex justify-center items-center lg:w-35-2 lg:h-6-5 lg:text-3-0 lg:mb-17-7 transition ease-linear duration-100  active:bg-white active:text-black">Connect Wallet</div>
       </div>
     </div>
   );

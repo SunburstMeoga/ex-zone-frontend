@@ -74,9 +74,9 @@ const Add = () => {
                                                 })}
                                             </div>
                                         </div>}
-                                        {item.showMore && <div className='text-menu-green underline font-semibold text-1-5 text-center my-0-8'>
+                                        {/* {item.showMore && <div className='text-menu-green underline font-semibold text-1-5 text-center my-0-8'>
                                             Add V2 Liquidity
-                                        </div>}
+                                        </div>} */}
                                     </div>
                                 })}
                             </div>

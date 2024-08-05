@@ -85,7 +85,7 @@ const TradingReward = () => {
                         <div className='icon iconfont icon-left-arrow lg:text-1-5'></div>
                     </div>
                     <div className='flex justify-center items-center px-1-0 lg:text-1-5'>
-                        Page 4 of 4
+                        Page 1 of 1
                     </div>
                     <div className='flex justify-center items-center'>
                         <div className='icon iconfont icon-left-arrow rotate-180 lg:text-1-5'></div>
@@ -163,7 +163,7 @@ const TradingReward = () => {
                                 <div className='icon iconfont icon-left-arrow'></div>
                             </div>
                             <div className='flex justify-center items-center px-1-0'>
-                                Page 4 of 4
+                                Page 1 of 1
                             </div>
                             <div className='flex justify-center items-center'>
                                 <div className='icon iconfont icon-left-arrow rotate-180'></div>

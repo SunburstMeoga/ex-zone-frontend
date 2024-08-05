@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react'
 import Slider from 'react-slider';
 import { perpDetailsItems, pricePointItems, futuresOrderTypeItems, slPointItems } from '@/dictionary/pools'
 import TradingViewChart from './components/tradingViewWidget';
-import SelectTOkenPopup from '@/components/swap/selectTokenPopup'
+import SelectTokenPopup from '@/components/swap/selectTokenPopup'
 import axios from 'axios'
 import AnimatedNumber from "@/components/AnimatedNumber";
-
+import TradeMenu from '@/components/TradeMenu';
 const Futures = () => {
     let [displayType, setDisplayType] = useState(1)
     let [contractType, setContractType] = useState(1)
@@ -92,11 +92,13 @@ const Futures = () => {
         };
 
         fetchPrices();
-        intervalNumber
     }, [])
     return (
         <>
-            <div className='pt-5-0 bg-black lg:pt-6-3 lg:bg-pad-futures xl:pt-8-4'>
+            <div className='pt-4-8 lg:pt-6-9 bg-black'>
+                <div className='w-full py-1-0 relative z-10'>
+                    <TradeMenu defaultIndex={2}></TradeMenu>
+                </div>
                 <div className='flex flex-col justify-start items-center w-full'>
                     <div className='xl:flex justify-between items-start w-full xl:px-3-8 '>
                         <div className='xl:order-2 flex flex-col items-center xl:min-h-full xl:flex-1 xl:flex-grow'>
@@ -278,7 +280,7 @@ const Futures = () => {
                     </div>
                 </div>
             </div>
-            <SelectTOkenPopup showSelectTokenPopup={showSelectTokenPopup} onClose={toggleSelectTokenPopup} isToken={true} selectTokenItem={selectTokenItem}></SelectTOkenPopup>
+            <SelectTokenPopup showSelectTokenPopup={showSelectTokenPopup} onClose={toggleSelectTokenPopup} isToken={true} selectTokenItem={selectTokenItem}></SelectTokenPopup>
         </>
     )
 }

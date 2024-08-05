@@ -38,15 +38,18 @@ export const tradeMenuItems = [
 export const swapStateItems = [
     {
         id: 1,
-        title: 'MARKET'
+        title: 'MARKET',
+        link: '/swap'
     },
     {
         id: 2,
-        title: 'TWAP'
+        title: 'TWAP',
+        link: '/swap/twap'
     },
     {
         id: 3,
-        title: 'LIMIT'
+        title: 'LIMIT',
+        link: '/swap/limit'
     }
 ]
 export const swapOperateItems = [
@@ -307,18 +310,21 @@ export const providerItems = [
     {
         id: 1,
         title: 'Mercuryo',
+        imgUrl: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAAAAABXZoBIAAAA/klEQVR4AcXQEXTDABAG4M9lXIfQOFqXvleulyujYblQDMSC0cAoGJtVwtFYKHDbXpK85a2+T+/d/XfnHyW37Jp6rhnKrOr7qye6Auw/hz1IB6tbbXaIDI5hcRquB4tHg2sk4OXRN33Vju2SV7V8xDsYLy4fONZRAuXDGA24cM+BPO6gbiNiZ5JlZk2fQHyrTW6FxTneKOPHCUyZi744xyQB+xarNmZjAkZWeaxG0KVrZhe/eEWRweu56GNDjn2H+MsA03nHrIsN9Tvupcmh3RSTEcLittm2KlDmFqeYDTtEirA6z307OA7IK7Z/OADFJ8bU6ufcyqwpOfXbwfAFLNz2XLy7Vj8AAAAASUVORK5CYII=',
         price: '0.244',
         amp: '-1.280'
     },
     {
         id: 2,
         title: 'Transak',
+        imgUrl: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAZlBMVEVHcEwzi+4wiO0vhuwuhOsne+cgceU0i+0xiOwtg+onfOciduQtg+sdcOIQW9oRXNoZad8VZNwSXtoOV9cLeegBZN4PWdnv8/z////1+P41bNw0jO9Gg+YAUdcOWNk0jO40i+4VY91/aAhiAAAAInRSTlMAUo+2ylIh//////+f/5fr////////vf////9S//9RylJRl5qpAwAAAQFJREFUeAFl0gUWg0AMBNDg7rZb7/0v2QmBDYWp978IQhrPD8Iw8CO6JA6SNM2yLM/zIoj/rUwSQVhRVfXRQFpYIc3ZtLBt204NOVm/1ZZqgrCuH2q2+FoI64chBgabjaMUTlPHhcMw68RxMVJozW1CIUJ03wuNeYgZc3sOnBf5YoJiu9YUMGIaIxvUbjrTGzha81iR/8YTHw55GZMBF7yewMFaQbka0g42MT6fMEafMc8Bhq1jBMlCHy4UhbVHfBHt582u1j0Xw8bh07fhNMlJfe42A+PT1XCJCSmBzhRrEHJANXejqCmSC5sUap2mBIrpPE08a9M5pku+9YzUL3L5AZgBJtOznhgMAAAAAElFTkSuQmCC',
         price: '0.244',
         amp: '-1.280'
     },
     {
         id: 3,
         title: 'MoonPay',
+        imgUrl: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAS1BMVEX///+7kP+kZ//Tt/+hX/9wAP94AP///P99AP+HIf/p2v+vev+POf+ONP+obv/gzP/t4f+0gv+jY/+5i//x5/++lf/Env/48f/Jp/+h5VjdAAAAcklEQVR4AdXMtRHAQBAEwRPsihnzT1TMD77G7aqRv+e4ntF8ECYNEIZ0xVDEEI58ipM0ywuRMoL/tQoMQ6Jez19rEG5x1U8twiMUCnY8kbmC+YVhZsNUwf5CJgoOOBGxKI04rFJtVS6hEW1Dn+ddK/9tBlQVBSPChPAYAAAAAElFTkSuQmCC',
         price: '0.244',
         amp: '-1.280'
     },

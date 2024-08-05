@@ -65,7 +65,7 @@ const FirePopup = ({ showFirePopup, onClose }) => {
                             <div className='icon iconfont icon-left-arrow'></div>
                         </div>
                         <div className='flex justify-center items-center px-1-0 text-1-2'>
-                            Page 4 of 4
+                            Page 1 of 1
                         </div>
                         <div className='flex justify-center items-center w-1-7 h-1-7 rounded-full bg-primary-purple'>
                             <div className='icon iconfont icon-left-arrow rotate-180 '></div>

@@ -125,7 +125,7 @@ const Menu = () => {
         // console.log('Component re-rendered', walletAddress);
     }, [walletAddress]);
     return (
-        <div className='w-full  flex flex-col justify-center items-center fixed -top-0-1 z-30'>
+        <div className='w-full  flex flex-col justify-center items-center fixed -top-0-1 z-30 bg-black'>
             <div className='w-22-0 flex justify-between items-center h-4-3 lg:h-6-3 relative z-20 lg:w-58-2 lg:py-2-6 xl:w-full xl:py-2-6'>
                 <div className='flex justify-start items-center'>
                     <div className='w-6-9 lg:w-12-4 xl:ml-2-9 transition ease-linear duration-100 lg:hidden active:-translate-x-0-2' onClick={() => handleLogo()}>
@@ -165,7 +165,7 @@ const Menu = () => {
                                 </div>
                                 {item.hasChild && item.showChild && <div className='w-22-0 gradient-menu-item flex flex-col justify-start items-center' >
                                     {item.children.map((_item, _index) => {
-                                        return <div key={_index} onClick={() => { handleMenuItems(_item) }} className={`flex justify-center items-center w-full h-3-5 ${activeItem === _item.id ? 'bg-menu-green' : 'bg-transparent'}`}>
+                                        return <div key={_index} onClick={() => { handleMenuItems(_item) }} className={`flex justify-center items-center w-full h-3-5 active:bg-primary-green ${activeItem === _item.id ? '' : 'bg-transparent'}`}>
                                             <div className='w-12-6 text-white font-light text-1-0'>{_item.title}</div>
                                         </div>
                                     })}

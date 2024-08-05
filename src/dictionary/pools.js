@@ -45,15 +45,18 @@ export const syrupItems = [
     {
         id: 1,
         title: 'Stake HAH',
+        currency: 'HAH',
         illustrate: 'This product has been upgraded',
         totalStaked: 'Total staked',
-        stakedCount: '4,306,412 CAKE',
+        stakedCount: '4,306,02 HAH',
         showMore: false,
+        imgUrl: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAASFBMVEVHcEz3kxr3kxr3kxr3kxr3kxr3kxr3kxr3kxr3jAD3khX92734pU34nDP////95tL80qz7xZT+8ub5r2T3kQ33kxr3kxr6uXuN5P8aAAAAF3RSTlMAL2qjBor/vtb////////////////2JbbIuikAAAD7SURBVHgBhZJHkoUwDAVNEsjGz9n//jcdTGmIE3rbyiV10vXDRt+pF+NEB9N4dz3d6K9upgfz6RYSmEnTzvLI08TG8Cp2vvezzHAMz5e+o1QMiB4hIWUJbjPLDjk57CTWstEmC4nlCLQAR2KVqiRoAhxrD0Tp2p3r8wcIrBmApPZqOqTfZOYEgL+bDoeMED4iB5HSMhmgLSry2IRTa8ktPxxle9kyOGBl3cZyx43qpWFYyUbAiKxyBL1nCmumRjnOl9nCm9uwk9o4Dm89mCyLo+aOkQzHyFo/XmWWwtqm/HqU40306ZZ/H+yf1xSmQkKZ1JvaT8Mw9VUdfAG5uBUIY0iOdgAAAABJRU5ErkJggg==',
+        currencyImg: 'https://scan.hashahead.org/img/logo.c55c29e5.jpg',
         detailsItems: [
             {
                 id: 1,
                 title: 'APR:',
-                point: 1.48,
+                point: 2.234,
                 unitType: 'icon',
                 icon: 'icon-jisuanqi',
                 unit: '%'
@@ -61,7 +64,7 @@ export const syrupItems = [
             {
                 id: 2,
                 title: 'Ends:',
-                point: 1.48,
+                point: 2,
                 unitType: 'icon',
                 icon: 'icon-naozhong',
                 unit: 'days'
@@ -69,7 +72,7 @@ export const syrupItems = [
             {
                 id: 3,
                 title: 'PEPE Earned',
-                point: 1.48,
+                point: 4.09,
                 unitType: 'word',
                 unit: 'USD'
             }
@@ -96,16 +99,21 @@ export const syrupItems = [
     },
     {
         id: 2,
-        title: 'Stake HAH',
+        title: 'Stake USD3',
+        currency: 'USD3',
         illustrate: 'This product has been upgraded',
         totalStaked: 'Total staked',
-        stakedCount: '4,306,412 CAKE',
+        stakedCount: '4,412 USD3',
         showMore: false,
+        imgUrl: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAvVBMVEVHcEybiuGencgyNrtdV8R0ZcG6n74AAJ3bu75YY8mbzunbu8C7pe+Jd9DPsb+qmOin5O6a0enWt8C2ou1/hd/JrL95otmj3eyxnuug2OvGqr+RxORwjOKnlefJrL93lOZ9m+qokLjLtfaIq/Lzz8K5+/bxzsLatb2r7/R1merDqvK5pPHJs/XmxMC5/Pd/pfG6/vf40sC6//jty8LIq76mnejIsPTCrfKYreSz8/St8/aLlNd0kOOTicm3pcfjWWs4AAAAInRSTlMAg2IdUC58Df49+uv3VLq4/Z/Z4miqTNjRxpR/jp2pwexHbhm6OAAAAQ1JREFUKJF10tdygzAQBdDFdGyMEzu9y6ILYjDFLfn/z8pi8oBA2ifNnFlG3CuA4Wg2yKdy5PYcnl5kpu7D6GhK8JaG0e5JbDMahJHv3wsxC664Etkd7TG/mZq+D3r0j+oE52g0POW4+jA2gwa0yH4OUZn7+Yw3M6NFeI7jJD2syl3E47Kozt/bbZwQktROyd3J/b0gdcgYI03tDAvQrvSPyAuN++7rYLNVOLINMD96JI0HoHC9vs91sD+7C63xsHgbZ7AE2FzSDZgeW49CUDOaGd1BaUk76XSG6VlfbkoYc8eGOWCAFhrxpgZgBYGV4j+KDEvrNhtdiNgMoiI2fGFW+igzMKta9jJxND7wP7tLIiHYH0CqAAAAAElFTkSuQmCC',
+
+        currencyImg: 'https://www.3at.org/images/logo.png',
+
         detailsItems: [
             {
                 id: 1,
                 title: 'APR:',
-                point: 1.48,
+                point: 3.13,
                 unitType: 'icon',
                 icon: 'icon-jisuanqi',
                 unit: '%'
@@ -113,7 +121,7 @@ export const syrupItems = [
             {
                 id: 2,
                 title: 'Ends:',
-                point: 1.48,
+                point: 8,
                 unitType: 'icon',
                 icon: 'icon-naozhong',
                 unit: 'days'
@@ -121,7 +129,7 @@ export const syrupItems = [
             {
                 id: 3,
                 title: 'PEPE Earned',
-                point: 1.48,
+                point: 22.1,
                 unitType: 'word',
                 unit: 'USD'
             }
@@ -146,111 +154,111 @@ export const syrupItems = [
             }
         ]
     },
-    {
-        id: 3,
-        title: 'Stake HAH',
-        illustrate: 'This product has been upgraded',
-        totalStaked: 'Total staked',
-        stakedCount: '4,306,412 CAKE',
-        showMore: false,
-        detailsItems: [
-            {
-                id: 1,
-                title: 'APR:',
-                point: 1.48,
-                unitType: 'icon',
-                icon: 'icon-jisuanqi',
-                unit: '%'
-            },
-            {
-                id: 2,
-                title: 'Ends:',
-                point: 1.48,
-                unitType: 'icon',
-                icon: 'icon-naozhong',
-                unit: 'days'
-            },
-            {
-                id: 3,
-                title: 'PEPE Earned',
-                point: 1.48,
-                unitType: 'word',
-                unit: 'USD'
-            }
-        ],
-        viewItems: [
-            {
-                title: 'See Token Info'
-            },
-            {
-                title: 'View Project Site'
-            },
-            {
-                title: 'View Contract'
-            }
-        ],
-        statusItems: [
-            {
-                title: 'PEPE EARNED'
-            },
-            {
-                title: 'START STAKING'
-            }
-        ]
-    },
-    {
-        id: 4,
-        title: 'Stake HAH',
-        illustrate: 'This product has been upgraded',
-        totalStaked: 'Total staked',
-        stakedCount: '4,306,412 CAKE',
-        showMore: false,
-        detailsItems: [
-            {
-                id: 1,
-                title: 'APR:',
-                point: 1.48,
-                unitType: 'icon',
-                icon: 'icon-jisuanqi',
-                unit: '%'
-            },
-            {
-                id: 2,
-                title: 'Ends:',
-                point: 1.48,
-                unitType: 'icon',
-                icon: 'icon-naozhong',
-                unit: 'days'
-            },
-            {
-                id: 3,
-                title: 'PEPE Earned',
-                point: 1.48,
-                unitType: 'word',
-                unit: 'USD'
-            }
-        ],
-        viewItems: [
-            {
-                title: 'See Token Info'
-            },
-            {
-                title: 'View Project Site'
-            },
-            {
-                title: 'View Contract'
-            }
-        ],
-        statusItems: [
-            {
-                title: 'PEPE EARNED',
-                count: '12'
-            },
-            {
-                title: 'START STAKING',
-            }
-        ]
-    }
+    // {
+    //     id: 3,
+    //     title: 'Stake HAH',
+    //     illustrate: 'This product has been upgraded',
+    //     totalStaked: 'Total staked',
+    //     stakedCount: '4,306,412 CAKE',
+    //     showMore: false,
+    //     detailsItems: [
+    //         {
+    //             id: 1,
+    //             title: 'APR:',
+    //             point: 1.48,
+    //             unitType: 'icon',
+    //             icon: 'icon-jisuanqi',
+    //             unit: '%'
+    //         },
+    //         {
+    //             id: 2,
+    //             title: 'Ends:',
+    //             point: 1.48,
+    //             unitType: 'icon',
+    //             icon: 'icon-naozhong',
+    //             unit: 'days'
+    //         },
+    //         {
+    //             id: 3,
+    //             title: 'PEPE Earned',
+    //             point: 1.48,
+    //             unitType: 'word',
+    //             unit: 'USD'
+    //         }
+    //     ],
+    //     viewItems: [
+    //         {
+    //             title: 'See Token Info'
+    //         },
+    //         {
+    //             title: 'View Project Site'
+    //         },
+    //         {
+    //             title: 'View Contract'
+    //         }
+    //     ],
+    //     statusItems: [
+    //         {
+    //             title: 'PEPE EARNED'
+    //         },
+    //         {
+    //             title: 'START STAKING'
+    //         }
+    //     ]
+    // },
+    // {
+    //     id: 4,
+    //     title: 'Stake HAH',
+    //     illustrate: 'This product has been upgraded',
+    //     totalStaked: 'Total staked',
+    //     stakedCount: '4,306,412 CAKE',
+    //     showMore: false,
+    //     detailsItems: [
+    //         {
+    //             id: 1,
+    //             title: 'APR:',
+    //             point: 1.48,
+    //             unitType: 'icon',
+    //             icon: 'icon-jisuanqi',
+    //             unit: '%'
+    //         },
+    //         {
+    //             id: 2,
+    //             title: 'Ends:',
+    //             point: 1.48,
+    //             unitType: 'icon',
+    //             icon: 'icon-naozhong',
+    //             unit: 'days'
+    //         },
+    //         {
+    //             id: 3,
+    //             title: 'PEPE Earned',
+    //             point: 1.48,
+    //             unitType: 'word',
+    //             unit: 'USD'
+    //         }
+    //     ],
+    //     viewItems: [
+    //         {
+    //             title: 'See Token Info'
+    //         },
+    //         {
+    //             title: 'View Project Site'
+    //         },
+    //         {
+    //             title: 'View Contract'
+    //         }
+    //     ],
+    //     statusItems: [
+    //         {
+    //             title: 'PEPE EARNED',
+    //             count: '12'
+    //         },
+    //         {
+    //             title: 'START STAKING',
+    //         }
+    //     ]
+    // }
 ]
 export const stakedAmountItems = [
     {

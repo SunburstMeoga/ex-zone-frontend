@@ -77,7 +77,9 @@ const PositionManagers = () => {
                                         <div className='flex justify-start items-start'>
                                             <div className='flex justify-start items-start'>
                                                 <div className='w-1-2 h-1-2 rounded-full bg-futures-word'></div>
-                                                <div className='w-1-7 h-1-7 rounded-full bg-futures-word -ml-0-6'></div>
+                                                <div className='w-1-7 h-1-7 rounded-full bg-futures-word -ml-0-6 overflow-hidden'>
+                                                    <img className='object-cover' src='https://scan.hashahead.org/img/logo.c55c29e5.jpg'></img>
+                                                </div>
                                             </div>
                                             <div className='ml-0-7 text-white f'>
                                                 <div className='text-0-9 font-semibold mb-0-2'>{item.title}</div>

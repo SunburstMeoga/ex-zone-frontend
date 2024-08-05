@@ -3,6 +3,8 @@ import Switch from 'antd-mobile/es/components/switch'
 import CalculatorPopup from '@/components/pools/calculatorPopup'
 import { stakingStateItems, syrupItems } from '@/dictionary/pools';
 import PageTabs from '@/components/pools/pageTabs';
+import Toast from 'antd-mobile/es/components/toast'
+
 const Pools = () => {
     let [activeState, setActiveState] = useState(1)
     let [syrupListItems, changeSyrupListItems] = useState(syrupItems)
@@ -17,9 +19,17 @@ const Pools = () => {
             syrupListItems.map(item =>
                 item.id === id ? { ...item, showMore: !item.showMore } : item))
     }
-    let toggleCalculatorPopup = () => {
+    let toggleCalculatorPopup = (index) => {
         console.log('object')
+        if (index && index !== 0) return
         setCalculatorPopup(showCalculatorPopup = !showCalculatorPopup)
+    }
+    let showToast = () => {
+        Toast.show({
+            content: 'Network Error',
+
+        })
+        console.log(Toast)
     }
     return (
         <>
@@ -64,18 +74,18 @@ const Pools = () => {
                             </div>
                         </div>
                         <div className='w-full mt-1-5 xl:flex xl:order-1 xl:justify-start xl:w-auto'>
-                            <div className='w-full mb-1-5 xl:flex xl:items-center xl:flex-1'>
+                            {/* <div className='w-full mb-1-5 xl:flex xl:items-center xl:flex-1'>
                                 <div className='text-white text-1-3 mb-0-8 xl:mb-0-1 xl:mr-1-0'>SORT BY</div>
                                 <div className='rounded-2xl border border-primary-purple w-full h-3-1 lg:h-4-5 lg:border-liquid-staking-border lg:bg-pad-pools-border xl:w-23-4'>
 
                                 </div>
-                            </div>
-                            <div className='w-full mb-1-5 xl:flex xl:items-center xl:w-auto xl:ml-2-0'>
+                            </div> */}
+                            {/* <div className='w-full mb-1-5 xl:flex xl:items-center xl:w-auto xl:ml-2-0'>
                                 <div className='text-white text-1-3 mb-0-8 xl:mb-0-1 xl:mr-1-0'>SEARCH</div>
                                 <div className='rounded-2xl border border-primary-purple w-full h-3-1 lg:h-4-5 lg:border-liquid-staking-border lg:bg-pad-pools-border xl:w-23-4'>
 
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                     <div className='px-2-7 hidden xl:block w-full'>
@@ -86,7 +96,9 @@ const Pools = () => {
                                         <div className='flex justify-start items-center mr-7-5'>
                                             <div className='flex justify-start items-end'>
                                                 <div className='w-2-8 h-2-8 rounded-full bg-futures-word'></div>
-                                                <div className='w-2-0 h-2-0 rounded-full bg-futures-word border border-black -ml-0-6'></div>
+                                                <div className='w-2-0 h-2-0 rounded-full bg-futures-word border border-black -ml-0-6 overflow-hidden'>
+                                                    <img className='object-cover' src='https://scan.hashahead.org/img/logo.c55c29e5.jpg'></img>
+                                                </div>
                                             </div>
                                             <div className='flex ml-0-7 flex-col justify-start items'>
                                                 <div className='text-white text-1-5 font-semibold'>{item.title}</div>
@@ -168,7 +180,7 @@ const Pools = () => {
                                     <div className='icon iconfont icon-left-arrow text-2-0'></div>
                                 </div>
                                 <div className='flex justify-center items-center px-2-0 text-1-5'>
-                                    Page 4 of 4
+                                    Page 1 of 1
                                 </div>
                                 <div className='flex justify-center items-center w-2-8 h-2-8 rounded-full bg-primary-purple'>
                                     <div className='icon iconfont icon-left-arrow rotate-180 text-2-0'></div>
@@ -176,15 +188,19 @@ const Pools = () => {
                             </div>
                         </div>
                     </div>
-                    <div className='bg-syrup-module rounded-t-3xl w-full h-auto lg:bg-none lg:rounded-3xl lg:w-38-8 lg:px-1-7 lg:border lg:border-liquid-staking-border lg:bg-pad-pools-border lg:mb-3-9 xl:hidden'>
+                    {activeState === 1 ? <div className='bg-syrup-module rounded-t-3xl w-full h-auto lg:bg-none lg:rounded-3xl lg:w-38-8 lg:px-1-7 lg:border lg:border-liquid-staking-border lg:bg-pad-pools-border lg:mb-3-9 xl:hidden'>
                         <div className='w-full flex flex-col justify-start items-center'>
                             {syrupListItems.map((item, index) => {
                                 return <div key={index} className='w-21-8 pt-1-0 border-b border-dashed border-voting-border lg:w-36-1'>
                                     <div className='w-full flex justify-between items-center' onClick={() => handleShowMore(item)}>
                                         <div className='flex justify-start items-start'>
                                             <div className='flex justify-start items-end'>
-                                                <div className='w-1-7 h-1-7 rounded-full bg-futures-word'></div>
-                                                <div className='w-1-1 h-1-1 rounded-full bg-futures-word border border-black -ml-0-6'></div>
+                                                <div className='w-1-7 h-1-7 rounded-full border border-black overflow-hidden'>
+                                                    <img className='object-cover' src={item.imgUrl}></img>
+                                                </div>
+                                                <div className='w-1-1 h-1-1 rounded-full bg-futures-word border border-black -ml-0-6 overflow-hidden'>
+                                                    <img className='object-cover' src={item.currencyImg}></img>
+                                                </div>
                                             </div>
                                             <div className='flex ml-0-7 flex-col justify-start items'>
                                                 <div className='text-white text-0-8 font-semibold'>{item.title}</div>
@@ -194,7 +210,7 @@ const Pools = () => {
                                         <div className='flex justify-end items-center text-white'>
                                             <div className='flex flex-col justify-start items-end mr-1-2'>
                                                 <div className='text-0-7 font-medium mb-0-2'>{item.totalStaked}</div>
-                                                <div className='text-0-8 font-medium'>{item.totalStaked} HAH</div>
+                                                <div className='text-0-8 font-medium'>{item.totalStaked} {item.currency}</div>
                                             </div>
                                             <div className={`icon iconfont icon-down2 text-0-6 duration-100 transition ease-in-out ${item.showMore ? 'rotate-180' : ''}`}></div>
                                         </div>
@@ -202,7 +218,7 @@ const Pools = () => {
                                     <div className={`duration-100 transition ease-in-out ${item.showMore ? 'scale-y-100 h-auto' : 'scale-y-0 h-0-1'}`}>
                                         <div className={`mt-1-0 flex justify-between items-center mb-0-7 `}>
                                             {item.detailsItems.map((_item, _index) => {
-                                                return <div key={_index} className='bg-syrup-card border border-pools-border rounded-xl py-0-6 px-0-4 text-white w-7-0 lg:w-10-4' onClick={() => toggleCalculatorPopup()}>
+                                                return <div key={_index} className='bg-syrup-card border border-pools-border rounded-xl py-0-6 px-0-4 text-white w-7-0 lg:w-10-4' onClick={() => toggleCalculatorPopup(_index)}>
                                                     <div className='text-0-7 mb-0-2'>{_item.title}</div>
                                                     <div className='flex justify-between items-baseline font-medium'>
                                                         <div className='flex justify-start items-baseline'>
@@ -219,7 +235,7 @@ const Pools = () => {
                                         </div>
                                         <div className='w-full'>
                                             {item.viewItems.map((_item, _index) => {
-                                                return <div key={_index} className='bg-black rounded-xl flex justify-between items-center py-0-6 px-1-0 text-menu-green mb-0-8'>
+                                                return <div key={_index} className='bg-black rounded-xl flex justify-between items-center py-0-6 px-1-0 text-menu-green mb-0-8 transition ease-in duration-100 active:bg-opacity-50 active:scale-95' onClick={showToast}>
                                                     <div className='text-0-8'>{_item.title}</div>
                                                     <div className='icon iconfont icon-right'></div>
                                                 </div>
@@ -232,7 +248,7 @@ const Pools = () => {
                                                         <div className='text-0-7'>{_item.title}</div>
                                                         <div className='text-1-2 mt-0-3'>{_item.count}</div>
                                                     </div>
-                                                    <div className='px-1-0 font-bold text-0-8 rounded-lg bg-primary-purple flex justify-center items-center h-1-9'>Connect Wallet</div>
+                                                    <div className='px-1-0 font-bold text-0-8 rounded-lg bg-primary-purple flex justify-center items-center h-1-9 transition ease-in duration-100 active:bg-opacity-50 active:translate-y-0-1' onClick={showToast}>Connect Wallet</div>
                                                 </div>
                                             })}
                                         </div>
@@ -245,13 +261,15 @@ const Pools = () => {
                                 <div className='icon iconfont icon-left-arrow'></div>
                             </div>
                             <div className='flex justify-center items-center px-1-0 text-1-2'>
-                                Page 4 of 4
+                                Page 1 of 1
                             </div>
                             <div className='flex justify-center items-center w-1-7 h-1-7 rounded-full bg-primary-purple'>
                                 <div className='icon iconfont icon-left-arrow rotate-180 '></div>
                             </div>
                         </div>
-                    </div>
+                    </div> : <div className='w-7/12 py-1-0'>
+                        <img src='/images/phone/empty.png'></img>
+                    </div>}
                 </div>
                 <CalculatorPopup showCalculatorPopup={showCalculatorPopup} onClose={toggleCalculatorPopup}></CalculatorPopup>
             </div >

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { strykeInfoItems, transTypeItems, strykeDateItems } from '@/dictionary/pools'
 import Switch from 'antd-mobile/es/components/switch'
-
+import TradeMenu from '@/components/TradeMenu'
 const Stryke = () => {
     let [transType, setTransType] = useState(1)
     let [dataType, setDataType] = useState(1)
@@ -21,7 +21,10 @@ const Stryke = () => {
     }
     return (
         <>
-            <div className='pt-5-0 bg-black text-white'>
+            <div className='pt-4-8 lg:pt-6-9 bg-black'>
+                <div className='w-full py-1-0 relative z-10'>
+                    <TradeMenu defaultIndex={3}></TradeMenu>
+                </div>
                 <div className='flex flex-col justify-start items-center w-full'>
                     <div className='w-22-0 flex justify-between items-center mb-1-0'>
                         <div className='flex justify-start items-center'>
@@ -100,7 +103,7 @@ const Stryke = () => {
                                 <div className='icon iconfont icon-left-arrow'></div>
                             </div>
                             <div className='flex justify-center items-center px-1-0 text-0-8 text-swap-border'>
-                                Page 4 of 4
+                                Page 1 of 1
                             </div>
                             <div className='flex justify-center items-center w-1-7 h-1-7 rounded-full bg-primary-purple'>
                                 <div className='icon iconfont icon-left-arrow rotate-180'></div>
