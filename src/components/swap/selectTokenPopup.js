@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Popup from 'antd-mobile/es/components/popup'
 import { fireTypeItems, fireFilterItems, tokenList } from '@/dictionary/trade'
-const SelectTOkenPopup = ({ showSelectTokenPopup, onClose, selectTokenItem, isToken = false }) => {
+const SelectTokenPopup = ({ showSelectTokenPopup, onClose, selectTokenItem, isToken = false }) => {
     let tokenList = [{ title: 'BTC', token: 'BINANCE:BTCUSDT', img: 'https://s3-symbol-logo.tradingview.com/crypto/XTVCBTC--big.svg', content: 'Binance Chain Native Token', value: 'binancecoin', balance: 234.20 },
     { title: 'ETH', token: 'BINANCE:ETHUSDT', img: 'https://s3-symbol-logo.tradingview.com/crypto/XTVCETH--big.svg', content: 'Binance Chain Native Token', value: 'bitcoin', balance: 89238.28 },
     { title: 'USD3', token: 'BINANCE:BNBUSDT', img: 'https://www.3at.org/images/logo.png', content: 'Binance Chain Native Token', value: 'ethereum', balance: 100023.23 }
@@ -34,7 +34,7 @@ const SelectTOkenPopup = ({ showSelectTokenPopup, onClose, selectTokenItem, isTo
                                         <div className='text-white'>{item.title}</div>
                                         <div className='text-primary-60'>{item.content}</div>
                                     </div>}
-                                    {isToken && <div className='text-white text-1-3 ml-1-3'>{item.token}</div>}
+                                    {isToken && <div className='text-white text-1-3 ml-1-3'>{item.title}</div>}
                                 </div>
                                 {
                                     !isToken && <div className='icon iconfont icon-right1 text-1-0'></div>
@@ -48,4 +48,4 @@ const SelectTOkenPopup = ({ showSelectTokenPopup, onClose, selectTokenItem, isTo
     )
 }
 
-export default SelectTOkenPopup
+export default SelectTokenPopup

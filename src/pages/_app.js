@@ -19,7 +19,25 @@ const App = ({ Component, pageProps }) => {
 
     // Attach the event listener to handle window resize
     window.addEventListener('resize', handleResize);
+    const fetchPrices = async () => {
+      try {
+        const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,binancecoin&vs_currencies=usd&include_24hr_change=true')
+        const data = await response.json()
+        console.log('API Response:', data)
+        localStorage.setItem('btctousdt', data.bitcoin.usd)
+        localStorage.setItem('ethtousdt', data.ethereum.usd)
+        localStorage.setItem('usd3tousdt', 1)
+        // setLoading(false);
+      } catch (error) {
+        console.error('Error fetching prices:', error);
 
+        // setError(error);
+        // setLoading(false);
+        // setLoading(false);
+      }
+    };
+
+    fetchPrices();
     // Clean up the event listener on unmount
     return () => window.removeEventListener('resize', handleResize);
   }, []);

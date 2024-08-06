@@ -115,7 +115,7 @@ const Futures = () => {
                                         {`${prices[tokenValue].usd.toFixed(2)}`}
                                     </div>
                                     <div className={`text-0-7 font-medium ml-0-4 ${prices.binancecoin.usd_24h_change < 0 ? 'text-primary-red' : ''}`}>
-                                        {`${prices[tokenValue].usd_24h_change.toFixed(2)} %`}
+                                        {`${prices[tokenValue].usd_24h_change > 0 ? '+' : ''}`}{`${prices[tokenValue].usd_24h_change.toFixed(2)} %`}
                                     </div>
                                 </div>}
                             </div>
