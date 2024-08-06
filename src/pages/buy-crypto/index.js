@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import TradeMenu from '@/components/TradeMenu'
 import { liquidityOperateItems, tokenPair, providerItems, FAQItems } from '@/dictionary/trade'
 import SelectTokenPopup from '@/components/swap/selectTokenPopup'
-
+import DialogPopup from '@/components/DialogPopup'
 const BuyCrypto = () => {
     let [FAQItemsList, setFAQItems] = useState(FAQItems)
     let [showPayMethod, setShowPayMethod] = useState(false)
@@ -11,8 +11,9 @@ const BuyCrypto = () => {
     let [fromTokenInfo, setFromTokenInfo] = useState({ title: 'ETH', token: 'BINANCE:ETHUSDT', img: 'https://s3-symbol-logo.tradingview.com/crypto/XTVCETH--big.svg', content: 'Binance Chain Native Token', value: 'ethereum', balance: 89238.28 })
     let [toTokenInfo, setToTokenInfo] = useState({ title: 'USD3', token: 'BINANCE:BNBUSDT', img: 'https://www.3at.org/images/logo.png', content: 'Binance Chain Native Token', value: 'usd3', balance: 100023.23 })
     let [tokenType, setTokenType] = useState('')
-    let [toTokenPrice, setToTokenPrice] = useState(null)
-    let [fromTokenPrice, setFromTokenPrice] = useState(null)
+    let [toTokenPrice, setToTokenPrice] = useState('')
+    let [fromTokenPrice, setFromTokenPrice] = useState('')
+    let [showDialogPopup, setShowDialogPopup] = useState(false)
     let handleShowMore = ({ id }) => {
         console.log(id)
         setFAQItems(FAQItemsList =>
@@ -36,19 +37,31 @@ const BuyCrypto = () => {
         toggleSelectTokenPopup()
     }
     const swapTokenInfo = () => {
-        setToTokenPrice(toTokenPrice = null)
-        setFromTokenPrice(fromTokenPrice = null)
+        setToTokenPrice(toTokenPrice = '')
+        setFromTokenPrice(fromTokenPrice = '')
+        console.log(toTokenPrice, fromTokenPrice)
         setFromTokenInfo((fromTokenInfo) => {
             setToTokenInfo((toTokenInfo) => fromTokenInfo)
             return toTokenInfo
         })
     }
     const handleFromTokenPriceChange = (tokenInfo) => (event) => {
-        console.log(tokenInfo)
+        console.log(event.target.value)
+        setFromTokenPrice(event.target.value)
         setToTokenPrice(event.target.value * Number(tokenInfo.value === 'ethereum' ? localStorage.getItem('ethtousdt') : localStorage.getItem('btctousdt')))
+    }
+    const toggleDialogPopup = () => {
+        setShowDialogPopup(showDialogPopup = !showDialogPopup)
+    }
+    const handleConnectWallet = () => {
+        toggleDialogPopup()
+    }
+    const closeMask = () => {
+        toggleDialogPopup()
     }
     return (
         <>
+            <DialogPopup showDialogPopup={showDialogPopup} type='fail' content={'Network error, please try again'} closeMask={closeMask}></DialogPopup>
             <SelectTokenPopup showSelectTokenPopup={showSelectTokenPopup} onClose={toggleSelectTokenPopup} isToken={true} selectTokenItem={selectTokenItem}></SelectTokenPopup>
             <div className='pt-4-8 lg:pt-6-9 bg-buy-module transition duration-200 ease-linear'>
                 <div className='w-full flex flex-col justify-start items-center relative'>
@@ -71,7 +84,7 @@ const BuyCrypto = () => {
                         <div className='w-20-0 lg:w-34-9  flex flex-col justify-start items-center'>
                             <div className='w-full border rounded-2xl px-0-9 py-1-2  border-liquid-staking-border bg-primary-50 flex justify-between  items-center duration-100 transition active:opacity-80' >
                                 <div className='text-1-2'>
-                                    <input className='bg-transparent w-full' value={fromTokenPrice} onChange={handleFromTokenPriceChange(fromTokenInfo)} placeholder='0.0'></input>
+                                    <input className='bg-transparent w-full' type='number' value={fromTokenPrice} onChange={handleFromTokenPriceChange(fromTokenInfo)} placeholder='0.0'></input>
                                 </div>
                                 <div className='flex justify-end items-center' onClick={() => toggleSelectTokenPopup('from')}>
                                     <div className='w-1-5 h-1-5 rounded-full bg-white overflow-hidden'>
@@ -183,7 +196,7 @@ const BuyCrypto = () => {
                                 </div>
                             </div>}
                         </div>
-                        <div className='w-21-7 lg:w-34-9 h-4-7 rounded-lg bg-primary-purple border-2 border-primary-purple flex justify-center items-center font-medium text-1-5 mt-2-0 transition ease-in duration-100  active:translate-y-0-1'>Connect Wallet </div>
+                        <div onClick={handleConnectWallet} className='w-21-7 lg:w-34-9 h-4-7 rounded-lg bg-primary-purple border-2 border-primary-purple flex justify-center items-center font-medium text-1-5 mt-2-0 transition ease-in duration-100  active:translate-y-0-1'>Connect Wallet </div>
 
                         <div className='flex justify-between items-center text-0-7 font-bold w-21-7 my-1-8 lg:w-34-9'>
                             <div className='text-voting-border'>By continuing you agree to our</div>

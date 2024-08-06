@@ -32,7 +32,7 @@ const SelectTokenPopup = ({ showSelectTokenPopup, onClose, selectTokenItem, isTo
                                     </div>
                                     {!isToken && <div className='ml-1-0'>
                                         <div className='text-white'>{item.title}</div>
-                                        <div className='text-primary-60'>{item.content}</div>
+                                        {/* <div className='text-primary-60'>{item.content}</div> */}
                                     </div>}
                                     {isToken && <div className='text-white text-1-3 ml-1-3'>{item.title}</div>}
                                 </div>

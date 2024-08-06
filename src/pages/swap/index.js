@@ -5,7 +5,7 @@ import FirePopup from '@/components/swap/firePopup'
 import SettingPopup from '@/components/swap/settingPopup'
 import CustomsizeRoutingPopup from '@/components/swap/customsizeRoutingPopup'
 import RecentTransPopup from '@/components/swap/recentTransPopup'
-import SelectTOkenPopup from '@/components/swap/selectTokenPopup'
+import SelectTokenPopup from '@/components/swap/selectTokenPopup'
 import { swapStateItems, swapOperateItems } from '@/dictionary/trade'
 import { useRouter } from 'next/router'
 const Trade = () => {
@@ -57,6 +57,10 @@ const Trade = () => {
     let toggleSelectTokenPopup = () => {
         console.log('object')
         setSelectTokenPopup(showSelectTokenPopup = !showSelectTokenPopup)
+    }
+    const selectTokenItem = (item) => {
+        console.log(item)
+        toggleSelectTokenPopup()
     }
     return (
         <>
@@ -133,7 +137,7 @@ const Trade = () => {
             <SettingPopup showSettingPopup={showSettingPopup} onClose={toggleSettingPopup} handleCusRouting={toggleCustomsizePopup}></SettingPopup>
             <CustomsizeRoutingPopup showCustomsizePopup={showCustomsizePopup} onClose={toggleCustomsizePopup}></CustomsizeRoutingPopup>
             <RecentTransPopup showRecentTransPopup={showRecentTransPopup} onClose={toggleRecentTransPopup}></RecentTransPopup>
-            <SelectTOkenPopup showSelectTokenPopup={showSelectTokenPopup} onClose={toggleSelectTokenPopup}></SelectTOkenPopup>
+            <SelectTokenPopup showSelectTokenPopup={showSelectTokenPopup} onClose={toggleSelectTokenPopup} selectTokenItem={selectTokenItem}></SelectTokenPopup>
         </>
     )
 }
