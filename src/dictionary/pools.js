@@ -502,22 +502,24 @@ export const positionManagersItems = [
 export const simpleStakingItems = [
     {
         id: 1,
+        node: 'USD3',
+        img: 'https://www.3at.org/images/logo.png',
         title: 'STAKE & EARN',
         aprPoint: '0.0075%~0.019%',
-        totalStaked: '241234.2',
-        totalUSD: '~33,547.62',
+        totalStaked: '244.2',
+        totalUSD: '~33.62',
         detailsItems: [
             {
                 id: 1,
                 title: '30D ARP:',
-                upto: '0.0085%',
-                preUpto: '0.016%',
+                upto: '0.0062%',
+                preUpto: '0.042%',
             },
             {
                 id: 2,
                 title: '60D ARP:',
-                upto: '0.0085%',
-                preUpto: '0.016%',
+                upto: '0.0070%',
+                preUpto: '0.011%',
             }, {
                 id: 3,
                 title: '90D ARP:',
@@ -529,85 +531,89 @@ export const simpleStakingItems = [
     },
     {
         id: 2,
+        node: 'BTC',
+        img: 'https://s3-symbol-logo.tradingview.com/crypto/XTVCBTC--big.svg',
         title: 'STAKE & EARN',
-        aprPoint: '0.0075%~0.019%',
-        totalStaked: '241234.2',
-        totalUSD: '~33,547.62',
+        aprPoint: '0.0030%~0.050%',
+        totalStaked: '865.2',
+        totalUSD: '~234.62',
         detailsItems: [
             {
                 id: 1,
                 title: '30D ARP:',
-                upto: '0.0085%',
-                preUpto: '0.016%',
+                upto: '0.0030%',
+                preUpto: '0.028%',
             },
             {
                 id: 2,
                 title: '60D ARP:',
-                upto: '0.0085%',
-                preUpto: '0.016%',
+                upto: '0.0040%',
+                preUpto: '0.023%',
             }, {
                 id: 3,
                 title: '90D ARP:',
-                upto: '0.0085%',
-                preUpto: '0.016%',
+                upto: '0.0050%',
+                preUpto: '0.047%',
             }
 
         ]
     },
     {
         id: 3,
+        node: 'ETH',
+        img: 'https://s3-symbol-logo.tradingview.com/crypto/XTVCETH--big.svg',
         title: 'STAKE & EARN',
-        aprPoint: '0.0075%~0.019%',
-        totalStaked: '241234.2',
-        totalUSD: '~33,547.62',
+        aprPoint: '0.0043%~0.0080%',
+        totalStaked: '753.2',
+        totalUSD: '~898,7.62',
         detailsItems: [
             {
                 id: 1,
                 title: '30D ARP:',
-                upto: '0.0085%',
+                upto: '0.00845%',
                 preUpto: '0.016%',
             },
             {
                 id: 2,
                 title: '60D ARP:',
-                upto: '0.0085%',
-                preUpto: '0.016%',
+                upto: '0.0062%',
+                preUpto: '0.0027%',
             }, {
                 id: 3,
                 title: '90D ARP:',
-                upto: '0.0085%',
-                preUpto: '0.016%',
+                upto: '0.0080%',
+                preUpto: '0.019%',
             }
 
         ]
     },
-    {
-        id: 4,
-        title: 'STAKE & EARN',
-        aprPoint: '0.0075%~0.019%',
-        totalStaked: '241234.2',
-        totalUSD: '~33,547.62',
-        detailsItems: [
-            {
-                id: 1,
-                title: '30D ARP:',
-                upto: '0.0085%',
-                preUpto: '0.016%',
-            },
-            {
-                id: 2,
-                title: '60D ARP:',
-                upto: '0.0085%',
-                preUpto: '0.016%',
-            }, {
-                id: 3,
-                title: '90D ARP:',
-                upto: '0.0085%',
-                preUpto: '0.016%',
-            }
+    // {
+    //     id: 4,
+    //     title: 'STAKE & EARN',
+    //     aprPoint: '0.0075%~0.019%',
+    //     totalStaked: '241234.2',
+    //     totalUSD: '~33,547.62',
+    //     detailsItems: [
+    //         {
+    //             id: 1,
+    //             title: '30D ARP:',
+    //             upto: '0.0085%',
+    //             preUpto: '0.016%',
+    //         },
+    //         {
+    //             id: 2,
+    //             title: '60D ARP:',
+    //             upto: '0.0085%',
+    //             preUpto: '0.016%',
+    //         }, {
+    //             id: 3,
+    //             title: '90D ARP:',
+    //             upto: '0.0085%',
+    //             preUpto: '0.016%',
+    //         }
 
-        ]
-    }
+    //     ]
+    // }
 ]
 export const liquidFAQItems = [
     {

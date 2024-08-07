@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
 import PageTabs from '@/components/pools/pageTabs';
 import CalculatorPopup from '@/components/pools/calculatorPopup'
-
+import DialogPopup from '@/components/DialogPopup'
 
 import { simpleStakingItems } from '@/dictionary/pools'
 const SimpleStaking = () => {
     let [activeState, setActiveState] = useState(1)
     let [simpleStakingItemsList, toggleItemShow] = useState(simpleStakingItems)
     let [showCalculatorPopup, setCalculatorPopup] = useState(false)
+    let [showDialogPopup, setShowDialogPopup] = useState(false)
+    let [dialogContent, setDialogContent] = useState('Network error, please try again')
     let handleState = ({ id }) => {
         console.log(id)
         setActiveState(activeState = id)
@@ -22,8 +24,20 @@ const SimpleStaking = () => {
         console.log('object')
         setCalculatorPopup(showCalculatorPopup = !showCalculatorPopup)
     }
+    const closeMask = () => {
+        toggleDialogPopup()
+    }
+    const handleConnectWallet = () => {
+        console.log('click')
+        setDialogContent('Network error, please try again')
+        toggleDialogPopup()
+    }
+    const toggleDialogPopup = () => {
+        setShowDialogPopup(showDialogPopup = !showDialogPopup)
+    }
     return (
         <>
+            <DialogPopup showDialogPopup={showDialogPopup} type='fail' content={dialogContent} closeMask={closeMask}></DialogPopup>
             <CalculatorPopup showCalculatorPopup={showCalculatorPopup} onClose={toggleCalculatorPopup}></CalculatorPopup>
             <div className='pt-5-0 bg-black lg:pt-6-3 xl:pt-8-4' >
                 <PageTabs defaultIndex={3}></PageTabs>
@@ -43,11 +57,13 @@ const SimpleStaking = () => {
                                     <div className='flex justify-between items-center w-21-8 ml-auto mr-auto pb-1-0'>
                                         <div className='flex justify-start items-start'>
                                             <div className='flex justify-start items-start'>
-                                                <div className='w-1-7 h-1-7 rounded-full bg-futures-word'></div>
+                                                <div className='w-1-7 h-1-7 rounded-full bg-white  overflow-hidden'>
+                                                    <img src={item.img}></img>
+                                                </div>
                                             </div>
                                             <div className='ml-0-7 text-white h-2-6'>
                                                 <div className='text-0-7 font-semibold'>{item.title}</div>
-                                                <div className='font-semibold text-1-2'>HAH</div>
+                                                <div className='font-semibold text-1-2'>{item.node}</div>
                                             </div>
                                         </div>
                                         <div className='flex justify-start items-start'>
@@ -88,7 +104,7 @@ const SimpleStaking = () => {
                                             <div className='font-semibold text-0-9 mt-1-5 mb-1-0'>
                                                 START HAH
                                             </div>
-                                            <div className='text-0-9 font-bold w-full h-3-0 flex justify-center items-center bg-primary-purple rounded-xl  transition ease-in duration-100 active:bg-opacity-50 active:text-gray-300'>Connect Wallet</div>
+                                            <div onClick={handleConnectWallet} className='text-0-9 font-bold w-full h-3-0 flex justify-center items-center bg-primary-purple rounded-xl  transition ease-in duration-100 active:bg-opacity-50 active:text-gray-300'>Connect Wallet</div>
                                         </div>
                                     </div>
                                     }
