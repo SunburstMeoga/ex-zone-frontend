@@ -128,12 +128,12 @@ const Menu = () => {
         <div className='w-full  flex flex-col justify-center items-center fixed -top-0-1 z-30 bg-black'>
             <div className='w-22-0 flex justify-between items-center h-4-3 lg:h-6-3 relative z-20 lg:w-58-2 lg:py-2-6 xl:w-full xl:py-2-6'>
                 <div className='flex justify-start items-center'>
-                    <div className='w-6-9 lg:w-12-4 xl:ml-2-9 transition ease-linear duration-100 lg:hidden active:-translate-x-0-2' onClick={() => handleLogo()}>
+                    <div className='w-6-9 lg:w-12-4 xl:ml-2-9 transition ease-linear duration-100  active:-translate-x-0-2' onClick={() => handleLogo()}>
                         <img src='/images/logo.png' alt='logo' />
                     </div>
                     <div className='xl:ml-3-5 hidden xl:flex justify-start items-center '>
                         {pageMenuItemsList.map((item, index) => {
-                            return <div key={index} className='text-white text-1-2 ml-4-2'>{item.title} </div>
+                            return <div key={index} className='text-white text-1-2 ml-4-2 cursor-pointer'>{item.title} </div>
                         })}
                     </div>
                 </div>

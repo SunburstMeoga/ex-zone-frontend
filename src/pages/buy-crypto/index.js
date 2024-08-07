@@ -75,7 +75,7 @@ const BuyCrypto = () => {
                                 Buy Crypto
                             </div>
                             <div className='flex justify-center items-center'>
-                                <div className='icon iconfont icon-shuaxin text-menu-green' style={{ fontSize: '2rem' }}></div>
+                                {/* <div className='icon iconfont icon-shuaxin text-menu-green' style={{ fontSize: '2rem' }}></div> */}
                             </div>
                         </div>
                         <div className='w-20-0 lg:w-34-9 text-1-0  mb-1-5 flex justify-start items-center'>
