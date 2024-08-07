@@ -122,7 +122,7 @@ const BuyCrypto = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className='w-full border rounded-2xl px-0-9 py-1-2 border-liquid-staking-border bg-primary-50 flex justify-between  items-center transition duration-200 ease-linear active:opacity-70'>
+                            <div onClick={handleConnectWallet} className='w-full border rounded-2xl px-0-9 py-1-2 border-liquid-staking-border bg-primary-50 flex justify-between  items-center transition duration-200 ease-linear active:opacity-70'>
                                 <div className='flex justify-start items-center'>
                                     <div className='w-2-5 h-2-5 rounded-full bg-futures-word overflow-hidden'>
                                         <img className='object-cover' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAAAAABXZoBIAAAA/klEQVR4AcXQEXTDABAG4M9lXIfQOFqXvleulyujYblQDMSC0cAoGJtVwtFYKHDbXpK85a2+T+/d/XfnHyW37Jp6rhnKrOr7qye6Auw/hz1IB6tbbXaIDI5hcRquB4tHg2sk4OXRN33Vju2SV7V8xDsYLy4fONZRAuXDGA24cM+BPO6gbiNiZ5JlZk2fQHyrTW6FxTneKOPHCUyZi744xyQB+xarNmZjAkZWeaxG0KVrZhe/eEWRweu56GNDjn2H+MsA03nHrIsN9Tvupcmh3RSTEcLittm2KlDmFqeYDTtEirA6z307OA7IK7Z/OADFJ8bU6ufcyqwpOfXbwfAFLNz2XLy7Vj8AAAAASUVORK5CYII='></img>
