@@ -179,10 +179,11 @@ export const liquidityOperateItems = [
 export const tokenPair = [
     {
         id: 1,
-        title: 'HAH',
+        title: 'USD3',
         pick: '96%',
         feeTier: '0.25%',
         showMore: false,
+        img: 'https://www.3at.org/images/logo.png',
         pointItems: [
             {
                 point: '0.01',
@@ -205,10 +206,11 @@ export const tokenPair = [
     },
     {
         id: 2,
-        title: 'HAH',
+        title: 'ETH',
         pick: '96%',
         feeTier: '0.25%',
         showMore: false,
+        img: 'https://s3-symbol-logo.tradingview.com/crypto/XTVCETH--big.svg',
         pointItems: [
             {
                 point: '0.01',
@@ -229,58 +231,7 @@ export const tokenPair = [
         ]
 
     },
-    {
-        id: 3,
-        title: 'HAH',
-        pick: '96%',
-        feeTier: '0.25%',
-        showMore: false,
-        pointItems: [
-            {
-                point: '0.01',
-                pick: '86'
-            },
-            {
-                point: '0.05',
-                pick: '32'
-            },
-            {
-                point: '0.25',
-                pick: '6'
-            },
-            {
-                point: '1',
-                pick: '65'
-            },
-        ]
 
-    },
-    {
-        id: 4,
-        title: 'HAH',
-        pick: '96%',
-        feeTier: '0.25%',
-        showMore: false,
-        pointItems: [
-            {
-                point: '0.01',
-                pick: '86'
-            },
-            {
-                point: '0.05',
-                pick: '32'
-            },
-            {
-                point: '0.25',
-                pick: '6'
-            },
-            {
-                point: '1',
-                pick: '65'
-            },
-        ]
-
-    },
 ]
 
 export const liquidityTokenInfoItems = [

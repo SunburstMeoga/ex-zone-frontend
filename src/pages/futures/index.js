@@ -6,6 +6,8 @@ import SelectTokenPopup from '@/components/swap/selectTokenPopup'
 import axios from 'axios'
 import AnimatedNumber from "@/components/AnimatedNumber";
 import TradeMenu from '@/components/TradeMenu';
+import DialogPopup from '@/components/DialogPopup'
+
 const Futures = () => {
     let [displayType, setDisplayType] = useState(1)
     let [contractType, setContractType] = useState(1)
@@ -27,6 +29,8 @@ const Futures = () => {
     let [showIntervalTime, setShowIntervalTime] = useState(false)
     let [tpPrice, setTPPrice] = useState('+100%')
     let [slPrice, setSLPrice] = useState('None')
+    let [showDialogPopup, setShowDialogPopup] = useState(false)
+    let [dialogContent, setDialogContent] = useState('Network error, please try again')
     // let [changePrice, isChangePrice] = useState(false)
     let handleDisplayItems = ({ id }) => {
         setDisplayType(displayType = id)
@@ -74,6 +78,20 @@ const Futures = () => {
             // console.log(2000 + Math.floor(Math.random() * 10))
         }, 2000);
     }
+    const toggleDialogPopup = () => {
+        setShowDialogPopup(showDialogPopup = !showDialogPopup)
+    }
+    const handleConnectWallet = () => {
+        setDialogContent('Network error, please try again')
+        toggleDialogPopup()
+    }
+    const closeMask = () => {
+        toggleDialogPopup()
+    }
+    const handleInputFocus = () => {
+        setDialogContent('Unable to redeem')
+        toggleDialogPopup()
+    }
     useEffect(() => {
         const fetchPrices = async () => {
             try {
@@ -95,6 +113,7 @@ const Futures = () => {
     }, [])
     return (
         <>
+            <DialogPopup showDialogPopup={showDialogPopup} type='fail' content={dialogContent} closeMask={closeMask}></DialogPopup>
             <div className='pt-4-8 lg:pt-6-9 bg-black'>
                 <div className='w-full py-1-0 relative z-10'>
                     <TradeMenu defaultIndex={2}></TradeMenu>
@@ -216,7 +235,7 @@ const Futures = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className='text-0-9 font-bold w-full h-2-2 flex justify-center items-center bg-primary-purple rounded-xl mb-1-6 active:bg-opacity-90 text-white'>Connect</div>
+                                    <div onClick={handleConnectWallet} className='text-0-9 font-bold w-full h-2-2 flex justify-center items-center bg-primary-purple rounded-xl mb-1-6 active:bg-opacity-90 text-white'>Connect</div>
                                 </div>
                                 {showIntervalTime && <div className='mb-1-6 w-full bg-futures-price rounded-t-3xl flex flex-col justify-start items-center py-1-4 text-swap-copy-icon px-1-0'>
                                     <div className='w-full flex justify-between items-center px-1-0 h-2-4 rounded-xl text-1-0 font-medium border border-setting-button bg-white mb-0-5'>

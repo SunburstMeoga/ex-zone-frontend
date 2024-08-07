@@ -4,6 +4,8 @@ import { swapStateItems, swapOperateItems } from '@/dictionary/trade'
 import { useRouter } from 'next/router'
 import SelectTOkenPopup from '@/components/swap/selectTokenPopup'
 import Switch from 'antd-mobile/es/components/switch'
+import DialogPopup from '@/components/DialogPopup'
+
 const Limit = () => {
     const router = useRouter()
     let [showSelectTokenPopup, setSelectTokenPopup] = useState(false)
@@ -13,6 +15,8 @@ const Limit = () => {
     let priceStep = [{ id: 1, point: 25, title: '25%' }, { id: 2, point: 50, title: '50%' }, { id: 3, point: 75, title: '75%' }, { id: 4, point: 100, title: 'MAX' }]
     let [fromPrice, setFromPrice] = useState(0)
     let [toPrice, setToPrice] = useState(0)
+    let [showDialogPopup, setShowDialogPopup] = useState(false)
+    let [dialogContent, setDialogContent] = useState('Network error, please try again')
     let currentState = 3
     let toggleSelectTokenPopup = (type) => {
         setTokenType(type)
@@ -26,8 +30,20 @@ const Limit = () => {
     let handlePricePointItem = (item) => {
         setFromPrice(item.point * fromTokenInfo.balance * 0.01)
     }
+    const closeMask = () => {
+        toggleDialogPopup()
+    }
+    const handleConnectWallet = () => {
+        console.log('click')
+        setDialogContent('Network error, please try again')
+        toggleDialogPopup()
+    }
+    const toggleDialogPopup = () => {
+        setShowDialogPopup(showDialogPopup = !showDialogPopup)
+    }
     return (
         <>
+            <DialogPopup showDialogPopup={showDialogPopup} type='fail' content={dialogContent} closeMask={closeMask}></DialogPopup>
             <SelectTOkenPopup showSelectTokenPopup={showSelectTokenPopup} selectTokenItem={selectTokenItem} onClose={toggleSelectTokenPopup}></SelectTOkenPopup>
             <div className='pt-4-8 lg:pt-6-9 bg-black'>
                 <div className='w-full flex flex-col justify-start items-center relative'>
@@ -108,7 +124,7 @@ const Limit = () => {
                             </div>
                         </div>
 
-                        <div className='w-20-0 h-4-7 bg-primary-purple flex justify-center items-center text-white font-light text-1-5 rounded-xl lg:w-35-0  transition ease-in duration-100 active:bg-opacity-50 active:translate-y-0-1 '>
+                        <div onClick={handleConnectWallet} className='w-20-0 h-4-7 bg-primary-purple flex justify-center items-center text-white font-light text-1-5 rounded-xl lg:w-35-0  transition ease-in duration-100 active:bg-opacity-50 active:translate-y-0-1 '>
                             Connect Wallet
                         </div>
                     </div>

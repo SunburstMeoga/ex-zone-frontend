@@ -27,6 +27,9 @@ const App = ({ Component, pageProps }) => {
         localStorage.setItem('btctousdt', data.bitcoin.usd)
         localStorage.setItem('ethtousdt', data.ethereum.usd)
         localStorage.setItem('usd3tousdt', 1)
+        localStorage.setItem('bitcoin', data.bitcoin.usd)
+        localStorage.setItem('ethereum', data.ethereum.usd)
+        localStorage.setItem('usd3', 1)
         // setLoading(false);
       } catch (error) {
         console.error('Error fetching prices:', error);

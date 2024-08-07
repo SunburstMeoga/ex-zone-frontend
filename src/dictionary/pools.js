@@ -732,23 +732,23 @@ export const futuresOrderTypeItems = [
 export const strykeInfoItems = [
     {
         title: 'Market Price',
-        content: '$2333.23'
+        content: '$64.08'
     },
     {
         title: 'Open Interest',
-        content: '$2333.23'
+        content: '$243.23'
     },
     {
         title: 'Liquidity',
-        content: '$2333.23'
+        content: '$534.224'
     },
     {
         title: 'Volume(7D)',
-        content: '$2333.23'
+        content: '$9722.254'
     },
     {
         title: 'Premium(7D)',
-        content: '$2333.23'
+        content: '$9283.98'
     },
 ]
 export const transTypeItems = [
@@ -781,5 +781,33 @@ export const strykeDateItems = [
     {
         id: 5,
         title: '1D'
+    },
+]
+
+export const dataList = [
+    // <div className='w-7-5 shrink-0'>Strike</div>
+    // <div className='w-7-5 shrink-0'>Liquidity</div>
+    // <div className='w-7-5 shrink-0'>Options Available</div>
+    // <div className='w-7-5 shrink-0'>Utilization</div>
+    // <div className='w-7-5 shrink-0'>Fees APR</div>
+    // <div className='w-3-0 shrink-0'></div>
+    {
+        strike: '$ 2423.2142',
+        liqidity: '9293.23',
+        weht: '2.3455',
+        options: '0.000232',
+        optionsDollaer: '$ 2324.97879',
+        ut: '23%',
+        apr: '98%'
+    },
+    {
+        strike: '$ 3453.0000',
+        liqidity: '2342.234',
+        weht: '9.4234',
+        options: '0.234',
+        optionsDollaer: '$ 988.24342',
+        ut: '24%',
+
+        apr: '72%'
     },
 ]

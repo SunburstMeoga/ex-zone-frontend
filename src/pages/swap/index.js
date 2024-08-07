@@ -52,7 +52,9 @@ const Trade = () => {
         console.log(showStatisticsPopup)
     }
     let toggleFirePopup = () => {
-        setFirePopup(showFirePopup = !showFirePopup)
+        // setFirePopup(showFirePopup = !showFirePopup)
+        setDialogContent('This function is not yet available')
+        setShowDialogPopup(true)
     }
     let toggleSettingPopup = () => {
         setSettingPopup(showSettingPopup = !showSettingPopup)
@@ -61,7 +63,9 @@ const Trade = () => {
         setCustomsizePopup(showCustomsizePopup = !showCustomsizePopup)
     }
     let toggleRecentTransPopup = () => {
-        setRecentTransPopup(showRecentTransPopup = !showRecentTransPopup)
+        // setRecentTransPopup(showRecentTransPopup = !showRecentTransPopup)
+        setDialogContent('This function is not yet available')
+        setShowDialogPopup(true)
     }
     let toggleSelectTokenPopup = (type) => {
         console.log('object')
@@ -90,6 +94,12 @@ const Trade = () => {
     return (
         <>
             <DialogPopup showDialogPopup={showDialogPopup} type='fail' content={dialogContent} closeMask={closeMask}></DialogPopup>
+            <StatisticsPopup showStatisticsPopup={showStatisticsPopup} onClose={toggleStatisticsPopup} fromTokenInfo={fromTokenInfo} toTokenInfo={toTokenInfo} ></StatisticsPopup>
+            <FirePopup showFirePopup={showFirePopup} onClose={toggleFirePopup}></FirePopup>
+            <SettingPopup showSettingPopup={showSettingPopup} onClose={toggleSettingPopup} handleCusRouting={toggleCustomsizePopup}></SettingPopup>
+            <CustomsizeRoutingPopup showCustomsizePopup={showCustomsizePopup} onClose={toggleCustomsizePopup}></CustomsizeRoutingPopup>
+            <RecentTransPopup showRecentTransPopup={showRecentTransPopup} onClose={toggleRecentTransPopup}></RecentTransPopup>
+            <SelectTokenPopup showSelectTokenPopup={showSelectTokenPopup} onClose={toggleSelectTokenPopup} selectTokenItem={selectTokenItem}></SelectTokenPopup>
             <div className='pt-4-8 lg:pt-6-9 bg-black'>
                 <div className='w-full flex flex-col justify-start items-center relative'>
                     <div className='w-full bg-swap-banner bg-center bg-cover bg-no-repeat absolute top-auto left-auto h-19-3 z-10'></div>
@@ -108,7 +118,7 @@ const Trade = () => {
                         <div className='w-20-0 text-1-0 text-swap-second-title mb-1-1 lg:w-35-0'>Trade tokens in an instant</div>
                         <div className='w-20-0 flex justify-between items-center text-menu-green mb-1-0 lg:w-35-0 lg:justify-end'>
                             {swapOperateItems.map((item, index) => {
-                                return <div key={index} className='flex justify-center items-center lg:ml-2-4' onClick={() => handleSwapOperate(item)}>
+                                return <div key={index} className='flex justify-center items-center px-0-4 rounded-lg transition duration-150 lg:ml-2-4 active:bg-purple62 active:translate-y-0-1' onClick={() => handleSwapOperate(item)}>
                                     <div key={index} className={`icon iconfont ${item.icon} ${operateItems === item.id ? '' : ''}`} style={{ fontSize: '1.5rem' }}></div>
                                 </div>
                             })}
@@ -162,12 +172,7 @@ const Trade = () => {
                 </div>
 
             </div>
-            <StatisticsPopup showStatisticsPopup={showStatisticsPopup} onClose={toggleStatisticsPopup}></StatisticsPopup>
-            <FirePopup showFirePopup={showFirePopup} onClose={toggleFirePopup}></FirePopup>
-            <SettingPopup showSettingPopup={showSettingPopup} onClose={toggleSettingPopup} handleCusRouting={toggleCustomsizePopup}></SettingPopup>
-            <CustomsizeRoutingPopup showCustomsizePopup={showCustomsizePopup} onClose={toggleCustomsizePopup}></CustomsizeRoutingPopup>
-            <RecentTransPopup showRecentTransPopup={showRecentTransPopup} onClose={toggleRecentTransPopup}></RecentTransPopup>
-            <SelectTokenPopup showSelectTokenPopup={showSelectTokenPopup} onClose={toggleSelectTokenPopup} selectTokenItem={selectTokenItem}></SelectTokenPopup>
+
         </>
     )
 }
