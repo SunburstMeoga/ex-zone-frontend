@@ -103,12 +103,12 @@ const Stryke = () => {
                                     <div key={index} className='min-w-max flex justify-start items-center text-swap-border text-0-7 py-1-0 border-b border-dashed border-voting-border pl-1-0 flex-1'>
                                         <div className='w-7-5 shrink-0 font-semibold'>{item.strike}</div>
                                         <div className='w-7-5 shrink-0'>
-                                            <div className='font-semibold'>$ {item.liqidity}</div>
+                                            <div className='font-semibold'>{item.liqidity}</div>
                                             <div>{item.weht} WETH</div>
                                         </div>
                                         <div className='w-7-5 shrink-0'>
                                             <div className='font-semibold'>{item.options}</div>
-                                            <div>$ {item.optionsDollaer}</div>
+                                            <div>{item.optionsDollaer}</div>
                                         </div>
                                         <div className='w-7-5 shrink-0 font-semibold'>{item.apr}</div>
                                         <div className='w-7-5 shrink-0 font-semibold'>{item.ut}</div>
