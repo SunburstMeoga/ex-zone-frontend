@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import Popup from 'antd-mobile/es/components/popup'
 import { fireTypeItems, fireFilterItems, tokenList } from '@/dictionary/trade'
 const SelectTokenPopup = ({ showSelectTokenPopup, onClose, selectTokenItem, isToken = false }) => {
-    let tokenList = [{ title: 'BTC', token: 'BINANCE:BTCUSDT', img: 'https://s3-symbol-logo.tradingview.com/crypto/XTVCBTC--big.svg', content: 'Binance Chain Native Token', value: 'binancecoin', balance: 234.20 },
-    { title: 'ETH', token: 'BINANCE:ETHUSDT', img: 'https://s3-symbol-logo.tradingview.com/crypto/XTVCETH--big.svg', content: 'Binance Chain Native Token', value: 'bitcoin', balance: 89238.28 },
-    { title: 'USD3', token: 'BINANCE:BNBUSDT', img: 'https://www.3at.org/images/logo.png', content: 'Binance Chain Native Token', value: 'ethereum', balance: 100023.23 }
+    let tokenList = [{ title: 'BTC', token: 'BINANCE:BTCUSDT', img: 'https://s3-symbol-logo.tradingview.com/crypto/XTVCBTC--big.svg', content: 'Binance Chain Native Token', value: 'bitcoin', balance: 234.20 },
+    { title: 'ETH', token: 'BINANCE:ETHUSDT', img: 'https://s3-symbol-logo.tradingview.com/crypto/XTVCETH--big.svg', content: 'Binance Chain Native Token', value: 'ethereum', balance: 89238.28 },
+    { title: 'USD3', token: 'BINANCE:BNBUSDT', img: 'https://www.3at.org/images/logo.png', content: 'Binance Chain Native Token', value: 'usd3', balance: 100023.23 }
     ]
     return (
 

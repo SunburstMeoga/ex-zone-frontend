@@ -10,11 +10,11 @@ const Limit = () => {
     const router = useRouter()
     let [showSelectTokenPopup, setSelectTokenPopup] = useState(false)
     let [fromTokenInfo, setFromTokenInfo] = useState({ title: 'BTC', token: 'BINANCE:BTCUSDT', img: 'https://s3-symbol-logo.tradingview.com/crypto/XTVCBTC--big.svg', content: 'Binance Chain Native Token', value: 'binancecoin', balance: 234.20 })
-    let [toTokenInfo, setToTokenInfo] = useState({ title: 'USD3', token: 'BINANCE:BNBUSDT', img: 'https://www.3at.org/images/logo.png', content: 'Binance Chain Native Token', value: 'ethereum', balance: 100023.23 })
+    let [toTokenInfo, setToTokenInfo] = useState({ title: 'USD3', token: 'BINANCE:BNBUSDT', img: 'https://www.3at.org/images/logo.png', content: 'Binance Chain Native Token', value: 'usd3', balance: 100023.23 })
     let [tokenType, setTokenType] = useState('from')
     let priceStep = [{ id: 1, point: 25, title: '25%' }, { id: 2, point: 50, title: '50%' }, { id: 3, point: 75, title: '75%' }, { id: 4, point: 100, title: 'MAX' }]
-    let [fromPrice, setFromPrice] = useState(0)
-    let [toPrice, setToPrice] = useState(0)
+    let [fromPrice, setFromPrice] = useState('')
+    let [toPrice, setToPrice] = useState('')
     let [showDialogPopup, setShowDialogPopup] = useState(false)
     let [dialogContent, setDialogContent] = useState('Network error, please try again')
     let currentState = 3
@@ -25,10 +25,26 @@ const Limit = () => {
     let selectTokenItem = (item) => {
         console.log(item)
         tokenType === 'from' ? setFromTokenInfo(item) : setToTokenInfo(item)
+        setFromPrice(0)
+        setToPrice(0)
+
         toggleSelectTokenPopup()
     }
     let handlePricePointItem = (item) => {
+        console.log(fromTokenInfo.value)
         setFromPrice(item.point * fromTokenInfo.balance * 0.01)
+        let price
+        if (fromTokenInfo.value === "binancecoin") {
+            price = Number(Number(localStorage.getItem('bitcoin')) * Number(fromPrice))
+        }
+        if (fromTokenInfo.value === "ethereum") {
+            price = Number(Number(localStorage.getItem('ethereum')) * Number(fromPrice))
+        }
+        if (fromTokenInfo.value === "usd3") {
+            price = Number(Number(fromPrice) * 1)
+        }
+        setToPrice(price)
+        console.log(toPrice)
     }
     const closeMask = () => {
         toggleDialogPopup()
@@ -40,6 +56,28 @@ const Limit = () => {
     }
     const toggleDialogPopup = () => {
         setShowDialogPopup(showDialogPopup = !showDialogPopup)
+    }
+    const fromPriceChange = (event) => {
+        // localStorage.setItem('bitcoin', data.bitcoin.usd)
+        // localStorage.setItem('ethereum', data.ethereum.usd)
+        // localStorage.setItem('usd3', 1)
+        console.log(fromTokenInfo)
+        let price
+        if (fromTokenInfo.value === "binancecoin") {
+            price = Number(Number(localStorage.getItem('bitcoin')) * event.target.value)
+        }
+        if (fromTokenInfo.value === "ethereum") {
+            price = Number(Number(localStorage.getItem('ethereum')) * event.target.value)
+        }
+        if (fromTokenInfo.value === "usd3") {
+            price = Number(event.target.value * 1)
+        }
+        setFromPrice(event.target.value)
+        setToPrice(price)
+        console.log(event)
+    }
+    const toPriceChange = () => {
+        console.log(toPrice)
     }
     return (
         <>
@@ -59,7 +97,7 @@ const Limit = () => {
                                 </div>
                             })}
                         </div>
-                        <div className='w-20-0 text-1-5 font-semibold lg:w-35-0 mb-2-0'>LIMIT</div>
+                        <div className='w-20-0 text-1-5 font-semibold lg:w-35-0 mb-2-0'>TWAP</div>
                         <div className='w-20-0 mb-2-0 lg:w-35-0 lg:mb-8-0'>
                             <div className='bg-swap-card-module flex flex-col justify-between items-center border-2 border-swap-border rounded-2xl p-0-8 w-20-0 lg:w-35-0'>
                                 <div className='flex justify-between items-center w-full'>
@@ -72,7 +110,7 @@ const Limit = () => {
                                     </div>
                                 </div>
                                 <div className='w-full mt-0-6'>
-                                    <input className='bg-transparent h-1-4 w-full text-right text-1-5' value={fromPrice.toFixed(2)} placeholder='0.00'></input>
+                                    <input className='bg-transparent h-1-4 w-full text-right text-1-5' type='number' value={Number(fromPrice).toFixed(2)} onChange={fromPriceChange} placeholder='0.00'></input>
                                 </div>
                                 <div className='w-full text-0-8 text-right'>Balance: {fromTokenInfo.balance}</div>
                                 <div className='w-full flex justify-between items-center mt-1-0'>
@@ -96,12 +134,12 @@ const Limit = () => {
                                     {/* <div className='text-swap-copy-icon icon iconfont icon-copy' style={{ fontSize: '1.4rem' }}></div> */}
                                 </div>
                                 <div className='w-full mt-0-6'>
-                                    <input className='bg-transparent h-1-4 w-full text-right text-1-5' value={toPrice.toFixed(2)} placeholder='0.00'></input>
+                                    <input className='bg-transparent h-1-4 w-full text-right text-1-5' disabled value={Number(toPrice).toFixed(2)} placeholder='0.00'></input>
                                 </div>
                                 <div className='w-full text-0-8 text-right'>Balance: {toTokenInfo.balance}</div>
                             </div>
                         </div>
-                        <div className='w-20-0 flex flex-col justify-start items-center mb-2-0'>
+                        <div className='w-20-0 flex flex-col justify-start items-center mb-1-0'>
                             <div className='w-full flex justify-between items-center mb-1-0'>
                                 <div className='text-1-0 text-purple62'>Limit Price</div>
                                 <div className='rounded-full px-0-5 flex justify-between items-center text-menu-green border border-menu-green'>
@@ -123,8 +161,28 @@ const Limit = () => {
                                 </div>
                             </div>
                         </div>
-
-                        <div onClick={handleConnectWallet} className='w-20-0 h-4-7 bg-primary-purple flex justify-center items-center text-white font-light text-1-5 rounded-xl lg:w-35-0  transition ease-in duration-100 active:bg-opacity-50 active:translate-y-0-1 '>
+                        {/* <div className='bg-swap-card-module flex flex-col justify-between items-center border-2 border-swap-border rounded-2xl p-0-8 w-20-0 mb-2-0'>
+                            <input className='bg-transparent text-1-5 text-right text-purple62 w-full h-1-2 placeholder:text-purple62' placeholder='0.0'></input>
+                        </div>
+                        <div className='text-1-0 text-purple62 w-20-0 mb-1-0'>
+                            <div className=''>Trade interval</div>
+                            <div className='w-full flex justify-between items-center'>
+                                <div className='bg-swap-card-module flex flex-col justify-between items-center border-2 border-swap-border rounded-2xl p-0-4 px-0-8 w-10-8'>
+                                    <input className='bg-transparent text-1-5 text-right text-white w-full h-1-2 placeholder:text-white' placeholder='2'></input>
+                                </div>
+                                <div className='text-1-5 text-white'>MINUTES</div>
+                            </div>
+                        </div>
+                        <div className='text-1-0 text-purple62 w-20-0 mb-2-0'>
+                            <div className=''>Max duration</div>
+                            <div className='w-full flex justify-between items-center'>
+                                <div className='bg-swap-card-module flex flex-col justify-between items-center border-2 border-swap-border rounded-2xl p-0-4 px-0-8 w-10-8'>
+                                    <input className='bg-transparent text-1-5 text-right text-white w-full h-1-2 placeholder:text-white' placeholder='2'></input>
+                                </div>
+                                <div className='text-1-5 text-white'>MINUTES</div>
+                            </div>
+                        </div> */}
+                        <div onClick={handleConnectWallet} className='w-20-0 h-4-7 bg-primary-purple flex justify-center items-center text-white font-light text-1-5 rounded-xl lg:w-35-0  transition ease-in duration-100 active:bg-opacity-50 active:translate-y-0-1'>
                             Connect Wallet
                         </div>
                     </div>

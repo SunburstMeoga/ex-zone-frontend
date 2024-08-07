@@ -137,11 +137,11 @@ const Stryke = () => {
                         </div>
                     </div>
                     <div className='bg-syrup-module w-full pt-1-7 flex flex-col justify-start items-center'>
-                        <div className='border-b border-voting-border flex justify-start items-center text-0-9 mb-1-0 w-full'>
+                        {/* <div className='border-b border-voting-border flex justify-start items-center text-0-9 mb-1-0 w-full'>
                             {dataTypeItems.map((item, index) => {
                                 return <div onClick={() => handleTypeItem(item)} key={index} className={`py-1-2 ml-3-2 border-b-2 ${dataType === item.id ? 'font-semibold text-menu-green border-menu-green' : 'border-transparent'}`}>{item.title}</div>
                             })}
-                        </div>
+                        </div> */}
                         <div className='w-22-0'>
                             <div className='w-full text-0-7 text-futures-word font-semibold mb-1-0'>Expiry</div>
                             <div className='w-full bg-futures-tabs rounded-lg flex justify-between items-center text-voting-type text-1-0 font-semibold mb-1-0'>
