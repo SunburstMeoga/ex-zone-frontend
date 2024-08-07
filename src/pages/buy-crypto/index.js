@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import TradeMenu from '@/components/TradeMenu'
 import { liquidityOperateItems, tokenPair, providerItems, FAQItems } from '@/dictionary/trade'
 import SelectTokenPopup from '@/components/swap/selectTokenPopup'
@@ -14,6 +14,7 @@ const BuyCrypto = () => {
     let [toTokenPrice, setToTokenPrice] = useState('')
     let [fromTokenPrice, setFromTokenPrice] = useState('')
     let [showDialogPopup, setShowDialogPopup] = useState(false)
+    let [usdtPrice, setUSDTPrice] = useState(0)
     let handleShowMore = ({ id }) => {
         console.log(id)
         setFAQItems(FAQItemsList =>
@@ -34,6 +35,7 @@ const BuyCrypto = () => {
     const selectTokenItem = (item) => {
         console.log(item)
         tokenType === 'from' ? setFromTokenInfo(item) : setToTokenInfo(item)
+        setUSDTPrice(fromTokenInfo.value === 'ethereum' ? 1 / Number(localStorage.getItem('ethereum')) : 1 / Number(localStorage.getItem('bitcoin')))
         toggleSelectTokenPopup()
     }
     const swapTokenInfo = () => {
@@ -59,6 +61,9 @@ const BuyCrypto = () => {
     const closeMask = () => {
         toggleDialogPopup()
     }
+    useEffect(() => {
+        setUSDTPrice(1 / Number(localStorage.getItem('ethereum')))
+    }, [])
     return (
         <>
             <DialogPopup showDialogPopup={showDialogPopup} type='fail' content={'Network error, please try again'} closeMask={closeMask}></DialogPopup>
@@ -124,7 +129,7 @@ const BuyCrypto = () => {
                                     </div>
                                     <div className='flex flex-col justify-start items-start ml-0-4'>
                                         <div className='text-1-2 font-extrabold'>Mercuryo</div>
-                                        <div className='text-voting-border text-0-8 font-semibold'>1 {fromTokenInfo.title} = {toTokenInfo.title}</div>
+                                        <div className='text-voting-border text-0-8 font-semibold'>1 {fromTokenInfo.title} = {usdtPrice} {toTokenInfo.title}</div>
                                     </div>
                                 </div>
                                 {/* <div className='flex justify-end items-center'>
