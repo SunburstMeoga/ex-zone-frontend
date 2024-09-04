@@ -1,12 +1,14 @@
 export const poolsTabsItems = [
-    // {
-    //     id: 1,
-    //     title: 'Farms'
-    // },
-    // {
-    //     id: 2,
-    //     title: 'HAH Staking'
-    // },
+    {
+        id: 1,
+        title: 'Farms',
+        link: '/liquidity/pools'
+    },
+    {
+        id: 2,
+        title: 'HAH Staking',
+        link: '/hah-staking'
+    },
     {
         id: 3,
         title: 'Pools',

@@ -32,7 +32,7 @@ const LiquidStaking = () => {
     return (
         <>
             <div className='pt-5-0 bg-black lg:pt-6-3 xl:pt-8-4' >
-                <PageTabs defaultIndex={2}></PageTabs>
+                <PageTabs defaultIndex={4}></PageTabs>
                 <div className='w-full bg-liquid-staking-module flex flex-col justify-start items-center'>
                     <div className='w-22-0 flex flex-col justify-start items-center text-white lg:w-38-8'>
                         <div className='w-full my-2-3'>

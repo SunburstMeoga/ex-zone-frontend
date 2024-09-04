@@ -40,7 +40,7 @@ const SimpleStaking = () => {
             <DialogPopup showDialogPopup={showDialogPopup} type='fail' content={dialogContent} closeMask={closeMask}></DialogPopup>
             <CalculatorPopup showCalculatorPopup={showCalculatorPopup} onClose={toggleCalculatorPopup}></CalculatorPopup>
             <div className='pt-5-0 bg-black lg:pt-6-3 xl:pt-8-4' >
-                <PageTabs defaultIndex={3}></PageTabs>
+                <PageTabs defaultIndex={5}></PageTabs>
                 <div className='w-full bg-phone-simple-staking-one bg-center bg-no-repeat bg-cover h-auto pt-4-8'>
                     <div className='flex flex-col justify-start items-center'>
                         <div className='text-white text-3-0 font-bold text-left mb-0-7 w-21-4 voting-text-shadow lg:w-full lg:pl-2-0'>Simple Staking</div>

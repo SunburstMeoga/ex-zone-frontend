@@ -66,6 +66,16 @@ export const pageMenuItems = [
         showChild: false,
         children: [
             {
+                id: 16,
+                title: 'Farms',
+                link: '/liquidity/pools'
+            },
+            {
+                id: 15,
+                title: 'HAH Staking',
+                link: '/hah-staking'
+            },
+            {
                 id: 11,
                 title: 'Pools',
                 link: '/pools',
