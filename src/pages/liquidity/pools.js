@@ -115,7 +115,7 @@ const LiquidityPools = () => {
                                         <img className='object-cover' src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAASFBMVEVHcEz3kxr3kxr3kxr3kxr3kxr3kxr3kxr3kxr3jAD3khX92734pU34nDP////95tL80qz7xZT+8ub5r2T3kQ33kxr3kxr6uXuN5P8aAAAAF3RSTlMAL2qjBor/vtb////////////////2JbbIuikAAAD7SURBVHgBhZJHkoUwDAVNEsjGz9n//jcdTGmIE3rbyiV10vXDRt+pF+NEB9N4dz3d6K9upgfz6RYSmEnTzvLI08TG8Cp2vvezzHAMz5e+o1QMiB4hIWUJbjPLDjk57CTWstEmC4nlCLQAR2KVqiRoAhxrD0Tp2p3r8wcIrBmApPZqOqTfZOYEgL+bDoeMED4iB5HSMhmgLSry2IRTa8ktPxxle9kyOGBl3cZyx43qpWFYyUbAiKxyBL1nCmumRjnOl9nCm9uwk9o4Dm89mCyLo+aOkQzHyFo/XmWWwtqm/HqU40306ZZ/H+yf1xSmQkKZ1JvaT8Mw9VUdfAG5uBUIY0iOdgAAAABJRU5ErkJggg=='></img>
                                     </div>
                                 </div>
-                                <div className='text-white flex-1'>
+                                <div className='text-white flex-1 ml-0-8'>
                                     <div className='text-0-9 font-semibold'>{item.title}</div>
                                     <div className='bg-primary-red rounded-full px-0-4 py-0-1  text-0-8 w-max'>{item.point}%</div>
                                     <div className='flex justify-start items-center'>
@@ -147,7 +147,12 @@ const LiquidityPools = () => {
                                         </div>
                                     })}
                                 </div>
+                                <div className='w-22-0 px-1-3 py-1-0 border-2 border-swap-copy-icon rounded-xl text-white mx-auto'>
+                                    <div className='text-0-8 mb-1-0'> START EARNING</div>
+                                    <div className='button-click rounded-xl bg-primary-purple text-0-9 font-semibold w-full py-1-0 text-center'>Connect Wallet</div>
+                                </div>
                             </div>}
+
                         </div>
                     })}
                 </div>
