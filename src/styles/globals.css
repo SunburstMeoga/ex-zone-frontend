@@ -338,3 +338,7 @@ img {
   background: rgb(22, 18, 75);
   background: linear-gradient(180deg, rgba(22, 18, 75, 0.5) 0%, rgba(22, 18, 75, 1) 100%);
 }
+
+.button-click {
+  @apply transition ease-in duration-100 active:bg-opacity-90 active:translate-y-0-1
+}

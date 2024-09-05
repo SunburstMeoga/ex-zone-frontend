@@ -72,8 +72,8 @@ module.exports = {
         "phone-simple-staking-one": "url('/images/phone/phone-simple-staking-one.png')",
         "pad-pools-banner-one": "url('/images/pad/pad-pools-banner-one.png')",
         "pc-pools-banner-one": "url('/images/pc/pc-pools-banner-one.png')",
-        "pad-position-managers-one": "url(/images/pad/pad-position-managers-one.png)"
-
+        "pad-position-managers-one": "url(/images/pad/pad-position-managers-one.png)",
+        "farms-banner": "url('/images/phone/farms-banner.png')"
       },
       colors: {
         "primary-purple": "#4C2ABE",
@@ -152,7 +152,9 @@ module.exports = {
         "pad-pools-border": "#1C1A39",
         "pad-futures": "#0F0D18",
         "connect-wallet": "#333",
-        "simple-staking-card": "#100A1D"
+        "simple-staking-card": "#100A1D",
+        "farms-green": "#00B453",
+        "farms-filter": "#121025"
       },
       fontSize: ({ theme }) => ({
         ...theme("spacing"),
