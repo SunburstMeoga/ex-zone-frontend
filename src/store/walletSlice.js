@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     address: null,
+    isConnected: false,
 };
 
 const walletSlice = createSlice({
@@ -11,9 +12,11 @@ const walletSlice = createSlice({
     reducers: {
         setAddress: (state, action) => {
             state.address = action.payload;
+            state.isConnected = true;
         },
         clearAddress: (state) => {
             state.address = null;
+            state.isConnected = false;
         },
     },
 });
