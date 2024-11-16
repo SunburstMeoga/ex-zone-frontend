@@ -10,6 +10,7 @@ import store from "@/store";
 const App = ({ Component, pageProps }) => {
   useEffect(() => {
     const handleResize = () => {
+      console.log('当前环境whah地址', process.env.NEXT_PUBLIC_WHAH_ADDRESS)
       const e = document.documentElement.clientWidth;
       document.getElementsByTagName('html')[0].style['font-size'] = e > 1024 ? '0.8vw' : '16px';
     };
@@ -23,7 +24,7 @@ const App = ({ Component, pageProps }) => {
       try {
         const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,binancecoin&vs_currencies=usd&include_24hr_change=true')
         const data = await response.json()
-        console.log('API Response:', data)
+        // console.log('API Response:', data)
         localStorage.setItem('btctousdt', data.bitcoin.usd)
         localStorage.setItem('ethtousdt', data.ethereum.usd)
         localStorage.setItem('usd3tousdt', 1)

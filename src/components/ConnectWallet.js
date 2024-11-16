@@ -39,6 +39,7 @@ const ConnectWalletButton = ({ className, onConnect, label = 'Connect Wallet' })
             } catch (error) {
                 console.error('Failed to connect wallet:', error);
                 setErrorMessage('Failed to connect wallet');
+                console.log('test connect wallet')
             }
         } else {
             console.error('Web3 instance is not available yet');
