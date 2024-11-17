@@ -15,6 +15,8 @@ import { ethers } from 'ethers';
 import SwapRouterABI from '@/abi/SwapRouter'
 import PositionManagersABI from '@/abi/PositionManager'
 import ERC20ABI from '@/abi/ERC20'
+import FactoryABI from '@/abi/Factory'
+import PoolABI from '@/abi/Pool'
 import ContractService from '@/services/contract/contractServices'
 const Trade = () => {
     const router = useRouter()
@@ -60,42 +62,87 @@ const Trade = () => {
             const toTokenService = new ContractService(window.ethereum, ERC20ABI, toTokenInfo.address)
             const positionManagerService = new ContractService(window.ethereum, PositionManagersABI, process.env.NEXT_PUBLIC_POSITION_MANAGER_ADDRESS)
             const swapRouterService = new ContractService(window.ethereum, SwapRouterABI, process.env.NEXT_PUBLIC_SWAP_ROUTER_ADDRESS);
+            const factoryService = new ContractService(window.ethereum, FactoryABI, process.env.NEXT_PUBLIC_FACTORY_ADDRESS)
+
+            const poolAddress = await factoryService.callViewMethod(
+                "getPool",
+                fromTokenInfo.address || process.env.NEXT_PUBLIC_WHAH_ADDRESS,
+                toTokenInfo.address,
+                3000 // fee tier
+            );
+            const poolService = new ContractService(window.ethereum, PoolABI, poolAddress);
+            const liquidity = await poolService.callViewMethod("liquidity");
+            console.log("Pool Address:", poolAddress);
+
+            console.log("Liquidity:", liquidity.toString());
+
+            if (poolAddress === ethers.ZeroAddress) {
+                throw new Error("Pool not initialized for the provided tokens and fee.");
+            }
+            // return
             console.log('PositionManager', positionManagerService)
             let approveFromToken = await fromTokenService.sendMethod(
                 "approve",
                 localStorage.getItem('account'),
-                [process.env.NEXT_PUBLIC_WHAH_ADDRESS, ethers.MaxUint256]
+                [process.env.NEXT_PUBLIC_SWAP_ROUTER_ADDRESS, ethers.MaxUint256]
             );
             let approveToToken = await toTokenService.sendMethod(
                 "approve",
                 localStorage.getItem('account'),
-                [process.env.NEXT_PUBLIC_WHAH_ADDRESS, ethers.MaxUint256]
+                [process.env.NEXT_PUBLIC_SWAP_ROUTER_ADDRESS, ethers.MaxUint256]
             );
             const FEE_AMOUNT = 3000; // 设置手续费等级
             const INITIAL_PRICE = '56022770974786139918731938227'; // 初始价格
+
             let createPoolResult = await positionManagerService.sendMethod('createAndInitializePoolIfNecessary', localStorage.getItem('account'), [fromTokenInfo.address, toTokenInfo.address, FEE_AMOUNT, INITIAL_PRICE])
+
+            const mintParams = {
+                token0: fromTokenInfo.address || process.env.NEXT_PUBLIC_WHAH_ADDRESS,
+                token1: toTokenInfo.address,
+                fee: 3000,
+                tickLower: -887220, // 最低 tick 值，表示最宽范围
+                tickUpper: 887220,  // 最高 tick 值，表示最宽范围
+                amount0Desired: ethers.parseUnits('10', 18), // 初始添加的 token0 数量
+                amount1Desired: ethers.parseUnits('10', 18), // 初始添加的 token1 数量
+                amount0Min: 0,
+                amount1Min: 0,
+                recipient: localStorage.getItem('account'),
+                deadline: Math.floor(Date.now() / 1000) + 60 * 20,
+            };
+
+            const mintTx = await positionManagerService.sendMethod(
+                "mint",
+                localStorage.getItem('account'),
+                [mintParams],
+                { value: BigInt(0) }
+            );
+            console.log("Mint Transaction Success:", mintTx);
             const params = {
                 tokenIn: fromTokenInfo.address || process.env.NEXT_PUBLIC_WHAH_ADDRESS,
                 tokenOut: toTokenInfo.address,
                 fee: 3000,
                 recipient: localStorage.getItem('account'),
-                deadline: Math.floor(Date.now() / 1000) + 60 * 20,
-                amountIn: ethers.parseUnits('3', 18),
-                amountOutMinimum: ethers.Zero,
-                sqrtPriceLimitX96: ethers.Zero,
+                deadline: BigInt(Math.floor(Date.now() / 1000) + 60 * 20), // 使用 BigInt
+                amountIn: ethers.parseUnits('3', 18), // 仍然使用 ethers.parseUnits 返回 BigInt
+                amountOutMinimum: BigInt(0), // 使用 BigInt(0)
+                sqrtPriceLimitX96: BigInt(0), // 使用 BigInt(0)
             };
-
 
             const tx = await swapRouterService.sendMethod(
                 "exactInputSingle",
                 localStorage.getItem('account'),
                 [params],
-                { value: ethers.Zero }
+                { value: BigInt(0) } // 使用 BigInt(0) 替代 ethers.Zero
             );
+            console.log("Swap 成功", tx);
 
-            console.log("Transaction Success:", tx);
+            const tokenInBalanceAfter = await fromTokenService.callViewMethod("balanceOf", localStorage.getItem('account'));
+            const tokenOutBalanceAfter = await toTokenService.callViewMethod("balanceOf", localStorage.getItem('account'));
 
-            console.log("流动性添加成功，交易回执：", mintResult);
+            console.log("TokenIn Balance After:", tokenInBalanceAfter.toString());
+            console.log("TokenOut Balance After:", tokenOutBalanceAfter.toString());
+
+            // console.log("流动性添加成功，交易回执：", mintResult);
             console.log('fromToken授权结果', approveFromToken)
             console.log('toToken授权结果', approveToToken)
             console.log('创建交易对结果', createPoolResult)

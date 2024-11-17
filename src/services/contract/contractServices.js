@@ -15,51 +15,51 @@ class ContractService {
     }
 
     // 调用合约的只读方法
-    async callMethod(methodName, ...args) {
-        console.log(methodName, ...args);
+    async callViewMethod(methodName, ...args) {
         try {
-            const result = await this.contract[methodName](...args);
+            // 使用 Provider 而不是 Signer 调用合约方法
+            const contractWithProvider = this.contract.connect(this.provider);
+            // console.log("Contract With Provider:", contractWithProvider);
+            // 检查方法是否存在
+            if (typeof contractWithProvider[methodName] !== 'function') {
+                throw new Error(`Method ${methodName} not found on contract.`);
+            }
+
+            // 调用 view 方法
+            const result = await contractWithProvider[methodName](...args);
+            // console.log(`Result from ${methodName}:`, result);
             return result;
         } catch (error) {
-            console.error("callMethod Error:", error);
+            // console.error(`callViewMethod Error: ${methodName}`, error);
             throw error;
         }
     }
 
+
     async sendMethod(methodName, from, args = [], options = {}) {
         try {
-            // 初始化签名器
-            const signer = await this.provider.getSigner();
-            if (!signer) {
-                throw new Error("Signer not found. Please check if the provider is initialized correctly.");
-            }
-
-            // 连接签名器并初始化合约
+            const signer = await this.provider.getSigner(from);
             const contractWithSigner = this.contract.connect(signer);
-            console.log("Signer:", signer);
-            console.log("Contract With Signer:", contractWithSigner);
-            // 检查合约方法是否存在
-            if (typeof contractWithSigner[methodName] !== 'function') {
-                throw new Error(`Method ${methodName} not found on contract.`);
-            }
 
-            // 调用合约方法
+            // 调用合约方法并发送交易
             const txResponse = await contractWithSigner[methodName](...args, options);
-            console.log("Transaction Response:", txResponse);
-            // 检查返回值是否为 TransactionResponse 对象
+            // console.log("Transaction Response:", txResponse);
+
+            // 检查返回值，确保是有效的 TransactionResponse 对象
             if (!txResponse || typeof txResponse.wait !== 'function') {
-                throw new Error("Invalid TransactionResponse, missing 'wait' method.");
+                throw new Error("Invalid TransactionResponse, missing 'wait' method");
             }
 
             // 等待交易确认
             const receipt = await txResponse.wait();
+            // console.log("Transaction Mined:", receipt);
+
             return receipt;
         } catch (error) {
             console.error("sendMethod Error:", error);
             throw error;
         }
     }
-
 
 
 
