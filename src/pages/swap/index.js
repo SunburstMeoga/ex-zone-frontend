@@ -91,6 +91,16 @@ const Trade = () => {
                 localStorage.getItem('account'),
                 [process.env.NEXT_PUBLIC_SWAP_ROUTER_ADDRESS, ethers.MaxUint256]
             );
+            let approveFromTokenTwo = await fromTokenService.sendMethod(
+                "approve",
+                localStorage.getItem('account'),
+                [process.env.NEXT_PUBLIC_POSITION_MANAGER_ADDRESS, ethers.MaxUint256]
+            );
+            let approveToTokenTwo = await toTokenService.sendMethod(
+                "approve",
+                localStorage.getItem('account'),
+                [process.env.NEXT_PUBLIC_POSITION_MANAGER_ADDRESS, ethers.MaxUint256]
+            );
             const FEE_AMOUNT = 3000; // 设置手续费等级
             const INITIAL_PRICE = '56022770974786139918731938227'; // 初始价格
 
@@ -144,7 +154,12 @@ const Trade = () => {
 
             // console.log("流动性添加成功，交易回执：", mintResult);
             console.log('fromToken授权结果', approveFromToken)
+            console.log('fromToken授权结果', approveFromTokenTwo)
+
             console.log('toToken授权结果', approveToToken)
+            console.log('toToken授权结果', approveToTokenTwo)
+
+
             console.log('创建交易对结果', createPoolResult)
         } catch (err) {
             console.log(err)
