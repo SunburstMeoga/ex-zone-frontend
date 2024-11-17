@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Popup from 'antd-mobile/es/components/popup'
 import { fireTypeItems, fireFilterItems } from '@/dictionary/trade'
-const SelectTokenPopup = ({ showSelectTokenPopup, onClose, selectTokenItem, isToken = false, tokenList }) => {
+const SelectTokenPopup = ({ showSelectTokenPopup, onClose, selectTokenItem, isToken = false, tokenList = [] }) => {
 
     return (
 
