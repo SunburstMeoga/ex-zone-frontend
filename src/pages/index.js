@@ -7,7 +7,8 @@ import { useEffect, useState } from "react";
 import { useSelector } from 'react-redux'
 import AnimatedNumber from "@/components/AnimatedNumber";
 import { useRouter } from 'next/router';
-import ConnectWalletButton from "@/components/connectWallet";
+import ConnectWalletButton from "@/components/ConnectWallet";
+
 
 export default function Home() {
   let [homeTotal, changeHomeTotal] = useState([])

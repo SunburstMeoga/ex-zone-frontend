@@ -9,7 +9,7 @@ import SelectTokenPopup from '@/components/swap/selectTokenPopup'
 import { swapStateItems, swapOperateItems } from '@/dictionary/trade'
 import { useRouter } from 'next/router'
 import DialogPopup from '@/components/DialogPopup'
-import ConnectWalletButton from "@/components/connectWallet";
+import ConnectWalletButton from "@/components/ConnectWallet";
 import Web3 from 'web3';
 import { ethers } from 'ethers';
 import SwapRouterABI from '@/abi/SwapRouter'
