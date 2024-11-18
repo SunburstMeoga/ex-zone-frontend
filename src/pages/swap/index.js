@@ -39,11 +39,14 @@ const Trade = () => {
     let [erc20ContractService, setERC20ContractService] = useState(null)
     let [fromTokenList, setFromTokenList] = useState([ //兑换 from token list
         { title: 'WHAH', address: process.env.NEXT_PUBLIC_WHAH_ADDRESS, img: 'https://img1.baidu.com/it/u=1346098394,1826979592&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500' },
+        { title: 'USD3', address: process.env.NEXT_PUBLIC_USD3_ADDRESS, img: 'https://www.3at.org/images/logo.png' },
+
         { title: 'GTC', address: process.env.NEXT_PUBLIC_GTC_ADDRESS, img: 'https://img2.baidu.com/it/u=3012966767,826073604&fm=253&fmt=auto&app=138&f=JPEG?w=253&h=253' },
         { title: 'SHTC', address: process.env.NEXT_PUBLIC_SHTC_ADDRESS, img: 'https://img0.baidu.com/it/u=2664965310,3686497550&fm=253&fmt=auto&app=138&f=JPEG?w=329&h=330' },
         { title: 'HTGC', address: process.env.NEXT_PUBLIC_HTGC_ADDRESS, img: 'https://img1.baidu.com/it/u=1713792594,3651390564&fm=253&fmt=auto?w=800&h=800' }])
     let [toTokenList, setToTokenList] = useState([ //兑换 to token list
         { title: 'WHAH', address: process.env.NEXT_PUBLIC_WHAH_ADDRESS, img: 'https://img1.baidu.com/it/u=1346098394,1826979592&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500' },
+        { title: 'USD3', address: process.env.NEXT_PUBLIC_USD3_ADDRESS, img: 'https://www.3at.org/images/logo.png' },
         { title: 'GTC', address: process.env.NEXT_PUBLIC_GTC_ADDRESS, img: 'https://img2.baidu.com/it/u=3012966767,826073604&fm=253&fmt=auto&app=138&f=JPEG?w=253&h=253' },
         { title: 'SHTC', address: process.env.NEXT_PUBLIC_SHTC_ADDRESS, img: 'https://img0.baidu.com/it/u=2664965310,3686497550&fm=253&fmt=auto&app=138&f=JPEG?w=329&h=330' },
         { title: 'HTGC', address: process.env.NEXT_PUBLIC_HTGC_ADDRESS, img: 'https://img1.baidu.com/it/u=1713792594,3651390564&fm=253&fmt=auto?w=800&h=800' }])
@@ -57,28 +60,30 @@ const Trade = () => {
             return
         }
         // console.log(window.ethereum, PositionManagersABI, process.env.NEXT_PUBLIC_POSITION_MANAGER_ADDRESS)
+        console.log(fromTokenInfo.address || process.env.NEXT_PUBLIC_WHAH_ADDRESS, toTokenInfo.address)
+        // return
         try {
             const fromTokenService = new ContractService(window.ethereum, ERC20ABI, fromTokenInfo.address ? fromTokenInfo.address : process.env.NEXT_PUBLIC_WHAH_ADDRESS)
             const toTokenService = new ContractService(window.ethereum, ERC20ABI, toTokenInfo.address)
             const positionManagerService = new ContractService(window.ethereum, PositionManagersABI, process.env.NEXT_PUBLIC_POSITION_MANAGER_ADDRESS)
             const swapRouterService = new ContractService(window.ethereum, SwapRouterABI, process.env.NEXT_PUBLIC_SWAP_ROUTER_ADDRESS);
-            const factoryService = new ContractService(window.ethereum, FactoryABI, process.env.NEXT_PUBLIC_FACTORY_ADDRESS)
+            // const factoryService = new ContractService(window.ethereum, FactoryABI, process.env.NEXT_PUBLIC_FACTORY_ADDRESS)
 
-            const poolAddress = await factoryService.callViewMethod(
-                "getPool",
-                fromTokenInfo.address || process.env.NEXT_PUBLIC_WHAH_ADDRESS,
-                toTokenInfo.address,
-                3000 // fee tier
-            );
-            const poolService = new ContractService(window.ethereum, PoolABI, poolAddress);
-            const liquidity = await poolService.callViewMethod("liquidity");
-            console.log("Pool Address:", poolAddress);
+            // const poolAddress = await factoryService.callViewMethod(
+            //     "getPool",
+            //     fromTokenInfo.address || process.env.NEXT_PUBLIC_WHAH_ADDRESS,
+            //     toTokenInfo.address,
+            //     3000 // fee tier
+            // );
+            // const poolService = new ContractService(window.ethereum, PoolABI, poolAddress);
+            // const liquidity = await poolService.callViewMethod("liquidity");
+            // console.log("Pool Address:", poolAddress);
 
-            console.log("Liquidity:", liquidity.toString());
+            // console.log("Liquidity:", liquidity.toString());
 
-            if (poolAddress === ethers.ZeroAddress) {
-                throw new Error("Pool not initialized for the provided tokens and fee.");
-            }
+            // if (poolAddress === ethers.ZeroAddress) {
+            //     throw new Error("Pool not initialized for the provided tokens and fee.");
+            // }
             // return
             console.log('PositionManager', positionManagerService)
             let approveFromToken = await fromTokenService.sendMethod(
@@ -300,7 +305,7 @@ const Trade = () => {
                                     {/* <div className='text-swap-copy-icon icon iconfont icon-copy' style={{ fontSize: '1.4rem' }}></div> */}
                                 </div>}
                                 <div className='w-full'>
-                                    <input className='bg-transparent  h-3-0 w-full ' onFocus={handleInputFocus}></input>
+                                    <input className='bg-transparent  h-3-0 w-full' onFocus={handleInputFocus}></input>
                                 </div>
                             </div>
                             <div className='w-full flex justify-center items-center my-0-1'>
@@ -319,7 +324,7 @@ const Trade = () => {
                                     {/* <div className='text-swap-copy-icon icon iconfont icon-copy' style={{ fontSize: '1.4rem' }}></div> */}
                                 </div>
                                 <div className='w-full'>
-                                    <input className='bg-transparent  h-3-0 w-full' onFocus={handleInputFocus}></input>
+                                    <input disabled className='bg-transparent  h-3-0 w-full' onFocus={handleInputFocus}></input>
                                 </div>
                             </div>
                         </div>
@@ -333,7 +338,9 @@ const Trade = () => {
                         <div onClick={handleApproveAndSwap} className='w-20-0 h-4-7 bg-primary-purple flex justify-center items-center text-white font-light text-1-5 rounded-xl lg:w-35-0  transition ease-in duration-100 active:bg-opacity-50 active:translate-y-0-1'>
                             Approve and Swap
                         </div>
-                        <ConnectWalletButton onConnect={handleWalletConnect} className="w-20-0 h-4-7 bg-primary-purple flex justify-center items-center text-white font-light text-1-5 rounded-xl lg:w-35-0  transition ease-in duration-100 active:bg-opacity-50 active:translate-y-0-1"></ConnectWalletButton>
+                        <div className='mt-10-0'>
+                            <ConnectWalletButton className="w-20-0 h-4-7 bg-primary-purple flex justify-center items-center text-white font-light text-1-5 rounded-xl lg:w-35-0  transition ease-in duration-100 active:bg-opacity-50 active:translate-y-0-1"></ConnectWalletButton>
+                        </div>
                     </div>
                 </div>
 

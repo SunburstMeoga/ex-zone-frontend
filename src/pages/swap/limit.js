@@ -97,7 +97,7 @@ const Limit = () => {
                                 </div>
                             })}
                         </div>
-                        <div className='w-20-0 text-1-5 font-semibold lg:w-35-0 mb-2-0'>TWAP</div>
+                        <div className='w-20-0 text-1-5 font-semibold lg:w-35-0 mb-2-0'>LIMIT</div>
                         <div className='w-20-0 mb-2-0 lg:w-35-0 lg:mb-8-0'>
                             <div className='bg-swap-card-module flex flex-col justify-between items-center border-2 border-swap-border rounded-2xl p-0-8 w-20-0 lg:w-35-0'>
                                 <div className='flex justify-between items-center w-full'>

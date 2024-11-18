@@ -11,7 +11,7 @@ const ConnectWalletButton = ({ className, onConnect, label = 'Connect Wallet' })
     let isConnected = useSelector((state) => state.wallet.isConnected);
     useEffect(() => {
         // 检查 MetaMask 是否安装
-        console.log(isConnected)
+        console.log('是否已连接钱包', isConnected)
         if (typeof window !== 'undefined' && typeof window.ethereum !== 'undefined') {
             const web3Instance = new Web3(window.ethereum);
             setWeb3(web3Instance);
