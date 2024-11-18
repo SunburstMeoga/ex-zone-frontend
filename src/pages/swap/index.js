@@ -34,9 +34,10 @@ const Trade = () => {
     let [toTokenPrice, setToTokenPrice] = useState('')
     let [fromTokenPrice, setFromTokenPrice] = useState('')
     let [showDialogPopup, setShowDialogPopup] = useState(false)
-
+    let [fromTokenValue, setFromTokenValue] = useState('')
     let [web3, setWeb3] = useState(null)
     let [erc20ContractService, setERC20ContractService] = useState(null)
+    const [price, setPrice] = useState(null);
     let [fromTokenList, setFromTokenList] = useState([ //兑换 from token list
         { title: 'WHAH', address: process.env.NEXT_PUBLIC_WHAH_ADDRESS, img: 'https://img1.baidu.com/it/u=1346098394,1826979592&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500' },
         { title: 'USD3', address: process.env.NEXT_PUBLIC_USD3_ADDRESS, img: 'https://www.3at.org/images/logo.png' },
@@ -53,6 +54,18 @@ const Trade = () => {
     const handleWalletConnect = (address) => { //点击连接钱包按钮
         console.log(address)
     };
+    const fetchPrice = async () => { //计算实时价格与兑换比率
+        try {
+            const slot0 = await poolService.getSlot0();
+            const sqrtPriceX96 = BigInt(slot0.sqrtPriceX96);
+
+            // 计算价格: price = (sqrtPriceX96 ** 2) / 2 ** 192
+            const price = Number((sqrtPriceX96 * sqrtPriceX96) / (BigInt(2) ** BigInt(192)));
+            setPrice(price);
+        } catch (error) {
+            console.error("Fetch Price Error:", error);
+        }
+    };
     const handleApproveAndSwap = async () => { //点击approve and swap
         if (!toTokenInfo.title) { //没有选择to token 起弹窗
             setDialogContent('Select to token')
@@ -67,15 +80,30 @@ const Trade = () => {
             const toTokenService = new ContractService(window.ethereum, ERC20ABI, toTokenInfo.address)
             const positionManagerService = new ContractService(window.ethereum, PositionManagersABI, process.env.NEXT_PUBLIC_POSITION_MANAGER_ADDRESS)
             const swapRouterService = new ContractService(window.ethereum, SwapRouterABI, process.env.NEXT_PUBLIC_SWAP_ROUTER_ADDRESS);
-            // const factoryService = new ContractService(window.ethereum, FactoryABI, process.env.NEXT_PUBLIC_FACTORY_ADDRESS)
 
-            // const poolAddress = await factoryService.callViewMethod(
-            //     "getPool",
-            //     fromTokenInfo.address || process.env.NEXT_PUBLIC_WHAH_ADDRESS,
-            //     toTokenInfo.address,
-            //     3000 // fee tier
-            // );
-            // const poolService = new ContractService(window.ethereum, PoolABI, poolAddress);
+
+            const factoryService = new ContractService(window.ethereum, FactoryABI, process.env.NEXT_PUBLIC_FACTORY_ADDRESS)
+
+            const poolAddress = await factoryService.callViewMethod(
+                "getPool",
+                fromTokenInfo.address || process.env.NEXT_PUBLIC_WHAH_ADDRESS,
+                toTokenInfo.address,
+                3000 // fee tier
+            );
+            const poolService = new ContractService(window.ethereum, PoolABI, poolAddress);
+            const slot0Data = await await poolService.callViewMethod("slot0");
+            const sqrtPriceX96 = BigInt(slot0Data.sqrtPriceX96);
+
+            // 转为浮点数格式
+            const sqrtPriceFloat = Number(sqrtPriceX96) / 2 ** 96;
+
+            // 计算实际价格 (token1/token0)
+            const priceFloat = sqrtPriceFloat ** 2;
+            const token0PerToken1 = 1 / priceFloat;
+            console.log("Token0/Token1 Price (Float):", token0PerToken1);
+            // console.log("Token1/Token0 Price (Float):", priceFloat);
+            return
+
             // const liquidity = await poolService.callViewMethod("liquidity");
             // console.log("Pool Address:", poolAddress);
 
@@ -138,7 +166,7 @@ const Trade = () => {
                 fee: 3000,
                 recipient: localStorage.getItem('account'),
                 deadline: BigInt(Math.floor(Date.now() / 1000) + 60 * 20), // 使用 BigInt
-                amountIn: ethers.parseUnits('3', 18), // 仍然使用 ethers.parseUnits 返回 BigInt
+                amountIn: ethers.parseUnits(fromTokenValue, 18), // 仍然使用 ethers.parseUnits 返回 BigInt
                 amountOutMinimum: BigInt(0), // 使用 BigInt(0)
                 sqrtPriceLimitX96: BigInt(0), // 使用 BigInt(0)
             };
@@ -247,7 +275,9 @@ const Trade = () => {
     const closeMask = () => { //关闭对话框
         toggleDialogPopup()
     }
-    const handleInputFocus = () => { //input框焦点
+    const handleInputFocus = (e) => { //input框焦点
+        setFromTokenValue(e.target.value)
+        console.log(fromTokenValue)
         // setDialogContent('Unable to redeem')
         // toggleDialogPopup()
     }
@@ -305,7 +335,7 @@ const Trade = () => {
                                     {/* <div className='text-swap-copy-icon icon iconfont icon-copy' style={{ fontSize: '1.4rem' }}></div> */}
                                 </div>}
                                 <div className='w-full'>
-                                    <input className='bg-transparent  h-3-0 w-full' onFocus={handleInputFocus}></input>
+                                    <input className='bg-transparent text-1-0 h-3-0 w-full' value={fromTokenValue} onChange={handleInputFocus}></input>
                                 </div>
                             </div>
                             <div className='w-full flex justify-center items-center my-0-1'>

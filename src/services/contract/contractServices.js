@@ -19,18 +19,16 @@ class ContractService {
         try {
             // 使用 Provider 而不是 Signer 调用合约方法
             const contractWithProvider = this.contract.connect(this.provider);
-            // console.log("Contract With Provider:", contractWithProvider);
-            // 检查方法是否存在
+
             if (typeof contractWithProvider[methodName] !== 'function') {
                 throw new Error(`Method ${methodName} not found on contract.`);
             }
 
-            // 调用 view 方法
             const result = await contractWithProvider[methodName](...args);
             // console.log(`Result from ${methodName}:`, result);
             return result;
         } catch (error) {
-            // console.error(`callViewMethod Error: ${methodName}`, error);
+            console.error(`callViewMethod Error: ${methodName}`, error);
             throw error;
         }
     }
@@ -61,7 +59,16 @@ class ContractService {
         }
     }
 
-
+    async getSlot0() {
+        try {
+            const result = await this.callViewMethod("slot0");
+            console.log("Slot0 Data:", result);
+            return result;
+        } catch (error) {
+            console.error("getSlot0 Error:", error);
+            throw error;
+        }
+    }
 
 }
 
