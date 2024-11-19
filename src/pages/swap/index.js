@@ -28,20 +28,20 @@ const Trade = () => {
     let [showCustomsizePopup, setCustomsizePopup] = useState(false)
     let [showRecentTransPopup, setRecentTransPopup] = useState(false)
     let [showSelectTokenPopup, setSelectTokenPopup] = useState(false)
-    let [fromTokenInfo, setFromTokenInfo] = useState({ title: 'WHAH', address: process.env.NEXT_PUBLIC_WHAH_ADDRESS, img: 'https://img1.baidu.com/it/u=1346098394,1826979592&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500' })
+    let [fromTokenInfo, setFromTokenInfo] = useState({})
     let [toTokenInfo, setToTokenInfo] = useState({})
     let [tokenType, setTokenType] = useState('')
-    let [toTokenPrice, setToTokenPrice] = useState('')
-    let [fromTokenPrice, setFromTokenPrice] = useState('')
     let [showDialogPopup, setShowDialogPopup] = useState(false)
-    let [fromTokenValue, setFromTokenValue] = useState('')
     let [web3, setWeb3] = useState(null)
-    let [erc20ContractService, setERC20ContractService] = useState(null)
+    let [fromTokenBalance, setFromTokenBalance] = useState('')
+    let [toTokenBalance, setToTokenBalance] = useState('')
+
+    let [fromTokenValue, setFromTokenValue] = useState('')
+    let [toTokenValue, setToTokenValue] = useState('')
     const [price, setPrice] = useState(null);
     let [fromTokenList, setFromTokenList] = useState([ //兑换 from token list
         { title: 'WHAH', address: process.env.NEXT_PUBLIC_WHAH_ADDRESS, img: 'https://img1.baidu.com/it/u=1346098394,1826979592&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500' },
         { title: 'USD3', address: process.env.NEXT_PUBLIC_USD3_ADDRESS, img: 'https://www.3at.org/images/logo.png' },
-
         { title: 'GTC', address: process.env.NEXT_PUBLIC_GTC_ADDRESS, img: 'https://img2.baidu.com/it/u=3012966767,826073604&fm=253&fmt=auto&app=138&f=JPEG?w=253&h=253' },
         { title: 'SHTC', address: process.env.NEXT_PUBLIC_SHTC_ADDRESS, img: 'https://img0.baidu.com/it/u=2664965310,3686497550&fm=253&fmt=auto&app=138&f=JPEG?w=329&h=330' },
         { title: 'HTGC', address: process.env.NEXT_PUBLIC_HTGC_ADDRESS, img: 'https://img1.baidu.com/it/u=1713792594,3651390564&fm=253&fmt=auto?w=800&h=800' }])
@@ -51,68 +51,18 @@ const Trade = () => {
         { title: 'GTC', address: process.env.NEXT_PUBLIC_GTC_ADDRESS, img: 'https://img2.baidu.com/it/u=3012966767,826073604&fm=253&fmt=auto&app=138&f=JPEG?w=253&h=253' },
         { title: 'SHTC', address: process.env.NEXT_PUBLIC_SHTC_ADDRESS, img: 'https://img0.baidu.com/it/u=2664965310,3686497550&fm=253&fmt=auto&app=138&f=JPEG?w=329&h=330' },
         { title: 'HTGC', address: process.env.NEXT_PUBLIC_HTGC_ADDRESS, img: 'https://img1.baidu.com/it/u=1713792594,3651390564&fm=253&fmt=auto?w=800&h=800' }])
-    const handleWalletConnect = (address) => { //点击连接钱包按钮
-        console.log(address)
-    };
-    const fetchPrice = async () => { //计算实时价格与兑换比率
-        try {
-            const slot0 = await poolService.getSlot0();
-            const sqrtPriceX96 = BigInt(slot0.sqrtPriceX96);
-
-            // 计算价格: price = (sqrtPriceX96 ** 2) / 2 ** 192
-            const price = Number((sqrtPriceX96 * sqrtPriceX96) / (BigInt(2) ** BigInt(192)));
-            setPrice(price);
-        } catch (error) {
-            console.error("Fetch Price Error:", error);
-        }
-    };
     const handleApproveAndSwap = async () => { //点击approve and swap
         if (!toTokenInfo.title) { //没有选择to token 起弹窗
             setDialogContent('Select to token')
             toggleDialogPopup()
             return
         }
-        // console.log(window.ethereum, PositionManagersABI, process.env.NEXT_PUBLIC_POSITION_MANAGER_ADDRESS)
         console.log(fromTokenInfo.address || process.env.NEXT_PUBLIC_WHAH_ADDRESS, toTokenInfo.address)
-        // return
         try {
             const fromTokenService = new ContractService(window.ethereum, ERC20ABI, fromTokenInfo.address ? fromTokenInfo.address : process.env.NEXT_PUBLIC_WHAH_ADDRESS)
             const toTokenService = new ContractService(window.ethereum, ERC20ABI, toTokenInfo.address)
             const positionManagerService = new ContractService(window.ethereum, PositionManagersABI, process.env.NEXT_PUBLIC_POSITION_MANAGER_ADDRESS)
             const swapRouterService = new ContractService(window.ethereum, SwapRouterABI, process.env.NEXT_PUBLIC_SWAP_ROUTER_ADDRESS);
-
-
-            const factoryService = new ContractService(window.ethereum, FactoryABI, process.env.NEXT_PUBLIC_FACTORY_ADDRESS)
-
-            const poolAddress = await factoryService.callViewMethod(
-                "getPool",
-                fromTokenInfo.address || process.env.NEXT_PUBLIC_WHAH_ADDRESS,
-                toTokenInfo.address,
-                3000 // fee tier
-            );
-            const poolService = new ContractService(window.ethereum, PoolABI, poolAddress);
-            const slot0Data = await await poolService.callViewMethod("slot0");
-            const sqrtPriceX96 = BigInt(slot0Data.sqrtPriceX96);
-
-            // 转为浮点数格式
-            const sqrtPriceFloat = Number(sqrtPriceX96) / 2 ** 96;
-
-            // 计算实际价格 (token1/token0)
-            const priceFloat = sqrtPriceFloat ** 2;
-            const token0PerToken1 = 1 / priceFloat;
-            console.log("Token0/Token1 Price (Float):", token0PerToken1);
-            // console.log("Token1/Token0 Price (Float):", priceFloat);
-            return
-
-            // const liquidity = await poolService.callViewMethod("liquidity");
-            // console.log("Pool Address:", poolAddress);
-
-            // console.log("Liquidity:", liquidity.toString());
-
-            // if (poolAddress === ethers.ZeroAddress) {
-            //     throw new Error("Pool not initialized for the provided tokens and fee.");
-            // }
-            // return
             console.log('PositionManager', positionManagerService)
             let approveFromToken = await fromTokenService.sendMethod(
                 "approve",
@@ -136,9 +86,7 @@ const Trade = () => {
             );
             const FEE_AMOUNT = 3000; // 设置手续费等级
             const INITIAL_PRICE = '56022770974786139918731938227'; // 初始价格
-
             let createPoolResult = await positionManagerService.sendMethod('createAndInitializePoolIfNecessary', localStorage.getItem('account'), [fromTokenInfo.address, toTokenInfo.address, FEE_AMOUNT, INITIAL_PRICE])
-
             const mintParams = {
                 token0: fromTokenInfo.address || process.env.NEXT_PUBLIC_WHAH_ADDRESS,
                 token1: toTokenInfo.address,
@@ -152,7 +100,6 @@ const Trade = () => {
                 recipient: localStorage.getItem('account'),
                 deadline: Math.floor(Date.now() / 1000) + 60 * 20,
             };
-
             const mintTx = await positionManagerService.sendMethod(
                 "mint",
                 localStorage.getItem('account'),
@@ -170,7 +117,6 @@ const Trade = () => {
                 amountOutMinimum: BigInt(0), // 使用 BigInt(0)
                 sqrtPriceLimitX96: BigInt(0), // 使用 BigInt(0)
             };
-
             const tx = await swapRouterService.sendMethod(
                 "exactInputSingle",
                 localStorage.getItem('account'),
@@ -178,21 +124,15 @@ const Trade = () => {
                 { value: BigInt(0) } // 使用 BigInt(0) 替代 ethers.Zero
             );
             console.log("Swap 成功", tx);
-
             const tokenInBalanceAfter = await fromTokenService.callViewMethod("balanceOf", localStorage.getItem('account'));
             const tokenOutBalanceAfter = await toTokenService.callViewMethod("balanceOf", localStorage.getItem('account'));
-
             console.log("TokenIn Balance After:", tokenInBalanceAfter.toString());
             console.log("TokenOut Balance After:", tokenOutBalanceAfter.toString());
-
             // console.log("流动性添加成功，交易回执：", mintResult);
             console.log('fromToken授权结果', approveFromToken)
             console.log('fromToken授权结果', approveFromTokenTwo)
-
             console.log('toToken授权结果', approveToToken)
             console.log('toToken授权结果', approveToTokenTwo)
-
-
             console.log('创建交易对结果', createPoolResult)
         } catch (err) {
             console.log(err)
@@ -260,27 +200,68 @@ const Trade = () => {
         setTokenType(type)
         setSelectTokenPopup(showSelectTokenPopup = !showSelectTokenPopup)
     }
-    const selectTokenItem = (item) => { //选择token
+    const selectTokenItem = async (item) => { //选择token
         console.log(item)
         tokenType === 'from' ? setFromTokenInfo(item) : setToTokenInfo(item)
+        let balance = await fetchBalance(item.address)
+        tokenType === 'from' ? setFromTokenBalance(balance) : setToTokenBalance(balance)
+        console.log(balance)
+        // return
         toggleSelectTokenPopup()
+    }
+    const fetchBalance = async (address) => { //获取token余额
+        const tokenService = new ContractService(window.ethereum, ERC20ABI, address)
+        const tokenBalance = await tokenService.callViewMethod("balanceOf", localStorage.getItem('account'));
+        return (ethers.formatUnits(tokenBalance, 18))
+        // return tokenBalance.toString()
     }
     const toggleDialogPopup = () => { //显示隐藏对话框
         setShowDialogPopup(showDialogPopup = !showDialogPopup)
     }
-    const handleConnectWallet = () => { //点击链接钱包按钮
-        setDialogContent('Network error, please try again')
-        toggleDialogPopup()
-    }
+
     const closeMask = () => { //关闭对话框
         toggleDialogPopup()
     }
-    const handleInputFocus = (e) => { //input框焦点
+    const fetchPrice = async () => { //计算实时价格与兑换比率
+        try {
+            const factoryService = new ContractService(window.ethereum, FactoryABI, process.env.NEXT_PUBLIC_FACTORY_ADDRESS)
+            const poolAddress = await factoryService.callViewMethod(
+                "getPool",
+                fromTokenInfo.address,
+                toTokenInfo.address,
+                3000 // fee tier
+            );
+            const poolService = new ContractService(window.ethereum, PoolABI, poolAddress);
+            // const liquidity = await poolService.callViewMethod("liquidity");
+            // console.log('池地址', poolAddress)
+            // console.log('池塘流动性', liquidity)
+
+            const slot0Data = await await poolService.callViewMethod("slot0");
+            const sqrtPriceX96 = BigInt(slot0Data.sqrtPriceX96);
+            // 转为浮点数格式
+            const sqrtPriceFloat = Number(sqrtPriceX96) / 2 ** 96;
+            // 计算实际价格 (token1/token0)
+            const priceFloat = sqrtPriceFloat ** 2;
+            const token0PerToken1 = 1 / priceFloat;
+            console.log("Token0/Token1 Price (Float):", token0PerToken1);
+            setPrice(token0PerToken1)
+            return token0PerToken1
+
+        } catch (error) {
+            console.error("Fetch Price Error:", error);
+        }
+    };
+
+    const handleInputFocus = async (e) => { //input框焦点
         setFromTokenValue(e.target.value)
         console.log(fromTokenValue)
+        let token0PerToken1 = await fetchPrice()
+        setToTokenValue(token0PerToken1 * e.target.value)
+        console.log(token0PerToken1)
         // setDialogContent('Unable to redeem')
         // toggleDialogPopup()
     }
+
     return (
         <>
             <DialogPopup showDialogPopup={showDialogPopup} type='fail' content={dialogContent} closeMask={closeMask}></DialogPopup>
@@ -315,56 +296,51 @@ const Trade = () => {
                         </div>
                         <div className='w-20-0 mb-2-0 lg:w-35-0 lg:mb-8-0'>
                             <div className='bg-swap-card-module flex flex-col justify-between items-center border-2 border-swap-border rounded-2xl p-0-8 w-20-0 h-8-0 lg:w-35-0'>
-                                {fromTokenInfo.title ? <div className='flex justify-between items-center w-full'>
+                                <div className='flex justify-between items-center w-full'>
                                     <div className='flex justify-start items-center' onClick={() => toggleSelectTokenPopup('from')}>
-                                        <div className='rounded-full w-2-2 h-2-2 bg-white overflow-hidden' >
-                                            <img src={fromTokenInfo.img}></img>
-                                        </div>
-                                        <div className='text-1-5 font-light ml-1-0'>{fromTokenInfo.title}</div>
-                                        <div className='ml-2-0 icon iconfont icon-down2' style={{ fontSize: '1rem' }}></div>
+                                        {fromTokenInfo.title && <div className='rounded-full w-2-2 h-2-2 bg-white overflow-hidden' >
+                                            <img className='' src={fromTokenInfo.img}></img>
+                                        </div>}
+                                        <div className='text-1-2 font-light ml-1-0'>{fromTokenInfo.title ? fromTokenInfo.title : 'Select token'}</div>
+                                        <div className='ml-2-0 icon iconfont icon-down2' onClick={() => toggleSelectTokenPopup} style={{ fontSize: '1rem' }}></div>
+
                                     </div>
                                     {/* <div className='text-swap-copy-icon icon iconfont icon-copy' style={{ fontSize: '1.4rem' }}></div> */}
-                                </div> : <div className='flex justify-between items-center w-full'>
-                                    <div className='flex justify-start items-center' onClick={() => toggleSelectTokenPopup('from')}>
-                                        <div className='rounded-full w-2-2 h-2-2 bg-white overflow-hidden' >
-                                            <img src={fromTokenList[0].img}></img>
-                                        </div>
-                                        <div className='text-1-5 font-light ml-1-0'>{fromTokenList[0].title}</div>
-                                        <div className='ml-2-0 icon iconfont icon-down2' style={{ fontSize: '1rem' }}></div>
-                                    </div>
-                                    {/* <div className='text-swap-copy-icon icon iconfont icon-copy' style={{ fontSize: '1.4rem' }}></div> */}
-                                </div>}
-                                <div className='w-full'>
-                                    <input className='bg-transparent text-1-0 h-3-0 w-full' value={fromTokenValue} onChange={handleInputFocus}></input>
                                 </div>
+                                <div className='w-full'>
+                                    <input type="number" placeholder='0.00' step="0.01" className='bg-transparent placeholder-swap-border text-right text-1-2 border-none focus:outline-none caret-swap-border h-3-0 w-full' value={fromTokenValue} onChange={handleInputFocus}></input>
+                                </div>
+                                {/* <div className='text-swap-second-title text-1-0 w-full text-right'>1 {fromTokenList[0].title} ≈ {price} {toTokenList[0].title} </div> */}
+                                <div className='text-gray-400 text-0-8 w-full text-right'> Balance: {fromTokenBalance} {fromTokenInfo.title}</div>
+
                             </div>
                             <div className='w-full flex justify-center items-center my-0-1'>
                                 <div className='text-menu-green font-bold icon iconfont icon-down3' style={{ fontSize: '2rem' }}></div>
                             </div>
                             <div className='bg-swap-card-module flex flex-col justify-between items-center border-2 border-swap-border rounded-2xl p-0-8 w-20-0 h-8-0 lg:w-35-0'>
                                 <div className='flex justify-between items-center w-full'>
-
                                     <div className='flex justify-start items-center' onClick={() => toggleSelectTokenPopup('to')}>
                                         {toTokenInfo.title && <div className='rounded-full w-2-2 h-2-2 bg-white overflow-hidden' >
                                             <img className='' src={toTokenInfo.img}></img>
                                         </div>}
-                                        <div className='text-1-5 font-light ml-1-0'>{toTokenInfo.title ? toTokenInfo.title : 'Select token'}</div>
+                                        <div className='text-1-2 font-light ml-1-0'>{toTokenInfo.title ? toTokenInfo.title : 'Select token'}</div>
                                         <div className='ml-2-0 icon iconfont icon-down2' onClick={() => toggleSelectTokenPopup} style={{ fontSize: '1rem' }}></div>
                                     </div>
                                     {/* <div className='text-swap-copy-icon icon iconfont icon-copy' style={{ fontSize: '1.4rem' }}></div> */}
                                 </div>
                                 <div className='w-full'>
-                                    <input disabled className='bg-transparent  h-3-0 w-full' onFocus={handleInputFocus}></input>
+                                    <input disabled type="number" step="0.01" value={toTokenValue} className='bg-transparent placeholder-swap-border text-right text-1-2 border-none focus:outline-none caret-swap-border h-3-0 w-full' onFocus={handleInputFocus}></input>
                                 </div>
+                                <div className='text-gray-400 text-0-8 w-full text-right'> Balance:{toTokenBalance} {toTokenInfo.title} </div>
                             </div>
                         </div>
-                        {/* <div className='w-20-0 flex justify-between items-center mb-1-0 lg:w-35-0 '>
+                        <div className='w-20-0 flex justify-between items-center mb-1-0 lg:w-35-0 ' onClick={toggleSettingPopup}>
                             <div className='flex justify-start items-center'>
                                 <div className='text-1-0 text-swap-second-title mr-1-0'>Slippage Tolerance</div>
                                 <div className='text-menu-green icon iconfont icon-edit' style={{ fontSize: '1.4rem' }}> </div>
                             </div>
                             <div className='font-bold text-1-5 text-menu-green'>0.5%</div>
-                        </div> */}
+                        </div>
                         <div onClick={handleApproveAndSwap} className='w-20-0 h-4-7 bg-primary-purple flex justify-center items-center text-white font-light text-1-5 rounded-xl lg:w-35-0  transition ease-in duration-100 active:bg-opacity-50 active:translate-y-0-1'>
                             Approve and Swap
                         </div>
@@ -373,9 +349,7 @@ const Trade = () => {
                         </div>
                     </div>
                 </div>
-
             </div>
-
         </>
     )
 }
