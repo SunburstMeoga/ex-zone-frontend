@@ -18,6 +18,7 @@ import ERC20ABI from '@/abi/ERC20'
 import FactoryABI from '@/abi/Factory'
 import PoolABI from '@/abi/Pool'
 import ContractService from '@/services/contract/contractServices'
+import TransactionModal from "./components/TransactionModal";
 const Trade = () => {
     const router = useRouter()
     let [currentState, setCurrentState] = useState(1)
@@ -36,6 +37,9 @@ const Trade = () => {
     let [fromTokenBalance, setFromTokenBalance] = useState('')
     let [toTokenBalance, setToTokenBalance] = useState('')
 
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [transactionDetails, setTransactionDetails] = useState({});
+    const [isCalculating, setIsCalculating] = useState(false);
     let [fromTokenValue, setFromTokenValue] = useState('')
     let [toTokenValue, setToTokenValue] = useState('')
     const [price, setPrice] = useState(null);
@@ -51,6 +55,7 @@ const Trade = () => {
         { title: 'GTC', address: process.env.NEXT_PUBLIC_GTC_ADDRESS, img: 'https://img2.baidu.com/it/u=3012966767,826073604&fm=253&fmt=auto&app=138&f=JPEG?w=253&h=253' },
         { title: 'SHTC', address: process.env.NEXT_PUBLIC_SHTC_ADDRESS, img: 'https://img0.baidu.com/it/u=2664965310,3686497550&fm=253&fmt=auto&app=138&f=JPEG?w=329&h=330' },
         { title: 'HTGC', address: process.env.NEXT_PUBLIC_HTGC_ADDRESS, img: 'https://img1.baidu.com/it/u=1713792594,3651390564&fm=253&fmt=auto?w=800&h=800' }])
+
     const handleApproveAndSwap = async () => { //点击approve and swap
         if (!toTokenInfo.title) { //没有选择to token 起弹窗
             setDialogContent('Select to token')
@@ -64,26 +69,47 @@ const Trade = () => {
             const positionManagerService = new ContractService(window.ethereum, PositionManagersABI, process.env.NEXT_PUBLIC_POSITION_MANAGER_ADDRESS)
             const swapRouterService = new ContractService(window.ethereum, SwapRouterABI, process.env.NEXT_PUBLIC_SWAP_ROUTER_ADDRESS);
             console.log('PositionManager', positionManagerService)
-            let approveFromToken = await fromTokenService.sendMethod(
-                "approve",
-                localStorage.getItem('account'),
-                [process.env.NEXT_PUBLIC_SWAP_ROUTER_ADDRESS, ethers.MaxUint256]
-            );
-            let approveToToken = await toTokenService.sendMethod(
-                "approve",
-                localStorage.getItem('account'),
-                [process.env.NEXT_PUBLIC_SWAP_ROUTER_ADDRESS, ethers.MaxUint256]
-            );
-            let approveFromTokenTwo = await fromTokenService.sendMethod(
-                "approve",
-                localStorage.getItem('account'),
-                [process.env.NEXT_PUBLIC_POSITION_MANAGER_ADDRESS, ethers.MaxUint256]
-            );
-            let approveToTokenTwo = await toTokenService.sendMethod(
-                "approve",
-                localStorage.getItem('account'),
-                [process.env.NEXT_PUBLIC_POSITION_MANAGER_ADDRESS, ethers.MaxUint256]
-            );
+
+            const authorizedOne = await fromTokenService.callViewMethod('allowance', localStorage.getItem('account'), process.env.NEXT_PUBLIC_SWAP_ROUTER_ADDRESS)
+            const authorizedTwo = await toTokenService.callViewMethod('allowance', localStorage.getItem('account'), process.env.NEXT_PUBLIC_SWAP_ROUTER_ADDRESS)
+
+            const authorizedThree = await fromTokenService.callViewMethod('allowance', localStorage.getItem('account'), process.env.NEXT_PUBLIC_POSITION_MANAGER_ADDRESS)
+            const authorizedFour = await toTokenService.callViewMethod('allowance', localStorage.getItem('account'), process.env.NEXT_PUBLIC_POSITION_MANAGER_ADDRESS)
+            let approveFromToken, approveToToken, approveFromTokenTwo, approveToTokenTwo
+            console.log('from对swap授权状态', authorizedOne)
+            if (authorizedOne === 0) {
+                approveFromToken = await fromTokenService.sendMethod(
+                    "approve",
+                    localStorage.getItem('account'),
+                    [process.env.NEXT_PUBLIC_SWAP_ROUTER_ADDRESS, ethers.MaxUint256]
+                );
+            }
+            if (authorizedTwo === 0) {
+                approveToToken = await toTokenService.sendMethod(
+                    "approve",
+                    localStorage.getItem('account'),
+                    [process.env.NEXT_PUBLIC_SWAP_ROUTER_ADDRESS, ethers.MaxUint256]
+                );
+            }
+            if (authorizedThree === 0) {
+                approveFromTokenTwo = await fromTokenService.sendMethod(
+                    "approve",
+                    localStorage.getItem('account'),
+                    [process.env.NEXT_PUBLIC_POSITION_MANAGER_ADDRESS, ethers.MaxUint256]
+                );
+            }
+            if (authorizedFour === 0) {
+                approveToTokenTwo = await toTokenService.sendMethod(
+                    "approve",
+                    localStorage.getItem('account'),
+                    [process.env.NEXT_PUBLIC_POSITION_MANAGER_ADDRESS, ethers.MaxUint256]
+                );
+            }
+            // return
+
+
+
+
             const FEE_AMOUNT = 3000; // 设置手续费等级
             const INITIAL_PRICE = '56022770974786139918731938227'; // 初始价格
             let createPoolResult = await positionManagerService.sendMethod('createAndInitializePoolIfNecessary', localStorage.getItem('account'), [fromTokenInfo.address, toTokenInfo.address, FEE_AMOUNT, INITIAL_PRICE])
@@ -124,10 +150,17 @@ const Trade = () => {
                 { value: BigInt(0) } // 使用 BigInt(0) 替代 ethers.Zero
             );
             console.log("Swap 成功", tx);
+
             const tokenInBalanceAfter = await fromTokenService.callViewMethod("balanceOf", localStorage.getItem('account'));
             const tokenOutBalanceAfter = await toTokenService.callViewMethod("balanceOf", localStorage.getItem('account'));
             console.log("TokenIn Balance After:", tokenInBalanceAfter.toString());
             console.log("TokenOut Balance After:", tokenOutBalanceAfter.toString());
+            let balanceOne = ethers.formatUnits(tokenInBalanceAfter, 18)
+            let balanceTwo = ethers.formatUnits(tokenOutBalanceAfter, 18)
+
+            setTransactionDetails({ token0Used: fromTokenValue, token1Received: toTokenValue, fee: 0.3, token0Balance: balanceOne, token1Balance: balanceTwo, token0: fromTokenInfo.title, token1: toTokenInfo.title });
+            setIsModalOpen(true); // 显示弹窗
+
             // console.log("流动性添加成功，交易回执：", mintResult);
             console.log('fromToken授权结果', approveFromToken)
             console.log('fromToken授权结果', approveFromTokenTwo)
@@ -224,6 +257,7 @@ const Trade = () => {
     }
     const fetchPrice = async () => { //计算实时价格与兑换比率
         try {
+            setIsCalculating(true); // 显示骨架屏
             const factoryService = new ContractService(window.ethereum, FactoryABI, process.env.NEXT_PUBLIC_FACTORY_ADDRESS)
             const poolAddress = await factoryService.callViewMethod(
                 "getPool",
@@ -249,11 +283,16 @@ const Trade = () => {
 
         } catch (error) {
             console.error("Fetch Price Error:", error);
+            setIsCalculating(false); // 隐藏骨架屏
+        }
+        finally {
+            setIsCalculating(false); // 隐藏骨架屏
         }
     };
 
     const handleInputFocus = async (e) => { //input框焦点
         setFromTokenValue(e.target.value)
+
         console.log(fromTokenValue)
         let token0PerToken1 = await fetchPrice()
         setToTokenValue(token0PerToken1 * e.target.value)
@@ -264,6 +303,11 @@ const Trade = () => {
 
     return (
         <>
+            <TransactionModal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+                details={transactionDetails}
+            />
             <DialogPopup showDialogPopup={showDialogPopup} type='fail' content={dialogContent} closeMask={closeMask}></DialogPopup>
             <StatisticsPopup showStatisticsPopup={showStatisticsPopup} onClose={toggleStatisticsPopup} fromTokenInfo={fromTokenInfo} toTokenInfo={toTokenInfo} ></StatisticsPopup>
             <FirePopup showFirePopup={showFirePopup} onClose={toggleFirePopup}></FirePopup>
@@ -328,24 +372,29 @@ const Trade = () => {
                                     </div>
                                     {/* <div className='text-swap-copy-icon icon iconfont icon-copy' style={{ fontSize: '1.4rem' }}></div> */}
                                 </div>
-                                <div className='w-full'>
-                                    <input disabled type="number" step="0.01" value={toTokenValue} className='bg-transparent placeholder-swap-border text-right text-1-2 border-none focus:outline-none caret-swap-border h-3-0 w-full' onFocus={handleInputFocus}></input>
+                                <div className='w-full flex justify-end'>
+                                    {isCalculating ? (
+                                        <div className="h-1-5 w-1/2 animate-pulse bg-swap-border rounded"></div>
+                                    ) : (
+                                        <input disabled type="number" step="0.01" value={toTokenValue} className='bg-transparent placeholder-swap-border text-right text-1-2 border-none focus:outline-none caret-swap-border h-3-0 w-full' onFocus={handleInputFocus}></input>
+                                    )}
+                                    {/* <input disabled type="number" step="0.01" value={toTokenValue} className='bg-transparent placeholder-swap-border text-right text-1-2 border-none focus:outline-none caret-swap-border h-3-0 w-full' onFocus={handleInputFocus}></input> */}
                                 </div>
                                 <div className='text-gray-400 text-0-8 w-full text-right'> Balance:{toTokenBalance} {toTokenInfo.title} </div>
                             </div>
                         </div>
-                        <div className='w-20-0 flex justify-between items-center mb-1-0 lg:w-35-0 ' onClick={toggleSettingPopup}>
+                        {/* <div className='w-20-0 flex justify-between items-center mb-1-0 lg:w-35-0 ' onClick={toggleSettingPopup}>
                             <div className='flex justify-start items-center'>
                                 <div className='text-1-0 text-swap-second-title mr-1-0'>Slippage Tolerance</div>
                                 <div className='text-menu-green icon iconfont icon-edit' style={{ fontSize: '1.4rem' }}> </div>
                             </div>
                             <div className='font-bold text-1-5 text-menu-green'>0.5%</div>
-                        </div>
+                        </div> */}
                         <div onClick={handleApproveAndSwap} className='w-20-0 h-4-7 bg-primary-purple flex justify-center items-center text-white font-light text-1-5 rounded-xl lg:w-35-0  transition ease-in duration-100 active:bg-opacity-50 active:translate-y-0-1'>
                             Approve and Swap
                         </div>
                         <div className='mt-10-0'>
-                            <ConnectWalletButton className="w-20-0 h-4-7 bg-primary-purple flex justify-center items-center text-white font-light text-1-5 rounded-xl lg:w-35-0  transition ease-in duration-100 active:bg-opacity-50 active:translate-y-0-1"></ConnectWalletButton>
+                            <ConnectWalletButton className="w-15-0 h-3-7 bg-primary-purple flex justify-center items-center text-white font-light text-0-9 rounded-xl lg:w-35-0  transition ease-in duration-100 active:bg-opacity-50 active:translate-y-0-1"></ConnectWalletButton>
                         </div>
                     </div>
                 </div>

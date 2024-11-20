@@ -70,6 +70,7 @@ class ContractService {
         }
     }
 
+
 }
 
 export default ContractService;
