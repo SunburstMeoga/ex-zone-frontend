@@ -270,7 +270,7 @@ const Trade = () => {
             // console.log('池地址', poolAddress)
             // console.log('池塘流动性', liquidity)
 
-            const slot0Data = await await poolService.callViewMethod("slot0");
+            const slot0Data = await poolService.callViewMethod("slot0");
             const sqrtPriceX96 = BigInt(slot0Data.sqrtPriceX96);
             // 转为浮点数格式
             const sqrtPriceFloat = Number(sqrtPriceX96) / 2 ** 96;
