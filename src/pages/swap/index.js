@@ -45,12 +45,16 @@ const Trade = () => {
     const [price, setPrice] = useState(null);
     let [fromTokenList, setFromTokenList] = useState([ //兑换 from token list
         { title: 'WHAH', address: process.env.NEXT_PUBLIC_WHAH_ADDRESS, img: 'https://img1.baidu.com/it/u=1346098394,1826979592&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500' },
+        { title: 'GT6', address: process.env.NEXT_PUBLIC_GT6_ADDRESS, img: 'https://img1.baidu.com/it/u=2764939316,4277593552&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=501' },
+
         { title: 'USD3', address: process.env.NEXT_PUBLIC_USD3_ADDRESS, img: 'https://www.3at.org/images/logo.png' },
         { title: 'GTC', address: process.env.NEXT_PUBLIC_GTC_ADDRESS, img: 'https://img2.baidu.com/it/u=3012966767,826073604&fm=253&fmt=auto&app=138&f=JPEG?w=253&h=253' },
         { title: 'SHTC', address: process.env.NEXT_PUBLIC_SHTC_ADDRESS, img: 'https://img0.baidu.com/it/u=2664965310,3686497550&fm=253&fmt=auto&app=138&f=JPEG?w=329&h=330' },
         { title: 'HTGC', address: process.env.NEXT_PUBLIC_HTGC_ADDRESS, img: 'https://img1.baidu.com/it/u=1713792594,3651390564&fm=253&fmt=auto?w=800&h=800' }])
     let [toTokenList, setToTokenList] = useState([ //兑换 to token list
         { title: 'WHAH', address: process.env.NEXT_PUBLIC_WHAH_ADDRESS, img: 'https://img1.baidu.com/it/u=1346098394,1826979592&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500' },
+        { title: 'GT6', address: process.env.NEXT_PUBLIC_GT6_ADDRESS, img: 'https://img1.baidu.com/it/u=2764939316,4277593552&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=501' },
+
         { title: 'USD3', address: process.env.NEXT_PUBLIC_USD3_ADDRESS, img: 'https://www.3at.org/images/logo.png' },
         { title: 'GTC', address: process.env.NEXT_PUBLIC_GTC_ADDRESS, img: 'https://img2.baidu.com/it/u=3012966767,826073604&fm=253&fmt=auto&app=138&f=JPEG?w=253&h=253' },
         { title: 'SHTC', address: process.env.NEXT_PUBLIC_SHTC_ADDRESS, img: 'https://img0.baidu.com/it/u=2664965310,3686497550&fm=253&fmt=auto&app=138&f=JPEG?w=329&h=330' },
@@ -132,7 +136,7 @@ const Trade = () => {
                 [mintParams],
                 { value: BigInt(0) }
             );
-            console.log("Mint Transaction Success:", mintTx);
+            // console.log("Mint Transaction Success:", mintTx);
             const params = {
                 tokenIn: fromTokenInfo.address || process.env.NEXT_PUBLIC_WHAH_ADDRESS,
                 tokenOut: toTokenInfo.address,
@@ -160,13 +164,6 @@ const Trade = () => {
 
             setTransactionDetails({ token0Used: fromTokenValue, token1Received: toTokenValue, fee: 0.3, token0Balance: balanceOne, token1Balance: balanceTwo, token0: fromTokenInfo.title, token1: toTokenInfo.title });
             setIsModalOpen(true); // 显示弹窗
-
-            // console.log("流动性添加成功，交易回执：", mintResult);
-            console.log('fromToken授权结果', approveFromToken)
-            console.log('fromToken授权结果', approveFromTokenTwo)
-            console.log('toToken授权结果', approveToToken)
-            console.log('toToken授权结果', approveToTokenTwo)
-            console.log('创建交易对结果', createPoolResult)
         } catch (err) {
             console.log(err)
             setDialogContent('ERROR: Swap Error')

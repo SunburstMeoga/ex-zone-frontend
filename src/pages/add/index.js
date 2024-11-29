@@ -1,16 +1,25 @@
 import React, { useEffect, useState } from 'react'
+import { TickMath } from '@uniswap/v3-sdk';
 import TradeMenu from '@/components/TradeMenu'
 import { liquidityOperateItems, tokenPair } from '@/dictionary/trade'
 import SelectTokenPopup from '@/components/swap/selectTokenPopup'
 import DialogPopup from '@/components/DialogPopup'
+import ConnectWalletButton from "@/components/ConnectWallet";
 
 import Web3 from 'web3';
-import { ethers } from 'ethers';
+import { ethers, BigNumber } from 'ethers';
+import SwapRouterABI from '@/abi/SwapRouter'
+import PositionManagersABI from '@/abi/PositionManager'
+import ERC20ABI from '@/abi/ERC20'
+import FactoryABI from '@/abi/Factory'
+import PoolABI from '@/abi/Pool'
+import ContractService from '@/services/contract/contractServices'
 const Add = () => {
     //组件变量
     let [web3, setWeb3] = useState(null) //web3实例
     let [tokenList, setTokenList] = useState([ //兑换 from token list
         { title: 'WHAH', address: process.env.NEXT_PUBLIC_WHAH_ADDRESS, img: 'https://img1.baidu.com/it/u=1346098394,1826979592&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500' },
+        { title: 'GT6', address: process.env.NEXT_PUBLIC_GT6_ADDRESS, img: 'https://img1.baidu.com/it/u=2764939316,4277593552&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=501' },
         { title: 'USD3', address: process.env.NEXT_PUBLIC_USD3_ADDRESS, img: 'https://www.3at.org/images/logo.png' },
         { title: 'GTC', address: process.env.NEXT_PUBLIC_GTC_ADDRESS, img: 'https://img2.baidu.com/it/u=3012966767,826073604&fm=253&fmt=auto&app=138&f=JPEG?w=253&h=253' },
         { title: 'SHTC', address: process.env.NEXT_PUBLIC_SHTC_ADDRESS, img: 'https://img0.baidu.com/it/u=2664965310,3686497550&fm=253&fmt=auto&app=138&f=JPEG?w=329&h=330' },
@@ -22,18 +31,28 @@ const Add = () => {
     const [selectToTokenInfo, changeSelectToTokenInfo] = useState({}) //选择的tokenB信息
     const [selectTokenType, setSelectTokenType] = useState('') //当前操作的token类型，From or to
     let [showFeeList, changeShowFeeList] = useState(false)
-    const [feeList, setFeeLit] = useState([{ fee: 0.01, pick: 13 }, { fee: 0.05, pick: 82 }, { fee: 0.3, pick: 6 }, { fee: 1.00, pick: 0 }])
-    let [selectFeeInfo, setSelectFeeInfo] = useState({ fee: 0.01, pick: 80 }) //选择的Fee信息
+    const [feeList, setFeeLit] = useState([{ fee: 0.01, pick: 13, value: 100 }, { fee: 0.05, pick: 82, value: 500 }, { fee: 0.3, pick: 6, value: 3000 }, { fee: 1.00, pick: 0, value: 10000 }])
+    let [selectFeeInfo, setSelectFeeInfo] = useState({ fee: 0.01, pick: 80, value: 100 }) //选择的Fee信息
     let [minPrice, setMinPrice] = useState(1) //最低价
     let [maxPrice, setMaxPrice] = useState(1) //最高价
     let [showDialogPopup, setShowDialogPopup] = useState(false) //显示隐藏对话框
     let [dialogContent, setDialogContent] = useState('Network error, please try again') //对话框内容
+    let [amount0Desired, setAmount0Desired] = useState('') //存入的token0数量
+    let [amount1Desired, setAmount1Desired] = useState('') //存入的token1数量
+
 
     //组件函数
     let toggleSelectTokenPopup = (type) => { //操作token列表显示隐藏
         setSelectTokenType(type)
         setSelectTokenPopup(showSelectTokenPopup = !showSelectTokenPopup)
     }
+    const handleAmountAChange = (event) => { //存入的token0发生变化
+        setAmount0Desired(event.target.value);
+    };
+
+    const handleAmountBChange = (event) => { //存入的token1发生变化
+        setAmount1Desired(event.target.value);
+    };
     const handleFeeItem = (item) => { //点击费用选项
         setSelectFeeInfo(item)
         console.log(selectFeeInfo, item)
@@ -67,9 +86,99 @@ const Add = () => {
         toggleDialogPopup()
     }
     const handleInputFocus = () => {
-        setDialogContent('Unable to redeem')
-        toggleDialogPopup()
+        // setDialogContent('Unable to redeem')
+        // toggleDialogPopup()
     }
+
+    const handleAddLiquidity = async () => { //点击添加流动性按钮
+        console.log('点击添加流动性')
+        const factoryService = new ContractService(window.ethereum, FactoryABI, process.env.NEXT_PUBLIC_FACTORY_ADDRESS)
+        const fromTokenService = new ContractService(window.ethereum, ERC20ABI, selectFromTokenInfo.address)
+        const toTokenService = new ContractService(window.ethereum, ERC20ABI, selectToTokenInfo.address)
+        const positionManagerService = new ContractService(window.ethereum, PositionManagersABI, process.env.NEXT_PUBLIC_POSITION_MANAGER_ADDRESS)
+        try { //检查token对Manager合约的授权状态
+            const authorizedThree = await fromTokenService.callViewMethod('allowance', localStorage.getItem('account'), process.env.NEXT_PUBLIC_POSITION_MANAGER_ADDRESS)
+            const authorizedFour = await toTokenService.callViewMethod('allowance', localStorage.getItem('account'), process.env.NEXT_PUBLIC_POSITION_MANAGER_ADDRESS)
+            if (authorizedThree === 0) {
+                approveFromTokenTwo = await fromTokenService.sendMethod(
+                    "approve",
+                    localStorage.getItem('account'),
+                    [process.env.NEXT_PUBLIC_POSITION_MANAGER_ADDRESS, ethers.MaxUint256]
+                );
+            }
+            if (authorizedFour === 0) {
+                approveToTokenTwo = await toTokenService.sendMethod(
+                    "approve",
+                    localStorage.getItem('account'),
+                    [process.env.NEXT_PUBLIC_POSITION_MANAGER_ADDRESS, ethers.MaxUint256]
+                );
+            }
+        } catch (err) {
+            console.log('检查授权错误', err)
+        }
+        try { //检查池子是否存在
+            const poolAddress = await factoryService.callViewMethod(
+                "getPool",
+                selectFromTokenInfo.address,
+                selectToTokenInfo.address,
+                selectFeeInfo.value // fee tier
+            );
+            console.log('池地址', poolAddress)
+            if (poolAddress === '0x0000000000000000000000000000000000000000') { //当前不存在池子，则需要创建池子并初始化该池子
+                console.log('池不存在 去创建池', ethers)
+                const priceRatio = 2;  // 1 tokenA = 2 tokenB
+                const sqrtPrice = Math.sqrt(priceRatio);  // 计算平方根
+
+                // 需要使用 BigNumber.from 来处理大数
+                const sqrtPriceX96 = BigNumber.from(Math.floor(sqrtPrice * 2 ** 96));  // 使用 BigNumber.from()
+
+                console.log(sqrtPriceX96.toString());
+
+                // 调用 positionManagerService 创建池子
+                let createPoolResult = await positionManagerService.sendMethod(
+                    'createAndInitializePoolIfNecessary',
+                    localStorage.getItem('account'),
+                    [
+                        selectFromTokenInfo.address,
+                        selectToTokenInfo.address,
+                        selectFeeInfo.value,
+                        sqrtPriceX96
+                    ]
+                );
+                console.log('初始化池子', createPoolResult);
+            } else { //池子存在，添加流动性
+                // const minPricePoint = 0.5;  // 1 token0 = 2 token1
+                // const maxPricePoint = 2;    // 1 token0 = 0.5 token1
+
+                // 使用 TickMath 来计算 tick 值
+                // const tickLower = TickMath.getTickAtSqrtPrice(TickMath.sqrtPriceFromAmount0Delta(minPricePoint, 18));
+                // const tickUpper = TickMath.getTickAtSqrtPrice(TickMath.sqrtPriceFromAmount0Delta(maxPricePoint, 18));
+                const mintParams = {
+                    token0: selectFromTokenInfo.address,
+                    token1: selectToTokenInfo.address,
+                    fee: selectFeeInfo.value,
+                    tickLower: -887220, // 最低 tick 值，表示最宽范围
+                    tickUpper: 887220,  // 最高 tick 值，表示最宽范围
+                    amount0Desired: ethers.parseUnits(amount0Desired, 18), // 初始添加的 token0 数量
+                    amount1Desired: ethers.parseUnits(amount1Desired, 18), // 初始添加的 token1 数量
+                    amount0Min: 0,
+                    amount1Min: 0,
+                    recipient: localStorage.getItem('account'),
+                    deadline: Math.floor(Date.now() / 1000) + 60 * 20,
+                };
+                const mintTx = await positionManagerService.sendMethod(
+                    "mint",
+                    localStorage.getItem('account'),
+                    [mintParams],
+                    { value: BigInt(0) }
+                );
+                console.log('添加流动性成功', mintTx)
+            }
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
     useEffect(() => {
         const initWeb3 = async () => { //初始化web3
             if (typeof window !== 'undefined' && typeof window.ethereum !== 'undefined') {
@@ -94,7 +203,7 @@ const Add = () => {
                     <div className='w-full flex flex-col justify-start items-center gradient-swap-module h-auto pb-8-0 backdrop-blur-xl text-white lg:min-h-screen relative z-10'>
                         <div className='lg:flex lg:justify-between lg:items-end lg:py-1-0 lg:border-b lg:border-voting-border lg:w-57-1 lg:mb-2-0'>
                             <div className='lg:flex lg:flex-col lg:justify-between mb-2-0'>
-                                <div className='w-20-0 text-1-5 font-bold mt-2-6 lg:mt-auto text-menu-green'>Add V3 Liquidity</div>
+                                <div className='w-20-0 text-2-0 font-bold mt-2-6 lg:mt-auto text-menu-green'>Add Liquidity</div>
                             </div>
                         </div>
                         <div className='w-20-0 lg:w-30-0 text-white text-1-0 mb-0-9'>
@@ -138,7 +247,7 @@ const Add = () => {
                                             {selectFeeInfo.pick}% pick
                                         </div>
                                     </div>
-                                    <div className='text-1-2 icon iconfont icon-down2 tex-1-0' onClick={() => { toggleSelectFeeList() }}></div>
+                                    <div className='bg-swap-border rounded-lg text-0-8 px-0-6 py-0-2' onClick={() => { toggleSelectFeeList() }}>Edit</div>
                                 </div>
                                 {showFeeList && <div className='flex w-full justify-between items-center mt-0-4' >
                                     {feeList.map((item, index) => {
@@ -173,7 +282,7 @@ const Add = () => {
                                             </div>
                                         </div>
                                         <div className='w-full'>
-                                            <input onFocus={handleInputFocus} className='bg-transparent  h-3-0 w-full '></input>
+                                            <input type="number" placeholder='0.00' step="0.01" onFocus={handleInputFocus} onChange={handleAmountAChange} value={amount0Desired} className='bg-transparent text-right h-3-0 w-full text-1-2'></input>
                                         </div>
                                     </div>
                                 </div>
@@ -182,20 +291,20 @@ const Add = () => {
                                         <div className='flex justify-between items-center w-full'>
                                             <div className='flex justify-start items-center'>
                                                 <div className='rounded-full w-1-5 h-1-5 bg-white overflow-hidden'>
-                                                    <img src=""></img>
+                                                    <img src={selectToTokenInfo.img}></img>
                                                 </div>
                                                 <div className='text-1-2 font-medium ml-1-0'>{selectToTokenInfo.title}</div>
                                             </div>
                                         </div>
                                         <div className='w-full'>
-                                            <input onFocus={handleInputFocus} className='bg-transparent  h-3-0 w-full '></input>
+                                            <input type="number" placeholder='0.00' step="0.01" onFocus={handleInputFocus} onChange={handleAmountBChange} value={amount1Desired} className='bg-transparent text-right h-3-0 w-full text-1-2'></input>
                                         </div>
                                     </div>
-                                    <div className='text-white font-bold text-1-5 w-full flex justify-end'>43.3</div>
-                                    <div className='text-white text-1-0 flex justify-end'>~2,140.76 USD</div>
+                                    {/* <div className='text-white font-bold text-1-5 w-full flex justify-end'>43.3</div>
+                                    <div className='text-white text-1-0 flex justify-end'>~2,140.76 USD</div> */}
                                 </div>
                             </div>
-                            <div className='w-19-0 lg:w-34-9 text-white text-1-5 mb-0-2'>
+                            {/* <div className='w-19-0 lg:w-34-9 text-white text-1-5 mb-0-2'>
                                 SET PRICE RANGE
                             </div>
                             <div className='text-white text-1-0 w-19-0 mb-0-6 lg:w-34-9'>
@@ -243,9 +352,13 @@ const Add = () => {
                                     </div>
                                     <div className='text-rank-title text-1-0 w-full text-right'>{selectToTokenInfo.title} per {selectFromTokenInfo.title}</div>
                                 </div>
+                            </div> */}
+                            {/* <div onClick={handleConnectWallet} className='w-21-7 lg:w-34-9 h-4-7 rounded-lg bg-swap-card-module  border-2 border-primary-purple flex justify-center items-center font-medium text-1-2 mb-1-8'>Full Range </div> */}
+                            <div onClick={handleAddLiquidity} className='w-21-7 lg:w-34-9 h-4-7 rounded-lg bg-swap-card-module  border-2 border-primary-purple flex justify-center items-center font-medium text-1-2 mb-1-8'>Add Liquidity </div>
+
+                            <div className='mt-10-0'>
+                                <ConnectWalletButton className="w-15-0 h-3-7 bg-primary-purple flex justify-center items-center text-white font-light text-0-9 rounded-xl lg:w-35-0  transition ease-in duration-100 active:bg-opacity-50 active:translate-y-0-1"></ConnectWalletButton>
                             </div>
-                            <div onClick={handleConnectWallet} className='w-21-7 lg:w-34-9 h-4-7 rounded-lg bg-swap-card-module  border-2 border-primary-purple flex justify-center items-center font-medium text-1-5 mb-1-8'>Full Range </div>
-                            <div onClick={handleConnectWallet} className='w-21-7 lg:w-34-9 h-4-7 rounded-lg bg-primary-purple border-2 border-primary-purple flex justify-center items-center font-medium text-1-5 mb-2-0'>Connect Wallet </div>
                         </div>}
                     </div>
                 </div>
