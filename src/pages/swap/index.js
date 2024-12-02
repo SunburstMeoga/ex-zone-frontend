@@ -36,7 +36,8 @@ const Trade = () => {
     let [web3, setWeb3] = useState(null)
     let [fromTokenBalance, setFromTokenBalance] = useState('')
     let [toTokenBalance, setToTokenBalance] = useState('')
-
+    const [feeList, setFeeLit] = useState([{ fee: 0.05, pick: 82, value: 500 }, { fee: 0.3, pick: 6, value: 3000 }, { fee: 1.00, pick: 0, value: 10000 }])
+    let [selectFeeInfo, setSelectFeeInfo] = useState({ fee: 0.05, pick: 82, value: 500 }) //选择的Fee信息
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [transactionDetails, setTransactionDetails] = useState({});
     const [isCalculating, setIsCalculating] = useState(false);
@@ -116,31 +117,31 @@ const Trade = () => {
 
             const FEE_AMOUNT = 3000; // 设置手续费等级
             const INITIAL_PRICE = '56022770974786139918731938227'; // 初始价格
-            let createPoolResult = await positionManagerService.sendMethod('createAndInitializePoolIfNecessary', localStorage.getItem('account'), [fromTokenInfo.address, toTokenInfo.address, FEE_AMOUNT, INITIAL_PRICE])
-            const mintParams = {
-                token0: fromTokenInfo.address || process.env.NEXT_PUBLIC_WHAH_ADDRESS,
-                token1: toTokenInfo.address,
-                fee: 3000,
-                tickLower: -887220, // 最低 tick 值，表示最宽范围
-                tickUpper: 887220,  // 最高 tick 值，表示最宽范围
-                amount0Desired: ethers.parseUnits('10', 18), // 初始添加的 token0 数量
-                amount1Desired: ethers.parseUnits('10', 18), // 初始添加的 token1 数量
-                amount0Min: 0,
-                amount1Min: 0,
-                recipient: localStorage.getItem('account'),
-                deadline: Math.floor(Date.now() / 1000) + 60 * 20,
-            };
-            const mintTx = await positionManagerService.sendMethod(
-                "mint",
-                localStorage.getItem('account'),
-                [mintParams],
-                { value: BigInt(0) }
-            );
-            // console.log("Mint Transaction Success:", mintTx);
+            // let createPoolResult = await positionManagerService.sendMethod('createAndInitializePoolIfNecessary', localStorage.getItem('account'), [fromTokenInfo.address, toTokenInfo.address, FEE_AMOUNT, INITIAL_PRICE])
+            // const mintParams = {
+            //     token0: fromTokenInfo.address || process.env.NEXT_PUBLIC_WHAH_ADDRESS,
+            //     token1: toTokenInfo.address,
+            //     fee: 3000,
+            //     tickLower: -887220, // 最低 tick 值，表示最宽范围
+            //     tickUpper: 887220,  // 最高 tick 值，表示最宽范围
+            //     amount0Desired: ethers.parseUnits('10', 18), // 初始添加的 token0 数量
+            //     amount1Desired: ethers.parseUnits('10', 18), // 初始添加的 token1 数量
+            //     amount0Min: 0,
+            //     amount1Min: 0,
+            //     recipient: localStorage.getItem('account'),
+            //     deadline: Math.floor(Date.now() / 1000) + 60 * 20,
+            // };
+            // const mintTx = await positionManagerService.sendMethod(
+            //     "mint",
+            //     localStorage.getItem('account'),
+            //     [mintParams],
+            //     { value: BigInt(0) }
+            // );
+            // // console.log("Mint Transaction Success:", mintTx);
             const params = {
                 tokenIn: fromTokenInfo.address || process.env.NEXT_PUBLIC_WHAH_ADDRESS,
                 tokenOut: toTokenInfo.address,
-                fee: 3000,
+                fee: selectFeeInfo.value,
                 recipient: localStorage.getItem('account'),
                 deadline: BigInt(Math.floor(Date.now() / 1000) + 60 * 20), // 使用 BigInt
                 amountIn: ethers.parseUnits(fromTokenValue, 18), // 仍然使用 ethers.parseUnits 返回 BigInt
@@ -260,12 +261,12 @@ const Trade = () => {
                 "getPool",
                 fromTokenInfo.address,
                 toTokenInfo.address,
-                3000 // fee tier
+                selectFeeInfo.value, // fee tier
             );
             const poolService = new ContractService(window.ethereum, PoolABI, poolAddress);
-            // const liquidity = await poolService.callViewMethod("liquidity");
-            // console.log('池地址', poolAddress)
-            // console.log('池塘流动性', liquidity)
+            const liquidity = await poolService.callViewMethod("liquidity");
+            console.log('池地址', poolAddress)
+            console.log('池塘流动性', liquidity)
 
             const slot0Data = await poolService.callViewMethod("slot0");
             const sqrtPriceX96 = BigInt(slot0Data.sqrtPriceX96);
@@ -296,6 +297,10 @@ const Trade = () => {
         console.log(token0PerToken1)
         // setDialogContent('Unable to redeem')
         // toggleDialogPopup()
+    }
+    const handleFeeItem = (item) => { //点击费用选项
+        setSelectFeeInfo(item)
+        console.log(selectFeeInfo, item)
     }
 
     return (
@@ -332,6 +337,23 @@ const Trade = () => {
                             {swapOperateItems.map((item, index) => {
                                 return <div key={index} className='flex justify-center items-center px-0-4 rounded-lg transition duration-150 lg:ml-2-4 active:bg-purple62 active:translate-y-0-1' onClick={() => handleSwapOperate(item)}>
                                     <div key={index} className={`icon iconfont ${item.icon} ${operateItems === item.id ? '' : ''}`} style={{ fontSize: '1.5rem' }}></div>
+                                </div>
+                            })}
+                        </div>
+                        <div className='w-20-0 flex justify-between items-center my-0-4' >
+                            {feeList.map((item, index) => {
+                                return <div key={index} className='' onClick={() => { handleFeeItem(item) }}>
+                                    <div className='flex justify-between flex-wrap items-center w-full'>
+                                        <div className='token-pair-card w-4-0 border-2 py-0-3 border-swap-border flex rounded-lg flex-col justify-start items-center'>
+                                            <div className='flex justify-center items-baseline mb-0-2'>
+                                                <div className='font-bold text-1-0'>{item.fee}</div>
+                                                <div className='text-0-6'>%</div>
+                                            </div>
+                                            <div className={`bg-primary-purple rounded-full px-0-4 py-0-2 flex justify-center items-baseline`}>
+                                                <div className='text-0-6'>{item.pick}% pick</div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             })}
                         </div>

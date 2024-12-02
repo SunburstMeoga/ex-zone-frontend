@@ -17,6 +17,7 @@ import ContractService from '@/services/contract/contractServices'
 const Add = () => {
     //组件变量
     let [web3, setWeb3] = useState(null) //web3实例
+    let [dialogType, setDialogType] = useState('fail')
     let [tokenList, setTokenList] = useState([ //兑换 from token list
         { title: 'WHAH', address: process.env.NEXT_PUBLIC_WHAH_ADDRESS, img: 'https://img1.baidu.com/it/u=1346098394,1826979592&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500' },
         { title: 'GT6', address: process.env.NEXT_PUBLIC_GT6_ADDRESS, img: 'https://img1.baidu.com/it/u=2764939316,4277593552&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=501' },
@@ -31,15 +32,16 @@ const Add = () => {
     const [selectToTokenInfo, changeSelectToTokenInfo] = useState({}) //选择的tokenB信息
     const [selectTokenType, setSelectTokenType] = useState('') //当前操作的token类型，From or to
     let [showFeeList, changeShowFeeList] = useState(false)
-    const [feeList, setFeeLit] = useState([{ fee: 0.01, pick: 13, value: 100 }, { fee: 0.05, pick: 82, value: 500 }, { fee: 0.3, pick: 6, value: 3000 }, { fee: 1.00, pick: 0, value: 10000 }])
-    let [selectFeeInfo, setSelectFeeInfo] = useState({ fee: 0.01, pick: 80, value: 100 }) //选择的Fee信息
+    const [feeList, setFeeLit] = useState([{ fee: 0.05, pick: 82, value: 500 }, { fee: 0.3, pick: 6, value: 3000 }, { fee: 1.00, pick: 0, value: 10000 }])
+    let [selectFeeInfo, setSelectFeeInfo] = useState({ fee: 0.05, pick: 82, value: 500 }) //选择的Fee信息
     let [minPrice, setMinPrice] = useState(1) //最低价
     let [maxPrice, setMaxPrice] = useState(1) //最高价
     let [showDialogPopup, setShowDialogPopup] = useState(false) //显示隐藏对话框
     let [dialogContent, setDialogContent] = useState('Network error, please try again') //对话框内容
     let [amount0Desired, setAmount0Desired] = useState('') //存入的token0数量
     let [amount1Desired, setAmount1Desired] = useState('') //存入的token1数量
-
+    let [isLoading, changeIsLoading] = useState(false)
+    let [buttonText, setButtonText] = useState('Add Liquidity')
 
     //组件函数
     let toggleSelectTokenPopup = (type) => { //操作token列表显示隐藏
@@ -92,29 +94,62 @@ const Add = () => {
 
     const handleAddLiquidity = async () => { //点击添加流动性按钮
         console.log('点击添加流动性')
+        if (isLoading) return
         const factoryService = new ContractService(window.ethereum, FactoryABI, process.env.NEXT_PUBLIC_FACTORY_ADDRESS)
         const fromTokenService = new ContractService(window.ethereum, ERC20ABI, selectFromTokenInfo.address)
         const toTokenService = new ContractService(window.ethereum, ERC20ABI, selectToTokenInfo.address)
         const positionManagerService = new ContractService(window.ethereum, PositionManagersABI, process.env.NEXT_PUBLIC_POSITION_MANAGER_ADDRESS)
         try { //检查token对Manager合约的授权状态
-            const authorizedThree = await fromTokenService.callViewMethod('allowance', localStorage.getItem('account'), process.env.NEXT_PUBLIC_POSITION_MANAGER_ADDRESS)
-            const authorizedFour = await toTokenService.callViewMethod('allowance', localStorage.getItem('account'), process.env.NEXT_PUBLIC_POSITION_MANAGER_ADDRESS)
-            if (authorizedThree === 0) {
+            changeIsLoading(true)
+            setButtonText('Checking authorization')
+            let authorizedOne = await fromTokenService.callViewMethod('allowance', localStorage.getItem('account'), process.env.NEXT_PUBLIC_SWAP_ROUTER_ADDRESS)
+            let authorizedTwo = await toTokenService.callViewMethod('allowance', localStorage.getItem('account'), process.env.NEXT_PUBLIC_SWAP_ROUTER_ADDRESS)
+
+            let authorizedThree = await fromTokenService.callViewMethod('allowance', localStorage.getItem('account'), process.env.NEXT_PUBLIC_POSITION_MANAGER_ADDRESS)
+            let authorizedFour = await toTokenService.callViewMethod('allowance', localStorage.getItem('account'), process.env.NEXT_PUBLIC_POSITION_MANAGER_ADDRESS)
+            let approveFromToken, approveToToken, approveFromTokenTwo, approveToTokenTwo
+            if (authorizedThree == 0) {
+                console.log('three没授权')
                 approveFromTokenTwo = await fromTokenService.sendMethod(
                     "approve",
                     localStorage.getItem('account'),
                     [process.env.NEXT_PUBLIC_POSITION_MANAGER_ADDRESS, ethers.MaxUint256]
                 );
             }
-            if (authorizedFour === 0) {
+            if (authorizedFour == 0) {
+                console.log('four没授权')
                 approveToTokenTwo = await toTokenService.sendMethod(
                     "approve",
                     localStorage.getItem('account'),
                     [process.env.NEXT_PUBLIC_POSITION_MANAGER_ADDRESS, ethers.MaxUint256]
                 );
             }
+            if (authorizedOne == 0) {
+                console.log('one没授权')
+                approveFromToken = await fromTokenService.sendMethod(
+                    "approve",
+                    localStorage.getItem('account'),
+                    [process.env.NEXT_PUBLIC_SWAP_ROUTER_ADDRESS, ethers.MaxUint256]
+                );
+            }
+            if (authorizedTwo == 0) {
+                console.log('two没授权')
+                approveToToken = await toTokenService.sendMethod(
+                    "approve",
+                    localStorage.getItem('account'),
+                    [process.env.NEXT_PUBLIC_SWAP_ROUTER_ADDRESS, ethers.MaxUint256]
+                );
+            }
+            console.log('是否授权', authorizedOne)
+            console.log('是否授权', authorizedTwo)
+            console.log('是否授权', authorizedThree)
+            console.log('是否授权', authorizedFour)
+            changeIsLoading(false)
+            setButtonText('Add Liquidity')
         } catch (err) {
             console.log('检查授权错误', err)
+            changeIsLoading(false)
+            setButtonText('Add Liquidity')
         }
         try { //检查池子是否存在
             const poolAddress = await factoryService.callViewMethod(
@@ -123,18 +158,25 @@ const Add = () => {
                 selectToTokenInfo.address,
                 selectFeeInfo.value // fee tier
             );
+            changeIsLoading(true)
+            setButtonText('Checking Pool')
             console.log('池地址', poolAddress)
             if (poolAddress === '0x0000000000000000000000000000000000000000') { //当前不存在池子，则需要创建池子并初始化该池子
                 console.log('池不存在 去创建池', ethers)
-                const priceRatio = 2;  // 1 tokenA = 2 tokenB
+                const priceRatio = 2; // 1 tokenA = 2 tokenB
                 const sqrtPrice = Math.sqrt(priceRatio);  // 计算平方根
 
-                // 需要使用 BigNumber.from 来处理大数
-                const sqrtPriceX96 = BigNumber.from(Math.floor(sqrtPrice * 2 ** 96));  // 使用 BigNumber.from()
+                // 使用 parseUnits 来处理大数，指定 18 个小数位
+                // const sqrtPriceX96 = ethers.parseUnits(sqrtPrice.toString(), 18).mul(ethers.parseUnits('1', 0).pow(96));
+                const sqrtPriceX96 = ethers.parseUnits('56022770974786139918731938227', 0);
 
                 console.log(sqrtPriceX96.toString());
 
                 // 调用 positionManagerService 创建池子
+                console.log(selectFromTokenInfo.address,
+                    selectToTokenInfo.address,
+                    selectFeeInfo.value,
+                    sqrtPriceX96)
                 let createPoolResult = await positionManagerService.sendMethod(
                     'createAndInitializePoolIfNecessary',
                     localStorage.getItem('account'),
@@ -145,6 +187,8 @@ const Add = () => {
                         sqrtPriceX96
                     ]
                 );
+                changeIsLoading(false)
+                setButtonText('Add Liquidity')
                 console.log('初始化池子', createPoolResult);
             } else { //池子存在，添加流动性
                 // const minPricePoint = 0.5;  // 1 token0 = 2 token1
@@ -153,6 +197,8 @@ const Add = () => {
                 // 使用 TickMath 来计算 tick 值
                 // const tickLower = TickMath.getTickAtSqrtPrice(TickMath.sqrtPriceFromAmount0Delta(minPricePoint, 18));
                 // const tickUpper = TickMath.getTickAtSqrtPrice(TickMath.sqrtPriceFromAmount0Delta(maxPricePoint, 18));
+                changeIsLoading(true)
+                setButtonText('Checking Pool')
                 const mintParams = {
                     token0: selectFromTokenInfo.address,
                     token1: selectToTokenInfo.address,
@@ -172,6 +218,12 @@ const Add = () => {
                     [mintParams],
                     { value: BigInt(0) }
                 );
+                setDialogContent('Liquidity added successfully')
+                setShowDialogPopup(true)
+                setDialogType('success')
+                changeIsLoading(false)
+
+                setButtonText('Add Liquidity')
                 console.log('添加流动性成功', mintTx)
             }
         } catch (err) {
@@ -192,7 +244,7 @@ const Add = () => {
     }, [])
     return (
         <>
-            <DialogPopup showDialogPopup={showDialogPopup} type='fail' content={dialogContent} closeMask={closeMask}></DialogPopup>
+            <DialogPopup showDialogPopup={showDialogPopup} type={dialogType} content={dialogContent} closeMask={closeMask}></DialogPopup>
             <SelectTokenPopup showSelectTokenPopup={showSelectTokenPopup} tokenList={tokenList} onClose={toggleSelectTokenPopup} selectTokenItem={selectTokenItem}></SelectTokenPopup>
             <div className='pt-4-8 lg:pt-6-9 bg-black'>
                 <div className='w-full flex flex-col justify-start items-center relative'>
@@ -354,7 +406,10 @@ const Add = () => {
                                 </div>
                             </div> */}
                             {/* <div onClick={handleConnectWallet} className='w-21-7 lg:w-34-9 h-4-7 rounded-lg bg-swap-card-module  border-2 border-primary-purple flex justify-center items-center font-medium text-1-2 mb-1-8'>Full Range </div> */}
-                            <div onClick={handleAddLiquidity} className='w-21-7 lg:w-34-9 h-4-7 rounded-lg bg-swap-card-module  border-2 border-primary-purple flex justify-center items-center font-medium text-1-2 mb-1-8'>Add Liquidity </div>
+                            <div onClick={handleAddLiquidity} className='w-21-7 lg:w-34-9 h-4-7 rounded-lg bg-swap-card-module  border-2 border-primary-purple flex justify-center items-center font-medium text-1-2 mb-1-8'>
+                                {isLoading && <svg className="animate-spin h-1-0 w-1-0 mr-1-0 ..." viewBox="0 0 24 24"></svg>}
+                                {buttonText}
+                            </div>
 
                             <div className='mt-10-0'>
                                 <ConnectWalletButton className="w-15-0 h-3-7 bg-primary-purple flex justify-center items-center text-white font-light text-0-9 rounded-xl lg:w-35-0  transition ease-in duration-100 active:bg-opacity-50 active:translate-y-0-1"></ConnectWalletButton>
