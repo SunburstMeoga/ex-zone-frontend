@@ -42,7 +42,8 @@ const Add = () => {
     let [amount1Desired, setAmount1Desired] = useState('') //存入的token1数量
     let [isLoading, changeIsLoading] = useState(false)
     let [buttonText, setButtonText] = useState('Add Liquidity')
-
+    let [fromTokenBalance, setFromTokenBalance] = useState('')
+    let [toTokenBalance, setToTokenBalance] = useState('')
     //组件函数
     let toggleSelectTokenPopup = (type) => { //操作token列表显示隐藏
         setSelectTokenType(type)
@@ -59,9 +60,13 @@ const Add = () => {
         setSelectFeeInfo(item)
         console.log(selectFeeInfo, item)
     }
-    const selectTokenItem = (item) => { //点击token列表的某个代币
-        console.log(item, selectTokenType)
+    const selectTokenItem = async (item) => { //点击token列表的某个代币
+        console.log(item)
         selectTokenType === 'from' ? changeSelectFromTokenInfo(item) : changeSelectToTokenInfo(item)
+        let balance = await fetchBalance(item.address)
+        console.log(balance)
+        console.log(item, selectTokenType)
+        selectTokenType === 'from' ? setFromTokenBalance(balance) : setToTokenBalance(balance)
         toggleSelectTokenPopup()
     }
     const toggleSelectFeeList = () => { //显示隐藏
@@ -230,6 +235,12 @@ const Add = () => {
             console.log(err)
         }
     }
+    const fetchBalance = async (address) => { //获取token余额
+        const tokenService = new ContractService(window.ethereum, ERC20ABI, address)
+        const tokenBalance = await tokenService.callViewMethod("balanceOf", localStorage.getItem('account'));
+        return (ethers.formatUnits(tokenBalance, 18))
+        // return tokenBalance.toString()
+    }
 
     useEffect(() => {
         const initWeb3 = async () => { //初始化web3
@@ -336,6 +347,8 @@ const Add = () => {
                                         <div className='w-full'>
                                             <input type="number" placeholder='0.00' step="0.01" onFocus={handleInputFocus} onChange={handleAmountAChange} value={amount0Desired} className='bg-transparent text-right h-3-0 w-full text-1-2'></input>
                                         </div>
+                                        <div className='text-gray-400 text-0-8 w-full text-right pb-4-0'> Balance: {fromTokenBalance} {selectFromTokenInfo.title}</div>
+
                                     </div>
                                 </div>
                                 <div className='w-full'>
@@ -351,6 +364,7 @@ const Add = () => {
                                         <div className='w-full'>
                                             <input type="number" placeholder='0.00' step="0.01" onFocus={handleInputFocus} onChange={handleAmountBChange} value={amount1Desired} className='bg-transparent text-right h-3-0 w-full text-1-2'></input>
                                         </div>
+                                        <div className='text-gray-400 text-0-8 w-full text-right pb-4-0'> Balance: {toTokenBalance} {selectToTokenInfo.title}</div>
                                     </div>
                                     {/* <div className='text-white font-bold text-1-5 w-full flex justify-end'>43.3</div>
                                     <div className='text-white text-1-0 flex justify-end'>~2,140.76 USD</div> */}
