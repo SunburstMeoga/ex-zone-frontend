@@ -67,7 +67,7 @@ const Add = () => {
         console.log(balance)
         console.log(item, selectTokenType)
         selectTokenType === 'from' ? setFromTokenBalance(balance) : setToTokenBalance(balance)
-        toggleSelectTokenPopup()
+        setSelectTokenPopup(false)
     }
     const toggleSelectFeeList = () => { //显示隐藏
         changeShowFeeList(showFeeList = !showFeeList)
@@ -233,6 +233,8 @@ const Add = () => {
             }
         } catch (err) {
             console.log(err)
+            changeIsLoading(false)
+            setButtonText('Add Liquidity')
         }
     }
     const fetchBalance = async (address) => { //获取token余额
@@ -420,8 +422,8 @@ const Add = () => {
                                 </div>
                             </div> */}
                             {/* <div onClick={handleConnectWallet} className='w-21-7 lg:w-34-9 h-4-7 rounded-lg bg-swap-card-module  border-2 border-primary-purple flex justify-center items-center font-medium text-1-2 mb-1-8'>Full Range </div> */}
-                            <div onClick={handleAddLiquidity} className='w-21-7 lg:w-34-9 h-4-7 rounded-lg bg-swap-card-module  border-2 border-primary-purple flex justify-center items-center font-medium text-1-2 mb-1-8'>
-                                {isLoading && <svg className="animate-spin h-1-0 w-1-0 mr-1-0 ..." viewBox="0 0 24 24"></svg>}
+                            <div onClick={handleAddLiquidity} className={`${isLoading ? 'opacity-80' : ''} w-21-7 lg:w-34-9 h-4-7 rounded-lg bg-swap-card-module  border-2 border-primary-purple flex justify-center items-center font-medium text-1-2 mb-1-8`}>
+                                {isLoading && <div className='w-4-0'> <img src='https://gd-hbimg.huaban.com/2c853da3b26094baa50ac91caac7a4ae0d306ccccbdb5-tERjYn_fw658' /> </div>}
                                 {buttonText}
                             </div>
 
