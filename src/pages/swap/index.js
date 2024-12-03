@@ -340,17 +340,17 @@ const Trade = () => {
                                 </div>
                             })}
                         </div>
-                        <div className='w-20-0 flex justify-between items-center my-0-4' >
+                        <div className='w-20-0 flex justify-between items-center my-0-4 lg:w-35-0 lg:mb-2-0' >
                             {feeList.map((item, index) => {
                                 return <div key={index} className='' onClick={() => { handleFeeItem(item) }}>
-                                    <div className='flex justify-between flex-wrap items-center w-full'>
-                                        <div className='token-pair-card w-4-0 border-2 py-0-3 border-swap-border flex rounded-lg flex-col justify-start items-center'>
+                                    <div className='flex justify-between flex-wrap items-center w-full '>
+                                        <div className='token-pair-card w-4-0 border-2 py-0-3 border-swap-border flex rounded-lg flex-col justify-start items-center lg:w-7-0 lg:py-1-0'>
                                             <div className='flex justify-center items-baseline mb-0-2'>
-                                                <div className='font-bold text-1-0'>{item.fee}</div>
-                                                <div className='text-0-6'>%</div>
+                                                <div className='font-bold text-1-0 lg:text-2-0'>{item.fee}</div>
+                                                <div className='text-0-6 lg:text-1-0'>%</div>
                                             </div>
                                             <div className={`bg-primary-purple rounded-full px-0-4 py-0-2 flex justify-center items-baseline`}>
-                                                <div className='text-0-6'>{item.pick}% pick</div>
+                                                <div className='text-0-6 lg:text-1-0'>{item.pick}% pick</div>
                                             </div>
                                         </div>
                                     </div>
