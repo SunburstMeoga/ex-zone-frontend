@@ -118,7 +118,7 @@ const Add = () => {
                 approveFromTokenTwo = await fromTokenService.sendMethod(
                     "approve",
                     localStorage.getItem('account'),
-                    [process.env.NEXT_PUBLIC_POSITION_MANAGER_ADDRESS, ethers.MaxUint256]
+                    [process.env.NEXT_PUBLIC_POSITION_MANAGER_ADDRESS, ethers.constants.MaxUint256]
                 );
             }
             if (authorizedFour == 0) {
@@ -126,7 +126,7 @@ const Add = () => {
                 approveToTokenTwo = await toTokenService.sendMethod(
                     "approve",
                     localStorage.getItem('account'),
-                    [process.env.NEXT_PUBLIC_POSITION_MANAGER_ADDRESS, ethers.MaxUint256]
+                    [process.env.NEXT_PUBLIC_POSITION_MANAGER_ADDRESS, ethers.constants.MaxUint256]
                 );
             }
             if (authorizedOne == 0) {
@@ -134,7 +134,7 @@ const Add = () => {
                 approveFromToken = await fromTokenService.sendMethod(
                     "approve",
                     localStorage.getItem('account'),
-                    [process.env.NEXT_PUBLIC_SWAP_ROUTER_ADDRESS, ethers.MaxUint256]
+                    [process.env.NEXT_PUBLIC_SWAP_ROUTER_ADDRESS, ethers.constants.MaxUint256]
                 );
             }
             if (authorizedTwo == 0) {
@@ -142,7 +142,7 @@ const Add = () => {
                 approveToToken = await toTokenService.sendMethod(
                     "approve",
                     localStorage.getItem('account'),
-                    [process.env.NEXT_PUBLIC_SWAP_ROUTER_ADDRESS, ethers.MaxUint256]
+                    [process.env.NEXT_PUBLIC_SWAP_ROUTER_ADDRESS, ethers.constants.MaxUint256]
                 );
             }
             console.log('是否授权', authorizedOne)
