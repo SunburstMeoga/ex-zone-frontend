@@ -177,7 +177,7 @@ const Trade = () => {
             setIsModalOpen(true); // 显示弹窗
         } catch (err) {
             console.log(err)
-            setDialogContent(err)
+            setDialogContent('Error')
             toggleDialogPopup()
         }
 
