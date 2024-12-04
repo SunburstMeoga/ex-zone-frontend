@@ -44,6 +44,7 @@ const Menu = () => {
         router.push('/')
     }
     let handleConnectWallet = async () => {
+        alert(web3)
         if (web3) {
             console.log(web3)
             try {
@@ -57,9 +58,10 @@ const Menu = () => {
                 // setAccount(accounts[0]);
             } catch (error) {
                 console.error('连接钱包失败:', error);
+                alert('连接失败')
             }
         } else {
-            console.log('没有钱包')
+            alert('没有钱包')
         }
 
     }
@@ -122,7 +124,7 @@ const Menu = () => {
         };
     }, [dispatch])
     useEffect(() => {
-        // console.log('Component re-rendered', walletAddress);
+        console.log('Component re-rendered', walletAddress);
     }, [walletAddress]);
     return (
         <div className='w-full  flex flex-col justify-center items-center fixed -top-0-1 z-30 bg-black'>

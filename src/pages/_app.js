@@ -11,7 +11,7 @@ import { ethers } from 'ethers';
 
 const App = ({ Component, pageProps }) => {
   useEffect(() => {
-    alert('ethers版本', ethers.version);
+    console.log('ethers版本', ethers.version)
     const handleResize = () => {
       console.log('当前环境whah地址', process.env.NEXT_PUBLIC_WHAH_ADDRESS)
       const e = document.documentElement.clientWidth;
