@@ -48,6 +48,9 @@ const Trade = () => {
         { title: 'WHAH', address: process.env.NEXT_PUBLIC_WHAH_ADDRESS, img: 'https://img1.baidu.com/it/u=1346098394,1826979592&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500' },
         { title: 'KAI', address: '0xbA1448512f544C537f86AB1d146dCb71F6e1077A', img: 'https://img2.baidu.com/it/u=2036854675,1291157751&fm=253&fmt=auto&app=138&f=JPEG?w=300&h=300' },
         { title: 'GT6', address: process.env.NEXT_PUBLIC_GT6_ADDRESS, img: 'https://img1.baidu.com/it/u=2764939316,4277593552&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=501' },
+        { title: 'GALA', address: process.env.NEXT_PUBLIC_GALA_ADDRESS, img: 'https://img1.baidu.com/it/u=2764939316,4277593552&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=501' },
+
+
 
         { title: 'USD3', address: process.env.NEXT_PUBLIC_USD3_ADDRESS, img: 'https://www.3at.org/images/logo.png' },
         { title: 'GTC', address: process.env.NEXT_PUBLIC_GTC_ADDRESS, img: 'https://img2.baidu.com/it/u=3012966767,826073604&fm=253&fmt=auto&app=138&f=JPEG?w=253&h=253' },
@@ -57,6 +60,7 @@ const Trade = () => {
         { title: 'WHAH', address: process.env.NEXT_PUBLIC_WHAH_ADDRESS, img: 'https://img1.baidu.com/it/u=1346098394,1826979592&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500' },
         { title: 'KAI', address: '0xbA1448512f544C537f86AB1d146dCb71F6e1077A', img: 'https://img2.baidu.com/it/u=2036854675,1291157751&fm=253&fmt=auto&app=138&f=JPEG?w=300&h=300' },
         { title: 'GT6', address: process.env.NEXT_PUBLIC_GT6_ADDRESS, img: 'https://img1.baidu.com/it/u=2764939316,4277593552&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=501' },
+        { title: 'GALA', address: process.env.NEXT_PUBLIC_GALA_ADDRESS, img: 'https://img1.baidu.com/it/u=2764939316,4277593552&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=501' },
 
         { title: 'USD3', address: process.env.NEXT_PUBLIC_USD3_ADDRESS, img: 'https://www.3at.org/images/logo.png' },
         { title: 'GTC', address: process.env.NEXT_PUBLIC_GTC_ADDRESS, img: 'https://img2.baidu.com/it/u=3012966767,826073604&fm=253&fmt=auto&app=138&f=JPEG?w=253&h=253' },
@@ -245,12 +249,12 @@ const Trade = () => {
     }
     const selectTokenItem = async (item) => { //选择token
         console.log(item)
+        toggleSelectTokenPopup()
         tokenType === 'from' ? setFromTokenInfo(item) : setToTokenInfo(item)
         let balance = await fetchBalance(item.address)
         tokenType === 'from' ? setFromTokenBalance(balance) : setToTokenBalance(balance)
         console.log(balance)
         // return
-        toggleSelectTokenPopup()
     }
     const fetchBalance = async (address) => { //获取token余额
         const tokenService = new ContractService(window.ethereum, ERC20ABI, address)
