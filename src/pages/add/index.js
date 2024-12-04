@@ -20,6 +20,7 @@ const Add = () => {
     let [dialogType, setDialogType] = useState('fail')
     let [tokenList, setTokenList] = useState([ //兑换 from token list
         { title: 'WHAH', address: process.env.NEXT_PUBLIC_WHAH_ADDRESS, img: 'https://img1.baidu.com/it/u=1346098394,1826979592&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500' },
+        { title: 'KAI', address: '0xB0b6d577bce0911cD7F800a08eAc8853b2dD6121', img: 'https://img2.baidu.com/it/u=2036854675,1291157751&fm=253&fmt=auto&app=138&f=JPEG?w=300&h=300' },
         { title: 'GT6', address: process.env.NEXT_PUBLIC_GT6_ADDRESS, img: 'https://img1.baidu.com/it/u=2764939316,4277593552&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=501' },
         { title: 'USD3', address: process.env.NEXT_PUBLIC_USD3_ADDRESS, img: 'https://www.3at.org/images/logo.png' },
         { title: 'GTC', address: process.env.NEXT_PUBLIC_GTC_ADDRESS, img: 'https://img2.baidu.com/it/u=3012966767,826073604&fm=253&fmt=auto&app=138&f=JPEG?w=253&h=253' },
@@ -118,7 +119,8 @@ const Add = () => {
                 approveFromTokenTwo = await fromTokenService.sendMethod(
                     "approve",
                     localStorage.getItem('account'),
-                    [process.env.NEXT_PUBLIC_POSITION_MANAGER_ADDRESS, ethers.constants.MaxUint256]
+                    process.env.NEXT_PUBLIC_POSITION_MANAGER_ADDRESS,
+                    ethers.constants.MaxUint256
                 );
             }
             if (authorizedFour == 0) {
@@ -126,7 +128,8 @@ const Add = () => {
                 approveToTokenTwo = await toTokenService.sendMethod(
                     "approve",
                     localStorage.getItem('account'),
-                    [process.env.NEXT_PUBLIC_POSITION_MANAGER_ADDRESS, ethers.constants.MaxUint256]
+                    process.env.NEXT_PUBLIC_POSITION_MANAGER_ADDRESS,
+                    ethers.constants.MaxUint256  // 单独传递 `MaxUint256`
                 );
             }
             if (authorizedOne == 0) {
@@ -134,7 +137,8 @@ const Add = () => {
                 approveFromToken = await fromTokenService.sendMethod(
                     "approve",
                     localStorage.getItem('account'),
-                    [process.env.NEXT_PUBLIC_SWAP_ROUTER_ADDRESS, ethers.constants.MaxUint256]
+                    process.env.NEXT_PUBLIC_SWAP_ROUTER_ADDRESS,
+                    ethers.constants.MaxUint256
                 );
             }
             if (authorizedTwo == 0) {
@@ -142,7 +146,8 @@ const Add = () => {
                 approveToToken = await toTokenService.sendMethod(
                     "approve",
                     localStorage.getItem('account'),
-                    [process.env.NEXT_PUBLIC_SWAP_ROUTER_ADDRESS, ethers.constants.MaxUint256]
+                    process.env.NEXT_PUBLIC_SWAP_ROUTER_ADDRESS,
+                    ethers.constants.MaxUint256
                 );
             }
             console.log('是否授权', authorizedOne)
@@ -186,12 +191,12 @@ const Add = () => {
                 let createPoolResult = await positionManagerService.sendMethod(
                     'createAndInitializePoolIfNecessary',
                     localStorage.getItem('account'),
-                    [
-                        selectFromTokenInfo.address,
-                        selectToTokenInfo.address,
-                        selectFeeInfo.value,
-                        sqrtPriceX96
-                    ]
+
+                    selectFromTokenInfo.address,
+                    selectToTokenInfo.address,
+                    selectFeeInfo.value,
+                    sqrtPriceX96
+
                 );
                 changeIsLoading(false)
                 setButtonText('Add Liquidity')
@@ -205,36 +210,23 @@ const Add = () => {
                 // const tickUpper = TickMath.getTickAtSqrtPrice(TickMath.sqrtPriceFromAmount0Delta(maxPricePoint, 18));
                 changeIsLoading(true)
                 setButtonText('Checking Pool')
-                // const mintParams = {
-                //     token0: selectFromTokenInfo.address,
-                //     token1: selectToTokenInfo.address,
-                //     fee: selectFeeInfo.value,
-                //     tickLower: -887220, // 最低 tick 值，表示最宽范围
-                //     tickUpper: 887220,  // 最高 tick 值，表示最宽范围
-                //     amount0Desired: ethers.utils.parseUnits(amount0Desired, 18), // 初始添加的 token0 数量
-                //     amount1Desired: ethers.utils.parseUnits(amount1Desired, 18), // 初始添加的 token1 数量
-                //     amount0Min: 0,
-                //     amount1Min: 0,
-                //     recipient: localStorage.getItem('account'),
-                //     deadline: Math.floor(Date.now() / 1000) + 60 * 20,
-                // };
+                const mintParams = {
+                    token0: selectFromTokenInfo.address,
+                    token1: selectToTokenInfo.address,
+                    fee: selectFeeInfo.value,
+                    tickLower: -887220, // 最低 tick 值，表示最宽范围
+                    tickUpper: 887220,  // 最高 tick 值，表示最宽范围
+                    amount0Desired: ethers.utils.parseUnits(amount0Desired, 18), // 初始添加的 token0 数量
+                    amount1Desired: ethers.utils.parseUnits(amount1Desired, 18), // 初始添加的 token1 数量
+                    amount0Min: 0,
+                    amount1Min: 0,
+                    recipient: localStorage.getItem('account'),
+                    deadline: Math.floor(Date.now() / 1000) + 60 * 20,
+                };
                 const mintTx = await positionManagerService.sendMethod(
                     "mint",
                     localStorage.getItem('account'),
-                    [
-                        selectFromTokenInfo.address,
-                        selectToTokenInfo.address,
-                        selectFeeInfo.value,
-                        -887220,
-                        887220,
-                        ethers.utils.parseUnits(amount0Desired, 18),
-                        ethers.utils.parseUnits(amount1Desired, 18),
-                        0,
-                        0,
-                        localStorage.getItem('account'),
-                        Math.floor(Date.now() / 1000) + 60 * 20,
-                    ],
-                    { value: ethers.BigNumber.from(0) }
+                    mintParams
                 );
                 setDialogContent('Liquidity added successfully')
                 setShowDialogPopup(true)
