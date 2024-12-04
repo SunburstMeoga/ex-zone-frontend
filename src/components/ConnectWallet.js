@@ -22,30 +22,37 @@ const ConnectWalletButton = ({ className, onConnect, label = 'Connect Wallet' })
 
     const connectWallet = async () => {
         // alert('点击连接钱包按钮', web3)
-        if (web3) {
-            try {
-                console.log('Attempting to connect wallet...');
-                // 请求用户授权
-                await window.ethereum.request({ method: 'eth_requestAccounts' });
-                const accounts = await web3.eth.getAccounts();
-                const address = accounts[0];
-                setWalletAddress(address);
-                console.log('Wallet connected:', address);
-                dispatch(setAddress(walletAddress));
-                console.log(isConnected)
-                // 调用传入的回调函数，将地址传回去
-                if (onConnect) {
-                    onConnect(address);
-                }
-            } catch (error) {
-                console.error('Failed to connect wallet:', error);
-                setErrorMessage('Failed to connect wallet');
-                console.log('test connect wallet')
-            }
-        } else {
-            console.error('Web3 instance is not available yet');
-            setErrorMessage('Web3 instance is not available yet');
-        }
+        // if (web3) {
+        //     try {
+        //         console.log('Attempting to connect wallet...');
+        //         // 请求用户授权
+        //         await window.ethereum.request({ method: 'eth_requestAccounts' });
+        //         const accounts = await web3.eth.getAccounts();
+        //         const address = accounts[0];
+        //         setWalletAddress(address);
+        //         console.log('Wallet connected:', address);
+        //         dispatch(setAddress(walletAddress));
+        //         console.log(isConnected)
+        //         // 调用传入的回调函数，将地址传回去
+        //         if (onConnect) {
+        //             onConnect(address);
+        //         }
+        //     } catch (error) {
+        //         console.error('Failed to connect wallet:', error);
+        //         setErrorMessage('Failed to connect wallet');
+        //         console.log('test connect wallet')
+        //     }
+        // } else {
+        //     console.error('Web3 instance is not available yet');
+        //     setErrorMessage('Web3 instance is not available yet');
+        // }
+        let accounts = await ethereum.request({
+            method: 'eth_requestAccounts',
+        })
+        const address = accounts[0];
+        setWalletAddress(address);
+        console.log('Wallet connected:', address);
+        dispatch(setAddress(walletAddress));
     };
 
     return (
