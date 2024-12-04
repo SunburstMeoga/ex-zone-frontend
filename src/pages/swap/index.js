@@ -46,7 +46,7 @@ const Trade = () => {
     const [price, setPrice] = useState(null);
     let [fromTokenList, setFromTokenList] = useState([ //兑换 from token list
         { title: 'WHAH', address: process.env.NEXT_PUBLIC_WHAH_ADDRESS, img: 'https://img1.baidu.com/it/u=1346098394,1826979592&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500' },
-        { title: 'KAI', address: '0xB0b6d577bce0911cD7F800a08eAc8853b2dD6121', img: 'https://img2.baidu.com/it/u=2036854675,1291157751&fm=253&fmt=auto&app=138&f=JPEG?w=300&h=300' },
+        { title: 'KAI', address: '0xbA1448512f544C537f86AB1d146dCb71F6e1077A', img: 'https://img2.baidu.com/it/u=2036854675,1291157751&fm=253&fmt=auto&app=138&f=JPEG?w=300&h=300' },
         { title: 'GT6', address: process.env.NEXT_PUBLIC_GT6_ADDRESS, img: 'https://img1.baidu.com/it/u=2764939316,4277593552&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=501' },
 
         { title: 'USD3', address: process.env.NEXT_PUBLIC_USD3_ADDRESS, img: 'https://www.3at.org/images/logo.png' },
@@ -55,7 +55,7 @@ const Trade = () => {
         { title: 'HTGC', address: process.env.NEXT_PUBLIC_HTGC_ADDRESS, img: 'https://img1.baidu.com/it/u=1713792594,3651390564&fm=253&fmt=auto?w=800&h=800' }])
     let [toTokenList, setToTokenList] = useState([ //兑换 to token list
         { title: 'WHAH', address: process.env.NEXT_PUBLIC_WHAH_ADDRESS, img: 'https://img1.baidu.com/it/u=1346098394,1826979592&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500' },
-        { title: 'KAI', address: '0xB0b6d577bce0911cD7F800a08eAc8853b2dD6121', img: 'https://img2.baidu.com/it/u=2036854675,1291157751&fm=253&fmt=auto&app=138&f=JPEG?w=300&h=300' },
+        { title: 'KAI', address: '0xbA1448512f544C537f86AB1d146dCb71F6e1077A', img: 'https://img2.baidu.com/it/u=2036854675,1291157751&fm=253&fmt=auto&app=138&f=JPEG?w=300&h=300' },
         { title: 'GT6', address: process.env.NEXT_PUBLIC_GT6_ADDRESS, img: 'https://img1.baidu.com/it/u=2764939316,4277593552&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=501' },
 
         { title: 'USD3', address: process.env.NEXT_PUBLIC_USD3_ADDRESS, img: 'https://www.3at.org/images/logo.png' },
