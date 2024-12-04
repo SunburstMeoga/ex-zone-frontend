@@ -2,75 +2,40 @@ import { ethers } from 'ethers';
 
 class ContractService {
     constructor(provider, contractABI, contractAddress) {
-        this.provider = new ethers.BrowserProvider(provider);
-        this.signer = this.provider.getSigner();
-        this.contract = new ethers.Contract(contractAddress, contractABI, this.signer);
-
+        // 在 ethers v5 中, BrowserProvider 已经被移除, 需要直接使用 Web3Provider
+        this.provider = new ethers.providers.Web3Provider(provider); // 使用 Web3Provider
+        this.signer = this.provider.getSigner(); // 获取签名者
+        this.contract = new ethers.Contract(contractAddress, contractABI, this.signer); // 创建合约实例
     }
 
     // 获取当前连接的钱包账户地址
     async getAccount() {
-        const accounts = await this.provider.listAccounts();
-        return accounts[0];
+        const accounts = await this.provider.listAccounts(); // 获取连接的账户列表
+        return accounts[0]; // 返回第一个账户
     }
 
-    // 调用合约的只读方法
-    async callViewMethod(methodName, ...args) {
+    // 调用合约的只读方法（查询数据）
+    async callViewMethod(functionName, ...args) {
         try {
-            // 使用 Provider 而不是 Signer 调用合约方法
-            const contractWithProvider = this.contract.connect(this.provider);
-
-            if (typeof contractWithProvider[methodName] !== 'function') {
-                throw new Error(`Method ${methodName} not found on contract.`);
-            }
-
-            const result = await contractWithProvider[methodName](...args);
-            // console.log(`Result from ${methodName}:`, result);
-            return result;
+            const result = await this.contract[functionName](...args); // 动态调用合约方法
+            return result; // 返回结果
         } catch (error) {
-            console.error(`callViewMethod Error: ${methodName}`, error);
+            console.error(`Error calling contract method ${functionName}:`, error);
             throw error;
         }
     }
 
-
-    async sendMethod(methodName, from, args = [], options = {}) {
+    // 调用合约的写操作（发送交易）
+    async sendMethod(functionName, fromAddress, ...args) {
         try {
-            const signer = await this.provider.getSigner(from);
-            const contractWithSigner = this.contract.connect(signer);
-
-            // 调用合约方法并发送交易
-            const txResponse = await contractWithSigner[methodName](...args, options);
-            // console.log("Transaction Response:", txResponse);
-
-            // 检查返回值，确保是有效的 TransactionResponse 对象
-            if (!txResponse || typeof txResponse.wait !== 'function') {
-                throw new Error("Invalid TransactionResponse, missing 'wait' method");
-            }
-
-            // 等待交易确认
-            const receipt = await txResponse.wait();
-            // console.log("Transaction Mined:", receipt);
-
-            return receipt;
+            const tx = await this.contract.connect(this.provider.getSigner(fromAddress))[functionName](...args);
+            const receipt = await tx.wait(); // 等待交易被矿工打包
+            return receipt; // 返回交易回执
         } catch (error) {
-            console.error("sendMethod Error:", error);
+            console.error(`Error sending transaction for ${functionName}:`, error);
             throw error;
         }
     }
-
-    async getSlot0() {
-        try {
-            const result = await this.callViewMethod("slot0");
-            console.log("Slot0 Data:", result);
-            return result;
-        } catch (error) {
-            console.error("getSlot0 Error:", error);
-            throw error;
-        }
-    }
-
-
 }
 
 export default ContractService;

@@ -124,8 +124,8 @@ const Trade = () => {
             //     fee: 3000,
             //     tickLower: -887220, // 最低 tick 值，表示最宽范围
             //     tickUpper: 887220,  // 最高 tick 值，表示最宽范围
-            //     amount0Desired: ethers.parseUnits('10', 18), // 初始添加的 token0 数量
-            //     amount1Desired: ethers.parseUnits('10', 18), // 初始添加的 token1 数量
+            //     amount0Desired: ethers.utils.parseUnits('10', 18), // 初始添加的 token0 数量
+            //     amount1Desired: ethers.utils.parseUnits('10', 18), // 初始添加的 token1 数量
             //     amount0Min: 0,
             //     amount1Min: 0,
             //     recipient: localStorage.getItem('account'),
@@ -135,7 +135,7 @@ const Trade = () => {
             //     "mint",
             //     localStorage.getItem('account'),
             //     [mintParams],
-            //     { value: BigInt(0) }
+            //     { value: ethers.BigNumber.from(0) }
             // );
             // // console.log("Mint Transaction Success:", mintTx);
             const params = {
@@ -144,15 +144,25 @@ const Trade = () => {
                 fee: selectFeeInfo.value,
                 recipient: localStorage.getItem('account'),
                 deadline: BigInt(Math.floor(Date.now() / 1000) + 60 * 20), // 使用 BigInt
-                amountIn: ethers.parseUnits(fromTokenValue, 18), // 仍然使用 ethers.parseUnits 返回 BigInt
-                amountOutMinimum: BigInt(0), // 使用 BigInt(0)
-                sqrtPriceLimitX96: BigInt(0), // 使用 BigInt(0)
+                amountIn: ethers.utils.parseUnits(fromTokenValue, 18), // 仍然使用 ethers.utils.parseUnits 返回 BigInt
+                amountOutMinimum: ethers.BigNumber.from(0), // 使用 BigNumber
+                sqrtPriceLimitX96: ethers.BigNumber.from(0), // 使用 BigNumber
             };
+            console.log('交易', params)
             const tx = await swapRouterService.sendMethod(
                 "exactInputSingle",
                 localStorage.getItem('account'),
-                [params],
-                { value: BigInt(0) } // 使用 BigInt(0) 替代 ethers.Zero
+                [
+                    fromTokenInfo.address || process.env.NEXT_PUBLIC_WHAH_ADDRESS,
+                    toTokenInfo.address,
+                    selectFeeInfo.value,
+                    localStorage.getItem('account'),
+                    BigInt(Math.floor(Date.now() / 1000) + 60 * 20), // 使用 BigInt
+                    ethers.utils.parseUnits(fromTokenValue, 18), // 仍然使用 ethers.utils.parseUnits 返回 BigInt
+                    ethers.BigNumber.from(0), // 使用 BigNumber
+                    ethers.BigNumber.from(0), // 使用 BigNumber
+                ],
+                { value: ethers.BigNumber.from(0) } // 使用 ethers.BigNumber.from(0) 替代 ethers.Zero
             );
             console.log("Swap 成功", tx);
 
@@ -160,14 +170,14 @@ const Trade = () => {
             const tokenOutBalanceAfter = await toTokenService.callViewMethod("balanceOf", localStorage.getItem('account'));
             console.log("TokenIn Balance After:", tokenInBalanceAfter.toString());
             console.log("TokenOut Balance After:", tokenOutBalanceAfter.toString());
-            let balanceOne = ethers.formatUnits(tokenInBalanceAfter, 18)
-            let balanceTwo = ethers.formatUnits(tokenOutBalanceAfter, 18)
+            let balanceOne = ethers.utils.formatUnits(tokenInBalanceAfter, 18)
+            let balanceTwo = ethers.utils.formatUnits(tokenOutBalanceAfter, 18)
 
             setTransactionDetails({ token0Used: fromTokenValue, token1Received: toTokenValue, fee: 0.3, token0Balance: balanceOne, token1Balance: balanceTwo, token0: fromTokenInfo.title, token1: toTokenInfo.title });
             setIsModalOpen(true); // 显示弹窗
         } catch (err) {
             console.log(err)
-            setDialogContent('ERROR: Swap Error')
+            setDialogContent(err)
             toggleDialogPopup()
         }
 
@@ -243,7 +253,7 @@ const Trade = () => {
     const fetchBalance = async (address) => { //获取token余额
         const tokenService = new ContractService(window.ethereum, ERC20ABI, address)
         const tokenBalance = await tokenService.callViewMethod("balanceOf", localStorage.getItem('account'));
-        return (ethers.formatUnits(tokenBalance, 18))
+        return (ethers.utils.formatUnits(tokenBalance, 18))
         // return tokenBalance.toString()
     }
     const toggleDialogPopup = () => { //显示隐藏对话框
@@ -263,6 +273,10 @@ const Trade = () => {
                 toTokenInfo.address,
                 selectFeeInfo.value, // fee tier
             );
+            console.log('检查池状态', "getPool",
+                fromTokenInfo.address,
+                toTokenInfo.address,
+                selectFeeInfo.value)
             const poolService = new ContractService(window.ethereum, PoolABI, poolAddress);
             const liquidity = await poolService.callViewMethod("liquidity");
             console.log('池地址', poolAddress)

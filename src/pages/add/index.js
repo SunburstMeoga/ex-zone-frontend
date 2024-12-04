@@ -154,7 +154,7 @@ const Add = () => {
         } catch (err) {
             console.log('检查授权错误', err)
             changeIsLoading(false)
-            setButtonText('Add Liquidity')
+            setButtonText('检查授权错误', err)
         }
         try { //检查池子是否存在
             const poolAddress = await factoryService.callViewMethod(
@@ -172,8 +172,8 @@ const Add = () => {
                 const sqrtPrice = Math.sqrt(priceRatio);  // 计算平方根
 
                 // 使用 parseUnits 来处理大数，指定 18 个小数位
-                // const sqrtPriceX96 = ethers.parseUnits(sqrtPrice.toString(), 18).mul(ethers.parseUnits('1', 0).pow(96));
-                const sqrtPriceX96 = ethers.parseUnits('56022770974786139918731938227', 0);
+                // const sqrtPriceX96 = ethers.utils.parseUnits(sqrtPrice.toString(), 18).mul(ethers.utils.parseUnits('1', 0).pow(96));
+                const sqrtPriceX96 = ethers.utils.parseUnits('56022770974786139918731938227', 0);
 
                 console.log(sqrtPriceX96.toString());
 
@@ -204,24 +204,36 @@ const Add = () => {
                 // const tickUpper = TickMath.getTickAtSqrtPrice(TickMath.sqrtPriceFromAmount0Delta(maxPricePoint, 18));
                 changeIsLoading(true)
                 setButtonText('Checking Pool')
-                const mintParams = {
-                    token0: selectFromTokenInfo.address,
-                    token1: selectToTokenInfo.address,
-                    fee: selectFeeInfo.value,
-                    tickLower: -887220, // 最低 tick 值，表示最宽范围
-                    tickUpper: 887220,  // 最高 tick 值，表示最宽范围
-                    amount0Desired: ethers.parseUnits(amount0Desired, 18), // 初始添加的 token0 数量
-                    amount1Desired: ethers.parseUnits(amount1Desired, 18), // 初始添加的 token1 数量
-                    amount0Min: 0,
-                    amount1Min: 0,
-                    recipient: localStorage.getItem('account'),
-                    deadline: Math.floor(Date.now() / 1000) + 60 * 20,
-                };
+                // const mintParams = {
+                //     token0: selectFromTokenInfo.address,
+                //     token1: selectToTokenInfo.address,
+                //     fee: selectFeeInfo.value,
+                //     tickLower: -887220, // 最低 tick 值，表示最宽范围
+                //     tickUpper: 887220,  // 最高 tick 值，表示最宽范围
+                //     amount0Desired: ethers.utils.parseUnits(amount0Desired, 18), // 初始添加的 token0 数量
+                //     amount1Desired: ethers.utils.parseUnits(amount1Desired, 18), // 初始添加的 token1 数量
+                //     amount0Min: 0,
+                //     amount1Min: 0,
+                //     recipient: localStorage.getItem('account'),
+                //     deadline: Math.floor(Date.now() / 1000) + 60 * 20,
+                // };
                 const mintTx = await positionManagerService.sendMethod(
                     "mint",
                     localStorage.getItem('account'),
-                    [mintParams],
-                    { value: BigInt(0) }
+                    [
+                        selectFromTokenInfo.address,
+                        selectToTokenInfo.address,
+                        selectFeeInfo.value,
+                        -887220,
+                        887220,
+                        ethers.utils.parseUnits(amount0Desired, 18),
+                        ethers.utils.parseUnits(amount1Desired, 18),
+                        0,
+                        0,
+                        localStorage.getItem('account'),
+                        Math.floor(Date.now() / 1000) + 60 * 20,
+                    ],
+                    { value: ethers.BigNumber.from(0) }
                 );
                 setDialogContent('Liquidity added successfully')
                 setShowDialogPopup(true)
@@ -234,13 +246,13 @@ const Add = () => {
         } catch (err) {
             console.log(err)
             changeIsLoading(false)
-            setButtonText('Add Liquidity')
+            setButtonText('添加流动性出错', err)
         }
     }
     const fetchBalance = async (address) => { //获取token余额
         const tokenService = new ContractService(window.ethereum, ERC20ABI, address)
         const tokenBalance = await tokenService.callViewMethod("balanceOf", localStorage.getItem('account'));
-        return (ethers.formatUnits(tokenBalance, 18))
+        return (ethers.utils.formatUnits(tokenBalance, 18))
         // return tokenBalance.toString()
     }
 
