@@ -178,7 +178,8 @@ const Add = () => {
                 console.log(sqrtPriceX96.toString());
 
                 // 调用 positionManagerService 创建池子
-                console.log(selectFromTokenInfo.address,
+                console.log(
+                    selectFromTokenInfo.address,
                     selectToTokenInfo.address,
                     selectFeeInfo.value,
                     sqrtPriceX96)
