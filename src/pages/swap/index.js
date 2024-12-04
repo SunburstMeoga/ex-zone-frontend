@@ -290,8 +290,8 @@ const Trade = () => {
             const priceFloat = sqrtPriceFloat ** 2;
             const token0PerToken1 = 1 / priceFloat;
             console.log("Token0/Token1 Price (Float):", token0PerToken1);
-            setPrice(token0PerToken1)
-            return token0PerToken1
+            setPrice(priceFloat)
+            return priceFloat
 
         } catch (error) {
             console.error("Fetch Price Error:", error);
