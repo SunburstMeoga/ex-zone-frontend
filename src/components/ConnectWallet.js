@@ -21,6 +21,7 @@ const ConnectWalletButton = ({ className, onConnect, label = 'Connect Wallet' })
     }, []);
 
     const connectWallet = async () => {
+        alert('点击连接钱包按钮', web3)
         if (web3) {
             try {
                 console.log('Attempting to connect wallet...');

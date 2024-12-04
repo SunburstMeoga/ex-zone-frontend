@@ -7,8 +7,11 @@ import React, { useEffect } from 'react';
 import Layout from "@/components/Layout";
 import { Provider } from 'react-redux';
 import store from "@/store";
+import { ethers } from 'ethers';
+
 const App = ({ Component, pageProps }) => {
   useEffect(() => {
+    alert('ethers版本', ethers.version);
     const handleResize = () => {
       console.log('当前环境whah地址', process.env.NEXT_PUBLIC_WHAH_ADDRESS)
       const e = document.documentElement.clientWidth;
