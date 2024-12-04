@@ -44,25 +44,32 @@ const Menu = () => {
         router.push('/')
     }
     let handleConnectWallet = async () => {
-        alert(web3)
-        if (web3) {
-            console.log(web3)
-            try {
-                // 请求用户授权连接钱包
-                let accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-                // 获取用户账户
-                console.log(accounts)
-                localStorage.setItem('account', accounts[0])
-                setAccountAddress(accountAddress = localStorage.getItem('account'))
-                dispatch(setAddress(localStorage.getItem('account')));
-                // setAccount(accounts[0]);
-            } catch (error) {
-                console.error('连接钱包失败:', error);
-                alert('连接失败')
-            }
-        } else {
-            alert('没有钱包')
-        }
+        // alert(web3)
+        // if (web3) {
+        //     console.log(web3)
+        //     try {
+        //         // 请求用户授权连接钱包
+        //         let accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+        //         // 获取用户账户
+        //         console.log(accounts)
+        //         localStorage.setItem('account', accounts[0])
+        //         setAccountAddress(accountAddress = localStorage.getItem('account'))
+        //         dispatch(setAddress(localStorage.getItem('account')));
+        //         // setAccount(accounts[0]);
+        //     } catch (error) {
+        //         console.error('连接钱包失败:', error);
+        //         alert('连接失败')
+        //     }
+        // } else {
+        //     alert('没有钱包')
+        // }
+        let accounts = await ethereum.request({
+            method: 'eth_requestAccounts',
+        })
+        console.log(accounts)
+        localStorage.setItem('account', accounts[0])
+        setAccountAddress(accountAddress = localStorage.getItem('account'))
+        dispatch(setAddress(localStorage.getItem('account')));
 
     }
     useEffect(() => {
