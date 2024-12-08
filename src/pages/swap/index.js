@@ -147,7 +147,7 @@ const Trade = () => {
                 recipient: localStorage.getItem('account'),
                 deadline: BigInt(Math.floor(Date.now() / 1000) + 60 * 20), // 使用 BigInt
                 amountIn: ethers.utils.parseUnits(fromTokenValue, 18), // 仍然使用 ethers.utils.parseUnits 返回 BigInt
-                amountOutMinimum: ethers.BigNumber.from(0), // 使用 BigNumber
+                amountOutMinimum: ethers.utils.parseEther('0.95'), // 使用 BigNumber
                 sqrtPriceLimitX96: ethers.BigNumber.from(0), // 使用 BigNumber
             };
             console.log('交易', params)
@@ -161,7 +161,7 @@ const Trade = () => {
                     localStorage.getItem('account'),
                     BigInt(Math.floor(Date.now() / 1000) + 60 * 20), // 使用 BigInt
                     ethers.utils.parseUnits(fromTokenValue, 18), // 仍然使用 ethers.utils.parseUnits 返回 BigInt
-                    ethers.BigNumber.from(0), // 使用 BigNumber
+                    ethers.utils.parseEther('0.95'), // 使用 BigNumber
                     ethers.BigNumber.from(0), // 使用 BigNumber
                 ],
                 { value: ethers.BigNumber.from(0) } // 使用 ethers.BigNumber.from(0) 替代 ethers.Zero
