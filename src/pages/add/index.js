@@ -5,9 +5,10 @@ import { liquidityOperateItems, tokenPair } from '@/dictionary/trade'
 import SelectTokenPopup from '@/components/swap/selectTokenPopup'
 import DialogPopup from '@/components/DialogPopup'
 import ConnectWalletButton from "@/components/ConnectWallet";
-
+const { Pool, Position, nearestUsableTick } = require('@uniswap/v3-sdk')
 import Web3 from 'web3';
 import { ethers, BigNumber } from 'ethers';
+
 import SwapRouterABI from '@/abi/SwapRouter'
 import PositionManagersABI from '@/abi/PositionManager'
 import ERC20ABI from '@/abi/ERC20'
@@ -19,10 +20,14 @@ const Add = () => {
     let [web3, setWeb3] = useState(null) //web3实例
     let [dialogType, setDialogType] = useState('fail')
     let [tokenList, setTokenList] = useState([ //兑换 from token list
-        { title: 'USD3', address: process.env.NEXT_PUBLIC_USD3_ADDRESS, img: 'https://www.3at.org/images/logo.png' },
-        { title: 'SAT', address: '0x4cB9acd0c2C5710D77349a751F2f447FFBe68E1D', img: 'https://img0.baidu.com/it/u=2664965310,3686497550&fm=253&fmt=auto&app=138&f=JPEG?w=329&h=330' },
-        { title: 'USDC', address: '0x95C089D42611Ed77cB1C16AD8553FCc586d5c7B4', img: 'https://img0.baidu.com/it/u=2664965310,3686497550&fm=253&fmt=auto&app=138&f=JPEG?w=329&h=330' },
-        { title: 'HT9', address: '0xD74789706e33E744F2B08c23eB956a8f82AcfEd2', img: 'https://img0.baidu.com/it/u=2664965310,3686497550&fm=253&fmt=auto&app=138&f=JPEG?w=329&h=330' }])
+        // { title: 'USD3', address: process.env.NEXT_PUBLIC_USD3_ADDRESS, img: 'https://www.3at.org/images/logo.png' },
+        // { title: 'SAT', address: '0x607dAe37E7318f353fb7EdF616B344766f14f009', img: 'https://img0.baidu.com/it/u=2664965310,3686497550&fm=253&fmt=auto&app=138&f=JPEG?w=329&h=330' },
+        // { title: 'USDC', address: '0x03C647a489de9e6f141364386f1232aBF07567Dd', img: 'https://img0.baidu.com/it/u=2664965310,3686497550&fm=253&fmt=auto&app=138&f=JPEG?w=329&h=330' },
+        // { title: 'HT9', address: '0xD74789706e33E744F2B08c23eB956a8f82AcfEd2', img: 'https://img0.baidu.com/it/u=2664965310,3686497550&fm=253&fmt=auto&app=138&f=JPEG?w=329&h=330' }
+        { title: 'TEST1', address: '0xb8064D68642307CAa39aAf2414293207FA041957', img: 'https://img0.baidu.com/it/u=2664965310,3686497550&fm=253&fmt=auto&app=138&f=JPEG?w=329&h=330' },
+        { title: 'TEST2', address: '0xf5D8918542a69d35B25beB2D6B964f72efbe0F1F', img: 'https://img0.baidu.com/it/u=2664965310,3686497550&fm=253&fmt=auto&app=138&f=JPEG?w=329&h=330' },
+
+    ])
 
     // let [tokenPairList, setTokenPairList] = useState(tokenPair)
     let pointList = ['10%', '20%', '50%', 'Full Range'] //手续费等级
@@ -169,16 +174,30 @@ const Add = () => {
             changeIsLoading(true)
             setButtonText('Checking Pool')
             console.log('池地址', poolAddress)
+
             if (poolAddress === '0x0000000000000000000000000000000000000000') { //当前不存在池子，则需要创建池子并初始化该池子
                 console.log('池不存在 去创建池', ethers)
                 const priceRatio = 2; // 1 tokenA = 2 tokenB
                 const sqrtPrice = Math.sqrt(priceRatio);  // 计算平方根
 
                 // 使用 parseUnits 来处理大数，指定 18 个小数位
-                const sqrtPriceX96 = ethers.utils.parseUnits(sqrtPrice.toString(), 18).mul(ethers.utils.parseUnits('1', 0).pow(96));
+                // const sqrtPriceX96 = slot0[0]
+                const bn = require('bignumber.js')
+                bn.config({ EXPONENTIAL_AT: 999999, DECIMAL_PLACES: 40 })
+                let encodePriceSqrt = (reserve1, reserve0) => {
+                    return BigNumber.from(
+                        new bn(reserve1.toString())
+                            .div(reserve0.toString())
+                            .sqrt()
+                            .multipliedBy(new bn(2).pow(96))
+                            .integerValue(3)
+                            .toString()
+                    )
+                }
+                let sqrtPriceX96 = encodePriceSqrt(1, 1)
                 // const sqrtPriceX96 = ethers.utils.parseUnits('56022770974786139918731938227', 0);
 
-                console.log(sqrtPriceX96.toString());
+                // console.log(sqrtPriceX96.toString());
 
                 // 调用 positionManagerService 创建池子
                 console.log(
@@ -206,20 +225,38 @@ const Add = () => {
                 // const tickUpper = TickMath.getTickAtSqrtPrice(TickMath.sqrtPriceFromAmount0Delta(maxPricePoint, 18));
                 changeIsLoading(true)
                 setButtonText('Checking Pool')
+                console.log('池地址', poolAddress)
+                const poolService = new ContractService(window.ethereum, PoolABI, poolAddress);
+                let liquidity = await poolService.callViewMethod("liquidity");
+                let tickSpacing = await poolService.callViewMethod('tickSpacing')
+                let slot0 = await poolService.callViewMethod('slot0')
+                let tick = slot0[1]
+                let tickLower = nearestUsableTick(tick, tickSpacing) - tickSpacing * 100
+                let tickUpper = nearestUsableTick(tick, tickSpacing) + tickSpacing * 100
+                // let reserves = await poolService.callViewMethod('getReserves');  // 查询池子的 reserves
+                // console.log(reserves, 'reserves')
+
+                // poolContract.tickSpacing(),
+                // poolContract.fee(),
+                // poolContract.liquidity(),
+                // poolContract.slot0(),
+                // console.log('池地址', poolAddress)
+                // console.log('池塘流动性', liquidity)
                 const mintParams = {
                     token0: selectFromTokenInfo.address,
                     token1: selectToTokenInfo.address,
                     fee: selectFeeInfo.value,
-                    tickLower: 0, // 最低 tick 值，表示最宽范围
-                    tickUpper: 100000,  // 最高 tick 值，表示最宽范围
+                    tickLower: tickLower, // 最低 tick 值，表示最宽范围
+                    tickUpper: tickUpper,  // 最高 tick 值，表示最宽范围
                     amount0Desired: ethers.utils.parseUnits(amount0Desired, 18), // 初始添加的 token0 数量
                     amount1Desired: ethers.utils.parseUnits(amount1Desired, 18), // 初始添加的 token1 数量
                     amount0Min: 0,
                     amount1Min: 0,
                     recipient: localStorage.getItem('account'),
-                    deadline: Math.floor(Date.now() / 1000) + 60 * 20,
+                    deadline: Math.floor(Date.now() / 1000) + 60 * 20
                 };
                 console.log(mintParams)
+                // return
                 const mintTx = await positionManagerService.sendMethod(
                     "mint",
                     localStorage.getItem('account'),
