@@ -47,12 +47,15 @@ const Trade = () => {
     let [fromTokenList, setFromTokenList] = useState([ //兑换 from token list
         { title: 'USD3', address: process.env.NEXT_PUBLIC_USD3_ADDRESS, img: 'https://www.3at.org/images/logo.png' },
         { title: 'SAT', address: '0x4cB9acd0c2C5710D77349a751F2f447FFBe68E1D', img: 'https://img0.baidu.com/it/u=2664965310,3686497550&fm=253&fmt=auto&app=138&f=JPEG?w=329&h=330' },
-        { title: 'HT9', address: '0xd87424EbA7a739C8B9129C284b051f5c1305E695', img: 'https://img0.baidu.com/it/u=2664965310,3686497550&fm=253&fmt=auto&app=138&f=JPEG?w=329&h=330' }
+        { title: 'USDC', address: '0x95C089D42611Ed77cB1C16AD8553FCc586d5c7B4', img: 'https://img0.baidu.com/it/u=2664965310,3686497550&fm=253&fmt=auto&app=138&f=JPEG?w=329&h=330' },
+        { title: 'HT9', address: '0xD74789706e33E744F2B08c23eB956a8f82AcfEd2', img: 'https://img0.baidu.com/it/u=2664965310,3686497550&fm=253&fmt=auto&app=138&f=JPEG?w=329&h=330' }
+
     ])
     let [toTokenList, setToTokenList] = useState([ //兑换 to token list
         { title: 'USD3', address: process.env.NEXT_PUBLIC_USD3_ADDRESS, img: 'https://www.3at.org/images/logo.png' },
         { title: 'SAT', address: '0x4cB9acd0c2C5710D77349a751F2f447FFBe68E1D', img: 'https://img0.baidu.com/it/u=2664965310,3686497550&fm=253&fmt=auto&app=138&f=JPEG?w=329&h=330' },
-        { title: 'HT9', address: '0xd87424EbA7a739C8B9129C284b051f5c1305E695', img: 'https://img0.baidu.com/it/u=2664965310,3686497550&fm=253&fmt=auto&app=138&f=JPEG?w=329&h=330' }
+        { title: 'USDC', address: '0x95C089D42611Ed77cB1C16AD8553FCc586d5c7B4', img: 'https://img0.baidu.com/it/u=2664965310,3686497550&fm=253&fmt=auto&app=138&f=JPEG?w=329&h=330' },
+        { title: 'HT9', address: '0xD74789706e33E744F2B08c23eB956a8f82AcfEd2', img: 'https://img0.baidu.com/it/u=2664965310,3686497550&fm=253&fmt=auto&app=138&f=JPEG?w=329&h=330' }
     ])
 
     const handleApproveAndSwap = async () => { //点击approve and swap
