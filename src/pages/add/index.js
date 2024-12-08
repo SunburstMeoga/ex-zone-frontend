@@ -19,16 +19,7 @@ const Add = () => {
     let [web3, setWeb3] = useState(null) //web3实例
     let [dialogType, setDialogType] = useState('fail')
     let [tokenList, setTokenList] = useState([ //兑换 from token list
-        { title: 'WHAH', address: process.env.NEXT_PUBLIC_WHAH_ADDRESS, img: 'https://img1.baidu.com/it/u=1346098394,1826979592&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500' },
-        { title: 'KAI', address: '0xbA1448512f544C537f86AB1d146dCb71F6e1077A', img: 'https://img2.baidu.com/it/u=2036854675,1291157751&fm=253&fmt=auto&app=138&f=JPEG?w=300&h=300' },
-        { title: 'GT6', address: process.env.NEXT_PUBLIC_GT6_ADDRESS, img: 'https://img1.baidu.com/it/u=2764939316,4277593552&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=501' },
-        { title: 'ABCD', address: process.env.NEXT_PUBLIC_GALA_ADDRESS, img: 'https://img1.baidu.com/it/u=2764939316,4277593552&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=501' },
-        { title: 'CEN', address: '0x28Ee484aAD48578e1820161DFA5C2263Ac50D10B', img: 'https://img1.baidu.com/it/u=2764939316,4277593552&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=501' },
-        { title: 'JIAN', address: '0x858493700Bf8cb630F7Cd824Da68e32210704D19', img: 'https://img1.baidu.com/it/u=2764939316,4277593552&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=501' },
-        { title: 'USD3', address: process.env.NEXT_PUBLIC_USD3_ADDRESS, img: 'https://www.3at.org/images/logo.png' },
-        { title: 'GTC', address: process.env.NEXT_PUBLIC_GTC_ADDRESS, img: 'https://img2.baidu.com/it/u=3012966767,826073604&fm=253&fmt=auto&app=138&f=JPEG?w=253&h=253' },
-        { title: 'SHTC', address: process.env.NEXT_PUBLIC_SHTC_ADDRESS, img: 'https://img0.baidu.com/it/u=2664965310,3686497550&fm=253&fmt=auto&app=138&f=JPEG?w=329&h=330' },
-        { title: 'HTGC', address: process.env.NEXT_PUBLIC_HTGC_ADDRESS, img: 'https://img1.baidu.com/it/u=1713792594,3651390564&fm=253&fmt=auto?w=800&h=800' }])
+        { title: 'SAN', address: '0xC67B6C1a5a9f1C0e69fa28094c03E88CAbe86c86', img: 'https://img0.baidu.com/it/u=2664965310,3686497550&fm=253&fmt=auto&app=138&f=JPEG?w=329&h=330' }])
     // let [tokenPairList, setTokenPairList] = useState(tokenPair)
     let pointList = ['10%', '20%', '50%', 'Full Range'] //手续费等级
     let [showSelectTokenPopup, setSelectTokenPopup] = useState(false) //显示隐藏token列表popup
@@ -180,8 +171,8 @@ const Add = () => {
                 const sqrtPrice = Math.sqrt(priceRatio);  // 计算平方根
 
                 // 使用 parseUnits 来处理大数，指定 18 个小数位
-                // const sqrtPriceX96 = ethers.utils.parseUnits(sqrtPrice.toString(), 18).mul(ethers.utils.parseUnits('1', 0).pow(96));
-                const sqrtPriceX96 = ethers.utils.parseUnits('56022770974786139918731938227', 0);
+                const sqrtPriceX96 = ethers.utils.parseUnits(sqrtPrice.toString(), 18).mul(ethers.utils.parseUnits('1', 0).pow(96));
+                // const sqrtPriceX96 = ethers.utils.parseUnits('56022770974786139918731938227', 0);
 
                 console.log(sqrtPriceX96.toString());
 
