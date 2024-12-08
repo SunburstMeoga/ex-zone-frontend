@@ -45,8 +45,10 @@ const Trade = () => {
     let [toTokenValue, setToTokenValue] = useState('')
     const [price, setPrice] = useState(null);
     let [fromTokenList, setFromTokenList] = useState([ //兑换 from token list
+        { title: 'USD3', address: process.env.NEXT_PUBLIC_USD3_ADDRESS, img: 'https://www.3at.org/images/logo.png' },
         { title: 'SAN', address: '0xC67B6C1a5a9f1C0e69fa28094c03E88CAbe86c86', img: 'https://img0.baidu.com/it/u=2664965310,3686497550&fm=253&fmt=auto&app=138&f=JPEG?w=329&h=330' }])
     let [toTokenList, setToTokenList] = useState([ //兑换 to token list
+        { title: 'USD3', address: process.env.NEXT_PUBLIC_USD3_ADDRESS, img: 'https://www.3at.org/images/logo.png' },
         { title: 'SAN', address: '0xC67B6C1a5a9f1C0e69fa28094c03E88CAbe86c86', img: 'https://img0.baidu.com/it/u=2664965310,3686497550&fm=253&fmt=auto&app=138&f=JPEG?w=329&h=330' }])
 
     const handleApproveAndSwap = async () => { //点击approve and swap
