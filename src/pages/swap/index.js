@@ -43,6 +43,7 @@ const Trade = () => {
     const [isCalculating, setIsCalculating] = useState(false);
     let [fromTokenValue, setFromTokenValue] = useState('')
     let [toTokenValue, setToTokenValue] = useState('')
+    let [transPrice, setTransPrice] = useState('')
     const [price, setPrice] = useState(null);
     let [fromTokenList, setFromTokenList] = useState([ //兑换 from token list
         // { title: 'USD3', address: process.env.NEXT_PUBLIC_USD3_ADDRESS, img: 'https://www.3at.org/images/logo.png' },
@@ -218,7 +219,7 @@ const Trade = () => {
         }
     }
     let toggleStatisticsPopup = () => {
-        console.log('object')
+        // console.log('object')
         setStatisticsPopup(showStatisticsPopup = !showStatisticsPopup)
         console.log(showStatisticsPopup)
     }
@@ -239,7 +240,7 @@ const Trade = () => {
         setShowDialogPopup(true)
     }
     let toggleSelectTokenPopup = (type) => { //显示隐藏选择token弹窗
-        console.log('object')
+        // console.log('object')
         setTokenType(type)
         setSelectTokenPopup(showSelectTokenPopup = !showSelectTokenPopup)
     }
@@ -250,6 +251,11 @@ const Trade = () => {
         let balance = await fetchBalance(item.address)
         tokenType === 'from' ? setFromTokenBalance(balance) : setToTokenBalance(balance)
         console.log(balance)
+        console.log(fromTokenInfo, toTokenInfo)
+        if (toTokenInfo.title && fromTokenInfo.title) {
+            console.log('获取交易对价格')
+            getTranPrice()
+        }
         // return
     }
     const fetchBalance = async (address) => { //获取token余额
@@ -281,21 +287,27 @@ const Trade = () => {
                 selectFeeInfo.value)
             const poolService = new ContractService(window.ethereum, PoolABI, poolAddress);
             // let reserves = await poolService.callViewMethod('getReserves');  // 查询池子的 reserves
-            // console.log(reserves, 'reserves')
-            const liquidity = await poolService.callViewMethod("liquidity");
-            console.log('池地址', poolAddress)
-            console.log('池塘流动性', liquidity)
+            // // console.log(reserves, 'reserves')
+            // const liquidity = await poolService.callViewMethod("liquidity");
+            // console.log('池地址', poolAddress)
+            // console.log('池塘流动性', liquidity)
 
             const slot0Data = await poolService.callViewMethod("slot0");
-            const sqrtPriceX96 = BigInt(slot0Data.sqrtPriceX96);
-            // 转为浮点数格式
-            const sqrtPriceFloat = Number(sqrtPriceX96) / 2 ** 96;
-            // 计算实际价格 (token1/token0)
-            const priceFloat = sqrtPriceFloat ** 2;
-            const token0PerToken1 = 1 / priceFloat;
-            console.log("Token0/Token1 Price (Float):", token0PerToken1);
-            setPrice(priceFloat)
-            return priceFloat
+            // const sqrtPriceX96 = BigInt(slot0Data.sqrtPriceX96);
+            // // 转为浮点数格式
+            // const sqrtPriceFloat = Number(sqrtPriceX96) / 2 ** 96;
+            // // 计算实际价格 (token1/token0)
+            // const priceFloat = sqrtPriceFloat ** 2;
+            // const token0PerToken1 = 1 / priceFloat;
+            // console.log("Token0/Token1 Price (Float):", token0PerToken1);
+            // setPrice(priceFloat)
+            const [sqrtPriceX96] = await slot0Data
+
+            // 计算价格
+            const price = sqrtPriceX96 ** 2 / (2 ** 192);  // 价格 = (sqrtPriceX96 / 2^96) ^ 2
+            // setTransPrice(price)
+            console.log(`Current price (token0 per token1): ${price}`);
+            return price
 
         } catch (error) {
             console.error("Fetch Price Error:", error);
@@ -305,6 +317,38 @@ const Trade = () => {
             setIsCalculating(false); // 隐藏骨架屏
         }
     };
+
+    const getTranPrice = async () => {
+        try {
+
+            const factoryService = new ContractService(window.ethereum, FactoryABI, process.env.NEXT_PUBLIC_FACTORY_ADDRESS)
+            const poolAddress = await factoryService.callViewMethod(
+                "getPool",
+                fromTokenInfo.address,
+                toTokenInfo.address,
+                selectFeeInfo.value, // fee tier
+            );
+            console.log('检查池状态', "getPool",
+                fromTokenInfo.address,
+                toTokenInfo.address,
+                selectFeeInfo.value)
+            const poolService = new ContractService(window.ethereum, PoolABI, poolAddress);
+            const slot0Data = await poolService.callViewMethod("slot0");
+            const [sqrtPriceX96] = await slot0Data
+            // 计算价格
+            const price = sqrtPriceX96 ** 2 / (2 ** 192);  // 价格 = (sqrtPriceX96 / 2^96) ^ 2
+            setTransPrice(price)
+            console.log(`Current price (token0 per token1): ${price}`);
+            return price
+
+        } catch (error) {
+            console.error("Fetch Price Error:", error);
+            setIsCalculating(false); // 隐藏骨架屏
+        }
+        finally {
+            setIsCalculating(false); // 隐藏骨架屏
+        }
+    }
 
     const handleInputFocus = async (e) => { //input框焦点
         setFromTokenValue(e.target.value)
@@ -383,7 +427,7 @@ const Trade = () => {
                                             <img className='' src={fromTokenInfo.img}></img>
                                         </div>}
                                         <div className='text-1-2 font-light ml-1-0'>{fromTokenInfo.title ? fromTokenInfo.title : 'Select token'}</div>
-                                        <div className='ml-2-0 icon iconfont icon-down2' onClick={() => toggleSelectTokenPopup} style={{ fontSize: '1rem' }}></div>
+                                        <div className='ml-2-0 icon iconfont icon-down2' style={{ fontSize: '1rem' }}></div>
 
                                     </div>
                                     {/* <div className='text-swap-copy-icon icon iconfont icon-copy' style={{ fontSize: '1.4rem' }}></div> */}
@@ -405,7 +449,7 @@ const Trade = () => {
                                             <img className='' src={toTokenInfo.img}></img>
                                         </div>}
                                         <div className='text-1-2 font-light ml-1-0'>{toTokenInfo.title ? toTokenInfo.title : 'Select token'}</div>
-                                        <div className='ml-2-0 icon iconfont icon-down2' onClick={() => toggleSelectTokenPopup} style={{ fontSize: '1rem' }}></div>
+                                        <div className='ml-2-0 icon iconfont icon-down2' style={{ fontSize: '1rem' }}></div>
                                     </div>
                                     {/* <div className='text-swap-copy-icon icon iconfont icon-copy' style={{ fontSize: '1.4rem' }}></div> */}
                                 </div>
@@ -413,13 +457,16 @@ const Trade = () => {
                                     {isCalculating ? (
                                         <div className="h-1-5 w-1/2 animate-pulse bg-swap-border rounded"></div>
                                     ) : (
-                                        <input disabled type="number" step="0.01" value={toTokenValue} className='bg-transparent placeholder-swap-border text-right text-1-2 border-none focus:outline-none caret-swap-border h-3-0 w-full' onFocus={handleInputFocus}></input>
+                                        <input disabled type="number" step="0.01" value={toTokenValue} className='bg-transparent placeholder-swap-border text-right text-1-2 border-none focus:outline-none caret-swap-border h-3-0 w-full' onChange={handleInputFocus}></input>
                                     )}
                                     {/* <input disabled type="number" step="0.01" value={toTokenValue} className='bg-transparent placeholder-swap-border text-right text-1-2 border-none focus:outline-none caret-swap-border h-3-0 w-full' onFocus={handleInputFocus}></input> */}
                                 </div>
                                 <div className='text-gray-400 text-0-8 w-full text-right'> Balance:{toTokenBalance} {toTokenInfo.title} </div>
                             </div>
                         </div>
+                        {fromTokenInfo.title && toTokenInfo.title && <div className='w-20-0 mb-2-0 lg:w-35-0 lg:mb-8-0 text-gray-400' >
+                            {fromTokenInfo.title} Per {transPrice} {toTokenInfo.title}
+                        </div>}
                         {/* <div className='w-20-0 flex justify-between items-center mb-1-0 lg:w-35-0 ' onClick={toggleSettingPopup}>
                             <div className='flex justify-start items-center'>
                                 <div className='text-1-0 text-swap-second-title mr-1-0'>Slippage Tolerance</div>

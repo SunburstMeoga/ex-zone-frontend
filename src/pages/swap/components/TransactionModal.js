@@ -16,8 +16,8 @@ const TransactionModal = ({ isOpen, onClose, details }) => {
                         {token0Used}
                     </div>
                     <div className="flex justify-between items-center">
-                        <div className="font-medium text-gray-400">收到: {token1}</div>
-                        {token1Received}
+                        <div className="font-medium text-gray-400">交易比: </div>
+                        {token1Received} {token0}  Per {token1}
                     </div>
                     <div className="flex justify-between items-center">
                         <div className="font-medium text-gray-400">交易费率: </div>
