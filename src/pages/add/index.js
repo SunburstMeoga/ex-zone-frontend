@@ -24,8 +24,8 @@ const Add = () => {
         // { title: 'SAT', address: '0x607dAe37E7318f353fb7EdF616B344766f14f009', img: 'https://img0.baidu.com/it/u=2664965310,3686497550&fm=253&fmt=auto&app=138&f=JPEG?w=329&h=330' },
         // { title: 'USDC', address: '0x03C647a489de9e6f141364386f1232aBF07567Dd', img: 'https://img0.baidu.com/it/u=2664965310,3686497550&fm=253&fmt=auto&app=138&f=JPEG?w=329&h=330' },
         // { title: 'HT9', address: '0xD74789706e33E744F2B08c23eB956a8f82AcfEd2', img: 'https://img0.baidu.com/it/u=2664965310,3686497550&fm=253&fmt=auto&app=138&f=JPEG?w=329&h=330' }
-        { title: 'TEST1', address: '0xb8064D68642307CAa39aAf2414293207FA041957', img: 'https://img0.baidu.com/it/u=2664965310,3686497550&fm=253&fmt=auto&app=138&f=JPEG?w=329&h=330' },
-        { title: 'TEST2', address: '0xf5D8918542a69d35B25beB2D6B964f72efbe0F1F', img: 'https://img0.baidu.com/it/u=2664965310,3686497550&fm=253&fmt=auto&app=138&f=JPEG?w=329&h=330' },
+        { title: 'ONE', address: '0x584e6a7Eb583eF89c0F70c3540ce88A4cbe56deF', img: 'https://img0.baidu.com/it/u=2664965310,3686497550&fm=253&fmt=auto&app=138&f=JPEG?w=329&h=330' },
+        { title: 'TWO', address: '0xdbbe571be652CA17Fb3F6B197977C4FF257d8853', img: 'https://img0.baidu.com/it/u=2664965310,3686497550&fm=253&fmt=auto&app=138&f=JPEG?w=329&h=330' },
 
     ])
 
