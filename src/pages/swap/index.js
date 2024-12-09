@@ -132,6 +132,8 @@ const Trade = () => {
                 let balanceOne = ethers.utils.formatUnits(tokenInBalanceAfter, 18)
                 let balanceTwo = ethers.utils.formatUnits(tokenOutBalanceAfter, 18)
                 if (ethers.utils.formatUnits(amount0, 18) && ethers.utils.formatUnits(amount1, 18)) {
+                    setFromTokenBalance(fromTokenBalance = balanceOne)
+                    setToTokenBalance(toTokenBalance = balanceTwo)
                     setToken1Received(token1Received = fromTokenInfo.address < toTokenInfo.address ? Math.abs(ethers.utils.formatUnits(amount1, 18)) : Math.abs(ethers.utils.formatUnits(amount0, 18)))
                     console.log('---------', token1Received, Math.abs(ethers.utils.formatUnits(amount1, 18)))
                     setTransactionDetails({
