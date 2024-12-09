@@ -26,6 +26,9 @@ const Add = () => {
         // { title: 'HT9', address: '0xD74789706e33E744F2B08c23eB956a8f82AcfEd2', img: 'https://img0.baidu.com/it/u=2664965310,3686497550&fm=253&fmt=auto&app=138&f=JPEG?w=329&h=330' }
         { title: 'ONE', address: '0x584e6a7Eb583eF89c0F70c3540ce88A4cbe56deF', img: 'https://img0.baidu.com/it/u=2664965310,3686497550&fm=253&fmt=auto&app=138&f=JPEG?w=329&h=330' },
         { title: 'TWO', address: '0xdbbe571be652CA17Fb3F6B197977C4FF257d8853', img: 'https://img0.baidu.com/it/u=2664965310,3686497550&fm=253&fmt=auto&app=138&f=JPEG?w=329&h=330' },
+        { title: 'CEN', address: '0xF332c5a258b1405D58caA85A95b2678C6a13d819', img: 'https://img0.baidu.com/it/u=2664965310,3686497550&fm=253&fmt=auto&app=138&f=JPEG?w=329&h=330' },
+
+        { title: 'GALA', address: '0x15C00A366eC35BA9De52FE65098022eD75b7d8bE', img: 'https://img0.baidu.com/it/u=2664965310,3686497550&fm=253&fmt=auto&app=138&f=JPEG?w=329&h=330' },
 
     ])
 
