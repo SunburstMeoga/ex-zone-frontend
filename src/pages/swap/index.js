@@ -168,7 +168,7 @@ const Trade = () => {
                 console.log("TokenOut Balance After:", tokenOutBalanceAfter.toString());
                 let balanceOne = ethers.utils.formatUnits(tokenInBalanceAfter, 18)
                 let balanceTwo = ethers.utils.formatUnits(tokenOutBalanceAfter, 18)
-                setToken1Received(token1Received = Math.abs(ethers.utils.formatUnits(amount1, 18)))
+                setToken1Received(token1Received = fromTokenInfo.address < toTokenInfo.address ? Math.abs(ethers.utils.formatUnits(amount1, 18)) : Math.abs(ethers.utils.formatUnits(amount0, 18)))
                 console.log('---------', token1Received, Math.abs(ethers.utils.formatUnits(amount1, 18)))
                 setTransactionDetails({ token0Used: fromTokenValue, token1Received: token1Received, fee: (selectFeeInfo.value) * 0.01 * 0.01, token0Balance: balanceOne, token1Balance: balanceTwo, token0: fromTokenInfo.title, token1: toTokenInfo.title, perPriceText: perPriceText });
                 setIsModalOpen(true); // 显示弹窗
