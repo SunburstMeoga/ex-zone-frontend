@@ -139,6 +139,7 @@ const Trade = () => {
             const poolService = new ethers.Contract(poolAddress, PoolABI, signer);
             poolService.on("Swap", async (sender, recipient, amount0, amount1, sqrtPriceX96, liquidity, tick, event) => {
                 if (event.transactionHash === tx.transactionHash) {
+                    console.log(event)
                     console.log("Swap Event Received:");
                     console.log("Sender:", sender);
                     console.log("Recipient:", recipient);
@@ -161,7 +162,7 @@ const Trade = () => {
                     setToken1Received(token1Received = fromTokenInfo.address < toTokenInfo.address ? absValue1 : absValue0)
                     console.log('---------', token1Received, Math.abs(ethers.utils.formatUnits(amount1, 18)))
                     setTransactionDetails({
-                        token0Used: fromTokenValue,
+                        token0Used: absValue0,
                         token1Received: token1Received,
                         fee: (selectFeeInfo.value) * 0.01 * 0.01,
                         token0Balance: balanceOne,
