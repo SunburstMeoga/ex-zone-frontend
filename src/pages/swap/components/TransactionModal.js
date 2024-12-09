@@ -3,7 +3,7 @@ import React from "react";
 const TransactionModal = ({ isOpen, onClose, details }) => {
     if (!isOpen) return null;
 
-    const { token0Used, token1Received, fee, token0Balance, token1Balance, token0, token1 } = details;
+    const { token0Used, token1Received, fee, token0Balance, token1Balance, token0, token1, perPriceText } = details;
 
     return (
 
@@ -12,12 +12,15 @@ const TransactionModal = ({ isOpen, onClose, details }) => {
                 <h2 className="text-lg font-bold my-1-0">Transaction Details</h2>
                 <div className="mb-2-0 w-full">
                     <div className="flex justify-between items-center">
-                        <div className="font-medium text-gray-400">支付: {token0}</div>
-                        {token0Used}
+                        <div className="font-medium text-gray-400">支付: </div>
+                        {token0Used} {token0}
                     </div>
                     <div className="flex justify-between items-center">
-                        <div className="font-medium text-gray-400">交易比: </div>
-                        {token1Received} {token0}  Per {token1}
+                        <div className="font-medium text-gray-400">收到: </div>
+                        {token1Received} {token1}
+                    </div>
+                    <div className="flex justify-between items-center">
+                        <div className="font-medium text-gray-400">当次交易比: {perPriceText} </div>
                     </div>
                     <div className="flex justify-between items-center">
                         <div className="font-medium text-gray-400">交易费率: </div>
