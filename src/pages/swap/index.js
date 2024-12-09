@@ -152,7 +152,16 @@ const Trade = () => {
                 if (ethers.utils.formatUnits(amount0, 18) && ethers.utils.formatUnits(amount1, 18)) {
                     setToken1Received(token1Received = fromTokenInfo.address < toTokenInfo.address ? Math.abs(ethers.utils.formatUnits(amount1, 18)) : Math.abs(ethers.utils.formatUnits(amount0, 18)))
                     console.log('---------', token1Received, Math.abs(ethers.utils.formatUnits(amount1, 18)))
-                    setTransactionDetails({ token0Used: fromTokenValue, token1Received: token1Received, fee: (selectFeeInfo.value) * 0.01 * 0.01, token0Balance: balanceOne, token1Balance: balanceTwo, token0: fromTokenInfo.title, token1: toTokenInfo.title, perPriceText: perPriceText });
+                    setTransactionDetails({
+                        token0Used: fromTokenValue,
+                        token1Received: token1Received,
+                        fee: (selectFeeInfo.value) * 0.01 * 0.01,
+                        token0Balance: balanceOne,
+                        token1Balance: balanceTwo,
+                        token0: fromTokenInfo.title,
+                        token1: toTokenInfo.title,
+                        perPriceText: perPriceText
+                    });
                     setIsModalOpen(true); // 显示弹窗
                 }
 
@@ -315,10 +324,10 @@ const Trade = () => {
         console.log(toTokenInfo.address > fromTokenInfo.address, toTokenInfo.address < fromTokenInfo.address)
         if (fromTokenInfo.address < toTokenInfo.address) { //小地址在大地址前，直接使用交易兑比例
             setToTokenValue(price * e.target.value)
-            setPriceText(`1 ${fromTokenInfo.title} Per ${price * e.target.value} ${toTokenInfo.title}`)
+            // setPriceText(`1 ${fromTokenInfo.title} Per ${price * 1} ${toTokenInfo.title}`)
         } else { //小地址在大地址后，反转使用交易兑比例
             setToTokenValue(price2 * e.target.value)
-            setPriceText(`1 ${fromTokenInfo.title} Per ${price2 * e.target.value} ${toTokenInfo.title}`)
+            // setPriceText(`1 ${fromTokenInfo.title} Per ${price2 * 1} ${toTokenInfo.title}`)
 
         }
     }
@@ -332,11 +341,11 @@ const Trade = () => {
         console.log(token1PerToken0)
 
         if (fromTokenInfo.address > toTokenInfo.address) { //小地址在大地址前，直接使用交易兑比例
-            setPriceText(`1 ${toTokenInfo.title} Per ${price * e.target.value} ${fromTokenInfo.title}`)
+            // setPriceText(`1 ${toTokenInfo.title} Per ${price * 1} ${fromTokenInfo.title}`)
             setFromTokenValue(price * e.target.value)
         } else { //小地址在大地址后，反转使用交易兑比例
             setFromTokenValue(price2 * e.target.value)
-            setPriceText(`1 ${toTokenInfo.title} Per ${price2 * e.target.value} ${fromTokenInfo.title}`)
+            // setPriceText(`1 ${toTokenInfo.title} Per ${price2 * 1} ${fromTokenInfo.title}`)
         }
 
     }
