@@ -239,6 +239,8 @@ const Trade = () => {
     const selectTokenItem = async (item) => { //选择token
         tokenType === 'from' ? setFromTokenInfo(fromTokenInfo = item) : setToTokenInfo(toTokenInfo = item)
         toggleSelectTokenPopup()
+        if (toTokenInfo.title == fromTokenInfo.title) return
+
         let balance = await fetchBalance(item.address)
         tokenType === 'from' ? setFromTokenBalance(fromTokenBalance = balance) : setToTokenBalance(toTokenBalance = balance)
         console.log(balance)
@@ -337,7 +339,7 @@ const Trade = () => {
     }
     const getToken0PriceFromToken1Price = async () => { //通过输入的token1，由交易比确定token0的价格
         console.log(toTokenInfo, fromTokenValue)
-        if (!toTokenInfo.title && !fromTokenValue) return
+        if (!toTokenInfo.title && !fromTokenValue && (toTokenInfo.title == fromTokenInfo.title)) return
         try {
             setIsLoadingFromPriceForSlot0(true); // 显示骨架屏
             const factoryService = new ContractService(window.ethereum, FactoryABI, process.env.NEXT_PUBLIC_FACTORY_ADDRESS)
@@ -349,7 +351,7 @@ const Trade = () => {
             );
             console.log('池地址', poolAddress)
             if (poolAddress === ethers.constants.AddressZero) {
-                setDialogContent(`${fromTokenInfo.title} 与 ${toTokenInfo.title} 在 ${selectFeeInfo.value * 0.01 * 0.01}%区间暂无交易兑。您可前往创建`)
+                setDialogContent(`${fromTokenInfo.title} 与 ${toTokenInfo.title} 在 ${selectFeeInfo.value * 0.01 * 0.01}% 区间暂无交易兑。您可前往创建`)
                 setShowDialogPopup(true)
                 return
             }
@@ -371,7 +373,7 @@ const Trade = () => {
     }
     const getToken1PriceFromToken0Price = async () => { //通过输入的token0，由交易比确定token1的价格
         console.log(fromTokenInfo, toTokenValue)
-        if (!fromTokenInfo.title && !toTokenValue) return
+        if (!fromTokenInfo.title && !toTokenValue && (toTokenInfo.title == fromTokenInfo.title)) return
         try {
             setIsLoadingToPriceForSlot0(true); // 显示骨架屏
             const factoryService = new ContractService(window.ethereum, FactoryABI, process.env.NEXT_PUBLIC_FACTORY_ADDRESS)
