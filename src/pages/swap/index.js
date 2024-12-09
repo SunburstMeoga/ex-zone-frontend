@@ -124,6 +124,15 @@ const Trade = () => {
             // console.log('Deadline', BigInt(Math.floor(Date.now() / 1000) + 60 * 20));
             // console.log('Amount In', ethers.utils.parseUnits(fromTokenValue, 18));
             // console.log('Amount Out Minimum', ethers.utils.parseEther('0.95'));
+            const provider = new ethers.providers.Web3Provider(window.ethereum);
+            const signer = provider.getSigner();
+            const factoryService = new ContractService(window.ethereum, FactoryABI, process.env.NEXT_PUBLIC_FACTORY_ADDRESS)
+            const poolAddress = await factoryService.callViewMethod(
+                "getPool",
+                fromTokenInfo.address,
+                toTokenInfo.address,
+                selectFeeInfo.value, // fee tier
+            );
 
             const poolService = new ethers.Contract(poolAddress, PoolABI, signer);
             poolService.on("Swap", async (sender, recipient, amount0, amount1, sqrtPriceX96, liquidity, tick) => {
@@ -163,15 +172,6 @@ const Trade = () => {
                 { value: ethers.BigNumber.from(0) } // 使用 ethers.BigNumber.from(0) 替代 ethers.Zero
             );
 
-            const provider = new ethers.providers.Web3Provider(window.ethereum);
-            const signer = provider.getSigner();
-            const factoryService = new ContractService(window.ethereum, FactoryABI, process.env.NEXT_PUBLIC_FACTORY_ADDRESS)
-            const poolAddress = await factoryService.callViewMethod(
-                "getPool",
-                fromTokenInfo.address,
-                toTokenInfo.address,
-                selectFeeInfo.value, // fee tier
-            );
 
             console.log("Swap 成功", tx);
 
