@@ -107,23 +107,6 @@ const Trade = () => {
                     [process.env.NEXT_PUBLIC_POSITION_MANAGER_ADDRESS, ethers.MaxUint256]
                 );
             }
-            // const params = {
-            //     tokenIn: fromTokenInfo.address,
-            //     tokenOut: toTokenInfo.address,
-            //     fee: selectFeeInfo.value,
-            //     recipient: localStorage.getItem('account'),
-            //     deadline: BigInt(Math.floor(Date.now() / 1000) + 60 * 20), // 使用 BigInt
-            //     amountIn: ethers.utils.parseUnits(fromTokenValue, 18), // 仍然使用 ethers.utils.parseUnits 返回 BigInt
-            //     amountOutMinimum: ethers.utils.parseEther('0.95'), // 使用 BigNumber
-            //     sqrtPriceLimitX96: ethers.BigNumber.from(0), // 使用 BigNumber
-            // };
-            // console.log('fromTokenInfo.address', fromTokenInfo.address);
-            // console.log('toTokenInfo.address', toTokenInfo.address);
-            // console.log('selectFeeInfo.value', selectFeeInfo.value);
-            // console.log('Account', localStorage.getItem('account'));
-            // console.log('Deadline', BigInt(Math.floor(Date.now() / 1000) + 60 * 20));
-            // console.log('Amount In', ethers.utils.parseUnits(fromTokenValue, 18));
-            // console.log('Amount Out Minimum', ethers.utils.parseEther('0.95'));
             const provider = new ethers.providers.Web3Provider(window.ethereum);
             const signer = provider.getSigner();
             const factoryService = new ContractService(window.ethereum, FactoryABI, process.env.NEXT_PUBLIC_FACTORY_ADDRESS)
@@ -142,7 +125,6 @@ const Trade = () => {
                 console.log("Amount0 (token0):", ethers.utils.formatUnits(amount0, 18)); // 格式化为代币的单位
                 console.log("Amount1 (token1):", ethers.utils.formatUnits(amount1, 18)); // 格式化为代币的单位
                 console.log('object', Math.abs(ethers.utils.formatUnits(amount1, 18)))
-
                 const tokenInBalanceAfter = await fromTokenService.callViewMethod("balanceOf", localStorage.getItem('account'));
                 const tokenOutBalanceAfter = await toTokenService.callViewMethod("balanceOf", localStorage.getItem('account'));
                 console.log("TokenIn Balance After:", tokenInBalanceAfter.toString());
@@ -274,7 +256,11 @@ const Trade = () => {
                 selectFeeInfo.value, // fee tier
             );
             console.log('池地址', poolAddress)
-            if (poolAddress === ethers.constants.AddressZero) return //当前token0、token1没有交易兑
+            if (poolAddress === ethers.constants.AddressZero) {
+                setDialogContent(`${fromTokenInfo.title} 与 ${toTokenInfo.title} 在 ${selectFeeInfo.value * 0.01 * 0.01}%区间暂无交易兑。您可前往创建`)
+                setShowDialogPopup(true)
+                return
+            }
             setIsLoadingToPriceForSlot0(true)
             setIsLoadingFromPriceForSlot0(true)
 
@@ -286,12 +272,12 @@ const Trade = () => {
             let price2 = 1 / (sqrtPriceX96 ** 2 / (2 ** 192))
             console.log(toTokenInfo.address > fromTokenInfo.address, toTokenInfo.address < fromTokenInfo.address)
             if (fromTokenInfo.address < toTokenInfo.address) { //小地址在大地址前，直接使用交易兑比例
-                setToTokenValue(toTokenValue = price)
-                setFromTokenValue(fromTokenValue = 1)
+                // setToTokenValue(toTokenValue = price)
+                // setFromTokenValue(fromTokenValue = 1)
                 setPriceText(`1 ${fromTokenInfo.title} Per ${price} ${toTokenInfo.title}`)
             } else { //小地址在大地址后，反转使用交易兑比例
-                setToTokenValue(toTokenValue = price2)
-                setFromTokenValue(fromTokenValue = 1)
+                // setToTokenValue(toTokenValue = price2)
+                // setFromTokenValue(fromTokenValue = 1)
                 setPriceText(`1 ${fromTokenInfo.title} Per ${price2} ${toTokenInfo.title}`)
             }
             setIsLoadingToPriceForSlot0(false)
@@ -362,7 +348,11 @@ const Trade = () => {
                 selectFeeInfo.value, // fee tier
             );
             console.log('池地址', poolAddress)
-            if (poolAddress === ethers.constants.AddressZero) return
+            if (poolAddress === ethers.constants.AddressZero) {
+                setDialogContent(`${fromTokenInfo.title} 与 ${toTokenInfo.title} 在 ${selectFeeInfo.value * 0.01 * 0.01}%区间暂无交易兑。您可前往创建`)
+                setShowDialogPopup(true)
+                return
+            }
             const poolService = new ContractService(window.ethereum, PoolABI, poolAddress);
             const slot0Data = await poolService.callViewMethod("slot0");
             const [sqrtPriceX96] = await slot0Data
@@ -392,7 +382,11 @@ const Trade = () => {
                 selectFeeInfo.value, // fee tier
             );
             console.log('池地址', poolAddress, poolAddress === ethers.constants.AddressZero)
-            if (poolAddress === ethers.constants.AddressZero) return
+            if (poolAddress === ethers.constants.AddressZero) {
+                setDialogContent(`${fromTokenInfo.title} 与 ${toTokenInfo.title} 在 ${selectFeeInfo.value * 0.01 * 0.01}%区间暂无交易兑。您可前往创建`)
+                setShowDialogPopup(true)
+                return
+            }
 
             const poolService = new ContractService(window.ethereum, PoolABI, poolAddress);
             const slot0Data = await poolService.callViewMethod("slot0");
