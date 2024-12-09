@@ -107,49 +107,7 @@ const Trade = () => {
                     [process.env.NEXT_PUBLIC_POSITION_MANAGER_ADDRESS, ethers.MaxUint256]
                 );
             }
-            const provider = new ethers.providers.Web3Provider(window.ethereum);
-            const signer = provider.getSigner();
-            const factoryService = new ContractService(window.ethereum, FactoryABI, process.env.NEXT_PUBLIC_FACTORY_ADDRESS)
-            const poolAddress = await factoryService.callViewMethod(
-                "getPool",
-                fromTokenInfo.address,
-                toTokenInfo.address,
-                selectFeeInfo.value, // fee tier
-            );
 
-            const poolService = new ethers.Contract(poolAddress, PoolABI, signer);
-            poolService.on("Swap", async (sender, recipient, amount0, amount1, sqrtPriceX96, liquidity, tick) => {
-                console.log("Swap Event Received:");
-                console.log("Sender:", sender);
-                console.log("Recipient:", recipient);
-                console.log("Amount0 (token0):", ethers.utils.formatUnits(amount0, 18)); // 格式化为代币的单位
-                console.log("Amount1 (token1):", ethers.utils.formatUnits(amount1, 18)); // 格式化为代币的单位
-                console.log('object', Math.abs(ethers.utils.formatUnits(amount1, 18)))
-                const tokenInBalanceAfter = await fromTokenService.callViewMethod("balanceOf", localStorage.getItem('account'));
-                const tokenOutBalanceAfter = await toTokenService.callViewMethod("balanceOf", localStorage.getItem('account'));
-                console.log("TokenIn Balance After:", tokenInBalanceAfter.toString());
-                console.log("TokenOut Balance After:", tokenOutBalanceAfter.toString());
-                let balanceOne = ethers.utils.formatUnits(tokenInBalanceAfter, 18)
-                let balanceTwo = ethers.utils.formatUnits(tokenOutBalanceAfter, 18)
-                if (ethers.utils.formatUnits(amount0, 18) && ethers.utils.formatUnits(amount1, 18)) {
-                    setFromTokenBalance(fromTokenBalance = balanceOne)
-                    setToTokenBalance(toTokenBalance = balanceTwo)
-                    setToken1Received(token1Received = fromTokenInfo.address < toTokenInfo.address ? Math.abs(ethers.utils.formatUnits(amount1, 18)) : Math.abs(ethers.utils.formatUnits(amount0, 18)))
-                    console.log('---------', token1Received, Math.abs(ethers.utils.formatUnits(amount1, 18)))
-                    setTransactionDetails({
-                        token0Used: fromTokenValue,
-                        token1Received: token1Received,
-                        fee: (selectFeeInfo.value) * 0.01 * 0.01,
-                        token0Balance: balanceOne,
-                        token1Balance: balanceTwo,
-                        token0: fromTokenInfo.title,
-                        token1: toTokenInfo.title,
-                        perPriceText: perPriceText
-                    });
-                    setIsModalOpen(true); // 显示弹窗
-                }
-
-            });
             const tx = await swapRouterService.sendMethod(
                 "exactInputSingle",
                 localStorage.getItem('account'),
@@ -168,6 +126,49 @@ const Trade = () => {
                 { value: ethers.BigNumber.from(0) } // 使用 ethers.BigNumber.from(0) 替代 ethers.Zero
             );
 
+            const provider = new ethers.providers.Web3Provider(window.ethereum);
+            const signer = provider.getSigner();
+            const factoryService = new ContractService(window.ethereum, FactoryABI, process.env.NEXT_PUBLIC_FACTORY_ADDRESS)
+            const poolAddress = await factoryService.callViewMethod(
+                "getPool",
+                fromTokenInfo.address,
+                toTokenInfo.address,
+                selectFeeInfo.value, // fee tier
+            );
+
+            const poolService = new ethers.Contract(poolAddress, PoolABI, signer);
+            poolService.on("Swap", async (sender, recipient, amount0, amount1, sqrtPriceX96, liquidity, tick, event) => {
+                if (event.transactionHash === tx.transactionHash) {
+                    console.log("Swap Event Received:");
+                    console.log("Sender:", sender);
+                    console.log("Recipient:", recipient);
+                    console.log("Amount0 (token0):", ethers.utils.formatUnits(amount0, 18)); // 格式化为代币的单位
+                    console.log("Amount1 (token1):", ethers.utils.formatUnits(amount1, 18)); // 格式化为代币的单位
+                    console.log('object', Math.abs(ethers.utils.formatUnits(amount1, 18)))
+                    const tokenInBalanceAfter = await fromTokenService.callViewMethod("balanceOf", localStorage.getItem('account'));
+                    const tokenOutBalanceAfter = await toTokenService.callViewMethod("balanceOf", localStorage.getItem('account'));
+                    console.log("TokenIn Balance After:", tokenInBalanceAfter.toString());
+                    console.log("TokenOut Balance After:", tokenOutBalanceAfter.toString());
+                    let balanceOne = ethers.utils.formatUnits(tokenInBalanceAfter, 18)
+                    let balanceTwo = ethers.utils.formatUnits(tokenOutBalanceAfter, 18)
+                    setFromTokenBalance(fromTokenBalance = balanceOne)
+                    setToTokenBalance(toTokenBalance = balanceTwo)
+                    setToken1Received(token1Received = fromTokenInfo.address < toTokenInfo.address ? Math.abs(ethers.utils.formatUnits(amount1, 18)) : Math.abs(ethers.utils.formatUnits(amount0, 18)))
+                    console.log('---------', token1Received, Math.abs(ethers.utils.formatUnits(amount1, 18)))
+                    setTransactionDetails({
+                        token0Used: fromTokenValue,
+                        token1Received: token1Received,
+                        fee: (selectFeeInfo.value) * 0.01 * 0.01,
+                        token0Balance: balanceOne,
+                        token1Balance: balanceTwo,
+                        token0: fromTokenInfo.title,
+                        token1: toTokenInfo.title,
+                        perPriceText: perPriceText
+                    });
+                    setIsModalOpen(true); // 显示弹窗
+                }
+
+            });
 
             console.log("Swap 成功", tx);
 
@@ -387,7 +388,7 @@ const Trade = () => {
             );
             console.log('池地址', poolAddress, poolAddress === ethers.constants.AddressZero)
             if (poolAddress === ethers.constants.AddressZero) {
-                setDialogContent(`${fromTokenInfo.title} 与 ${toTokenInfo.title} 在 ${selectFeeInfo.value * 0.01 * 0.01}%区间暂无交易兑。您可前往创建`)
+                setDialogContent(`${fromTokenInfo.title} 与 ${toTokenInfo.title} 在 ${selectFeeInfo.value * 0.01 * 0.01}% 区间暂无交易兑。您可前往创建`)
                 setShowDialogPopup(true)
                 return
             }
