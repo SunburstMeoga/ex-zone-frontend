@@ -153,7 +153,12 @@ const Trade = () => {
                     let balanceTwo = ethers.utils.formatUnits(tokenOutBalanceAfter, 18)
                     setFromTokenBalance(fromTokenBalance = balanceOne)
                     setToTokenBalance(toTokenBalance = balanceTwo)
-                    setToken1Received(token1Received = fromTokenInfo.address < toTokenInfo.address ? Math.abs(ethers.utils.formatUnits(amount1, 18)) : Math.abs(ethers.utils.formatUnits(amount0, 18)))
+                    const formattedAmount0 = ethers.utils.formatUnits(amount0, 18); // 格式化到 18 位
+                    const formattedAmount1 = ethers.utils.formatUnits(amount1, 18); // 格式化到 18 位
+                    const absValue0 = Math.abs(parseFloat(formattedAmount0)); // 转为数字并取绝对值
+                    const absValue1 = Math.abs(parseFloat(formattedAmount1)); // 转为数字并取绝对值
+
+                    setToken1Received(token1Received = fromTokenInfo.address < toTokenInfo.address ? absValue1 : absValue0)
                     console.log('---------', token1Received, Math.abs(ethers.utils.formatUnits(amount1, 18)))
                     setTransactionDetails({
                         token0Used: fromTokenValue,
