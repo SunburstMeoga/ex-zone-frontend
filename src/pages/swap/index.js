@@ -527,13 +527,13 @@ const Trade = () => {
                         <div className='w-20-0 mb-2-0 lg:w-35-0 lg:mb-8-0 text-gray-400' >
                             {perPriceText}
                         </div>
-                        {/* <div className='w-20-0 flex justify-between items-center mb-1-0 lg:w-35-0 ' onClick={toggleSettingPopup}>
+                        <div className='w-20-0 flex justify-between items-center mb-1-0 lg:w-35-0 ' onClick={toggleSettingPopup}>
                             <div className='flex justify-start items-center'>
                                 <div className='text-1-0 text-swap-second-title mr-1-0'>Slippage Tolerance</div>
                                 <div className='text-menu-green icon iconfont icon-edit' style={{ fontSize: '1.4rem' }}> </div>
                             </div>
                             <div className='font-bold text-1-5 text-menu-green'>0.5%</div>
-                        </div> */}
+                        </div>
                         <div onClick={handleApproveAndSwap} className='w-20-0 h-4-7 bg-primary-purple flex justify-center items-center text-white font-light text-1-5 rounded-xl lg:w-35-0  transition ease-in duration-100 active:bg-opacity-50 active:translate-y-0-1'>
                             Approve and Swap
                         </div>

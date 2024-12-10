@@ -340,5 +340,5 @@ img {
 }
 
 .button-click {
-  @apply transition ease-in duration-100 active:bg-opacity-90 active:translate-y-0-1
+  @apply transition ease-in duration-100 active:bg-opacity-90 active:translate-y-0-1;
 }
