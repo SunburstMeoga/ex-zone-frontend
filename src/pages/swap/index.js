@@ -50,11 +50,10 @@ const Trade = () => {
     let [transPrice, setTransPrice] = useState('')
     const [price, setPrice] = useState(null);
     let [fromTokenList, setFromTokenList] = useState([
-        { title: 'ONE', address: '0x584e6a7Eb583eF89c0F70c3540ce88A4cbe56deF', img: 'https://img0.baidu.com/it/u=2664965310,3686497550&fm=253&fmt=auto&app=138&f=JPEG?w=329&h=330' },
-        { title: 'TWO', address: '0xdbbe571be652CA17Fb3F6B197977C4FF257d8853', img: 'https://img0.baidu.com/it/u=2664965310,3686497550&fm=253&fmt=auto&app=138&f=JPEG?w=329&h=330' },
-        { title: 'CEN', address: '0xF332c5a258b1405D58caA85A95b2678C6a13d819', img: 'https://img0.baidu.com/it/u=2664965310,3686497550&fm=253&fmt=auto&app=138&f=JPEG?w=329&h=330' },
-        { title: 'UZI', address: '0x7a6194476EF6a3aCf3678451B53c51f49d43C3A4', img: 'https://img0.baidu.com/it/u=2664965310,3686497550&fm=253&fmt=auto&app=138&f=JPEG?w=329&h=330' },
-        { title: 'GALA', address: '0x15C00A366eC35BA9De52FE65098022eD75b7d8bE', img: 'https://img0.baidu.com/it/u=2664965310,3686497550&fm=253&fmt=auto&app=138&f=JPEG?w=329&h=330' },
+        { title: 'TEST1', address: '0x9e431B2C5bcC67AB7A435A50D03cCF711e0150EE', img: 'https://img0.baidu.com/it/u=2664965310,3686497550&fm=253&fmt=auto&app=138&f=JPEG?w=329&h=330' },
+        { title: 'TEST2', address: '0x2C5Ae99653a8e8550505acfA7ce088A0bE3b06e3', img: 'https://img0.baidu.com/it/u=2664965310,3686497550&fm=253&fmt=auto&app=138&f=JPEG?w=329&h=330' },
+        { title: 'TEST3', address: '0x5B53d3F39C09cFd052042a1C4F57e92639284e71', img: 'https://img0.baidu.com/it/u=2664965310,3686497550&fm=253&fmt=auto&app=138&f=JPEG?w=329&h=330' },
+        { title: 'TEST4', address: '0x5af3Bed9b4dFF05a87f9806767a43fE054B7f2F8', img: 'https://img0.baidu.com/it/u=2664965310,3686497550&fm=253&fmt=auto&app=138&f=JPEG?w=329&h=330' }
     ])
     const handleApproveAndSwap = async () => { //点击approve and swap
         if (!toTokenInfo.title) { //没有选择to token 起弹窗
