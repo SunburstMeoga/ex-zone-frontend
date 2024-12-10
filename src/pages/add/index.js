@@ -213,11 +213,15 @@ const Add = () => {
                 let createPoolResult = await positionManagerService.sendMethod(
                     'createAndInitializePoolIfNecessary',
                     localStorage.getItem('account'),
-                    selectFromTokenInfo.address,
-                    selectToTokenInfo.address,
+                    // selectFromTokenInfo.address, 
+                    // selectToTokenInfo.address,
+                    selectFromTokenInfo.address > selectToTokenInfo.address ? selectToTokenInfo.address : selectFromTokenInfo.address,
+                    selectFromTokenInfo.address > selectToTokenInfo.address ? selectFromTokenInfo.address : selectToTokenInfo.address,
                     selectFeeInfo.value,
                     sqrtPriceX96
                 );
+                // fromTokenInfo.address > toTokenInfo.address ? toTokenInfo.address : fromTokenInfo.address,
+                // fromTokenInfo.address > toTokenInfo.address ? fromTokenInfo.address : toTokenInfo.address,
                 changeIsLoading(false)
                 setButtonText('Add Liquidity')
                 console.log('初始化池子', createPoolResult);
@@ -248,8 +252,8 @@ const Add = () => {
                 // console.log('池地址', poolAddress)
                 // console.log('池塘流动性', liquidity)
                 const mintParams = {
-                    token0: selectFromTokenInfo.address,
-                    token1: selectToTokenInfo.address,
+                    token0: selectFromTokenInfo.address > selectToTokenInfo.address ? selectToTokenInfo.address : selectFromTokenInfo.address,
+                    token1: selectFromTokenInfo.address > selectToTokenInfo.address ? selectFromTokenInfo.address : selectToTokenInfo.address,
                     fee: selectFeeInfo.value,
                     tickLower: tickLower, // 最低 tick 值，表示最宽范围
                     tickUpper: tickUpper,  // 最高 tick 值，表示最宽范围
