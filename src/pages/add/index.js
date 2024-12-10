@@ -166,6 +166,9 @@ const Add = () => {
             changeIsLoading(false)
             setButtonText('检查授权错误', err)
         }
+        console.log(selectFromTokenInfo.address,
+            selectToTokenInfo.address,
+            selectFeeInfo.value)
         try { //检查池子是否存在
             const poolAddress = await factoryService.callViewMethod(
                 "getPool",
