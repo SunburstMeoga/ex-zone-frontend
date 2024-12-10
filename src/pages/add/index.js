@@ -412,9 +412,9 @@ const Add = () => {
                                         <div className='text-0-8'>{tradingList[1].title}</div>
                                     </div>
                                 </div>
-                                <div className='w-21-7  lg:w-34-9 flex flex-col justify-start items-center mb-2-0'>
+                                <div className='w-21-7  lg:w-34-9 flex flex-col justify-start items-center'>
                                     <div className='w-full mb-1-0 '>
-                                        <div className='bg-swap-card-module mb-1-0 flex flex-col justify-between items-center border-2 border-swap-border rounded-2xl px-1-0 py-0-7 w-full h-6-9'>
+                                        <div className='bg-swap-card-module flex flex-col justify-between items-center border-2 border-swap-border rounded-2xl px-1-0 py-0-7 w-full h-6-9'>
                                             <div className='flex justify-between items-center'>
                                                 <input type="number" placeholder='0.00' step="0.01" onChange={changeInitialPrice} value={initialPrice} className='bg-transparent text-left h-3-0 text-1-2 flex-1'></input>
                                                 <div className='text-gray-400 ml-0-4'>{tradingList[1].title} Per {tradingList[0].title} </div>
@@ -429,6 +429,41 @@ const Add = () => {
                                     </div>
                                 </div>
                             </div>}
+                            <div className='w-20-0 lg:w-30-0 text-white text-1-0 mb-0-9 mt-2-0'>
+                                设定价格范围
+                            </div>
+                            <div className='w-21-7 lg:w-34-9 flex flex-col justify-start items-center'>
+                                <div className='w-full py-1-2 px-1-0 bg-swap-card-module  border-2 border-swap-border rounded-2xl text-white mb-1-0'>
+                                    <div className='font-bold text-1-2'>Min Price</div>
+                                    <div className='text-white flex justify-between w-full items-baseline my-0-2'>
+                                        <div onClick={() => handleReduce('min')} className='flex justify-center items-center w-2-0 h-2-0 rounded-full bg-menu-green transition duration-150 active:scale-105'>
+                                            <div className='icon iconfont icon-jian'></div>
+                                        </div>
+                                        <div className='flex justify-center items-center text-1-2'>
+                                            <input className='bg-transparent text-center h-3-0 text-1-2 flex-1' placeholder='23'></input>
+                                        </div>
+                                        <div onClick={() => handleAdd('min')} className='flex justify-center items-center w-2-0 h-2-0 rounded-full bg-menu-green transition duration-150 active:scale-105'>
+                                            <div className='icon iconfont icon-Add'></div>
+                                        </div>
+                                    </div>
+                                    <div className='text-rank-title text-1-0 w-full text-right'>1 {selectFromTokenInfo.title} = {selectFromTokenInfo.title === tradingList[0].title ? initialPrice : 1 / initialPrice}  {selectToTokenInfo.title}</div>
+                                </div>
+                                <div className='w-full py-1-2 px-1-0 bg-swap-card-module  border-2 border-swap-border rounded-2xl text-white mb-2-0'>
+                                    <div className='font-bold text-1-2'>Max Price</div>
+                                    <div className='text-white flex justify-between w-full items-baseline my-0-2'>
+                                        <div onClick={() => handleReduce('max')} className='flex justify-center items-center w-2-0 h-2-0 rounded-full bg-menu-green transition duration-150 active:scale-105'>
+                                            <div className='icon iconfont icon-jian'></div>
+                                        </div>
+                                        <div className='flex justify-center items-center text-1-2'>
+                                            <input className='bg-transparent text-center h-3-0 text-1-2 flex-1' placeholder='23'></input>
+                                        </div>
+                                        <div onClick={() => handleAdd('max')} className='flex justify-center items-center w-2-0 h-2-0 rounded-full bg-menu-green transition duration-150 active:scale-105'>
+                                            <div className='icon iconfont icon-Add'></div>
+                                        </div>
+                                    </div>
+                                    <div className='text-rank-title text-1-0 w-full text-right'> 1 {selectFromTokenInfo.title} = {selectFromTokenInfo.title === tradingList[0].title ? initialPrice : 1 / initialPrice}  {selectToTokenInfo.title}</div>
+                                </div>
+                            </div>
                             <div className='w-20-0 lg:w-30-0 text-white text-1-0 mb-0-9 mt-2-0'>
                                 DEPOSIT AMOUNT
                             </div>
@@ -486,38 +521,7 @@ const Add = () => {
                             <div className='text-white text-1-2 mb-1-0'>
                                 Your position will appear here.
                             </div>
-                            <div className='w-21-7 lg:w-34-9 flex flex-col justify-start items-center'>
-                                <div className='w-full py-1-2 px-1-0 bg-swap-card-module  border-2 border-swap-border rounded-2xl text-white mb-1-0'>
-                                    <div className='font-bold text-1-5'>Min Price</div>
-                                    <div className='text-white flex justify-between w-full items-baseline my-1-6'>
-                                        <div onClick={() => handleReduce('min')} className='flex justify-center items-center w-3-0 h-3-0 rounded-full bg-menu-green transition duration-150 active:scale-105'>
-                                            <div className='icon iconfont icon-jian'></div>
-                                        </div>
-                                        <div className='flex justify-center items-center text-1-2'>
-                                            23
-                                        </div>
-                                        <div onClick={() => handleAdd('min')} className='flex justify-center items-center w-3-0 h-3-0 rounded-full bg-menu-green transition duration-150 active:scale-105'>
-                                            <div className='icon iconfont icon-Add'></div>
-                                        </div>
-                                    </div>
-                                    <div className='text-rank-title text-1-0 w-full text-right'>{selectToTokenInfo.title} per {selectFromTokenInfo.title}</div>
-                                </div>
-                                <div className='w-full py-1-2 px-1-0 bg-swap-card-module  border-2 border-swap-border rounded-2xl text-white mb-2-0'>
-                                    <div className='font-bold text-1-5'>Max Price</div>
-                                    <div className='text-white flex justify-between w-full items-baseline my-1-6'>
-                                        <div onClick={() => handleReduce('max')} className='flex justify-center items-center w-3-0 h-3-0 rounded-full bg-menu-green transition duration-150 active:scale-105'>
-                                            <div className='icon iconfont icon-jian'></div>
-                                        </div>
-                                        <div className='flex justify-center items-center text-1-2'>
-                                            23
-                                        </div>
-                                        <div onClick={() => handleAdd('max')} className='flex justify-center items-center w-3-0 h-3-0 rounded-full bg-menu-green transition duration-150 active:scale-105'>
-                                            <div className='icon iconfont icon-Add'></div>
-                                        </div>
-                                    </div>
-                                    <div className='text-rank-title text-1-0 w-full text-right'>{selectToTokenInfo.title} per {selectFromTokenInfo.title}</div>
-                                </div>
-                            </div>
+
                             <div onClick={handleConnectWallet} className='w-21-7 lg:w-34-9 h-4-7 rounded-lg bg-swap-card-module  border-2 border-primary-purple flex justify-center items-center font-medium text-1-2 mb-1-8'>Full Range </div>
                             <div onClick={handleAddLiquidity} className={`${isLoading ? 'opacity-80' : ''} w-21-7 lg:w-34-9 h-4-7 rounded-lg bg-swap-card-module  border-2 border-primary-purple flex justify-center items-center font-medium text-1-2 mb-1-8`}>
                                 {isLoading && <div className='w-4-0'> <img src='https://gd-hbimg.huaban.com/2c853da3b26094baa50ac91caac7a4ae0d306ccccbdb5-tERjYn_fw658' /> </div>}
